@@ -15,18 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\Application\Header Files\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Convenio.h">
+    <ClInclude Include="..\..\src\Application2\Header Files\Application2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Application\Source Files\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp">
+    <ClCompile Include="..\..\src\Application2\Source Files\Application2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
