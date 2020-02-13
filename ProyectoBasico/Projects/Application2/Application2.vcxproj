@@ -80,25 +80,25 @@
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>U:\hlocal\Proyecto-3\ProyectoBasico\src\Application2\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IntDir>$(SolutionDir)inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>U:\hlocal\Proyecto-3\ProyectoBasico\src\Application2\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IntDir>$(SolutionDir)inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>U:\hlocal\Proyecto-3\ProyectoBasico\src\Application2\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
-    <IncludePath>U:\hlocal\Proyecto-3\ProyectoBasico\src\Application2\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
