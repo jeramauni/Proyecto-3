@@ -8,3 +8,4 @@
 //Usar este separador entre métodos
 //---------------------------------------------------------------------------------------------------
 //Guardar .h y .cpp en su directorio correspondiente
+//Recordatorio: Si el archivo no está en el proyecto se usa <>
