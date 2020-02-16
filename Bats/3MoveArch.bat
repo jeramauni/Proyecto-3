@@ -15,3 +15,5 @@ echo Moviendo plugins.cfg a \Projects\Application
 echo ---------------------------------------------------
 copy ..\ProyectoBasico\exes\plugins.cfg ..\ProyectoBasico\Projects\Application
 copy ..\ProyectoBasico\exes\plugins_d.cfg ..\ProyectoBasico\Projects\Application
+
+PAUSE
