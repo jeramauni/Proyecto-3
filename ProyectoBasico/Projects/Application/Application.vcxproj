@@ -80,31 +80,31 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\exes</OutDir>
+    <OutDir>$(SolutionDir)exes</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(SolutionDir)\src\Application\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\exes</OutDir>
+    <OutDir>$(SolutionDir)exes</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(SolutionDir)\src\Application\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencias\ogre-1.12.4\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\exes</OutDir>
+    <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(SolutionDir)\src\Application\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\exes</OutDir>
+    <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)\src\Application2\Header Files;$(SolutionDir)\src\Application\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencias\ogre-1.12.4\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)\Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -129,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencias\ogre-1.12.4\Build\include;$(SolutionDir)\Dependencias\ogre-1.12.4\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)\Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -166,7 +166,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencias\ogre-1.12.4\Build\include;$(SolutionDir)\Dependencias\ogre-1.12.4\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)\Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
