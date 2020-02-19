@@ -15,7 +15,7 @@ MD ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build
 :: Poned la ubicacion del exe en el proyecto
 echo ---------------------------------------------------
 echo ejecucion del exe de CMake
-echo Si os da problema al hacer el "generate" -> buscar "imgui" desmarcarlo y volver a generar
+echo Si os da problema al hacer el "generate" - buscar "imgui" desmarcarlo y volver a generar
 echo ---------------------------------------------------
 start ..\ProyectoBasico\Dependencias\cmake\bin\cmake-gui.exe
 

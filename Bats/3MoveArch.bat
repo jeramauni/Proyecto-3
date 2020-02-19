@@ -13,7 +13,7 @@ copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\RenderSystem_G
 echo ---------------------------------------------------
 ::echo Moviendo plugins.cfg a \Projects\Application
 echo Teneis que cambiar las propiedades del proyecto para que funcione
-echo Propiedades -> Depuracion -> Directorio de trabajo (todas las plataformas, x64) -> $(TargetDir)
+echo Propiedades - Depuracion - Directorio de trabajo (todas las plataformas, x64) - $(TargetDir)
 echo ---------------------------------------------------
 ::copy ..\ProyectoBasico\exes\plugins.cfg ..\ProyectoBasico\Projects\Application
 ::copy ..\ProyectoBasico\exes\plugins_d.cfg ..\ProyectoBasico\Projects\Application
