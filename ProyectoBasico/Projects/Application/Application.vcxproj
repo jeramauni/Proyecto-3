@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Application\Header Files\Entity.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\TinyOgre.h" />
     <ClInclude Include="Convenio.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\TinyOgre.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
