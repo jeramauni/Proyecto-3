@@ -21,7 +21,16 @@
     <ClInclude Include="Convenio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\TinyOgre.h">
+    <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\EasyDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -32,7 +41,16 @@
     <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\TinyOgre.cpp">
+    <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

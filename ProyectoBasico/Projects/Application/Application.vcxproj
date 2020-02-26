@@ -19,14 +19,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\Application\Header Files\EasyDefines.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Entity.h" />
-    <ClInclude Include="..\..\src\Application\Header Files\TinyOgre.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="Convenio.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp" />
-    <ClCompile Include="..\..\src\Application\Source Files\TinyOgre.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -92,8 +98,8 @@
     <OutDir>$(SolutionDir)exes</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -105,8 +111,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
