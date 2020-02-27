@@ -16,7 +16,6 @@
 //Here I include my other files
 #include "RenderUtilities.h"
 #include "InitOgre.h"
-#include "EasyDefines.h"
 
 namespace OgreEasy {
 
@@ -96,8 +95,13 @@ namespace OgreEasy {
 		// I want to update myself the content of the window, not automatically
 		lWindow->setAutoUpdated(false);
 
-		//--------------------------- MESH ---------------------------
-		createMesh();
+		//--------------------------- LIGHT -----------------------------
+		lightGeneration();
+
+		//--------------------------- MESH -----------------------------
+		//squareGeneration();
+		//createSquare("MeshCubeAndAxe");
+		meshGeneration();
 
 		/*
 		cleaning of windows events managed by Ogre::WindowEventUtilities::...
@@ -114,16 +118,19 @@ namespace OgreEasy {
 		// These messages are most of the time : keystroke, mouse moved, ... or window closed.
 		// If I don't do this, the message are never caught, and the window won't close.
 		while (!lOgreInit.mWindow->isClosed()) {
+			// Actualizado de la escena
+
+			// Rotacion de la luz
+			Ogre::Degree lAngle(2.5);
+			lLightSceneNode->yaw(lAngle);
+			
 
 			// Drawings
-			// the window update its content.
-			// each viewport that is 'autoupdated' will be redrawn now,
-			// in order given by its z-order.
+			// La ventana hace el update. Los viewport que tengan "autoupdated" activado se dibujaran otra vez en este frame,
+			// en el orden dado por la coord z.
 			lWindow->update(false);
 
-			// The drawn surface is then shown on the screen
-			// (google "double buffering" if you want more details).
-			// I always use vertical synchro.
+			// Dibujamos el buffer actualizado
 			bool lVerticalSynchro = true;
 			lWindow->swapBuffers();
 
@@ -139,7 +146,7 @@ namespace OgreEasy {
 		return;
 	};
 
-	void OgreApp::createMesh() {
+	void OgreApp::squareGeneration() {
 		// A simplistic presentation of some realtime 3D basics.
 	// In 3D you need most of the time : 
 	// a vertex table Vt + an index table Idt + a kind of primitive P + an associated material M.
@@ -254,20 +261,240 @@ namespace OgreEasy {
 			Ogre::String lNameOfTheMesh = "MeshCubeAndAxe";
 			Ogre::String lResourceGroup = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
 			lManualObject->convertToMesh(lNameOfTheMesh);
-
-			// Now I can create several entities using that mesh
-			int lNumberOfEntities = 5;
-			for (int iter = 0; iter < lNumberOfEntities; ++iter)
-			{
-				Ogre::Entity* lEntity = lScene->createEntity(lNameOfTheMesh);
-				// Now I attach it to a scenenode, so that it becomes present in the scene.
-				Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
-				lNode->attachObject(lEntity);
-				// I move the SceneNode so that it is visible to the camera.
-				float lPositionOffset = float(1 + iter * 2) - (float(lNumberOfEntities));
-				lNode->translate(lPositionOffset, lPositionOffset, -10.0f);
-			}
 		}
 	}
+
+	void OgreApp::createSquare(Ogre::String nameOfMesh) {
+		// Now I can create several entities using that mesh
+		int lNumberOfEntities = 5;
+		for (int iter = 0; iter < lNumberOfEntities; ++iter)
+		{
+			Ogre::Entity* lEntity = lScene->createEntity(nameOfMesh);
+			// Now I attach it to a scenenode, so that it becomes present in the scene.
+			Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
+			lNode->attachObject(lEntity);
+			// I move the SceneNode so that it is visible to the camera.
+			float lPositionOffset = float(1 + iter * 2) - (float(lNumberOfEntities));
+			lNode->translate(lPositionOffset, lPositionOffset, -10.0f);
+		}
+	}
+
+	void OgreApp::meshGeneration() {
+		// Elegir el nombre del grupo
+		Ogre::String lNameOfResourceGroup = "Mission 1 : Crear Ninja";
+		{
+			// Crear el grupo
+			Ogre::ResourceGroupManager& lRgMgr = Ogre::ResourceGroupManager::getSingleton();
+			lRgMgr.createResourceGroup(lNameOfResourceGroup);
+
+			// Decirle el directorio que se cargara en el grupo
+			Ogre::String lDirectoryToLoad = "../resources/meshes";
+			bool lIsRecursive = false;
+			lRgMgr.addResourceLocation(lDirectoryToLoad, "FileSystem", lNameOfResourceGroup, lIsRecursive);
+
+			//Parsea scripts si hay en el grupo
+			lRgMgr.initialiseResourceGroup(lNameOfResourceGroup);
+			//Cargamos lo que se puede de ese grupo
+			lRgMgr.loadResourceGroup(lNameOfResourceGroup);
+
+
+			//-----------------------------------------------------------------------
+			// Creamos entidades que usan esa mesh
+			Ogre::String lNameOfTheMesh = "ninja.mesh"; //Addname k sea
+			int lNumberOfEntities = 1;
+			for (int iter = 0; iter < lNumberOfEntities; ++iter) {
+				//Entidad
+				Ogre::Entity* lEntity = lScene->createEntity(lNameOfTheMesh);
+
+				//Generamos los materiales
+				materialGeneration();
+				//Le damos el material a la mesh
+				lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
+
+				//Nodo
+				Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
+				lNode->attachObject(lEntity);
+
+				// Mover el nodo para que lo vea la camara
+				float lPositionOffset = float(1 + iter * 2) - (float(lNumberOfEntities));
+				lPositionOffset = lPositionOffset * 20;
+				lNode->translate(lPositionOffset, lPositionOffset, -600.0f);
+				lNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(90));
+			}
+
+		}
+	}
+	
+	void OgreApp::lightGeneration() {
+		// Iniciamos la luz y se la añadimos a la escena en un nodo
+		lLightSceneNode = NULL;
+		{
+			Ogre::Light* lLight = lScene->createLight();
+
+			// I can set some attributes of the light.
+			// The basic light type can be : 
+			//		pointlight (like a candle?)
+			//		spotlight (kind of 'conic' light)
+			//		directional light (like the sun in an outdoor scene).
+			// Directional light is like parallel rays coming from 1 direction.
+			lLight->setType(Ogre::Light::LT_DIRECTIONAL);
+
+			// Color para la luz. Entre 0.0 y 1.0
+			// Diffuse -> color principal de la luz
+			// Specular -> color de la luz reflejado
+			// El color final de un objeto tambien depende del material
+			lLight->setDiffuseColour(0.8f, 0.3f, 0.3f); // this will be a red light
+			lLight->setSpecularColour(1.0f, 1.0f, 1.0f);// color of 'reflected' light
+
+			lLightSceneNode = lRootSceneNode->createChildSceneNode();
+			lLightSceneNode->attachObject(lLight);
+		}
+
+		// Color ambiente
+		Ogre::ColourValue lAmbientColour(0.2f, 0.2f, 0.2f, 1.0f);
+		lScene->setAmbientLight(lAmbientColour);
+	}
+
+
+	//---------------------------------MATERIALS---------------------------------
+	// Metodo para generar los diferentes grupos de donde cogeremos los materiales
+	void OgreApp::materialGeneration() {
+		//Referencia al materialManager
+		Ogre::MaterialManager& lMaterialManager = Ogre::MaterialManager::getSingleton();
+
+		// Cargar un directorio con texturas
+		Ogre::String lNameOfResourceGroup = "Mission 1 : Crear Ninja Mat";
+		{
+			Ogre::ResourceGroupManager& lRgMgr = Ogre::ResourceGroupManager::getSingleton();
+			lRgMgr.createResourceGroup(lNameOfResourceGroup);
+		
+			// Direccion del directorio de las texturas
+			Ogre::String lDirectoryToLoadTextures = "../resources/textures";
+			bool lIsRecursive = false;
+			lRgMgr.addResourceLocation(lDirectoryToLoadTextures, "FileSystem", lNameOfResourceGroup, lIsRecursive);
+
+			// Iniciamos los scripts del directorio
+			lRgMgr.initialiseResourceGroup(lNameOfResourceGroup);
+
+			// Cargamos los archivos que puedan ser cargados
+			lRgMgr.loadResourceGroup(lNameOfResourceGroup);
+
+			//----------------------------MATERIAL-------------------------------
+			//noLightMat(lMaterialManager, lNameOfResourceGroup);
+
+		}
+	}
+
+	// Material sin luz
+	Ogre::MaterialPtr OgreApp::noLightMat(Ogre::MaterialManager &matMng, Ogre::String name) {
+		// Creacion del material, esto no es perfecto
+		Ogre::MaterialPtr lMaterial = matMng.create("M_NoLighting", name);
+
+		// Aplicamos la technique y el pass a ese material
+		Ogre::Technique* lFirstTechnique = lMaterial->getTechnique(0);
+		Ogre::Pass* lFirstPass = lFirstTechnique->getPass(0);
+
+		// Sin luz
+		lFirstPass->setLightingEnabled(false);
+
+		return lMaterial;
+	}
+
+	// Material con luz
+	Ogre::MaterialPtr OgreApp::lightMat(Ogre::MaterialManager& matMng, Ogre::String name) {
+		Ogre::MaterialPtr lMaterial = matMng.create("M_LightingColor", name);
+		Ogre::Technique* lFirstTechnique = lMaterial->getTechnique(0);
+		Ogre::Pass* lFirstPass = lFirstTechnique->getPass(0);
+		lFirstPass->setLightingEnabled(true);
+
+		//------------------Caracteristicas de la luz-------------------------
+		// Color que "produce" el objeto. Entre 0 y 1
+		Ogre::ColourValue lSelfIllumnationColour(0.1f, 0.0f, 0.0f, 1.0f);
+		lFirstPass->setSelfIllumination(lSelfIllumnationColour);
+
+		// Color originar del objeto
+		Ogre::ColourValue lDiffuseColour(1.0f, 0.4f, 0.4f, 1.0f);
+		lFirstPass->setDiffuse(lDiffuseColour);
+
+		// Color ambiental
+		Ogre::ColourValue lAmbientColour(0.4f, 0.1f, 0.1f, 1.0f);
+		lFirstPass->setAmbient(lAmbientColour);
+
+		// Refleccion de la luz
+		Ogre::ColourValue lSpecularColour(1.0f, 1.0f, 1.0f, 1.0f);
+		lFirstPass->setSpecular(lSpecularColour);
+
+		/*
+		Shininess is the 'inverse of specular color splattering' coefficient.
+		If this is big (e.g : 64) you get a very tiny dot with a quite strong color (on round surface).
+		If this is 0, you get a simple color layer (the dot has become very wide). 
+		*/
+		Ogre::Real lShininess = 64.0f;
+		lFirstPass->setShininess(lShininess);
+		
+		return Ogre::MaterialPtr();
+	}
+
+	// Material sin luz y con textura
+	Ogre::MaterialPtr OgreApp::noLightTextMat(Ogre::MaterialManager& matMng, Ogre::String name)	{
+		Ogre::MaterialPtr lMaterial = matMng.create("M_NoLighting+OneTexture", name);
+		Ogre::Technique* lFirstTechnique = lMaterial->getTechnique(0);
+		Ogre::Pass* lFirstPass = lFirstTechnique->getPass(0);
+		lFirstPass->setLightingEnabled(false);
+
+		// Decirle que textura usar
+		Ogre::TextureUnitState* lTextureUnit = lFirstPass->createTextureUnitState();
+		lTextureUnit->setTextureName("SimpleTexture.bmp", Ogre::TEX_TYPE_2D);
+		lTextureUnit->setTextureCoordSet(0);
+
+		return lMaterial;
+	}
+
+	// Material con luz y textura
+	Ogre::MaterialPtr OgreApp::lightTextMat(Ogre::MaterialManager& matMng, Ogre::String name) {
+		Ogre::MaterialPtr lMaterial = matMng.create("M_Lighting+OneTexture", name);
+		Ogre::Technique* lFirstTechnique = lMaterial->getTechnique(0);
+		Ogre::Pass* lFirstPass = lFirstTechnique->getPass(0);
+
+		// Caracteristicas de la luz
+		lFirstPass->setDiffuse(0.8f, 0.8f, 0.8f, 1.0f);
+		lFirstPass->setAmbient(0.3f, 0.3f, 0.3f);
+		lFirstPass->setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
+		lFirstPass->setShininess(64.0f);
+		lFirstPass->setSelfIllumination(0.1f, 0.1f, 0.1f);
+
+		Ogre::TextureUnitState* lTextureUnit = lFirstPass->createTextureUnitState();
+		lTextureUnit->setTextureName("SimpleTexture.bmp", Ogre::TEX_TYPE_2D);
+		lTextureUnit->setTextureCoordSet(0);
+
+		return lMaterial;
+	}
+
+	// Material con luz, diffuseMap y lightMap
+	Ogre::MaterialPtr OgreApp::oneMoreMat(Ogre::MaterialManager& matMng, Ogre::String name)	{
+		Ogre::MaterialPtr lMaterial = matMng.create("M_Lighting+DiffuseMap+LightMap", name);
+		Ogre::Technique* lFirstTechnique = lMaterial->getTechnique(0);
+		Ogre::Pass* lFirstPass = lFirstTechnique->getPass(0);
+
+		lFirstPass->setDiffuse(0.8f, 0.8f, 0.8f, 1.0f);
+		lFirstPass->setAmbient(0.3f, 0.3f, 0.3f);
+		lFirstPass->setSpecular(1.0f, 1.0f, 1.0f, 1.0f);
+		lFirstPass->setShininess(64.0f);
+		lFirstPass->setSelfIllumination(0.1f, 0.1f, 0.1f);
+
+		Ogre::TextureUnitState* lTextureUnit = lFirstPass->createTextureUnitState();
+		lTextureUnit->setTextureName("SimpleTexture.bmp", Ogre::TEX_TYPE_2D);
+
+		// Esta textura usa las coordinadas de la primera textura
+		lTextureUnit->setTextureCoordSet(0);
+
+		Ogre::TextureUnitState* lTextureUnit_LM = lFirstPass->createTextureUnitState();
+		lTextureUnit_LM->setTextureName("SimpleTexture2.bmp", Ogre::TEX_TYPE_2D);
+
+		lTextureUnit_LM->setTextureCoordSet(1);
+
+		return lMaterial;
+	}
+
 
 }
