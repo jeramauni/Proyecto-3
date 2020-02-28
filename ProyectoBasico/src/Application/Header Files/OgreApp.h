@@ -17,8 +17,10 @@ namespace OgreEasy {
 		void meshGeneration();
 
 		void lightGeneration();
-		void materialGeneration();
+		void materialGeneration(Ogre::String lNameOfResourceGroup);
 
+		//Añade una entidad a la escena
+		Ogre::SceneNode* addEntityToScene(Ogre::String meshGroup, Ogre::String mesh);
 	private:
 		//Materials
 		Ogre::MaterialPtr noLightMat(Ogre::MaterialManager& matMng, Ogre::String name);

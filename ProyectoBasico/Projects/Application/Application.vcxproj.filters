@@ -13,63 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{f593e68e-227d-4dce-ab76-21e22cacdeef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Render">
+      <UniqueIdentifier>{989a9d89-0f14-4a58-94ee-907209812b2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Ogre">
+      <UniqueIdentifier>{f2270221-2e85-4dee-b918-3a70eb45ebf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Ogre">
+      <UniqueIdentifier>{1f73cfa5-1eaa-44b9-a2de-bfeeea7c5ecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Render">
+      <UniqueIdentifier>{840bc453-237d-40e5-9fd9-8f61a6104757}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities">
+      <UniqueIdentifier>{814040a7-e7ad-49f5-8e93-7816f0bfc405}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\Application\Header Files\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Convenio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="..\..\src\Application\Header Files\Entity.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\EntityC.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\Component.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h">
+      <Filter>Header Files\Ogre</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\EasyDefines.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Ogre</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Component.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderComponent.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
+      <Filter>Source Files\Ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp">
+      <Filter>Source Files\Ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp">
+      <Filter>Source Files\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\EntityC.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\Component.cpp">
+      <Filter>Source Files\Entities</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EntityC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Component.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderComponent.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Ogre</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

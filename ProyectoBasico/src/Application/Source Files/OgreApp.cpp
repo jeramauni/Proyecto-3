@@ -5,19 +5,12 @@
 // I will check for std::exception.
 #include <exception>
 
-// Includes necesarios
-//#include <OgreRoot.h>
-//#include <OgreRenderWindow.h>
-//Tambien el del viewport k no se cual es :(
-
-//Podemos llamar a Ogre.h directamente e incluiriamos estas y mas
-
-#include "EntityC.h"
-#include "RenderComponent.h";
-
 //Here I include my other files
 #include "RenderUtilities.h"
 #include "InitOgre.h"
+
+#include "EntityC.h"
+#include "RenderComponent.h";
 
 namespace OgreEasy {
 
@@ -28,10 +21,14 @@ namespace OgreEasy {
 		// I construct my object that will allow me to initialise Ogre easily.
 		OgreEasy::SimpleOgreInit lOgreInit;
 
+		lOgreInit.initOgre();
+
+		/*
 		if (!lOgreInit.initOgre()) {
 			MWARNING("Impossible to init Ogre correctly.");
 			return;
 		}
+		*/
 
 		// Tener las variables principales a mano
 		lRoot = lOgreInit.mRoot.get();
@@ -103,7 +100,9 @@ namespace OgreEasy {
 		//--------------------------- MESH -----------------------------
 		//squareGeneration();
 		//createSquare("MeshCubeAndAxe");
-		meshGeneration();
+		//meshGeneration();
+		addEntityToScene("Ninja", "ninja.mesh");
+		//addEntityToScene("Ninja", "penguin.mesh");
 
 		/*
 		cleaning of windows events managed by Ogre::WindowEventUtilities::...
@@ -126,7 +125,6 @@ namespace OgreEasy {
 			Ogre::Degree lAngle(2.5);
 			lLightSceneNode->yaw(lAngle);
 			
-
 			// Drawings
 			// La ventana hace el update. Los viewport que tengan "autoupdated" activado se dibujaran otra vez en este frame,
 			// en el orden dado por la coord z.
@@ -281,6 +279,36 @@ namespace OgreEasy {
 		}
 	}
 
+	// Devuelve un puntero al Nodo de la escena de la entidad
+	Ogre::SceneNode* OgreApp::addEntityToScene(Ogre::String meshGroup, Ogre::String mesh) {
+		//Entidad
+		//Ogre::Entity* lEntity = lScene->createEntity(mesh);
+
+		//Generamos los materiales
+		materialGeneration(meshGroup + " Mat");
+		//Le damos el material a la mesh
+		//lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), meshGroup + " Mat"));
+
+		//Nodo
+		Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
+		//lNode->attachObject(lEntity);
+
+		
+		EntityC* _testEnt = new EntityC(lNode);
+		RenderComponent* comp = new RenderComponent(lScene, mesh, lNode);
+		comp->getOgreEntity()->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), meshGroup + " Mat"));
+		_testEnt->AddComponent(comp);
+		
+
+		// Mover el nodo para que lo vea la camara
+		float lPositionOffset = float(1 * 2) - (float(1));
+		lPositionOffset = lPositionOffset * 20;
+		lNode->translate(lPositionOffset, lPositionOffset, -600.0f);
+		lNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(90));
+
+		return lNode;
+	}
+
 	void OgreApp::meshGeneration() {
 		// Elegir el nombre del grupo
 		Ogre::String lNameOfResourceGroup = "Mission 1 : Crear Ninja";
@@ -303,25 +331,19 @@ namespace OgreEasy {
 			//-----------------------------------------------------------------------
 			// Creamos entidades que usan esa mesh
 			Ogre::String lNameOfTheMesh = "ninja.mesh"; //Addname k sea
-			///Creamos entidad tipoCcon parametro de mesh
 			int lNumberOfEntities = 1;
 			for (int iter = 0; iter < lNumberOfEntities; ++iter) {
 				//Entidad
-				//Ogre::Entity* lEntity = lScene->createEntity(lNameOfTheMesh);
+				Ogre::Entity* lEntity = lScene->createEntity(lNameOfTheMesh);
 
 				//Generamos los materiales
-				materialGeneration();
+				materialGeneration("Mission 1 : Crear Ninja Mat");
 				//Le damos el material a la mesh
-				//lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
+				lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
 
 				//Nodo
 				Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
-
-				EntityC* _testEnt =new EntityC(lNode);
-				RenderComponent* comp = new RenderComponent(lScene, lNameOfTheMesh, lNode);
-				comp->getOgreEntity()->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
-				_testEnt->AddComponent(comp);
-
+				lNode->attachObject(lEntity);
 
 				// Mover el nodo para que lo vea la camara
 				float lPositionOffset = float(1 + iter * 2) - (float(lNumberOfEntities));
@@ -366,12 +388,12 @@ namespace OgreEasy {
 
 	//---------------------------------MATERIALS---------------------------------
 	// Metodo para generar los diferentes grupos de donde cogeremos los materiales
-	void OgreApp::materialGeneration() {
+	void OgreApp::materialGeneration(Ogre::String lNameOfResourceGroup) {
 		//Referencia al materialManager
 		Ogre::MaterialManager& lMaterialManager = Ogre::MaterialManager::getSingleton();
 
 		// Cargar un directorio con texturas
-		Ogre::String lNameOfResourceGroup = "Mission 1 : Crear Ninja Mat";
+		//lNameOfResourceGroup = "Mission 1 : Crear Ninja Mat";
 		{
 			Ogre::ResourceGroupManager& lRgMgr = Ogre::ResourceGroupManager::getSingleton();
 			lRgMgr.createResourceGroup(lNameOfResourceGroup);
@@ -397,6 +419,8 @@ namespace OgreEasy {
 	Ogre::MaterialPtr OgreApp::noLightMat(Ogre::MaterialManager &matMng, Ogre::String name) {
 		// Creacion del material, esto no es perfecto
 		Ogre::MaterialPtr lMaterial = matMng.create("M_NoLighting", name);
+		//Cambiar a esta
+		//Ogre::MaterialManager::getSingleton().create("M_NoLighting", name);
 
 		// Aplicamos la technique y el pass a ese material
 		Ogre::Technique* lFirstTechnique = lMaterial->getTechnique(0);
@@ -405,6 +429,8 @@ namespace OgreEasy {
 		// Sin luz
 		lFirstPass->setLightingEnabled(false);
 
+
+		//Va a ser blanco, es normal
 		return lMaterial;
 	}
 

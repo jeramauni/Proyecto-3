@@ -34,16 +34,18 @@
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
 #include <OgreRenderWindow.h>
+#include <OgreConfigFile.h>
+#include <OgreFileSystemLayer.h>
+//#include <OgreString.h>
 
 #include "EasyDefines.h"
 
 namespace OgreEasy {
-
 	// the constructor uses the initialisation list to have a proper state.
 	SimpleOgreInit::SimpleOgreInit()
 		:mRoot(NULL), mWindow(NULL)
 	{
-
+		mFSLayer = new Ogre::FileSystemLayer("OgreApp");
 	}
 
 	// the destructor frees memory allocated by the class. 
@@ -51,139 +53,198 @@ namespace OgreEasy {
 	{
 		mWindow = NULL;
 		mRoot.reset();// I was not obliged to do that...
+
+		delete mFSLayer;
 	}
 
+	void SimpleOgreInit::initOgre()	{
+		createRoot();
+		//if (oneTimeConfig) setup();
+		setup();
+	}
 
-	bool SimpleOgreInit::initOgre()
-	{
-		bool result = false;
+	// Comprueba si ya hay una root iniciada y la resetea en caso afirmativo
+	bool SimpleOgreInit::oneTimeConfig() {
+		/*if (!mRoot->restoreConfig()) {
+			return false;
+		}
+		else return true;*/
+		return true;
+	}
+
+	void SimpleOgreInit::createRoot() {
 		// This try/catch will catch potential exception launched by ogre or by my program.
-		// Ogre can launch 'Ogre::Exception' for example.
-		try
-		{
-			// STEP 1/ First, we will need to create the Ogre::Root object.
-			// It is an object that must be created to use ogre correctly, and delete once we are finished using Ogre.
-
+		try {
+			// 1 !!! Creamos la ROOT
 			// This is the name of an optionnal textual configuration file for the rendersystem.
-			// I won't use it.
 			Ogre::String lConfigFileName = "";
-			// This is the name of an optionnal textual configuration file, which lists the available plugins.
-			// I won't use it.
-			Ogre::String lPluginsFileName = "";
-			// This is the name of the log file. A log file is a file in which you can write things during the program execution.
+
+			// "lPluginsFileName" -> This is the name of an optional textual configuration file, which lists the available plugins.
+			// "lLogFileName" -> This is the name of the log file. A log file is a file in which you can write things during the program execution.
 			// Ogre use it to display general informations about the rendersystem.
 			// You are not obliged to generate one, and ogre can even transmit the log data to you own class if you want.
 			// Here we only ask the root to create the file.
+#ifdef _DEBUG
+			Ogre::String lPluginsFileName = "plugins_d.cfg";
+			Ogre::String lLogFileName = "Ogre_d.log";
+#else
+			Ogre::String lPluginsFileName = "plugins.cfg";
 			Ogre::String lLogFileName = "Ogre.log";
+#endif
 
 			// I create the root and I wrap it in an auto_ptr so that it will be automatically released.
 			// Now I can even do "throw std::bad_alloc("bad alloc");", the program will release the root smoothly.
+			// La root de Ogre inicializa automaticamente los plugins.
 			mRoot = std::auto_ptr<Ogre::Root>(
-				new Ogre::Root(lConfigFileName, lPluginsFileName, lLogFileName));
+				new Ogre::Root(lPluginsFileName, lConfigFileName, lLogFileName));
 
-			// STEP 2/ Then we need to load plugins. It means that there are functions that are stored inside dynamic libraries.
-			// These libraries are .dll or .so files. Most projects Ogre Project do not need all functions to be usable.
-			// That way, only a subset of all function can be loaded. It also means you can create your own plugins if you want.
-			// If you want to know more on the subject, you 'll need to dig into a C++ tutorial.
-			// Anyway, for our use, we will need to load at least a 'RenderSystem' plugin, which means something to drive opengl or directx.
-			// The basic plugins you are the most likely to use are the RenderSystems, the particle FX and the Cgprogram.
+			// Then, we can select from the loaded plugins the unique RenderSystem we want to use.
 			{
-				// Ogre uses Ogre::String (which is a typedef) to represent strings.
-				// Here I use a typedef. If you don't know what it means, you should learn C++ basics first.
-				// Same if you don't know what std::vector is.
-				typedef std::vector<Ogre::String> Strings;
-				// Here I list all the plugins I want to load.
-				// I let those I don't want to use in comments.
-				// Opengl rendersystem is supposed to work everywhere.
-				// But in reality a rendersystem may fail on your computer. 
-				// It is likely do to bad/old graphic card driver/installation,
-				// or too old directx version on windows (try update).
-				// Often, when one rendersystem fail, the other at least kind-a-work.
-				// I put them in a std::vector, because then I can factorise operations and calls (do a 'for').
-				Strings lPluginNames;
-				lPluginNames.push_back("RenderSystem_GL");
-				//lPluginNames.push_back("RenderSystem_Direct3D9");
-				//lPluginNames.push_back("Plugin_ParticleFX");
-				//lPluginNames.push_back("Plugin_CgProgramManager");
-				//lPluginNames.push_back("Plugin_PCZSceneManager");
-				//lPluginNames.push_back("Plugin_OctreeZone");
-				//lPluginNames.push_back("Plugin_OctreeSceneManager");
-				//lPluginNames.push_back("Plugin_BSPSceneManager");
-
-				{
-					Strings::iterator lIter = lPluginNames.begin();
-					Strings::iterator lIterEnd = lPluginNames.end();
-					for (; lIter != lIterEnd; lIter++)
-					{
-						Ogre::String& lPluginName = (*lIter);
-						bool lIsInDebugMode = OGRE_DEBUG_MODE;
-						if (lIsInDebugMode)
-						{
-							//lPluginName.append("_d");
-						}
-						mRoot->loadPlugin(lPluginName);
-					}
-				}
-			}
-
-			// STEP 3/ Then, we can select from the loaded plugins the unique RenderSystem we want to use.
-			{
-				// the root provide a method if you want to select 
-				// the rendersystem and its options visually (lRoot->showConfigDialog()). -> esto es de OgreBites
-				// in that case, you don't need to set the render system manually
-
+				// Hay que hacerlo manualmente ya que no tenemos OgreBites
 				const Ogre::RenderSystemList& lRenderSystemList = mRoot->getAvailableRenderers();
-				if (lRenderSystemList.size() == 0)
-				{
+				if (lRenderSystemList.size() == 0) {
 					MWARNING("Sorry, no rendersystem was found.");
-					return result;
 				}
 
 				Ogre::RenderSystem* lRenderSystem = lRenderSystemList[0];
 				mRoot->setRenderSystem(lRenderSystem);
 			}
-
-			// STEP 4/ When the RenderSystem is selected, we can initialise the Root. 
-			// The root can be initialised only when a rendersystem has been selected.
-			{
-				// I can create a window automatically, but I won't do it.
-				bool lCreateAWindowAutomatically = false;
-				// name of the automatically generated window. empty for me.
-				Ogre::String lWindowTitle = "";
-				// custom capabilities of the rendersystem. It's a feature for advanced use.
-				Ogre::String lCustomCapacities = "";
-				mRoot->initialise(lCreateAWindowAutomatically, lWindowTitle, lCustomCapacities);
-			}
-
-			// STEP 5/ Then we can ask to the RenderSystem to create a window.
-			{
-				Ogre::String lWindowTitle = "WeirdEngine Motors";
-				unsigned int lSizeX = 800;
-				unsigned int lSizeY = 600;
-				//I don't want to use fullscreen during development.
-				bool lFullscreen = false;
-				// This is just an example of parameters that we can put. Check the API for more details.
-				Ogre::NameValuePairList lParams;
-				// fullscreen antialiasing. (check wikipedia if needed).
-				lParams["FSAA"] = "0";
-				// vertical synchronisation will prevent some image-tearing, but also
-				// will provide smooth framerate in windowed mode.(check wikipedia if needed).
-				lParams["vsync"] = "true";
-				mWindow = mRoot->createRenderWindow(lWindowTitle, lSizeX, lSizeY, lFullscreen, &lParams);
-			}
-			result = true;
-
 		}
-		catch (Ogre::Exception & e)
-		{
+		catch (Ogre::Exception & e) {
 			MWARNING("!!!!Ogre::Exception!!!!" << e.what());
-			result = false;
 		}
-		catch (std::exception & e)
-		{
+		catch (std::exception & e) {
 			MWARNING("!!!!std::exception!!!!" << e.what());
-			result = false;
 		}
-		return result;
+	}
+
+	void SimpleOgreInit::setup() {
+		// Inicializamos la Root
+		{
+			// I can create a window automatically, but I won't do it.
+			bool lCreateAWindowAutomatically = false;
+			// name of the automatically generated window. empty for me.
+			Ogre::String lWindowTitle = "";
+			// custom capabilities of the rendersystem. It's a feature for advanced use.
+			Ogre::String lCustomCapacities = "";
+			mRoot->initialise(lCreateAWindowAutomatically, lWindowTitle, lCustomCapacities);
+		}
+
+		// Creamos la ventana
+		{
+			Ogre::String lWindowTitle = "WeirdEngine Motors";
+			unsigned int lSizeX = 800;
+			unsigned int lSizeY = 600;
+			//I don't want to use fullscreen during development.
+			bool lFullscreen = false;
+			// This is just an example of parameters that we can put. Check the API for more details.
+			Ogre::NameValuePairList lParams;
+			// fullscreen antialiasing. (check wikipedia if needed).
+			lParams["FSAA"] = "0";
+			// vertical synchronisation will prevent some image-tearing, but also
+			// will provide smooth framerate in windowed mode.(check wikipedia if needed).
+			lParams["vsync"] = "true";
+			mWindow = mRoot->createRenderWindow(lWindowTitle, lSizeX, lSizeY, lFullscreen, &lParams);
+		}
+
+		// Cogemos los recursos que usaremos
+		locateResources();
+		loadResources();
+	}
+
+	void SimpleOgreInit::loadResources() {
+		Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
+	}
+
+	void SimpleOgreInit::locateResources() {
+		// load resource paths from config file
+		Ogre::ConfigFile cf;
+
+#ifdef _DEBUG
+		Ogre::String resourcesPath = "resources_d.cfg";
+#else
+		Ogre::String resourcesPath = "resources.cfg";
+#endif
+		if (Ogre::FileSystemLayer::fileExists(resourcesPath)) {
+			cf.load(resourcesPath);
+		}
+		else {
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(
+				Ogre::FileSystemLayer::resolveBundlePath("resources/meshes"),
+				"FileSystem", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME);
+		}
+
+		Ogre::String sec, type, arch;
+		// go through all specified resource groups
+		Ogre::ConfigFile::SettingsBySection_::const_iterator seci;
+		// Coger los archivos segun la seccion donde se encuentran
+		for (seci = cf.getSettingsBySection().begin(); seci != cf.getSettingsBySection().end(); ++seci) {
+			sec = seci->first;
+			const Ogre::ConfigFile::SettingsMultiMap& settings = seci->second;
+			Ogre::ConfigFile::SettingsMultiMap::const_iterator i;
+
+			// go through all resource paths
+			for (i = settings.begin(); i != settings.end(); i++) {
+				type = i->first;
+				arch = Ogre::FileSystemLayer::resolveBundlePath(i->second);
+				Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch, type, sec);
+			}
+		}
+
+		//sec = Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
+		sec = "Ninja";
+		const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
+
+		OgreAssert(!genLocs.empty(), ("Resource Group '" + sec + "' must contain at least one entry").c_str());
+
+		arch = genLocs.front().archive->getName();
+		type = genLocs.front().archive->getType();
+
+		// Add locations for supported shader languages
+		/*
+		if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsles"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSLES", type, sec);
+		}
+		else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL120", type, sec);
+
+			if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl150"))
+			{
+				Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL150", type, sec);
+			}
+			else
+			{
+				Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL", type, sec);
+			}
+
+			if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl400"))
+			{
+				Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/GLSL400", type, sec);
+			}
+		}
+		else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("hlsl"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch + "/materials/programs/HLSL", type, sec);
+		}
+
+		mRTShaderLibPath = arch + "/RTShaderLib";
+		Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/materials", type, sec);
+
+		if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsles"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSL", type, sec);
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSLES", type, sec);
+		}
+		else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("glsl"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/GLSL", type, sec);
+		}
+		else if (Ogre::GpuProgramManager::getSingleton().isSyntaxSupported("hlsl"))
+		{
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(mRTShaderLibPath + "/HLSL", type, sec);
+		}
+		*/
 	}
 }
