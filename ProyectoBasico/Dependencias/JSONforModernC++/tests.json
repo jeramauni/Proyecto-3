@@ -1,0 +1,24 @@
+{
+    "Entities": 
+    [
+      {
+        "id": "Muro",
+        "components":
+            [
+              {
+                "id": "RenderComponent",
+                "Mesh": "malla",
+                "Luz": false,
+                "Color": 1000000
+              },
+              {
+                "id": "posicion",
+                "Mesh": "malla",
+                "int": 7
+              }
+            ]
+        },
+        {"id":"Entidad2"},
+        {"id":"Entidad3"}
+    ]
+}
