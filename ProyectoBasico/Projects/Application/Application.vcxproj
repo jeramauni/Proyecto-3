@@ -24,7 +24,10 @@
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h" />
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="Convenio.h" />
+    <ClInclude Include="EntityC.h" />
+    <ClInclude Include="RenderComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp" />
@@ -33,6 +36,9 @@
     <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
+    <ClCompile Include="Component.cpp" />
+    <ClCompile Include="EntityC.cpp" />
+    <ClCompile Include="RenderComponent.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

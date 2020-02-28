@@ -12,6 +12,8 @@
 
 //Podemos llamar a Ogre.h directamente e incluiriamos estas y mas
 
+#include "EntityC.h"
+#include "RenderComponent.h";
 
 //Here I include my other files
 #include "RenderUtilities.h"
@@ -288,7 +290,7 @@ namespace OgreEasy {
 			lRgMgr.createResourceGroup(lNameOfResourceGroup);
 
 			// Decirle el directorio que se cargara en el grupo
-			Ogre::String lDirectoryToLoad = "../resources/meshes";
+			Ogre::String lDirectoryToLoad = "resources/meshes";
 			bool lIsRecursive = false;
 			lRgMgr.addResourceLocation(lDirectoryToLoad, "FileSystem", lNameOfResourceGroup, lIsRecursive);
 
@@ -301,19 +303,25 @@ namespace OgreEasy {
 			//-----------------------------------------------------------------------
 			// Creamos entidades que usan esa mesh
 			Ogre::String lNameOfTheMesh = "ninja.mesh"; //Addname k sea
+			///Creamos entidad tipoCcon parametro de mesh
 			int lNumberOfEntities = 1;
 			for (int iter = 0; iter < lNumberOfEntities; ++iter) {
 				//Entidad
-				Ogre::Entity* lEntity = lScene->createEntity(lNameOfTheMesh);
+				//Ogre::Entity* lEntity = lScene->createEntity(lNameOfTheMesh);
 
 				//Generamos los materiales
 				materialGeneration();
 				//Le damos el material a la mesh
-				lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
+				//lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
 
 				//Nodo
 				Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
-				lNode->attachObject(lEntity);
+
+				EntityC* _testEnt =new EntityC(lNode);
+				RenderComponent* comp = new RenderComponent(lScene, lNameOfTheMesh, lNode);
+				comp->getOgreEntity()->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), "Mission 1 : Crear Ninja Mat"));
+				_testEnt->AddComponent(comp);
+
 
 				// Mover el nodo para que lo vea la camara
 				float lPositionOffset = float(1 + iter * 2) - (float(lNumberOfEntities));
@@ -369,7 +377,7 @@ namespace OgreEasy {
 			lRgMgr.createResourceGroup(lNameOfResourceGroup);
 		
 			// Direccion del directorio de las texturas
-			Ogre::String lDirectoryToLoadTextures = "../resources/textures";
+			Ogre::String lDirectoryToLoadTextures = "resources/textures";
 			bool lIsRecursive = false;
 			lRgMgr.addResourceLocation(lDirectoryToLoadTextures, "FileSystem", lNameOfResourceGroup, lIsRecursive);
 
