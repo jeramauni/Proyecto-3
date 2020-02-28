@@ -20,6 +20,7 @@ int WINAPI
 WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdShow)
 #endif
 {
+	
 	try	{
 		OgreEasy::OgreApp OgreApp;
 		OgreApp.AnOgreApplication();
