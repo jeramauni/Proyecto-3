@@ -21,8 +21,8 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 #endif
 {
 	try	{
-		OgreEasy::OgreApp OgreApp;
-		OgreApp.AnOgreApplication();
+		OgreEasy::OgreApp* OgreApp = new OgreEasy::OgreApp();
+		OgreApp->AnOgreApplication();
 		std::cout << "end of the program" << std::endl;
 	}
 	catch (Ogre::Exception & e)	{

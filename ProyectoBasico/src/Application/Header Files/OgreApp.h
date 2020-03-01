@@ -2,13 +2,14 @@
 #define OGREAPP_H
 
 #include "EasyDefines.h"
+#include "InitOgre.h"
 #include <Ogre.h>
 
 namespace OgreEasy {
 
 	class OgreApp {
 	public:
-		OgreApp() {};
+		OgreApp();
 		~OgreApp() {};
 		void AnOgreApplication();
 		void squareGeneration();
@@ -27,6 +28,9 @@ namespace OgreEasy {
 		Ogre::MaterialPtr noLightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr lightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr oneMoreMat(Ogre::MaterialManager& matMng, Ogre::String name);
+
+		//App de Ogre
+		OgreEasy::SimpleOgreInit* lOgreInit;
 
 		//Escena
 		Ogre::SceneManager* lScene;

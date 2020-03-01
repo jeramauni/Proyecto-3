@@ -13,16 +13,15 @@
 #include "RenderComponent.h";
 
 namespace OgreEasy {
-
+	OgreApp::OgreApp() {
+		lOgreInit = new OgreEasy::SimpleOgreInit();
+		lOgreInit->initOgre();
+	};
+	
 	// I declare a function in which I will make my whole application.
 	// This is easy then to add more things later in that function.
 	// The main will call this function and take care of the global try/catch.
 	void OgreApp::AnOgreApplication() {
-		// I construct my object that will allow me to initialise Ogre easily.
-		OgreEasy::SimpleOgreInit lOgreInit;
-
-		lOgreInit.initOgre();
-
 		/*
 		if (!lOgreInit.initOgre()) {
 			MWARNING("Impossible to init Ogre correctly.");
@@ -31,8 +30,8 @@ namespace OgreEasy {
 		*/
 
 		// Tener las variables principales a mano
-		lRoot = lOgreInit.mRoot.get();
-		lWindow = lOgreInit.mWindow;
+		lRoot = lOgreInit->mRoot.get();
+		lWindow = lOgreInit->mWindow;
 
 		// SceneManager
 		lScene = lRoot->createSceneManager();
@@ -127,7 +126,8 @@ namespace OgreEasy {
 		// It allow the binding of messages between the application and the OS.
 		// These messages are most of the time : keystroke, mouse moved, ... or window closed.
 		// If I don't do this, the message are never caught, and the window won't close.
-		while (!lOgreInit.mWindow->isClosed()) {
+		
+		while (!lOgreInit->mWindow->isClosed()) {
 			// Actualizado de la escena
 
 			// Rotacion de la luz
@@ -152,6 +152,7 @@ namespace OgreEasy {
 
 			Ogre::WindowEventUtilities::messagePump();
 		}
+		
 		return;
 	};
 

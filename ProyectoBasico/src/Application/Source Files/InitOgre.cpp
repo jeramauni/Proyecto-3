@@ -192,7 +192,7 @@ namespace OgreEasy {
 		}
 
 		//sec = Ogre::ResourceGroupManager::AUTODETECT_RESOURCE_GROUP_NAME;
-		sec = "Ninja";
+		//sec = "Ninja";
 		const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 
 		OgreAssert(!genLocs.empty(), ("Resource Group '" + sec + "' must contain at least one entry").c_str());
