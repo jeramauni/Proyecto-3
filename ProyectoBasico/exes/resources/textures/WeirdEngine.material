@@ -1,0 +1,16 @@
+material ninja
+{
+	technique {
+			pass {
+				ambient 0.5 0.5 0.7
+				diffuse 0.5 0.5 0.5
+			
+				texture_unit {
+						tex_coord_set 0
+						texture Chrome.jpg 
+						colour_op modulate
+						//scroll_anim 0.5 0.5    //Pruebas
+				}
+			}
+	}
+}

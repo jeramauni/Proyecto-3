@@ -1,21 +1,30 @@
 #pragma once
-#include <OgreVector3.h>
-#include <OgreNode.h>
-#include "Component.h"
+
+#include <OgreSceneNode.h>
 #include <vector>
-class EntityC
-{
+#include "Component.h"
+
+class EntityC {
 public:
-	EntityC(Ogre::SceneNode* n);
+	EntityC(Ogre::String id);
 	~EntityC();
 
+	// Añadir/quitar un componente
 	void AddComponent(Component* c);
 	void DelComponent(Component* c);
 
+	// Metodo para coger el nodo
+	void setNode(Ogre::SceneNode* node);
+	// ID de la entidad
+	Ogre::String _id;
+
 private:
-	Ogre::Vector3 _position;
+	// Vector de componentes
 	std::vector<Component*> _components;
-	Ogre::SceneNode* _Node;
 
+	// Vector3 para gestionar la posicion
+	Ogre::Vector3 _position;
+
+	// Puntero al nodo de la escena
+	Ogre::SceneNode* _Node = nullptr;
 };
-

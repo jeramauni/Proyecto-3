@@ -1,17 +1,8 @@
 #include "RenderComponent.h"
 
-RenderComponent::RenderComponent(Ogre::SceneManager* scene, Ogre::String s, Ogre::SceneNode* n)
-{
-	_NameOfTheMesh = s;
-	_entPointer = scene->createEntity(_NameOfTheMesh);
-	n->attachObject(_entPointer);
+RenderComponent::RenderComponent(Ogre::String name, Ogre::SceneNode* node) {
+	_NameOfTheMesh = name;
+	_node = node;
 }
 
-RenderComponent::~RenderComponent()
-{
-}
-
-
-Ogre::Entity* RenderComponent::getOgreEntity() {
-	return _entPointer;
-}
+RenderComponent::~RenderComponent() {}

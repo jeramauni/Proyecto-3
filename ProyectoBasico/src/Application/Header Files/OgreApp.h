@@ -1,7 +1,6 @@
 #ifndef OGREAPP_H
 #define OGREAPP_H
 
-//#include "OgreString.h"
 #include "EasyDefines.h"
 #include <Ogre.h>
 
@@ -20,7 +19,7 @@ namespace OgreEasy {
 		void materialGeneration(Ogre::String lNameOfResourceGroup);
 
 		//Añade una entidad a la escena
-		Ogre::SceneNode* addEntityToScene(Ogre::String meshGroup, Ogre::String mesh);
+		Ogre::SceneNode* addEntityToScene(Ogre::String mesh);
 	private:
 		//Materials
 		Ogre::MaterialPtr noLightMat(Ogre::MaterialManager& matMng, Ogre::String name);

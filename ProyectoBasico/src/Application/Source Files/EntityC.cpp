@@ -1,21 +1,21 @@
 #include "EntityC.h"
 
-EntityC::EntityC(Ogre::SceneNode* n) {
-	_position.x = 0; _position.y = 0; _position.z = 0;
-	_Node = n;
+EntityC::EntityC(Ogre::String id) : _id(id) {
+	_position = Ogre::Vector3(0, 0, 0);
 }
 
-EntityC::~EntityC()
-{
+EntityC::~EntityC() {}
+
+void EntityC::setNode(Ogre::SceneNode* node) {
+	_Node = node;
+	_position = _Node->getPosition();
 }
 
-void EntityC::AddComponent(Component* c)
-{
+void EntityC::AddComponent(Component* c) {
 	_components.push_back(c);
 }
 
-void EntityC::DelComponent(Component* c)
-{
+void EntityC::DelComponent(Component* c) {
 	std::vector<Component*>::iterator pos =
 		std::find(_components.begin(), _components.end(), c);
 	if (pos != _components.end()) {

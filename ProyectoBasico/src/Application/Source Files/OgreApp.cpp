@@ -97,11 +97,20 @@ namespace OgreEasy {
 		//--------------------------- LIGHT -----------------------------
 		lightGeneration();
 
+		//-------------------------- MATERIALS -------------------------------
+		materialGeneration(" Mat");
+
+		//--------------------------- ENTIDADES ---------------------------
+		EntityC* _ninja = new EntityC("ninja");
+		RenderComponent* Rcomp = new RenderComponent(_ninja->_id, addEntityToScene(_ninja->_id));
+		_ninja->setNode(Rcomp->getOgreNode());
+		_ninja->AddComponent(Rcomp);
+
 		//--------------------------- MESH -----------------------------
 		//squareGeneration();
 		//createSquare("MeshCubeAndAxe");
 		//meshGeneration();
-		addEntityToScene("Ninja", "ninja.mesh");
+		//addEntityToScene("ninja", "ninja.mesh");
 		//addEntityToScene("Ninja", "penguin.mesh");
 
 		/*
@@ -280,25 +289,19 @@ namespace OgreEasy {
 	}
 
 	// Devuelve un puntero al Nodo de la escena de la entidad
-	Ogre::SceneNode* OgreApp::addEntityToScene(Ogre::String meshGroup, Ogre::String mesh) {
+	Ogre::SceneNode* OgreApp::addEntityToScene(Ogre::String mesh) {
 		//Entidad
-		//Ogre::Entity* lEntity = lScene->createEntity(mesh);
+		Ogre::Entity* lEntity = lScene->createEntity(mesh + ".mesh");
 
+		// Le damos el material cargado desde el script
+		lEntity->setMaterialName(mesh);
 		//Generamos los materiales
-		materialGeneration(meshGroup + " Mat");
 		//Le damos el material a la mesh
 		//lEntity->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), meshGroup + " Mat"));
 
 		//Nodo
 		Ogre::SceneNode* lNode = lRootSceneNode->createChildSceneNode();
-		//lNode->attachObject(lEntity);
-
-		
-		EntityC* _testEnt = new EntityC(lNode);
-		RenderComponent* comp = new RenderComponent(lScene, mesh, lNode);
-		comp->getOgreEntity()->setMaterial(lightTextMat(Ogre::MaterialManager::getSingleton(), meshGroup + " Mat"));
-		_testEnt->AddComponent(comp);
-		
+		lNode->attachObject(lEntity);
 
 		// Mover el nodo para que lo vea la camara
 		float lPositionOffset = float(1 * 2) - (float(1));
@@ -404,7 +407,8 @@ namespace OgreEasy {
 			lRgMgr.addResourceLocation(lDirectoryToLoadTextures, "FileSystem", lNameOfResourceGroup, lIsRecursive);
 
 			// Iniciamos los scripts del directorio
-			lRgMgr.initialiseResourceGroup(lNameOfResourceGroup);
+			//lRgMgr.initialiseResourceGroup(lNameOfResourceGroup);
+			lRgMgr.initialiseAllResourceGroups();
 
 			// Cargamos los archivos que puedan ser cargados
 			lRgMgr.loadResourceGroup(lNameOfResourceGroup);
