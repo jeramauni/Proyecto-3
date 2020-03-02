@@ -15,7 +15,8 @@ material ninja
 	}
 }
 
-material penguin
+------------------------------------------
+material ninja1
 {
 	technique {
 			pass {
@@ -24,7 +25,7 @@ material penguin
 			
 				texture_unit {
 						tex_coord_set 0
-						texture GreenSkin.jpg 
+						texture Water01.jpg
 						colour_op modulate
 						//scroll_anim 0.5 0.5    //Pruebas
 				}

@@ -2,14 +2,14 @@
 #define OGREAPP_H
 
 #include "EasyDefines.h"
-#include "InitOgre.h"
 #include <Ogre.h>
+#include <OIS.h>
 
 namespace OgreEasy {
 
 	class OgreApp {
 	public:
-		OgreApp();
+		OgreApp() {};
 		~OgreApp() {};
 		void AnOgreApplication();
 		void squareGeneration();
@@ -19,21 +19,19 @@ namespace OgreEasy {
 		void lightGeneration();
 		void materialGeneration(Ogre::String lNameOfResourceGroup);
 
-		void SceneCleaner();
-		bool RenderLoop();
+		//Getters
+		Ogre::Root* getRoot() { return lRoot; }
+		Ogre::RenderWindow* getWindow() { return lWindow; }
 
 		//Añade una entidad a la escena
 		Ogre::SceneNode* addEntityToScene(Ogre::String mesh);
 	private:
-		//Materials
+		//Materials -> Al cargarlos desde scripts en resources/textures ya no hacen falta estos metodos
 		Ogre::MaterialPtr noLightMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr lightMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr noLightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr lightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr oneMoreMat(Ogre::MaterialManager& matMng, Ogre::String name);
-
-		//App de Ogre
-		OgreEasy::SimpleOgreInit* lOgreInit;
 
 		//Escena
 		Ogre::SceneManager* lScene;

@@ -8,8 +8,7 @@
 //Podemos llamar a Ogre.h directamente e incluiriamos estas y mas
 #include <Ogre.h>
 
-
-#include "GameManager.h"
+#include "OgreApp.h"
 #include <Application2.h>
 
 
@@ -22,13 +21,8 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 #endif
 {
 	try	{
-		OgreEasy::OgreApp* OgreApp = new OgreEasy::OgreApp();
-		OgreApp->AnOgreApplication();
-		GameManager Game = GameManager(OgreApp);
-		while (Game.update())
-		{
-			//Bucle del juego
-		}
+		OgreEasy::OgreApp OgreApp;
+		OgreApp.AnOgreApplication();
 		std::cout << "end of the program" << std::endl;
 	}
 	catch (Ogre::Exception & e)	{
