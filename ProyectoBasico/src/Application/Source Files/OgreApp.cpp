@@ -96,14 +96,14 @@ namespace OgreEasy {
 		//--------------------------- LIGHT -----------------------------
 		lightGeneration();
 
-		//-------------------------- MATERIALS -------------------------------
-		materialGeneration(" Mat");
+		////-------------------------- MATERIALS -------------------------------
+		//materialGeneration(" Mat");
 
-		//--------------------------- ENTIDADES ---------------------------
-		EntityC* _ninja = new EntityC("ninja");
-		RenderComponent* Rcomp = new RenderComponent(_ninja->_id, addEntityToScene(_ninja->_id));
-		_ninja->setNode(Rcomp->getOgreNode());
-		_ninja->AddComponent(Rcomp);
+		////--------------------------- ENTIDADES ---------------------------
+		//EntityC* _ninja = new EntityC("ninja");
+		//RenderComponent* Rcomp = new RenderComponent(_ninja->_id, addEntityToScene(_ninja->_id));
+		//_ninja->setNode(Rcomp->getOgreNode());
+		//_ninja->AddComponent(Rcomp);
 
 		//--------------------------- MESH -----------------------------
 		//squareGeneration();
@@ -126,8 +126,8 @@ namespace OgreEasy {
 		// It allow the binding of messages between the application and the OS.
 		// These messages are most of the time : keystroke, mouse moved, ... or window closed.
 		// If I don't do this, the message are never caught, and the window won't close.
-		
-		while (!lOgreInit->mWindow->isClosed()) {
+		//
+		if (!lOgreInit->mWindow->isClosed()) {
 			// Actualizado de la escena
 
 			// Rotacion de la luz
@@ -387,6 +387,43 @@ namespace OgreEasy {
 		// Color ambiente
 		Ogre::ColourValue lAmbientColour(0.2f, 0.2f, 0.2f, 1.0f);
 		lScene->setAmbientLight(lAmbientColour);
+	}
+	void OgreApp::SceneCleaner() {
+		lScene->destroyAllEntities();
+	}
+
+	bool OgreApp::RenderLoop()
+	{
+		bool f;
+		if (!lWindow->isClosed()) {
+			// Actualizado de la escena
+
+			// Rotacion de la luz
+			Ogre::Degree lAngle(2.5);
+			lLightSceneNode->yaw(lAngle);
+
+
+			// Drawings
+			// La ventana hace el update. Los viewport que tengan "autoupdated" activado se dibujaran otra vez en este frame,
+			// en el orden dado por la coord z.
+			lWindow->update(false);
+
+			// Dibujamos el buffer actualizado
+			bool lVerticalSynchro = true;
+			lWindow->swapBuffers();
+
+			// This update some internal counters and listeners.
+			// Each render surface (window/rtt/mrt) that is 'auto-updated' has got its 'update' function called.
+			lRoot->renderOneFrame();
+
+			// Llamar a esto con handleInput
+			// lWindow->destroy();
+
+			Ogre::WindowEventUtilities::messagePump();
+			f = true;
+		}
+		else f = false;
+		return f;
 	}
 
 
