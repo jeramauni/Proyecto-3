@@ -16,5 +16,8 @@ copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\Codec_STBI_d.pdb
 copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.dll ..\ProyectoBasico\exes
 copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.ilk ..\ProyectoBasico\exes
 copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.pdb ..\ProyectoBasico\exes
+::SDL
+copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\Win32\Debug\SDL2.dll ..\ProyectoBasico\exes
+copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\Win32\Debug\SDL2.pdb ..\ProyectoBasico\exes
 
 PAUSE
