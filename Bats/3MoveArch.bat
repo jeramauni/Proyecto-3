@@ -11,10 +11,10 @@ copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\RenderSystem_GL_
 copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\RenderSystem_GL.dll ..\ProyectoBasico\exes
 ::Para cargar imagenes .jpg
 copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\Codec_STBI_d.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\Codec_STBI_d.ilk ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\Codec_STBI_d.pdb ..\ProyectoBasico\exes
 copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.ilk ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.pdb ..\ProyectoBasico\exes
+::Input
+::OIS
+copy ..\ProyectoBasico\Dependencias\OIS\Build\debug\OIS_d.dll ..\ProyectoBasico\exes
+copy ..\ProyectoBasico\Dependencias\OIS\Build\release\OIS.dll ..\ProyectoBasico\exes
 
 PAUSE
