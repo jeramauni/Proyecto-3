@@ -12,7 +12,7 @@ namespace RenderUtils {
     static RenderWindowList _msWindows;
 
     LRESULT CALLBACK WindowEventUtilities::_WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
-        if (uMsg == WM_CREATE) {   
+        if (uMsg == WM_CREATE) {
             // Store pointer in user data area
             SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG_PTR)(((LPCREATESTRUCT)lParam)->lpCreateParams));
             return 0;

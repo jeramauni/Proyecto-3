@@ -13,19 +13,20 @@
 #include "RenderComponent.h";
 
 namespace OgreEasy {
-	OgreApp::OgreApp()
-	{
-		lOgreInit = new OgreEasy::SimpleOgreInit();
-		lOgreInit->initOgre();
+
+	OgreApp::~OgreApp() {
+		//OIS::InputManager::destroyInputSystem(mInputMng);
 	}
+
+
 	// I declare a function in which I will make my whole application.
 	// This is easy then to add more things later in that function.
 	// The main will call this function and take care of the global try/catch.
 	void OgreApp::AnOgreApplication() {
 		// I construct my object that will allow me to initialise Ogre easily.
-	/*	OgreEasy::SimpleOgreInit lOgreInit;
+		OgreEasy::SimpleOgreInit lOgreInit;
 
-		lOgreInit.initOgre();*/
+		lOgreInit.initOgre();
 
 		/*
 		if (!lOgreInit.initOgre()) {
@@ -35,8 +36,8 @@ namespace OgreEasy {
 		*/
 
 		// Tener las variables principales a mano
-		lRoot = lOgreInit->mRoot.get();
-		lWindow = lOgreInit->mWindow;
+		lRoot = lOgreInit.mRoot.get();
+		lWindow = lOgreInit.mWindow;
 
 		// SceneManager
 		lScene = lRoot->createSceneManager();
@@ -50,6 +51,19 @@ namespace OgreEasy {
 		its direct or indirect children.
 		*/
 		lRootSceneNode = lScene->getRootSceneNode();
+
+		//----------------------------------INPUT----------------------------------
+		//mInputManager = new InputManager();
+		//mInputManager->init(lWindow);
+
+		okc = new OneKeyComponent();
+
+		// Setup input
+		mInputManager = InputManager::getSingletonPtr();
+		mInputManager->initialise(lWindow);
+		mInputManager->addKeyListener(okc, "Escape");
+		//mInputManager->addMouseListener(this, "ListenerName");
+		//mInputManager->addJoystickListener(this, "ListenerName");
 
 		//--------------------------- CAMARA Y VIEWPORT ---------------------------
 		// Camera
@@ -98,17 +112,17 @@ namespace OgreEasy {
 		// I want to update myself the content of the window, not automatically
 		lWindow->setAutoUpdated(false);
 
-		////--------------------------- LIGHT -----------------------------
-		//lightGeneration();
+		//--------------------------- LIGHT -----------------------------
+		lightGeneration();
 
-		////-------------------------- MATERIALS -------------------------------
-		//materialGeneration(" Mat");
+		//-------------------------- MATERIALS -------------------------------
+		materialGeneration(" Mat");
 
-		////--------------------------- ENTIDADES ---------------------------
-		//EntityC* _ninja = new EntityC("ninja");
-		//RenderComponent* Rcomp = new RenderComponent(_ninja->_id, addEntityToScene(_ninja->_id));
-		//_ninja->setNode(Rcomp->getOgreNode());
-		//_ninja->AddComponent(Rcomp);
+		//--------------------------- ENTIDADES ---------------------------
+		EntityC* _ninja = new EntityC("ninja");
+		RenderComponent* Rcomp = new RenderComponent(_ninja->_id, addEntityToScene(_ninja->_id));
+		_ninja->setNode(Rcomp->getOgreNode());
+		_ninja->AddComponent(Rcomp);
 
 		//--------------------------- MESH -----------------------------
 		//squareGeneration();
@@ -131,7 +145,37 @@ namespace OgreEasy {
 		// It allow the binding of messages between the application and the OS.
 		// These messages are most of the time : keystroke, mouse moved, ... or window closed.
 		// If I don't do this, the message are never caught, and the window won't close.
-		
+		while (!lOgreInit.mWindow->isClosed()) {
+			// Actualizado de la escena
+
+			// Rotacion de la luz
+			Ogre::Degree lAngle(2.5);
+			lLightSceneNode->yaw(lAngle);
+
+			//------Input------
+			mInputManager->capture();
+			if (okc->state) shutDown = true;
+
+			//------------------
+			
+			// Drawings
+			// La ventana hace el update. Los viewport que tengan "autoupdated" activado se dibujaran otra vez en este frame,
+			// en el orden dado por la coord z.
+			lWindow->update(false);
+
+			// Dibujamos el buffer actualizado
+			bool lVerticalSynchro = true;
+			lWindow->swapBuffers();
+
+			// This update some internal counters and listeners.
+			// Each render surface (window/rtt/mrt) that is 'auto-updated' has got its 'update' function called.
+			lRoot->renderOneFrame();
+
+			// Llamar a esto con handleInput
+			if(shutDown) lWindow->destroy();
+
+			Ogre::WindowEventUtilities::messagePump();
+		}
 		return;
 	};
 
@@ -395,45 +439,6 @@ namespace OgreEasy {
 		}
 	}
 
-	void OgreApp::SceneCleaner()
-	{
-		lScene->destroyAllEntities();
-	}
-
-	bool OgreApp::RenderLoop()
-	{
-		bool f;
-		if (!lWindow->isClosed()) {
-			// Actualizado de la escena
-
-			// Rotacion de la luz
-			Ogre::Degree lAngle(2.5);
-			lLightSceneNode->yaw(lAngle);
-
-
-			// Drawings
-			// La ventana hace el update. Los viewport que tengan "autoupdated" activado se dibujaran otra vez en este frame,
-			// en el orden dado por la coord z.
-			lWindow->update(false);
-
-			// Dibujamos el buffer actualizado
-			bool lVerticalSynchro = true;
-			lWindow->swapBuffers();
-
-			// This update some internal counters and listeners.
-			// Each render surface (window/rtt/mrt) that is 'auto-updated' has got its 'update' function called.
-			lRoot->renderOneFrame();
-
-			// Llamar a esto con handleInput
-			// lWindow->destroy();
-
-			Ogre::WindowEventUtilities::messagePump();
-			f = true;
-		}
-		else f = false;
-		return f;
-	}
-
 	// Material sin luz
 	Ogre::MaterialPtr OgreApp::noLightMat(Ogre::MaterialManager &matMng, Ogre::String name) {
 		// Creacion del material, esto no es perfecto
@@ -547,6 +552,23 @@ namespace OgreEasy {
 		lTextureUnit_LM->setTextureCoordSet(1);
 
 		return lMaterial;
+	}
+
+
+	//-----------------------------INPUT-----------------------------------------
+	bool OgreApp::keyPressed(const OIS::KeyEvent& ke) {
+		switch (ke.key)
+		{
+		case OIS::KC_ESCAPE:
+			shutDown = true;
+			break;
+		}
+		return false;
+	}
+
+	bool OgreApp::keyReleased(const OIS::KeyEvent& ke)	{
+
+		return false;
 	}
 
 
