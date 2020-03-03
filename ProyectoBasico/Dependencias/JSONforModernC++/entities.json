@@ -1,0 +1,28 @@
+{
+    "Entities": 
+    [
+      {
+        "id": "Muro",
+        "components":
+            [
+              {
+                "id": "RenderComponent",
+                "Mesh": "malla.mesh"
+              },
+              {
+                "id": "transform",
+                "posicion": [ 0, 0, 0 ],
+                "escala": [ 1, 1, 1 ],
+                "rotacion": [ 0, 0, 0 ]
+              },
+              {
+                "id": "physic",
+                "collision": true,
+                "escala": [ 1, 1, 1 ]
+              }
+            ]
+        },
+        {"id":"Entidad2"},
+        {"id":"Entidad3"}
+    ]
+}
