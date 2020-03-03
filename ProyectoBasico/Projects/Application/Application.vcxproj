@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\Application\Header Files\Component.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h" />
     <ClInclude Include="..\..\src\Application\Header Files\EasyDefines.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Entity.h" />
     <ClInclude Include="..\..\src\Application\Header Files\EntityC.h" />

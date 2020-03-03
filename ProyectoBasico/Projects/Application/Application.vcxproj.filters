@@ -72,6 +72,9 @@
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h">
       <Filter>Header Files\GameManager</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
