@@ -31,6 +31,12 @@
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{814040a7-e7ad-49f5-8e93-7816f0bfc405}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameManager">
+      <UniqueIdentifier>{7845cfab-d2fd-4542-a9d1-748e504997bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameManager">
+      <UniqueIdentifier>{79fadb66-27dc-43d1-883c-29d7275f17f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Convenio.h">
@@ -60,6 +66,12 @@
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h">
       <Filter>Header Files\Render</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\GameManager.h">
+      <Filter>Header Files\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\Scene.h">
+      <Filter>Header Files\GameManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
@@ -88,6 +100,12 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp">
       <Filter>Source Files\Ogre</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp">
+      <Filter>Source Files\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp">
+      <Filter>Source Files\GameManager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #define OGREAPP_H
 
 #include "EasyDefines.h"
+#include "InitOgre.h"
 #include <Ogre.h>
 #include <OIS.h>
 
@@ -9,7 +10,7 @@ namespace OgreEasy {
 
 	class OgreApp {
 	public:
-		OgreApp() {};
+		OgreApp();
 		~OgreApp() {};
 		void AnOgreApplication();
 		void squareGeneration();
@@ -18,6 +19,10 @@ namespace OgreEasy {
 
 		void lightGeneration();
 		void materialGeneration(Ogre::String lNameOfResourceGroup);
+
+		//Métodos para el GameManager
+		void SceneCleaner();
+		bool RenderLoop();
 
 		//Getters
 		Ogre::Root* getRoot() { return lRoot; }
@@ -33,6 +38,8 @@ namespace OgreEasy {
 		Ogre::MaterialPtr lightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
 		Ogre::MaterialPtr oneMoreMat(Ogre::MaterialManager& matMng, Ogre::String name);
 
+		//App de Ogre
+		OgreEasy::SimpleOgreInit* lOgreInit;
 		//Escena
 		Ogre::SceneManager* lScene;
 		//Nodo "main" de la escena
