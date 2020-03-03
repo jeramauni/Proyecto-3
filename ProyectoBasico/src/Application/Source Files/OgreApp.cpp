@@ -13,11 +13,16 @@
 #include "RenderComponent.h";
 
 namespace OgreEasy {
-	OgreApp::OgreApp()
-	{
+
+	OgreApp::OgreApp() {
 		lOgreInit = new OgreEasy::SimpleOgreInit();
 		lOgreInit->initOgre();
 	}
+
+	OgreApp::~OgreApp() {
+		//OIS::InputManager::destroyInputSystem(mInputMng);
+	}
+
 	// I declare a function in which I will make my whole application.
 	// This is easy then to add more things later in that function.
 	// The main will call this function and take care of the global try/catch.
@@ -50,6 +55,14 @@ namespace OgreEasy {
 		its direct or indirect children.
 		*/
 		lRootSceneNode = lScene->getRootSceneNode();
+
+		//----------------------------------INPUT----------------------------------
+		okc = new OneKeyComponent();
+
+		// Setup input
+		mInputManager = InputManager::getSingletonPtr();
+		mInputManager->initialise(lWindow);
+		mInputManager->addKeyListener(okc, "Escape");
 
 		//--------------------------- CAMARA Y VIEWPORT ---------------------------
 		// Camera
@@ -395,8 +408,7 @@ namespace OgreEasy {
 		}
 	}
 
-	void OgreApp::SceneCleaner()
-	{
+	void OgreApp::SceneCleaner() {
 		lScene->destroyAllEntities();
 	}
 
@@ -410,6 +422,9 @@ namespace OgreEasy {
 			Ogre::Degree lAngle(2.5);
 			lLightSceneNode->yaw(lAngle);
 
+			//------Input------
+			mInputManager->capture();
+			if (okc->state) shutDown = true;
 
 			// Drawings
 			// La ventana hace el update. Los viewport que tengan "autoupdated" activado se dibujaran otra vez en este frame,
@@ -425,7 +440,7 @@ namespace OgreEasy {
 			lRoot->renderOneFrame();
 
 			// Llamar a esto con handleInput
-			// lWindow->destroy();
+			if(shutDown) lWindow->destroy();
 
 			Ogre::WindowEventUtilities::messagePump();
 			f = true;
