@@ -5,18 +5,25 @@
 #include "Scene.h"
 
 #include "InputManager.h"
-#include "OneKeyComponent.h"
+#include "GmInputComponent.h"
 
 class GameManager {
 public:
+	//Constructoras
 	GameManager() {};
 	GameManager(OgreEasy::OgreApp* oa);
 
 	~GameManager();
 
+	//Update
 	bool update();
 
+	//Metodos para la pila
+	void pushScene(Scene *newScene);
+	void popScene();
 	void changeScene(Scene* newScene);
+
+	Scene* getGamePlay() { return gamePlay; }
 
 protected:
 	//Pila de escenas
@@ -36,6 +43,6 @@ protected:
 	//Input Mng
 	InputManager* mInputManager;
 	//Temp
-	OneKeyComponent* okc;
+	GmInputComponent* input;
 };
 #endif

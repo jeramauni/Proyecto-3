@@ -9,12 +9,12 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	ogreApp = oa;
 
 	//----------------------------------INPUT----------------------------------
-	okc = new OneKeyComponent();
+	input = new GmInputComponent(this);
 
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(ogreApp->getWindow());
-	mInputManager->addKeyListener(okc, "Escape");
+	mInputManager->addKeyListener(input, "Escape");
 
 	//--------------------------- LIGHT -----------------------------
 	//Creacion de la luz en la escena
@@ -31,29 +31,37 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	_util = new EntityC("penguin");
 	gamePlay->push(_util);
 
-	changeScene(menu);
+	//Añadimos el menu a la pila
+	pushScene(menu);
+	//escenas.push(gamePlay);
 }
 
 GameManager::~GameManager() {
-	escenas.empty();
+	while (!escenas.empty()) {
+		escenas.pop();
+	}
 }
 
 bool GameManager::update() {
 	//------Input------
 	mInputManager->capture();
-	if (okc->state) ogreApp->turnOff(); //La cosa es que los componentes le digan a su entidad lo que hacer.
-	else if (okc->changeState) {
-		okc->changeState = false;
-		if (escenas.top() == menu) {
-			changeScene(gamePlay);
-		}
-		else {
-			changeScene(menu);
-		}
-	}
+	if (input->_state) ogreApp->turnOff(); //La cosa es que los componentes le digan a su entidad lo que hacer.
 
 	return ogreApp->RenderLoop();
 }
+
+void GameManager::pushScene(Scene* newScene) {
+	ogreApp->SceneCleaner();
+	escenas.push(newScene);
+	escenas.top()->render(ogreApp);
+}
+
+void GameManager::popScene() {
+	ogreApp->SceneCleaner();
+	escenas.pop();
+	escenas.top()->render(ogreApp);
+}
+
 void GameManager::changeScene(Scene *newScene) {
 	ogreApp->SceneCleaner();
 	escenas.push(newScene);
