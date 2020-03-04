@@ -13,6 +13,8 @@
 #include <SDL_syswm.h>
 #include <SDL.h>
 
+WindowRenderer* WindowRenderer::instance_ = nullptr;
+
 WindowRenderer::WindowRenderer() : mRoot(0)
 {
 	initWindow();
