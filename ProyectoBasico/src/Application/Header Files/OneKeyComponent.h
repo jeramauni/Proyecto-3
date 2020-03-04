@@ -6,10 +6,12 @@
 class OneKeyComponent : public OIS::KeyListener {
 public:
 	bool state = false;
+
+	bool changeState = false;
+
 private:
 	bool keyPressed(const OIS::KeyEvent& ke);
 	bool keyReleased(const OIS::KeyEvent& ke);
 };
-
 
 #endif

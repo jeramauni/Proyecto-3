@@ -16,26 +16,26 @@
     <Filter Include="Header Files\Entities">
       <UniqueIdentifier>{f593e68e-227d-4dce-ab76-21e22cacdeef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Render">
-      <UniqueIdentifier>{989a9d89-0f14-4a58-94ee-907209812b2b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Ogre">
       <UniqueIdentifier>{f2270221-2e85-4dee-b918-3a70eb45ebf0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Ogre">
       <UniqueIdentifier>{1f73cfa5-1eaa-44b9-a2de-bfeeea7c5ecc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Render">
-      <UniqueIdentifier>{840bc453-237d-40e5-9fd9-8f61a6104757}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Entities">
       <UniqueIdentifier>{814040a7-e7ad-49f5-8e93-7816f0bfc405}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\GameManager">
-      <UniqueIdentifier>{7845cfab-d2fd-4542-a9d1-748e504997bd}</UniqueIdentifier>
+    <Filter Include="Source Files\Managers">
+      <UniqueIdentifier>{840bc453-237d-40e5-9fd9-8f61a6104757}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\GameManager">
-      <UniqueIdentifier>{79fadb66-27dc-43d1-883c-29d7275f17f8}</UniqueIdentifier>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{989a9d89-0f14-4a58-94ee-907209812b2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers\Input">
+      <UniqueIdentifier>{0f272948-df5b-4e75-a6b5-aa1dab8a7fee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers\Input">
+      <UniqueIdentifier>{8fc31973-2eea-46ef-a2f1-ace927239c4b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +55,7 @@
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
-      <Filter>Header Files\Render</Filter>
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h">
       <Filter>Header Files\Ogre</Filter>
@@ -64,16 +64,22 @@
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h">
-      <Filter>Header Files\Render</Filter>
+      <Filter>Header Files\Ogre</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\GameManager.h">
-      <Filter>Header Files\GameManager</Filter>
+    <ClInclude Include="..\..\src\Application\Header Files\OneKeyComponent.h">
+      <Filter>Header Files\Managers\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\InputManager.h">
+      <Filter>Header Files\Managers\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h">
-      <Filter>Header Files\GameManager</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h">
       <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\GameManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -84,7 +90,7 @@
       <Filter>Source Files\Ogre</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp">
-      <Filter>Source Files\Render</Filter>
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp">
       <Filter>Source Files\Entities</Filter>
@@ -104,11 +110,17 @@
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp">
       <Filter>Source Files\Ogre</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp">
-      <Filter>Source Files\GameManager</Filter>
+    <ClCompile Include="..\..\src\Application\Source Files\InputManager.cpp">
+      <Filter>Source Files\Managers\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\OneKeyComponent.cpp">
+      <Filter>Source Files\Managers\Input</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp">
-      <Filter>Source Files\GameManager</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-#include "..\Header Files\OneKeyComponent.h"
+#include "OneKeyComponent.h"
 
 bool OneKeyComponent::keyPressed(const OIS::KeyEvent& ke) {
 	switch (ke.key) {
@@ -6,7 +6,11 @@ bool OneKeyComponent::keyPressed(const OIS::KeyEvent& ke) {
 		//shutDown = true;
 		state = true;
 		break;
+	case OIS::KC_Q:
+		changeState = true;
+		break;
 	}
+
 	return false;
 }
 

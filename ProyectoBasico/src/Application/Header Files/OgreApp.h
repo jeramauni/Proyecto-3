@@ -1,14 +1,9 @@
 #ifndef OGREAPP_H
 #define OGREAPP_H
 
-#include "InputManager.h"
 #include "EasyDefines.h"
 #include "InitOgre.h"
 #include <Ogre.h>
-
-
-//Temporal
-#include "OneKeyComponent.h"
 
 namespace OgreEasy {
 
@@ -34,6 +29,9 @@ namespace OgreEasy {
 		void SceneCleaner();
 		bool RenderLoop();
 
+		//Apagado de Ogre
+		void turnOff() { shutDown = true; }
+
 		//Getters
 		Ogre::Root* getRoot() { return lRoot; }
 		Ogre::RenderWindow* getWindow() { return lWindow; }
@@ -41,20 +39,8 @@ namespace OgreEasy {
 		//Añade una entidad a la escena
 		Ogre::SceneNode* addEntityToScene(Ogre::String mesh);
 	private:
+		// Para fin de la escena
 		bool shutDown = false;
-
-		//Temp
-		OneKeyComponent *okc;
-
-		//Materials -> Al cargarlos desde scripts en resources/textures ya no hacen falta estos metodos
-		Ogre::MaterialPtr noLightMat(Ogre::MaterialManager& matMng, Ogre::String name);
-		Ogre::MaterialPtr lightMat(Ogre::MaterialManager& matMng, Ogre::String name);
-		Ogre::MaterialPtr noLightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
-		Ogre::MaterialPtr lightTextMat(Ogre::MaterialManager& matMng, Ogre::String name);
-		Ogre::MaterialPtr oneMoreMat(Ogre::MaterialManager& matMng, Ogre::String name);
-
-		//Input Mng
-		InputManager *mInputManager;
 
 		//App de Ogre
 		OgreEasy::SimpleOgreInit* lOgreInit;
