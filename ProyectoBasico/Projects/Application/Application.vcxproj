@@ -28,7 +28,6 @@
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h" />
     <ClInclude Include="..\..\src\Application\Header Files\InputManager.h" />
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h" />
-    <ClInclude Include="..\..\src\Application\Header Files\OneKeyComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h" />

@@ -10,7 +10,8 @@ class Scene
 private:
 	std::list<EntityC*> entidades;
 	std::list<EntityC*> _updates;
-	std::list<EntityC*> _handleEvents;
+	//Por ahora lo hará el update
+	//std::list<EntityC*> _handleEvents; 
 	std::list<EntityC*> _render;
 
 public:

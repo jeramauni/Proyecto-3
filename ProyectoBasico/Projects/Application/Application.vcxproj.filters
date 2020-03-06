@@ -66,9 +66,6 @@
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h">
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\OneKeyComponent.h">
-      <Filter>Header Files\Managers\Input</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\InputManager.h">
       <Filter>Header Files\Managers\Input</Filter>
     </ClInclude>
