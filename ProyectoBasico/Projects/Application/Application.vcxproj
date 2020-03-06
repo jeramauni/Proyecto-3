@@ -33,6 +33,7 @@
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h" />
     <ClInclude Include="Convenio.h" />
+    <ClInclude Include="PlayerInputComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp" />
+    <ClCompile Include="PlayerInputComponent.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

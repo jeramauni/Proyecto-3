@@ -1,4 +1,4 @@
-#ifndef GAME_MANAGER_H
+﻿#ifndef GAME_MANAGER_H
 #define GAME_MANAGER_H
 
 #pragma once
@@ -25,10 +25,13 @@ public:
 
 	Scene* getGamePlay() { return gamePlay; }
 
+	// Para añadir listeners fuera de GameManager
+	InputManager* getInputManager() { return mInputManager; }
+
 protected:
 	//Pila de escenas
 	std::stack<Scene*> escenas;
-	//Men�
+	//Men・
 	Scene* menu = new Scene();
 	//Juego
 	Scene* gamePlay = new Scene();
