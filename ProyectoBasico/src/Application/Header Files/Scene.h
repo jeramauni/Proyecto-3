@@ -3,7 +3,7 @@
 #include "EntityC.h"
 #include <list>
 #include <stack>
-
+#include "ComponentFactory.h"
 
 class Scene
 {
@@ -13,9 +13,10 @@ private:
 	//Por ahora lo hará el update
 	//std::list<EntityC*> _handleEvents; 
 	std::list<EntityC*> _render;
+	RenderFactory* _rF;
 
 public:
-	Scene() {};
+	Scene();
 	void update();
 	void render(OgreEasy::OgreApp * ogreApp);
 	void push(EntityC* e);

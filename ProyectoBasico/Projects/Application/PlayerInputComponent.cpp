@@ -1,12 +1,16 @@
 #include "PlayerInputComponent.h"
 
-PlayerInputComponent::PlayerInputComponent(EntityC* ent)
+PlayerInputComponent::PlayerInputComponent()
 {
-	_entity = ent;
 }
 
 PlayerInputComponent::~PlayerInputComponent()
 {
+}
+
+void PlayerInputComponent::Init(EntityC* ent)
+{
+	_entity = ent;
 }
 
 bool PlayerInputComponent::keyPressed(const OIS::KeyEvent& ke)

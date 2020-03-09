@@ -7,9 +7,10 @@
 class PlayerInputComponent : public OIS::KeyListener, public Component
 {
 public:
-	PlayerInputComponent(EntityC* ent);
+	PlayerInputComponent();
 	~PlayerInputComponent();
-	
+	void Init() {};
+	void Init(EntityC* ent);
 
 private:
 	bool keyPressed(const OIS::KeyEvent& ke);

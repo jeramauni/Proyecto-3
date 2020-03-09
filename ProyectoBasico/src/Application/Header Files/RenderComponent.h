@@ -8,9 +8,10 @@
 class RenderComponent: public Component {
 public:
 	//RenderComponent(Ogre::SceneManager* scene, Ogre::String s, Ogre::SceneNode* n);
-	RenderComponent(Ogre::String name, Ogre::SceneNode* node);
+	RenderComponent();
 	~RenderComponent();
-
+	void Init(Ogre::String name, Ogre::SceneNode* node);
+	void Init() {};
 	//Ogre::Entity* getOgreEntity() { return _entPointer; }
 	Ogre::SceneNode* getOgreNode() { return _node; }
 
