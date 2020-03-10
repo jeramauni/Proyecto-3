@@ -25,12 +25,15 @@
     <ClInclude Include="..\..\src\Application\Header Files\Entity.h" />
     <ClInclude Include="..\..\src\Application\Header Files\EntityC.h" />
     <ClInclude Include="..\..\src\Application\Header Files\GameManager.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h" />
     <ClInclude Include="..\..\src\Application\Header Files\InputManager.h" />
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\TimeManager.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\weirdTimer.h" />
     <ClInclude Include="Convenio.h" />
     <ClInclude Include="PlayerInputComponent.h" />
   </ItemGroup>
@@ -41,13 +44,15 @@
     <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\EntityC.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\InputManager.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp" />
-    <ClCompile Include="..\..\src\Application\Source Files\OneKeyComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\TimeManager.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\weirdTimer.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

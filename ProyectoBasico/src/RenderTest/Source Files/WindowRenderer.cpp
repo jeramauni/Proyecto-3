@@ -111,7 +111,7 @@ WindowRenderer* WindowRenderer::getSingleton()
 
 void WindowRenderer::renderFrame(float t)
 {
-	mRoot->renderOneFrame(t);
+	mRoot->renderOneFrame();
 }
 
 bool WindowRenderer::handleEvents(const SDL_Event evt)
@@ -126,6 +126,7 @@ bool WindowRenderer::handleEvents(const SDL_Event evt)
 				Ogre::RenderWindow* win = mWindow;
 				win->windowMovedOrResized();
 				//windowResized(win);
+				handled = true;
 			}
 		}
 

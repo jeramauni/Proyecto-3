@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Managers\Input">
       <UniqueIdentifier>{8fc31973-2eea-46ef-a2f1-ace927239c4b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Managers\Time">
+      <UniqueIdentifier>{dd61bc58-a7db-47f4-a1f6-73cabe1c0211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Managers\Time">
+      <UniqueIdentifier>{0e5a60cb-dce2-422b-b481-022dd91b2b9a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Convenio.h">
@@ -81,6 +87,15 @@
     <ClInclude Include="PlayerInputComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\TimeManager.h">
+      <Filter>Header Files\Managers\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\weirdTimer.h">
+      <Filter>Header Files\Managers\Time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
@@ -113,9 +128,6 @@
     <ClCompile Include="..\..\src\Application\Source Files\InputManager.cpp">
       <Filter>Source Files\Managers\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\OneKeyComponent.cpp">
-      <Filter>Source Files\Managers\Input</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -124,6 +136,15 @@
     </ClCompile>
     <ClCompile Include="PlayerInputComponent.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\TimeManager.cpp">
+      <Filter>Source Files\Managers\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\weirdTimer.cpp">
+      <Filter>Source Files\Managers\Time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
