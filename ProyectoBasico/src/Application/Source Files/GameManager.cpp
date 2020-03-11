@@ -1,10 +1,5 @@
 #include "GameManager.h"
 
-#include "RenderComponent.h"
-#include "EntityC.h"
-#include "RenderUtilities.h"
-#include "InitOgre.h"
-
 GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	ogreApp = oa;
 
@@ -59,11 +54,5 @@ void GameManager::pushScene(Scene* newScene) {
 void GameManager::popScene() {
 	ogreApp->SceneCleaner();
 	escenas.pop();
-	escenas.top()->render(ogreApp);
-}
-
-void GameManager::changeScene(Scene *newScene) {
-	ogreApp->SceneCleaner();
-	escenas.push(newScene);
 	escenas.top()->render(ogreApp);
 }

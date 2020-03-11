@@ -6,7 +6,6 @@
 #include <Ogre.h>
 
 namespace OgreEasy {
-
 	class OgreApp {
 	public:
 		// Constructrora
@@ -15,11 +14,6 @@ namespace OgreEasy {
 
 		//Main
 		void AnOgreApplication();
-
-		// Meshes
-		void squareGeneration();
-		void createSquare(Ogre::String nameOfMesh);
-		void meshGeneration();
 
 		//Luz
 		void lightGeneration();

@@ -31,33 +31,36 @@
     <Filter Include="Header Files\Managers">
       <UniqueIdentifier>{989a9d89-0f14-4a58-94ee-907209812b2b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Managers\Input">
-      <UniqueIdentifier>{0f272948-df5b-4e75-a6b5-aa1dab8a7fee}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Managers\Input">
-      <UniqueIdentifier>{8fc31973-2eea-46ef-a2f1-ace927239c4b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Managers\Time">
       <UniqueIdentifier>{dd61bc58-a7db-47f4-a1f6-73cabe1c0211}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Managers\Time">
       <UniqueIdentifier>{0e5a60cb-dce2-422b-b481-022dd91b2b9a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities\Components">
+      <UniqueIdentifier>{7a291892-37cd-471e-bce9-452f507e616f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Components\Input">
+      <UniqueIdentifier>{97e309b7-0a6f-4a4e-a6b5-e46f8782e121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Components">
+      <UniqueIdentifier>{a88884da-d2d0-4f45-9c76-a147a359883b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Components\Input">
+      <UniqueIdentifier>{7a97fafb-fe2a-4094-b1c3-0fa883de9d79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Components\Render">
+      <UniqueIdentifier>{5081bc51-b2cf-4f28-9af5-9fb8cd7337a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities\Components\Render">
+      <UniqueIdentifier>{282645f6-3fbd-40b2-be76-31d81328138d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Convenio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\Entity.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\EntityC.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\Component.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
@@ -72,29 +75,32 @@
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h">
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\InputManager.h">
-      <Filter>Header Files\Managers\Input</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\GameManager.h">
       <Filter>Header Files\Managers</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerInputComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\TimeManager.h">
       <Filter>Header Files\Managers\Time</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\weirdTimer.h">
       <Filter>Header Files\Managers\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h">
+      <Filter>Header Files\Entities\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInputComponent.h">
+      <Filter>Header Files\Entities\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h">
+      <Filter>Header Files\Entities\Components\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\Component.h">
+      <Filter>Header Files\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h">
+      <Filter>Header Files\Entities\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -107,16 +113,7 @@
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\Entity.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\EntityC.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\Component.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp">
@@ -125,26 +122,29 @@
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp">
       <Filter>Source Files\Ogre</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\InputManager.cpp">
-      <Filter>Source Files\Managers\Input</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerInputComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\TimeManager.cpp">
       <Filter>Source Files\Managers\Time</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\weirdTimer.cpp">
       <Filter>Source Files\Managers\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp">
+      <Filter>Source Files\Entities\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInputComponent.cpp">
+      <Filter>Source Files\Entities\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\Component.cpp">
+      <Filter>Source Files\Entities\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp">
+      <Filter>Source Files\Entities\Components\Render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

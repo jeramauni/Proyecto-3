@@ -1,16 +1,14 @@
 #include "weirdTimer.h"
 
-weirdTimer::weirdTimer()
-{
+weirdTimer::weirdTimer() {
+
 }
 
-weirdTimer::weirdTimer(double time) : time_(time)
-{
+weirdTimer::weirdTimer(double time) : time_(time) {
+
 }
 
-weirdTimer::~weirdTimer()
-{
-}
+weirdTimer::~weirdTimer() {}
 
 // Starts the timer 
 void weirdTimer::startTimer()
@@ -32,17 +30,15 @@ void weirdTimer::setTime(double time)
 	time_ = time;
 }
 
-void weirdTimer::stopTimer()
-{
+void weirdTimer::stopTimer() {
 	active = false;
 }
 
-bool weirdTimer::update(double t)
-{
+bool weirdTimer::update(double t) {
 	if (active)
 		timeLeft -= t;
 
-	return checkEnd;
+	return checkEnd();
 }
  // Checks if the timer has ended
 bool weirdTimer::checkEnd()

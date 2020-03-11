@@ -7,11 +7,7 @@
 
 CREATE_FACTORY(Render);
 
-
 //CREATE_FACTORY(PlayerInput);
-
-
-
 
 /////////////////////////Aclaraciones///////////////////////////////
 

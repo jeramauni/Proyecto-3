@@ -1,10 +1,10 @@
 #include <iostream>
-#include "WindowRenderer.h"
 #include <SDL.h>
+
+#include "WindowRenderer.h"
 #undef main
 
-int main()
-{
+int main() {
 	WindowRenderer* renderManager = WindowRenderer::getSingleton();
 
 	bool exit_ = false;

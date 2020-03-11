@@ -10,6 +10,7 @@
 
 class InputManager : public OIS::KeyListener, public OIS::MouseListener, public OIS::JoyStickListener {
 public:
+    InputManager(void);
     virtual ~InputManager(void);
 
     void initialise(Ogre::RenderWindow* renderWindow);
@@ -42,7 +43,6 @@ public:
 
     static InputManager* getSingletonPtr(void);
 private:
-    InputManager(void);
     InputManager(const InputManager&) { }
     InputManager& operator = (const InputManager&);
 

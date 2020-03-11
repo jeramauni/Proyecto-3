@@ -11,7 +11,6 @@
 
 #include <SDL_video.h>
 #include <SDL_syswm.h>
-#include <SDL.h>
 
 WindowRenderer* WindowRenderer::instance_ = nullptr;
 
@@ -47,6 +46,9 @@ void WindowRenderer::createRoot()
 
 		// Asignar desde los plugins disponibles un sistema de renderizado
 		const Ogre::RenderSystemList& lRenderSystemList = mRoot->getAvailableRenderers();
+		if (lRenderSystemList.size() == 0) {
+			//MWARNING("Sorry, no rendersystem was found.");
+		}
 		
 		renderSystem = lRenderSystemList[0];
 		mRoot->setRenderSystem(renderSystem);

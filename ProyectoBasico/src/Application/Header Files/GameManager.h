@@ -3,9 +3,13 @@
 
 #pragma once
 #include "Scene.h"
-
-#include "InputManager.h"
 #include "GmInputComponent.h"
+#include "RenderComponent.h"
+#include "EntityC.h"
+#include "RenderUtilities.h"
+#include "InitOgre.h"
+
+#include <InputManager.h>
 
 class GameManager {
 public:
@@ -21,7 +25,6 @@ public:
 	//Metodos para la pila
 	void pushScene(Scene *newScene);
 	void popScene();
-	void changeScene(Scene* newScene);
 
 	Scene* getGamePlay() { return gamePlay; }
 

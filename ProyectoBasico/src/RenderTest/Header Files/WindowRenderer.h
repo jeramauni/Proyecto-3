@@ -2,7 +2,7 @@
 
 #include <OgreFrameListener.h>
 #include <string>
-
+#include <SDL.h>
 
 namespace Ogre {
 	class RenderWindow;
@@ -10,9 +10,6 @@ namespace Ogre {
 	class Root;
 	class FileSystemLayer;
 }
-
-typedef union SDL_Event;
-typedef struct SDL_Window;
 
 class WindowRenderer : public Ogre::FrameListener
 {

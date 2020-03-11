@@ -1,15 +1,10 @@
 // I will check for std::exception.
 #include <exception>
 
-// Includes necesarios
-//#include <OgreRoot.h>
-//#include <OgreRenderWindow.h>
-
 //Podemos llamar a Ogre.h directamente e incluiriamos estas y mas
 #include <Ogre.h>
 
 #include "GameManager.h"
-#include <Application2.h>
 
 
 #ifdef _DEBUG
