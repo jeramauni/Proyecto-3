@@ -1,13 +1,14 @@
 #pragma once
 #include "Component.h"
 #include "RenderComponent.h"
-//#include "PlayerInputComponent.h" // WARNING  ===>>>   No lo encuentra
+#include "PlayerInputComponent.h"
+#include "GmInputComponent.h"
 
 #define CREATE_FACTORY(x) class x##Factory {public: x##Component* Create(){ return new x##Component();}}
 
 CREATE_FACTORY(Render);
-
-//CREATE_FACTORY(PlayerInput);
+CREATE_FACTORY(PlayerInput);
+CREATE_FACTORY(GmInput);
 
 /////////////////////////Aclaraciones///////////////////////////////
 

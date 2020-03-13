@@ -1,11 +1,15 @@
 #include "GmInputComponent.h"
 #include "GameManager.h"
 
-GmInputComponent::GmInputComponent(GameManager* gm) {
-	_gm = gm;
-}
+
+
+GmInputComponent::GmInputComponent() {}
 
 GmInputComponent::~GmInputComponent() {}
+
+void GmInputComponent::Init(GameManager* gm) {
+	_gm = gm;
+}
 
 bool GmInputComponent::keyPressed(const OIS::KeyEvent& ke) {
 	switch (ke.key) {
@@ -21,6 +25,8 @@ bool GmInputComponent::keyPressed(const OIS::KeyEvent& ke) {
 			_playing = true;
 			_gm->pushScene(_gm->getGamePlay());
 		}
+		break;
+	default:
 		break;
 	}
 
