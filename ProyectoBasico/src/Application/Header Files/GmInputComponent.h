@@ -2,13 +2,17 @@
 #define GmInputComponent_H
 
 #include "OISKeyboard.h"
+#include "Component.h"
 
 class GameManager;
 
-class GmInputComponent : public OIS::KeyListener {
+class GmInputComponent : public OIS::KeyListener, public Component {
 public:
-	GmInputComponent(GameManager *gm);
+	GmInputComponent();
 	~GmInputComponent();
+
+	void Init() {};
+	void Init(GameManager* gm);
 
 	bool _state = false;
 	bool _playing = false;
