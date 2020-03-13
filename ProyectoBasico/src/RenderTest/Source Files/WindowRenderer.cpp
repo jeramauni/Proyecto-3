@@ -7,7 +7,7 @@
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 #include <OgreFileSystemLayer.h>
-//#include <OgreSceneManager.h>
+#include <OgreSceneManager.h>
 
 #include <SDL_video.h>
 #include <SDL_syswm.h>
