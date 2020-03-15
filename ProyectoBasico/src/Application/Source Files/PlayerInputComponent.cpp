@@ -29,7 +29,7 @@ bool PlayerInputComponent::keyPressed(const OIS::KeyEvent& ke) {
 		break;
 	}
 
-	return false;
+	return true;
 }
 
 bool PlayerInputComponent::keyReleased(const OIS::KeyEvent& ke) {

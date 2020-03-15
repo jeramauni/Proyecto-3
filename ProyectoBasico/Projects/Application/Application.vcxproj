@@ -25,11 +25,8 @@
     <ClInclude Include="..\..\src\Application\Header Files\EntityC.h" />
     <ClInclude Include="..\..\src\Application\Header Files\GameManager.h" />
     <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h" />
-    <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h" />
-    <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h" />
     <ClInclude Include="..\..\src\Application\Header Files\PlayerInputComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h" />
-    <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\Application\Header Files\TimeManager.h" />
     <ClInclude Include="..\..\src\Application\Header Files\weirdTimer.h" />
@@ -42,11 +39,8 @@
     <ClCompile Include="..\..\src\Application\Source Files\EntityC.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp" />
-    <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp" />
-    <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\PlayerInputComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp" />
-    <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\weirdTimer.cpp" />
@@ -115,8 +109,8 @@
     <OutDir>$(SolutionDir)exes</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderTest\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderApp\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\x64\$(Configuration);$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -128,8 +122,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderTest\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderApp\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\Application2\Header Files;$(SolutionDir)src\Application\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\x64\$(Configuration);$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -154,12 +148,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;Input.lib;RenderTest_debug.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;Input.lib;RenderApp_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -191,14 +185,14 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)src\RenderTest\Header Files;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>OgreMain.lib;OIS.lib;Input.lib;RenderTest.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;OIS.lib;Input.lib;RenderApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

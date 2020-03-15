@@ -1,5 +1,5 @@
 #pragma once
-#include "OgreApp.h"
+
 #include "EntityC.h"
 #include "ComponentFactory.h"
 #include <list>
@@ -15,10 +15,12 @@ private:
 	std::list<EntityC*> _render;
 	RenderFactory* _rF;
 
+	// temp
+
 public:
 	Scene();
 	void update();
-	void render(OgreEasy::OgreApp * ogreApp);
+	void render();
 	void push(EntityC* e);
 };
 

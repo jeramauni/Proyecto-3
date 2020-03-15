@@ -1,5 +1,6 @@
 #include "GmInputComponent.h"
 #include "GameManager.h"
+#include <iostream>
 
 
 
@@ -17,6 +18,7 @@ bool GmInputComponent::keyPressed(const OIS::KeyEvent& ke) {
 		_state = true;
 		break;
 	case OIS::KC_Q:
+		std::cout << "Q pulsada\n";
 		if (_playing) {
 			_gm->popScene();
 			_playing = false;
@@ -30,7 +32,7 @@ bool GmInputComponent::keyPressed(const OIS::KeyEvent& ke) {
 		break;
 	}
 
-	return false;
+	return true;
 }
 
 bool GmInputComponent::keyReleased(const OIS::KeyEvent& ke) {

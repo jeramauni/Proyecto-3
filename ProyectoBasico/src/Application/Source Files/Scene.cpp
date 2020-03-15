@@ -1,7 +1,5 @@
 #include "Scene.h"
-#include "RenderUtilities.h"
-#include "InitOgre.h"
-
+#include <RenderSystem.h>
 
 Scene::Scene()
 {
@@ -13,15 +11,16 @@ void Scene::update()
 	printf("UPDATE");
 }
 
-void Scene::render(OgreEasy::OgreApp * ogreApp)
+void Scene::render()
 {
-	for (auto i = entidades.begin(); i != entidades.end(); ++i) {
+	/*for (auto i = entidades.begin(); i != entidades.end(); ++i) {
 		//new RenderComponent()
 		RenderComponent* Rcomp = _rF->Create();
-		Rcomp->Init((*i)->_id, ogreApp->addEntityToScene((*i)->_id));
+		Rcomp->Init((*i)->_id,
+			RenderSystem::getSingleton()->addOgreEntity((*i)->_id));
 		(*i)->setNode(Rcomp->getOgreNode());
 		(*i)->AddComponent(Rcomp);
-	}
+	}*/
 }
 
 void Scene::push(EntityC * e)

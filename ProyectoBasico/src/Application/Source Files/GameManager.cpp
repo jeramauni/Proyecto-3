@@ -1,29 +1,34 @@
 #include "GameManager.h"
+#include <WindowRenderer.h>
+#include <RenderSystem.h>
 
-GameManager::GameManager(OgreEasy::OgreApp * oa) {
-	ogreApp = oa;
+
+GameManager::GameManager() {
+
+	windowRenderer = WindowRenderer::getSingleton();
+	renderSystem = RenderSystem::getSingleton();
+
 
 	// Input del gm para cerrar juego
 	input = _gmiF->Create();
 	input->Init(this);
 
-	//--------------------------- LIGHT -----------------------------
-	//Creacion de la luz en la escena
-	ogreApp->lightGeneration();
-
 	//-------------------------- MATERIALS -------------------------------
 	//Carga de los materiales que usaremos
-	ogreApp->materialGeneration(" Mat");
+	renderSystem->materialGeneration("Mat");
+	
+	createMenuScene();
 
-	//--------------------------- SCENES ---------------------------
-	EntityC* _util = new EntityC("ninja");
-	pInput = _piF->Create();
-	pInput->Init(_util);
+	EntityC* _util = new EntityC("penguin");
 
-	menu->push(_util);
+	RenderComponent* Rcomp = _rF->Create();
+	Rcomp->Init((_util)->_id,
+		RenderSystem::getSingleton()->addOgreEntity((_util)->_id));
+	(_util)->setNode(Rcomp->getOgreNode());
+	(_util)->AddComponent(Rcomp);
 
-	_util = new EntityC("penguin");
 	gamePlay->push(_util);
+
 
 	//Añadimos el menu a la pila
 	pushScene(menu);
@@ -31,7 +36,7 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	//----------------------------------INPUT----------------------------------
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
-	mInputManager->initialise(ogreApp->getWindow());
+	mInputManager->initialise(windowRenderer->getWin());
 	mInputManager->addKeyListener(pInput, "PlayerMovement");
 	mInputManager->addKeyListener(input, "Escape");
 }
@@ -45,19 +50,44 @@ GameManager::~GameManager() {
 bool GameManager::update() {
 	//------Input------
 	mInputManager->capture();
-	if (input->_state) ogreApp->turnOff(); //La cosa es que los componentes le digan a su entidad lo que hacer.
 
-	return ogreApp->RenderLoop();
+	if (input->_state) //La cosa es que los componentes le digan a su entidad lo que hacer.
+		windowRenderer->windowClosed();
+
+	//------Renderizado------
+	windowRenderer->renderFrame(0);
+
+	return true;
 }
 
 void GameManager::pushScene(Scene* newScene) {
-	ogreApp->SceneCleaner();
+	renderSystem->clearScene();
 	escenas.push(newScene);
-	escenas.top()->render(ogreApp);
+	//escenas.top()->render();
 }
 
 void GameManager::popScene() {
-	ogreApp->SceneCleaner();
+	renderSystem->clearScene();
 	escenas.pop();
-	escenas.top()->render(ogreApp);
+	//escenas.top()->render();
+}
+
+void GameManager::createMenuScene()
+{
+	renderSystem->addCamera();
+	//--------------------------- LIGHT -----------------------------
+	//Creacion de la luz en la escena
+	renderSystem->setAmbientLight(Ogre::ColourValue(0.2f, 0.0f, 0.2f, 1.0f));
+	//--------------------------- ENTIDADES ---------------------------
+	EntityC* _util = new EntityC("ninja");
+	pInput = _piF->Create();
+	pInput->Init(_util);
+
+	RenderComponent* Rcomp = _rF->Create();
+	Rcomp->Init((_util)->_id,
+		RenderSystem::getSingleton()->addOgreEntity((_util)->_id));
+	(_util)->setNode(Rcomp->getOgreNode());
+	(_util)->AddComponent(Rcomp);
+
+	menu->push(_util);
 }

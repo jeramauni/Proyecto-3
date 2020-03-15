@@ -4,8 +4,6 @@
 #pragma once
 #include "Scene.h"
 #include "EntityC.h"
-#include "RenderUtilities.h"
-#include "InitOgre.h"
 
 // Componentes
 #include "ComponentFactory.h"
@@ -13,11 +11,13 @@
 // Input
 #include <InputManager.h>
 
+class WindowRenderer;
+class RenderSystem;
+
 class GameManager {
 public:
 	//Constructoras
-	GameManager() {};
-	GameManager(OgreEasy::OgreApp* oa);
+	GameManager();
 
 	~GameManager();
 
@@ -45,8 +45,8 @@ protected:
 	//Son solo escenas de prueba
 
 
-	// OgreApp
-	OgreEasy::OgreApp* ogreApp;
+	WindowRenderer* windowRenderer = nullptr;
+	RenderSystem* renderSystem = nullptr;
 
 	//Input Mng
 	InputManager* mInputManager;
@@ -60,5 +60,9 @@ protected:
 
 	//Esto iria en inicializacion de las entities
 	PlayerInputFactory* _piF;
+
+	RenderFactory* _rF;
+
+	void createMenuScene();
 };
 #endif

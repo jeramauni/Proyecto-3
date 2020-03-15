@@ -7,7 +7,8 @@
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 #include <OgreFileSystemLayer.h>
-//#include <OgreSceneManager.h>
+#include <OgreViewport.h>
+#include <OgreSceneManager.h>
 
 #include <SDL_video.h>
 #include <SDL_syswm.h>
@@ -17,6 +18,23 @@ WindowRenderer* WindowRenderer::instance_ = nullptr;
 WindowRenderer::WindowRenderer() : mRoot(0)
 {
 	initWindow();
+}
+
+WindowRenderer::~WindowRenderer()
+{
+	if (mWindow != nullptr) {
+		mRoot->destroyRenderTarget(mWindow);
+		mWindow = nullptr;
+	}
+
+	if (sdlWin != nullptr) {
+		SDL_DestroyWindow(sdlWin);
+		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+		sdlWin = nullptr;
+	}
+
+	delete mRoot;
+	mRoot = nullptr;
 }
 
 void WindowRenderer::initWindow()
@@ -100,7 +118,37 @@ void WindowRenderer::initializeResources()
 
 void WindowRenderer::setupResources()
 {
+	Ogre::ConfigFile cf;
+#if _DEBUG
+	cf.load("resources_d.cfg");
+#else
+	cf.load("resources.cfg");
+#endif
+
+	Ogre::String sec, type, arch;
+	Ogre::ConfigFile::SettingsBySection_::const_iterator seci;
+
+	//secciones
+	for (seci = cf.getSettingsBySection().begin(); seci != cf.getSettingsBySection().end(); ++seci)
+	{
+		sec = seci->first;
+		const Ogre::ConfigFile::SettingsMultiMap& settings = seci->second;
+		Ogre::ConfigFile::SettingsMultiMap::const_iterator i;
+
+		//elementos de cada seccion
+		for (i = settings.begin(); i != settings.end(); ++i)
+		{
+			type = i->first;
+			arch = Ogre::FileSystemLayer::resolveBundlePath(i->second);
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch, type, sec);
+		}
+	}
+
+	sec = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
+
+	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 }
+
 
 WindowRenderer* WindowRenderer::getSingleton()
 {
@@ -113,6 +161,7 @@ WindowRenderer* WindowRenderer::getSingleton()
 
 void WindowRenderer::renderFrame(float t)
 {
+	mWindow->update(false);
 	mRoot->renderOneFrame();
 }
 
@@ -127,7 +176,7 @@ bool WindowRenderer::handleEvents(const SDL_Event evt)
 			if (evt.window.event == SDL_WINDOWEVENT_RESIZED) {
 				Ogre::RenderWindow* win = mWindow;
 				win->windowMovedOrResized();
-				//windowResized(win);
+				windowResized(win);
 				handled = true;
 			}
 		}
@@ -138,4 +187,15 @@ bool WindowRenderer::handleEvents(const SDL_Event evt)
 		break;
 	}
 	return handled;
+}
+
+void WindowRenderer::windowClosed()
+{
+	mWindow->destroy();
+	//SDL_DestroyWindow(sdlWin);
+}
+
+Ogre::SceneManager* WindowRenderer::getCurrentSceneManager()
+{
+	return currentSceneManager;
 }
