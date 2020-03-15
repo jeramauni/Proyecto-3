@@ -1,16 +1,14 @@
-#ifndef PlayerInputComponent_H
-#define PlayerInputComponent_H
+#pragma once
 
 #include "OISKeyboard.h"
 #include "Component.h"
+#include "EntityC.h"
 
-class EntityC;
-
-class PlayerInputComponent : public OIS::KeyListener, public Component {
+class PlayerInputComponent : public OIS::KeyListener, public Component
+{
 public:
 	PlayerInputComponent();
 	~PlayerInputComponent();
-
 	void Init() {};
 	void Init(EntityC* ent);
 
@@ -22,4 +20,3 @@ private:
 	EntityC* _entity;
 };
 
-#endif

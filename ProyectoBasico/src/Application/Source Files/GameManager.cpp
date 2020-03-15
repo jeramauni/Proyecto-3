@@ -3,9 +3,13 @@
 GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	ogreApp = oa;
 
-	// Input del gm para cerrar juego
-	input = _gmiF->Create();
-	input->Init(this);
+	//----------------------------------INPUT----------------------------------
+	input = new GmInputComponent(this);
+
+	// Setup input
+	mInputManager = InputManager::getSingletonPtr();
+	mInputManager->initialise(ogreApp->getWindow());
+	mInputManager->addKeyListener(input, "Escape");
 
 	//--------------------------- LIGHT -----------------------------
 	//Creacion de la luz en la escena
@@ -17,9 +21,6 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 
 	//--------------------------- SCENES ---------------------------
 	EntityC* _util = new EntityC("ninja");
-	pInput = _piF->Create();
-	pInput->Init(_util);
-
 	menu->push(_util);
 
 	_util = new EntityC("penguin");
@@ -27,13 +28,7 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 
 	//Añadimos el menu a la pila
 	pushScene(menu);
-
-	//----------------------------------INPUT----------------------------------
-	// Setup input
-	mInputManager = InputManager::getSingletonPtr();
-	mInputManager->initialise(ogreApp->getWindow());
-	mInputManager->addKeyListener(pInput, "PlayerMovement");
-	mInputManager->addKeyListener(input, "Escape");
+	//escenas.push(gamePlay);
 }
 
 GameManager::~GameManager() {
