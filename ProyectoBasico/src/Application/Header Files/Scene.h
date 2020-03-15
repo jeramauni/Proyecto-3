@@ -1,9 +1,9 @@
 #pragma once
 #include "OgreApp.h"
 #include "EntityC.h"
+#include "ComponentFactory.h"
 #include <list>
 #include <stack>
-#include "ComponentFactory.h"
 
 class Scene
 {

@@ -3,12 +3,14 @@
 
 #pragma once
 #include "Scene.h"
-#include "GmInputComponent.h"
-#include "RenderComponent.h"
 #include "EntityC.h"
 #include "RenderUtilities.h"
 #include "InitOgre.h"
 
+// Componentes
+#include "ComponentFactory.h"
+
+// Input
 #include <InputManager.h>
 
 class GameManager {
@@ -48,7 +50,15 @@ protected:
 
 	//Input Mng
 	InputManager* mInputManager;
-	//Temp
+	//Para que el gm controle el fin de juego
 	GmInputComponent* input;
+	PlayerInputComponent* pInput;
+
+
+	// Componentes que usa el gm
+	GmInputFactory* _gmiF;
+
+	//Esto iria en inicializacion de las entities
+	PlayerInputFactory* _piF;
 };
 #endif

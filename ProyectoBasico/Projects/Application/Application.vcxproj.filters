@@ -63,9 +63,6 @@
     <ClInclude Include="..\..\src\Application\Header Files\EntityC.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
-      <Filter>Header Files\Managers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h">
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
@@ -90,9 +87,6 @@
     <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h">
       <Filter>Header Files\Entities\Components\Input</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerInputComponent.h">
-      <Filter>Header Files\Entities\Components\Input</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h">
       <Filter>Header Files\Entities\Components\Render</Filter>
     </ClInclude>
@@ -101,6 +95,12 @@
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h">
       <Filter>Header Files\Entities\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\PlayerInputComponent.h">
+      <Filter>Header Files\Entities\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
+      <Filter>Header Files\Ogre</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,14 +137,14 @@
     <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp">
       <Filter>Source Files\Entities\Components\Input</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerInputComponent.cpp">
-      <Filter>Source Files\Entities\Components\Input</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Component.cpp">
       <Filter>Source Files\Entities\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp">
       <Filter>Source Files\Entities\Components\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\PlayerInputComponent.cpp">
+      <Filter>Source Files\Entities\Components\Input</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
