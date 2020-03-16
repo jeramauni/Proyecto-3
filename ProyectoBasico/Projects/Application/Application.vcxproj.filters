@@ -55,6 +55,12 @@
     <Filter Include="Header Files\Entities\Components\Render">
       <UniqueIdentifier>{282645f6-3fbd-40b2-be76-31d81328138d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entities\Components\Update">
+      <UniqueIdentifier>{bcf4d9c0-f583-4fde-aa92-bb58b76b3ec1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entities\Components\Update">
+      <UniqueIdentifier>{dc079c0d-3139-4180-981a-1de4595bfbed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Convenio.h">
@@ -102,6 +108,9 @@
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\TransformComponent.h">
+      <Filter>Header Files\Entities\Components\Update</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
@@ -145,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\PlayerInputComponent.cpp">
       <Filter>Source Files\Entities\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\TransformComponent.cpp">
+      <Filter>Source Files\Entities\Components\Update</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,13 +3,16 @@
 #include "RenderComponent.h"
 #include "PlayerInputComponent.h"
 #include "GmInputComponent.h"
+#include "TransformComponent.h"
 
 #define CREATE_FACTORY(x) class x##Factory {public: x##Component* Create(){ return new x##Component();}}
+#define GENERATE_COMPONENT(x)  new x##Factory()->Create(); 
+#define DECLARE_COMPONENT(x) x##Component* x##Comp_ = GENERATE_COMPONENT(x);
 
 CREATE_FACTORY(Render);
 CREATE_FACTORY(PlayerInput);
 CREATE_FACTORY(GmInput);
-
+CREATE_FACTORY(Transform);
 /////////////////////////Aclaraciones///////////////////////////////
 
 /*

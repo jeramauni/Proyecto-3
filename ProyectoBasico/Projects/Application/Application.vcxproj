@@ -32,6 +32,7 @@
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\Application\Header Files\TimeManager.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\TransformComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\weirdTimer.h" />
     <ClInclude Include="Convenio.h" />
   </ItemGroup>
@@ -49,6 +50,7 @@
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\TimeManager.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\TransformComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\weirdTimer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
