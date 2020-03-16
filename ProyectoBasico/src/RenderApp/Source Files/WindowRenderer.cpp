@@ -192,7 +192,7 @@ bool WindowRenderer::handleEvents(const SDL_Event evt)
 void WindowRenderer::windowClosed()
 {
 	mWindow->destroy();
-	//SDL_DestroyWindow(sdlWin);
+	SDL_DestroyWindow(sdlWin);
 }
 
 Ogre::SceneManager* WindowRenderer::getCurrentSceneManager()

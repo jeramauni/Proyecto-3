@@ -50,7 +50,7 @@ public:
 	Ogre::Entity* getEntityByName(Ogre::String name);
 
 	// Gets the root SceneNode
-	inline Ogre::SceneNode* getRootSceneNode();
+	inline Ogre::SceneNode* getRootNode();
 
 	// Return the SceneManager
 	inline Ogre::SceneManager* getSceneManager();
@@ -100,4 +100,6 @@ public:
 
 	// Gets the name of the displayed scene
 	Ogre::String getCurrentScene();
+
+	void squareGeneration();
 };

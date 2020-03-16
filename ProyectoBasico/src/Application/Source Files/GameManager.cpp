@@ -21,11 +21,12 @@ GameManager::GameManager() {
 
 	EntityC* _util = new EntityC("penguin");
 
+	/*
 	RenderComponent* Rcomp = _rF->Create();
 	Rcomp->Init((_util)->_id,
 		RenderSystem::getSingleton()->addOgreEntity((_util)->_id));
 	(_util)->setNode(Rcomp->getOgreNode());
-	(_util)->AddComponent(Rcomp);
+	(_util)->AddComponent(Rcomp);*/
 
 	gamePlay->push(_util);
 
@@ -51,8 +52,10 @@ bool GameManager::update() {
 	//------Input------
 	mInputManager->capture();
 
-	if (input->_state) //La cosa es que los componentes le digan a su entidad lo que hacer.
+	if (input->_state) { //La cosa es que los componentes le digan a su entidad lo que hacer.
 		windowRenderer->windowClosed();
+		return false;
+	}
 
 	//------Renderizado------
 	windowRenderer->renderFrame(0);
@@ -83,11 +86,15 @@ void GameManager::createMenuScene()
 	pInput = _piF->Create();
 	pInput->Init(_util);
 
-	RenderComponent* Rcomp = _rF->Create();
+	renderSystem->addOgreEntity("ninja");
+
+	renderSystem->squareGeneration();
+
+	/*RenderComponent* Rcomp = _rF->Create();
 	Rcomp->Init((_util)->_id,
-		RenderSystem::getSingleton()->addOgreEntity((_util)->_id));
+		renderSystem->addOgreEntity((_util)->_id));
 	(_util)->setNode(Rcomp->getOgreNode());
-	(_util)->AddComponent(Rcomp);
+	(_util)->AddComponent(Rcomp);*/
 
 	menu->push(_util);
 }
