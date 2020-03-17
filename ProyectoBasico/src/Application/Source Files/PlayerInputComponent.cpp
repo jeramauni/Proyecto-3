@@ -11,7 +11,8 @@ void PlayerInputComponent::Init(EntityC* ent) {
 	_entity = ent;
 }
 
-bool PlayerInputComponent::keyPressed(const OIS::KeyEvent& ke) {
+bool PlayerInputComponent::keyPressed(const OIS::KeyEvent& ke)
+{
 	switch (ke.key) {
 	case OIS::KC_W:
 		std::cout << "Moverse W!\n";
@@ -29,7 +30,7 @@ bool PlayerInputComponent::keyPressed(const OIS::KeyEvent& ke) {
 		break;
 	}
 
-	return false;
+	return true;
 }
 
 bool PlayerInputComponent::keyReleased(const OIS::KeyEvent& ke) {

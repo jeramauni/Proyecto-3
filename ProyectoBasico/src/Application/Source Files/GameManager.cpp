@@ -33,7 +33,7 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(ogreApp->getWindow());
 	mInputManager->addKeyListener(pInput, "PlayerMovement");
-	mInputManager->addKeyListener(input, "Escape");
+	mInputManager->addKeyListener(input->getListener(), "Escape");
 }
 
 GameManager::~GameManager() {

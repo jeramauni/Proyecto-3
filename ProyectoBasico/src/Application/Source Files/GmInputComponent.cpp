@@ -9,30 +9,24 @@ GmInputComponent::~GmInputComponent() {}
 
 void GmInputComponent::Init(GameManager* gm) {
 	_gm = gm;
+	listener = new GmInputListener(this);
 }
 
-bool GmInputComponent::keyPressed(const OIS::KeyEvent& ke) {
-	switch (ke.key) {
-	case OIS::KC_ESCAPE:
-		_state = true;
-		break;
-	case OIS::KC_Q:
-		if (_playing) {
-			_gm->popScene();
-			_playing = false;
-		}
-		else {
-			_playing = true;
-			_gm->pushScene(_gm->getGamePlay());
-		}
-		break;
-	default:
-		break;
+void GmInputComponent::Q_Key()
+{
+	if (_playing) {
+		_gm->popScene();
+		_playing = false;
 	}
-
-	return false;
+	else {
+		_playing = true;
+		_gm->pushScene(_gm->getGamePlay());
+	}
 }
 
-bool GmInputComponent::keyReleased(const OIS::KeyEvent& ke) {
-	return false;
+void GmInputComponent::Esc_Key()
+{
+	_state = true;
 }
+
+
