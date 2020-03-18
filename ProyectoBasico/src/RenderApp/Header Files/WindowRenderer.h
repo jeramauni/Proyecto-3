@@ -1,7 +1,6 @@
 #pragma once
 
 #include <OgreFrameListener.h>
-#include <map>
 #include <SDL.h>
 #undef main
 
@@ -10,7 +9,6 @@ namespace Ogre {
 	class RenderSystem;
 	class Root;
 	class Viewport;
-	class SceneManager;
 }
 
 class WindowRenderer : public Ogre::FrameListener
@@ -24,11 +22,6 @@ private:
 	SDL_Window* sdlWin = nullptr; // window handled by SDL
 	Ogre::RenderSystem* renderSystem = nullptr;
 
-	// Contains Scene names and the SceneManager attached to
-	std::map<Ogre::String, Ogre::SceneManager*> scenes;
-
-	// The current SceneManager displaying the scene
-	Ogre::SceneManager* currentSceneManager = nullptr;
 	
 	// private constructor because of singleton pattern
 	WindowRenderer();
@@ -39,15 +32,14 @@ private:
 	void setupWindow();
 	void initializeResources();
 	void setupResources();
-
-protected:
-	friend class RenderSystem;
-	void _createScene(Ogre::String sceneName);
 	
 public:
 	static WindowRenderer* getSingleton();
+	static bool initSingleton();
+
+
 	void renderFrame(float t);
-	bool handleEvents(const SDL_Event evt);
+	bool handleEvents();
 
 	// Called when the frame starts rendering
 	virtual bool frameStarted(const Ogre::FrameEvent& evt) { return true; };
@@ -56,15 +48,15 @@ public:
 	virtual bool frameEnded(const Ogre::FrameEvent& evt) { return true; };
 
 	//Virtual methods, dont really need to be changed
-	virtual void windowMoved(Ogre::RenderWindow* rw) {};
-	virtual void windowResized(Ogre::RenderWindow* rw) {};
+	virtual void windowMoved(Ogre::RenderWindow* rw) { (void)rw; };
+	virtual void windowResized(Ogre::RenderWindow* rw) { (void)rw; };
 	virtual bool windowClosing(Ogre::RenderWindow* rw) { return true; };
+	virtual void windowClosed(Ogre::RenderWindow* rw) { (void)rw; }
 	virtual void windowClosed();
-	virtual void windowFocusChange(Ogre::RenderWindow* rw) {};
+	virtual void windowFocusChange(Ogre::RenderWindow* rw) { (void)rw; };
 
 	inline  Ogre::Root* getRoot() { return mRoot; };
 	inline Ogre::RenderWindow* getWin() { return mWindow; };
 
-	Ogre::SceneManager* getCurrentSceneManager();
 };
 

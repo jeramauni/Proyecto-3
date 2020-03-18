@@ -37,11 +37,11 @@ protected:
 	//Pila de escenas
 	std::stack<Scene*> escenas;
 	//Men・
-	Scene* menu = new Scene();
+	Scene* menu = new Scene("menu");
 	//Juego
-	Scene* gamePlay = new Scene();
+	Scene* gamePlay = new Scene("gameplay");
 	//FIN
-	Scene* theEnd = new Scene();
+	Scene* theEnd = new Scene("fin");
 	//Son solo escenas de prueba
 
 
@@ -64,5 +64,7 @@ protected:
 	RenderFactory* _rF;
 
 	void createMenuScene();
+	void createGameScene();
+
 };
 #endif

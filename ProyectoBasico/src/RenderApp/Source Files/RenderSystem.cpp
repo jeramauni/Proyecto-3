@@ -18,18 +18,24 @@
 
 RenderSystem* RenderSystem::instance_ = nullptr;
 
-RenderSystem* RenderSystem::getSingleton()
+bool RenderSystem::initSingleton()
 {
 	if (instance_ == nullptr) {
 		instance_ = new RenderSystem();
-	}
 
+		return true;
+	}
+	return false;
+}
+
+RenderSystem* RenderSystem::getSingleton()
+{
 	return instance_;
 }
 
 RenderSystem::RenderSystem() {
-	Ogre::SceneManager* sm = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
-	setSceneManager(sm);
+	WindowRenderer::initSingleton();
+	//mScnMgr = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 }
 
 RenderSystem::~RenderSystem() {
@@ -67,11 +73,6 @@ Ogre::Entity* RenderSystem::getEntityByName(Ogre::String name)
 inline Ogre::SceneNode* RenderSystem::getRootNode()
 {
 	return mScnMgr->getRootSceneNode();
-}
-
-inline Ogre::SceneManager* RenderSystem::getSceneManager()
-{
-	return mScnMgr;
 }
 
 inline void RenderSystem::setSceneManager(Ogre::SceneManager* sm)
@@ -145,7 +146,7 @@ void RenderSystem::setSkyBox(Ogre::String matName, Ogre::Real distance)
 	mScnMgr->setSkyBox(true, matName, distance);
 }
 
-void RenderSystem::addCamera()
+void RenderSystem::addCamera(Ogre::SceneManager* s)
 {
 
 	float viewportWidth = 0.88f;
@@ -155,27 +156,75 @@ void RenderSystem::addCamera()
 	unsigned short mainViewportZOrder = 100;
 
 
+	Ogre::Camera* mCamera = nullptr;
+	mCamera = s->createCamera("MainCam");
 
-	mScnMgr->createCamera("MainCam");
-	Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(mScnMgr->getCamera("MainCam"),
-		mainViewportZOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
-	camera = mScnMgr->getCamera("MainCam");
+	Ogre::SceneNode* mCamNode = nullptr;
+	mCamNode = s->getRootSceneNode()->createChildSceneNode("nCam");
+	mCamNode->attachObject(mCamera);
+
+	mCamNode->setPosition(0, 0, 1);
+	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
+
+	//Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(s->getCamera("MainCam"),
+	//	mainViewportZOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
+	//camera = s->getCamera("MainCam");
 
 
-	vp->setAutoUpdated(true);
+	//vp->setAutoUpdated(true);
 
 	// Color for the viewPort
-	vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
+	//vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
 
 	// I choose the visual ratio of the camera. To make it looks real, I want it the same as the viewport. 
-	float ratio = float(vp->getActualWidth()) / float(vp->getActualHeight());
-	camera->setAspectRatio(ratio);
+	//float ratio = float(vp->getActualWidth()) / float(vp->getActualHeight());
+	mCamera->setAutoAspectRatio(true);
+
 
 
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
-	camera->setNearClipDistance(3.0f);
-	camera->setFarClipDistance(4000.0f);
+	mCamera->setNearClipDistance(3.0f);
+	mCamera->setFarClipDistance(4000.0f);
 
+}
+
+void RenderSystem::createScene(Ogre::String sceneName)
+{
+	Ogre::SceneManager* s = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
+	scenes.erase(sceneName);
+	scenes.insert({ sceneName, s });
+	
+	mScnMgr = s;
+
+	addCamera(s);
+
+	setAmbientLight(Ogre::ColourValue(0.2f, 0.0f, 0.2f, 1.0f));
+
+}
+
+void RenderSystem::setRenderingScene(Ogre::String sceneName)
+{
+
+	WindowRenderer::getSingleton()->getWin()->removeAllViewports();
+
+	Ogre::SceneManager* sm = scenes.find(sceneName)->second;
+
+
+	float viewportWidth = 0.88f;
+	float viewportHeight = 0.88f;
+	float viewportLeft = (1.0f - viewportWidth) * 0.5f;
+	float viewportTop = (1.0f - viewportHeight) * 0.5f;
+	unsigned short mainViewportZOrder = 100;
+
+	Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(sm->getCamera("MainCam"),
+			mainViewportZOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
+
+	sm->getCamera("MainCam")->setAspectRatio(Ogre::Real(vp->getActualWidth()) / Ogre::Real(vp->getActualHeight())); //in case this has changed
+
+	mScnMgr = sm;
+	camera = mScnMgr->getCamera("MainCam");
+
+	currentScene = sceneName;
 }
 
 void RenderSystem::clearScene()

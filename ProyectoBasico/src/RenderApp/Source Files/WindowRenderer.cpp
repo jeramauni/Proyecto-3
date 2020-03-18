@@ -103,8 +103,7 @@ void WindowRenderer::setupWindow()
 
 	sdlWin = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
 	SDL_SysWMinfo wmInfo;
-	SDL_VERSION(&wmInfo.version);
-	SDL_GetWindowWMInfo(sdlWin, &wmInfo);
+	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(sdlWin, &wmInfo);
 
 	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
@@ -152,40 +151,53 @@ void WindowRenderer::setupResources()
 
 WindowRenderer* WindowRenderer::getSingleton()
 {
+	return instance_;
+}
+
+bool WindowRenderer::initSingleton()
+{
 	if (instance_ == nullptr) {
 		instance_ = new WindowRenderer();
+		return true;
 	}
-
-	return instance_;
+	return false;
 }
 
 void WindowRenderer::renderFrame(float t)
 {
-	mWindow->update(false);
 	mRoot->renderOneFrame();
 }
 
-bool WindowRenderer::handleEvents(const SDL_Event evt)
+bool WindowRenderer::handleEvents()
 {
 	bool handled = false;
+	SDL_Event e;
 
-	switch (evt.type)
+	while (SDL_PollEvent(&e))
 	{
-	case SDL_WINDOWEVENT:
-		if (evt.window.windowID == SDL_GetWindowID(sdlWin)) {
-			if (evt.window.event == SDL_WINDOWEVENT_RESIZED) {
-				Ogre::RenderWindow* win = mWindow;
-				win->windowMovedOrResized();
-				windowResized(win);
-				handled = true;
+		switch (e.type)
+		{
+		case SDL_WINDOWEVENT:
+			if (e.window.windowID == SDL_GetWindowID(sdlWin)) {
+				if (e.window.event == SDL_WINDOWEVENT_RESIZED) {
+					Ogre::RenderWindow* win = mWindow;
+					win->windowMovedOrResized();
+					windowResized(win);
+					handled = true;
+				}
 			}
+
+			break;
+
+		case SDL_QUIT:
+			windowClosed(mWindow);
+			break;
+
+		default:
+			break;
 		}
-
-		break;
-
-	default:
-		break;
 	}
+
 	return handled;
 }
 
@@ -193,9 +205,4 @@ void WindowRenderer::windowClosed()
 {
 	mWindow->destroy();
 	SDL_DestroyWindow(sdlWin);
-}
-
-Ogre::SceneManager* WindowRenderer::getCurrentSceneManager()
-{
-	return currentSceneManager;
 }

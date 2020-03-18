@@ -6,6 +6,11 @@ Scene::Scene()
 	_rF = new RenderFactory();
 }
 
+Scene::Scene(std::string id) : _id(id)
+{
+	_rF = new RenderFactory();
+}
+
 void Scene::update()
 {
 	printf("UPDATE");

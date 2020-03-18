@@ -1,5 +1,6 @@
 #pragma once
 #include <OgreString.h>
+#include <map>
 
 namespace Ogre {
 	class OverlayManager;
@@ -30,6 +31,8 @@ private:
 	Ogre::Camera* camera = nullptr;
 	Ogre::String currentScene;
 
+	// Contains Scene names and the SceneManager attached to
+	std::map<Ogre::String, Ogre::SceneManager*> scenes;
 
 	static RenderSystem* instance_;
 	
@@ -37,7 +40,7 @@ private:
 	~RenderSystem();
 
 public:
-
+	static bool initSingleton();
 	static RenderSystem* getSingleton();
 
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
@@ -52,8 +55,7 @@ public:
 	// Gets the root SceneNode
 	inline Ogre::SceneNode* getRootNode();
 
-	// Return the SceneManager
-	inline Ogre::SceneManager* getSceneManager();
+	// Change the SceneManager
 	inline void setSceneManager(Ogre::SceneManager* sm);
 
 	enum LightTypes
@@ -94,12 +96,23 @@ public:
 	void setSkyBox(Ogre::String matName, Ogre::Real distance = 5000);
 
 	// Sets up a new rendering scene and starts rendering it
-	void addCamera();
+	void addCamera(Ogre::SceneManager* s);
 
+	// Creates a new scene and adds it to the scenes dictionary with the given key
+	void createScene(Ogre::String sceneName);
+
+	// Sets the displayed scene to the scene given by parameter
+	void setRenderingScene(Ogre::String sceneName);
+
+	// Destroy all render entities
 	void clearScene();
 
 	// Gets the name of the displayed scene
 	Ogre::String getCurrentScene();
 
+	// Get the current SceneManager of the scene
+	Ogre::SceneManager* getCurrentSceneManager() { return mScnMgr; };
+
+	// aux 
 	void squareGeneration();
 };

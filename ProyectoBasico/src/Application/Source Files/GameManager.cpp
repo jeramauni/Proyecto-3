@@ -5,8 +5,12 @@
 
 GameManager::GameManager() {
 
-	windowRenderer = WindowRenderer::getSingleton();
-	renderSystem = RenderSystem::getSingleton();
+	if(WindowRenderer::initSingleton())
+		windowRenderer = WindowRenderer::getSingleton();
+
+	if (RenderSystem::initSingleton()) {
+		renderSystem = RenderSystem::getSingleton();
+	}
 
 
 	// Input del gm para cerrar juego
@@ -17,21 +21,12 @@ GameManager::GameManager() {
 	//Carga de los materiales que usaremos
 	renderSystem->materialGeneration("Mat");
 	
-	createMenuScene();
-
-	EntityC* _util = new EntityC("penguin");
-
-	/*
-	RenderComponent* Rcomp = _rF->Create();
-	Rcomp->Init((_util)->_id,
-		RenderSystem::getSingleton()->addOgreEntity((_util)->_id));
-	(_util)->setNode(Rcomp->getOgreNode());
-	(_util)->AddComponent(Rcomp);*/
-
-	gamePlay->push(_util);
-
+	//-------------------------- CAMERA -------------------------------
+	
+	createGameScene();
 
 	//Añadimos el menu a la pila
+	createMenuScene();
 	pushScene(menu);
 
 	//----------------------------------INPUT----------------------------------
@@ -60,11 +55,15 @@ bool GameManager::update() {
 	//------Renderizado------
 	windowRenderer->renderFrame(0);
 
+	//------Ventana------
+	windowRenderer->handleEvents();
+
 	return true;
 }
 
 void GameManager::pushScene(Scene* newScene) {
-	renderSystem->clearScene();
+	//renderSystem->clearScene();
+	renderSystem->setRenderingScene(newScene->getID());
 	escenas.push(newScene);
 	//escenas.top()->render();
 }
@@ -77,24 +76,38 @@ void GameManager::popScene() {
 
 void GameManager::createMenuScene()
 {
-	renderSystem->addCamera();
+	renderSystem->createScene(menu->getID());
+
 	//--------------------------- LIGHT -----------------------------
 	//Creacion de la luz en la escena
-	renderSystem->setAmbientLight(Ogre::ColourValue(0.2f, 0.0f, 0.2f, 1.0f));
 	//--------------------------- ENTIDADES ---------------------------
 	EntityC* _util = new EntityC("ninja");
 	pInput = _piF->Create();
 	pInput->Init(_util);
 
-	renderSystem->addOgreEntity("ninja");
+	//renderSystem->squareGeneration();
 
-	renderSystem->squareGeneration();
-
-	/*RenderComponent* Rcomp = _rF->Create();
+	RenderComponent* Rcomp = _rF->Create();
 	Rcomp->Init((_util)->_id,
 		renderSystem->addOgreEntity((_util)->_id));
 	(_util)->setNode(Rcomp->getOgreNode());
-	(_util)->AddComponent(Rcomp);*/
+	(_util)->AddComponent(Rcomp);
 
 	menu->push(_util);
+
+}
+
+void GameManager::createGameScene()
+{
+	renderSystem->createScene(gamePlay->getID());
+
+	EntityC* _util = new EntityC("penguin");
+
+	RenderComponent* Rcomp = _rF->Create();
+	Rcomp->Init((_util)->_id,
+		RenderSystem::getSingleton()->addOgreEntity((_util)->_id));
+	(_util)->setNode(Rcomp->getOgreNode());
+	(_util)->AddComponent(Rcomp);
+
+	gamePlay->push(_util);
 }
