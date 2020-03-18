@@ -2,7 +2,8 @@
 
 GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	ogreApp = oa;
-
+	//Inicializar physics
+	//py->initObjects();
 	// Input del gm para cerrar juego
 	input = _gmiF->Create();
 	input->Init(this);
@@ -19,7 +20,8 @@ GameManager::GameManager(OgreEasy::OgreApp * oa) {
 	EntityC* _util = new EntityC("ninja");
 	pInput = _piF->Create();
 	pInput->Init(_util);
-
+	//Enlazar el objeto con el motor de físicas
+	//py->basicMesh(_util->getNode());
 	menu->push(_util);
 
 	_util = new EntityC("penguin");
