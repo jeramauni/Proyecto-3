@@ -16,6 +16,7 @@ public:
 
 	// Metodo para coger el nodo
 	void setNode(Ogre::SceneNode* node);
+	Ogre::SceneNode* getNode();
 	void setActive(bool sw);
 	bool isActive();
 	// ID de la entidad

@@ -5,7 +5,9 @@
 #include <Ogre.h>
 
 #include "GameManager.h"
-
+//TEST-------------------TEST-----------DATAMANAGER
+#include<DataManager.h>
+//TEST-------------------TEST-----------DATAMANAGER
 
 #ifdef _DEBUG
 int main()
@@ -19,6 +21,10 @@ WinMain(HINSTANCE hinstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdSh
 		OgreEasy::OgreApp* OgreApp = new OgreEasy::OgreApp();
 		OgreApp->AnOgreApplication();
 		GameManager Game = GameManager(OgreApp);
+		//TEST-------------------TEST-----------DATAMANAGER
+		DataManager dM_;
+		dM_.Load("map.json", "entities.json");
+		//TEST-------------------TEST-----------DATAMANAGER
 		while (Game.update())
 		{
 			//Bucle del juego

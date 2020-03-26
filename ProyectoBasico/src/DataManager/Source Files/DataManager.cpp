@@ -1,5 +1,5 @@
 // DataManager.cpp : Define las funciones de la biblioteca estática.
-
+// BE AWARE! Los archivos de mapas y prefabs deben guardarse en el directorio resources del directorio exes del proyecto.
 #include "DataManager.h"
 #include <iostream>
 #include <fstream>
@@ -11,6 +11,7 @@ json DataManager::ReadJson(const std::string& file_name)
 	std::ifstream input;
 
 	input.open(file_name);
+
 	input >> j;
 	input.close();
 
@@ -51,4 +52,56 @@ void DataManager::Debug(json json_file)
 
 		std::cout << "----------------------" << '\n';
 	}
+}
+
+std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
+{
+	//Vector de entidades del mapa
+	std::vector<EntityC*> entities;
+	json map;		//Map data
+	json prefabs;	//Prefabs data
+
+	//Error fuse
+	bool fail = false;
+
+	std::cout << "Game Data loading initiated... \n";
+
+	//Lectura y carga del archivo mapa ----------------------------------------
+	try
+	{
+		map = ReadJson(map_file);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << "Couldn't load the map file: \"" << map_file << "\" \n" << e.what();
+		fail = true;
+	}
+	//-------------------------------------------------------------------------
+
+	if (!fail)
+	{		
+		//Lectura y carga del archivo de prefabs ----------------------------------
+		try
+		{
+			prefabs = ReadJson(prefabs_file);
+		}
+		catch (const std::exception& e)
+		{
+			std::cerr << "Couldn't load the prefabs file: \"" << prefabs_file << "\" \n" << e.what();
+			fail = true;
+		}
+		//-------------------------------------------------------------------------
+		if (!fail)
+		{
+			//----------------------------PLACEHOLDER----------------------------------
+			Debug(map);
+			Debug(prefabs);
+			//-------------------------------------------------------------------------
+			if (!fail)
+			{
+				std::cout << "Game Data loading finished successfully! \n";
+			}
+		}
+	}
+	return entities;
 }
