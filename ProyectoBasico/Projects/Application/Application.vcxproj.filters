@@ -66,9 +66,6 @@
     <ClInclude Include="Convenio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\EntityC.h">
-      <Filter>Header Files\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h">
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
@@ -96,20 +93,11 @@
     <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h">
       <Filter>Header Files\Entities\Components\Render</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\Component.h">
-      <Filter>Header Files\Entities\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\ComponentFactory.h">
-      <Filter>Header Files\Entities\Components</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\PlayerInputComponent.h">
       <Filter>Header Files\Entities\Components\Input</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
       <Filter>Header Files\Ogre</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\Application\Header Files\TransformComponent.h">
-      <Filter>Header Files\Entities\Components\Update</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp">
       <Filter>Source Files\Managers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\EntityC.cpp">
-      <Filter>Source Files\Entities</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\Application.cpp">
       <Filter>Source Files</Filter>
@@ -146,17 +131,11 @@
     <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp">
       <Filter>Source Files\Entities\Components\Input</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\Component.cpp">
-      <Filter>Source Files\Entities\Components</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp">
       <Filter>Source Files\Entities\Components\Render</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\Application\Source Files\PlayerInputComponent.cpp">
       <Filter>Source Files\Entities\Components\Input</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\Application\Source Files\TransformComponent.cpp">
-      <Filter>Source Files\Entities\Components\Update</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -16,7 +16,6 @@ void Scene::update()
 void Scene::render(OgreEasy::OgreApp * ogreApp)
 {
 	for (auto i = entidades.begin(); i != entidades.end(); ++i) {
-		//new RenderComponent()
 		RenderComponent* Rcomp = _rF->Create();
 		Rcomp->Init((*i)->_id, ogreApp->addEntityToScene((*i)->_id));
 		(*i)->setNode(Rcomp->getOgreNode());

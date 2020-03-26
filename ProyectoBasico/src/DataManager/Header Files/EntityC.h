@@ -10,7 +10,7 @@ public:
 	EntityC(Ogre::String id);
 	~EntityC();
 
-	// A�adir/quitar un componente
+	// Añadir/quitar un componente
 	void AddComponent(Component* c);
 	void DelComponent(Component* c);
 
