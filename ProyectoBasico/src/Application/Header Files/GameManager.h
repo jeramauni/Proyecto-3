@@ -10,6 +10,9 @@
 // Componentes
 #include "ComponentFactory.h"
 
+// Physics
+//#include <PhysicsEngine.h> //Error
+
 // Input
 #include <InputManager.h>
 
@@ -47,6 +50,9 @@ protected:
 
 	// OgreApp
 	OgreEasy::OgreApp* ogreApp;
+
+	//Physics
+	//PhysicsEngine* py;
 
 	//Input Mng
 	InputManager* mInputManager;

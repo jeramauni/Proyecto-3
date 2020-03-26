@@ -3,26 +3,27 @@
 
 #include "OISKeyboard.h"
 #include "Component.h"
-
+#include "GmInputListener.h"
 class GameManager;
 
-class GmInputComponent : public OIS::KeyListener, public Component {
+class GmInputComponent : public Component {
 public:
 	GmInputComponent();
 	~GmInputComponent();
 
 	void Init() {};
 	void Init(GameManager* gm);
-
+	void Q_Key();
+	void Esc_Key();
 	bool _state = false;
 	bool _playing = false;
-
+	GmInputListener* getListener() { return listener; }
 private:
-	bool keyPressed(const OIS::KeyEvent& ke);
-	bool keyReleased(const OIS::KeyEvent& ke);
+
 	
 	// Puntero al gameManager
 	GameManager* _gm;
+	GmInputListener* listener;
 };
 
 #endif

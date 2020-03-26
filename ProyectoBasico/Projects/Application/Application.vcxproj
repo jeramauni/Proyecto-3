@@ -22,9 +22,12 @@
     <ClInclude Include="..\..\src\Application\Header Files\EasyDefines.h" />
     <ClInclude Include="..\..\src\Application\Header Files\GameManager.h" />
     <ClInclude Include="..\..\src\Application\Header Files\GmInputComponent.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\GmInputListener.h" />
     <ClInclude Include="..\..\src\Application\Header Files\InitOgre.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\Input_OIS_Listener.h" />
     <ClInclude Include="..\..\src\Application\Header Files\OgreApp.h" />
     <ClInclude Include="..\..\src\Application\Header Files\PlayerInputComponent.h" />
+    <ClInclude Include="..\..\src\Application\Header Files\PlayerInputListener.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderComponent.h" />
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\Application\Header Files\Scene.h" />
@@ -37,9 +40,11 @@
     <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\GameManager.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\GmInputComponent.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\GmInputListener.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\InitOgre.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\OgreApp.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\PlayerInputComponent.cpp" />
+    <ClCompile Include="..\..\src\Application\Source Files\PlayerInputListener.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderComponent.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\RenderUtilities.cpp" />
     <ClCompile Include="..\..\src\Application\Source Files\Scene.cpp" />

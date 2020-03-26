@@ -99,6 +99,21 @@
     <ClInclude Include="..\..\src\Application\Header Files\RenderUtilities.h">
       <Filter>Header Files\Ogre</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="..\..\src\Application\Header Files\TransformComponent.h">
+      <Filter>Header Files\Entities\Components\Update</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\Input_OIS_Listener.h">
+      <Filter>Header Files\Entities\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\GmInputListener.h">
+      <Filter>Header Files\Entities\Components\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Application\Header Files\PlayerInputListener.h">
+      <Filter>Header Files\Entities\Components\Input</Filter>
+    </ClInclude>
+>>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Application\Source Files\EasyDefines.cpp">
@@ -137,5 +152,17 @@
     <ClCompile Include="..\..\src\Application\Source Files\PlayerInputComponent.cpp">
       <Filter>Source Files\Entities\Components\Input</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="..\..\src\Application\Source Files\TransformComponent.cpp">
+      <Filter>Source Files\Entities\Components\Update</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\GmInputListener.cpp">
+      <Filter>Source Files\Entities\Components\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Application\Source Files\PlayerInputListener.cpp">
+      <Filter>Source Files\Entities\Components\Input</Filter>
+    </ClCompile>
+>>>>>>> master
   </ItemGroup>
 </Project>

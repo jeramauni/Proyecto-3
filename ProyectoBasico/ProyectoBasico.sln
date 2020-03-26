@@ -14,6 +14,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RenderTest", "Projects\Rend
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Input", "Projects\Input\Input.vcxproj", "{61AA4DCE-12AB-4548-8E99-F735E434F970}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicsEngine", "Projects\PhysicsEngine\PhysicsEngine.vcxproj", "{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataManager", "Projects\DataManager\DataManager.vcxproj", "{3345353F-DB2D-4B25-8EC3-8EBAD897C493}"
 EndProject
 Global
@@ -56,6 +58,14 @@ Global
 		{61AA4DCE-12AB-4548-8E99-F735E434F970}.Release|x64.Build.0 = Release|x64
 		{61AA4DCE-12AB-4548-8E99-F735E434F970}.Release|x86.ActiveCfg = Release|Win32
 		{61AA4DCE-12AB-4548-8E99-F735E434F970}.Release|x86.Build.0 = Release|Win32
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Debug|x64.ActiveCfg = Debug|x64
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Debug|x64.Build.0 = Debug|x64
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Debug|x86.ActiveCfg = Debug|Win32
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Debug|x86.Build.0 = Debug|Win32
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Release|x64.ActiveCfg = Release|x64
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Release|x64.Build.0 = Release|x64
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Release|x86.ActiveCfg = Release|Win32
+		{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}.Release|x86.Build.0 = Release|Win32
 		{3345353F-DB2D-4B25-8EC3-8EBAD897C493}.Debug|x64.ActiveCfg = Debug|x64
 		{3345353F-DB2D-4B25-8EC3-8EBAD897C493}.Debug|x64.Build.0 = Debug|x64
 		{3345353F-DB2D-4B25-8EC3-8EBAD897C493}.Debug|x86.ActiveCfg = Debug|Win32

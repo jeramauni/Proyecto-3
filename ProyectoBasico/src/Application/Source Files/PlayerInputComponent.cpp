@@ -9,29 +9,10 @@ PlayerInputComponent::~PlayerInputComponent() {}
 
 void PlayerInputComponent::Init(EntityC* ent) {
 	_entity = ent;
+	_listener = new PlayerInputListener(this);
 }
 
-bool PlayerInputComponent::keyPressed(const OIS::KeyEvent& ke) {
-	switch (ke.key) {
-	case OIS::KC_W:
-		std::cout << "Moverse W!\n";
-		break;
-	case OIS::KC_A:
-		std::cout << "Moverse A!\n";
-		break;
-	case OIS::KC_S:
-		std::cout << "Moverse S!\n";
-		break;
-	case OIS::KC_D:
-		std::cout << "Moverse D!\n";
-		break;
-	default:
-		break;
-	}
-
-	return false;
-}
-
-bool PlayerInputComponent::keyReleased(const OIS::KeyEvent& ke) {
-	return false;
+PlayerInputListener* PlayerInputComponent::getListener()
+{
+	return _listener;
 }

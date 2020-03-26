@@ -12,6 +12,11 @@ void EntityC::setNode(Ogre::SceneNode* node) {
 	_position = _Node->getPosition();
 }
 
+Ogre::SceneNode* EntityC::getNode()
+{
+	return _Node;
+}
+
 void EntityC::setActive(bool sw)
 {
 	_active = sw;
