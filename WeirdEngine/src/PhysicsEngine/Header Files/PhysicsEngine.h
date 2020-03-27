@@ -22,6 +22,6 @@ public:
 	void initObjects();
 	void floor();
 	void basicMesh(Ogre::SceneNode* newNode);
-	bool frameStarted();
+	bool physicsLoop();
 };
 

@@ -1,4 +1,5 @@
 #include "PhysicsEngine.h"
+#include <iostream>
 
 void PhysicsEngine::initObjects()
 {
@@ -48,7 +49,7 @@ void PhysicsEngine::basicMesh(Ogre::SceneNode* newNode)
 	btScalar mass = 0.1f;
 	btVector3 localInertia(0, 0, 0);
 
-	startTransform.setOrigin(btVector3(0, 0, 0));
+	startTransform.setOrigin(btVector3(newNode->getPosition().x, newNode->getPosition().y, newNode->getPosition().z));
 	newRigidShape->calculateLocalInertia(mass, localInertia);
 
 	//actually contruvc the body and add it to the dynamics world
@@ -62,9 +63,10 @@ void PhysicsEngine::basicMesh(Ogre::SceneNode* newNode)
 	dynamicsWorld->addRigidBody(body);
 }
 
-bool PhysicsEngine::frameStarted()
+bool PhysicsEngine::physicsLoop()
 {
 	if (this != NULL) {
+		//PRIMERA FORMA
 		dynamicsWorld->stepSimulation(1.0f / 60.0f); //suppose you have 60 frames per second
 
 		for (int i = 0; i < collisionShapes.size(); i++) {
@@ -80,10 +82,40 @@ bool PhysicsEngine::frameStarted()
 					btQuaternion orientation = trans.getRotation();
 					Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
 					sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
+					std::cout << sceneNode->getPosition();
 					sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
 				}
 			}
 		}
+
+		//SEGUNDA FORMA
+			// Update the dynamic world
+	// This automatically performs collision detection and physics simulation
+	//// It also updates the world transform for all the active objects
+	//	dynamicsWorld->stepSimulation(1.0f / 60.0f);
+
+	//	// Link the data in Physics and Render engines
+	//	for (int i = 0; i < collisionShapes.size(); i++)
+	//	{
+	//		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
+	//		btRigidBody* rb = btRigidBody::upcast(obj);
+
+	//		if (rb && rb->getMotionState())
+	//		{
+	//			Ogre::SceneNode* n = static_cast<Ogre::SceneNode*>(rb->getUserPointer());
+	//			btVector3 rbPos = rb->getCenterOfMassPosition();
+	//			btQuaternion rbRot = rb->getOrientation();
+	//			Ogre::Vector3 nPos(rbPos.x(), rbPos.y(), rbPos.z());
+	//			Ogre::Quaternion nRot(rbRot.w(), rbRot.x(), rbRot.y(), rbRot.z());
+	//			n->setPosition(nPos);
+	//			std::cout << n->getPosition() << '\n';
+	//			n->setOrientation(nRot);
+	//		}
+	//	}
+
+		// Proccess all the collisions
+	//	detectCollisions();
+
 	}
 	return true;
 }

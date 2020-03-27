@@ -10,7 +10,7 @@
 #include "ComponentFactory.h"
 
 // Physics
-//#include <PhysicsEngine.h> //Error
+#include <PhysicsEngine.h> //Error
 
 // Input
 #include <InputManager.h>
@@ -53,7 +53,7 @@ protected:
 	RenderSystem* renderSystem = nullptr;
 
 	//Physics
-	//PhysicsEngine* py;
+	PhysicsEngine* py;
 
 	//Input Mng
 	InputManager* mInputManager;

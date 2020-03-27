@@ -105,9 +105,9 @@ void WindowRenderer::setupWindow()
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(sdlWin, &wmInfo);
 
-	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
+	//miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
-	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false, &miscParams);
+	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false);//, &miscParams);
 }
 
 void WindowRenderer::initializeResources()

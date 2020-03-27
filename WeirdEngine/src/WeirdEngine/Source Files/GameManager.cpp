@@ -4,7 +4,8 @@
 
 GameManager::GameManager() {
 	//Inicializar physics
-	//py->initObjects();
+	py = new PhysicsEngine();
+	py->initObjects();
 	// Input del gm para cerrar juego
 	input = _gmiF->Create();
 	input->Init(this);
@@ -54,6 +55,8 @@ bool GameManager::update() {
 	}
 	//La cosa es que los componentes le digan a su entidad lo que hacer.
 
+	py->physicsLoop();
+
 	//------Renderizado------
 	windowRenderer->renderFrame(0);
 
@@ -94,6 +97,8 @@ void GameManager::createMenuScene()
 		renderSystem->addOgreEntity((_util)->_id));
 	(_util)->setNode(Rcomp->getOgreNode());
 	(_util)->AddComponent(Rcomp);
+
+	py->basicMesh(_util->getNode());
 
 	menu->push(_util);
 }

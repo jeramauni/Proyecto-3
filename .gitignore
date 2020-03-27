@@ -95,6 +95,7 @@ StyleCopReport.xml
 *.svclog
 *.scc
 *.exe
+!premake4.exe
 *.lib
 *.exp
 
