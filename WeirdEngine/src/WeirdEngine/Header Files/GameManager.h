@@ -48,7 +48,7 @@ protected:
 	Scene* theEnd = new Scene();
 	//Son solo escenas de prueba
 
-
+	//Rendering
 	WindowRenderer* windowRenderer = nullptr;
 	RenderSystem* renderSystem = nullptr;
 
