@@ -18,6 +18,9 @@
     <ClInclude Include="..\..\src\RenderSystem\Header Files\EasyDefines.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\RenderSystem\Header Files\RenderSystem.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\RenderSystem\Header Files\WindowRenderer.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -26,7 +29,7 @@
     <ClCompile Include="..\..\src\RenderSystem\Source Files\EasyDefines.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\RenderSystem\Source Files\main.cpp">
+    <ClCompile Include="..\..\src\RenderSystem\Source Files\RenderSystem.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\RenderSystem\Source Files\WindowRenderer.cpp">

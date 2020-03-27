@@ -4,19 +4,19 @@
 echo ---------------------------------------------------
 echo Moviendo .dll a \Proyecto\exes
 echo ---------------------------------------------------
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\OgreMain_d.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\OgreMain.dll ..\ProyectoBasico\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\bin\debug\OgreMain_d.dll ..\WeirdEngine\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\bin\release\OgreMain.dll ..\WeirdEngine\exes
 ::RenderSystem
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\RenderSystem_GL_d.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\RenderSystem_GL.dll ..\ProyectoBasico\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\bin\debug\RenderSystem_GL_d.dll ..\WeirdEngine\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\bin\release\RenderSystem_GL.dll ..\WeirdEngine\exes
 ::Para cargar imagenes .jpg
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\debug\Codec_STBI_d.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.dll ..\ProyectoBasico\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\bin\debug\Codec_STBI_d.dll ..\WeirdEngine\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\bin\release\Codec_STBI.dll ..\WeirdEngine\exes
 ::OIS
-copy ..\ProyectoBasico\Dependencias\OIS\Build\debug\OIS_d.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\OIS\Build\release\OIS.dll ..\ProyectoBasico\exes
+copy ..\WeirdEngine\Dependencias\OIS\Build\debug\OIS_d.dll ..\WeirdEngine\exes
+copy ..\WeirdEngine\Dependencias\OIS\Build\release\OIS.dll ..\WeirdEngine\exes
 ::SDL
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\Win32\Debug\SDL2.dll ..\ProyectoBasico\exes
-copy ..\ProyectoBasico\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\Win32\Debug\SDL2.pdb ..\ProyectoBasico\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\x64\Debug\SDL2.dll ..\WeirdEngine\exes
+copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\x64\Debug\SDL2.pdb ..\WeirdEngine\exes
 
 PAUSE
