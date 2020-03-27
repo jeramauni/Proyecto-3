@@ -7,7 +7,8 @@
 #include <OgreRenderWindow.h>
 #include <OgreConfigFile.h>
 #include <OgreFileSystemLayer.h>
-//#include <OgreSceneManager.h>
+#include <OgreViewport.h>
+#include <OgreSceneManager.h>
 
 #include <SDL_video.h>
 #include <SDL_syswm.h>
@@ -17,6 +18,23 @@ WindowRenderer* WindowRenderer::instance_ = nullptr;
 WindowRenderer::WindowRenderer() : mRoot(0)
 {
 	initWindow();
+}
+
+WindowRenderer::~WindowRenderer()
+{
+	if (mWindow != nullptr) {
+		mRoot->destroyRenderTarget(mWindow);
+		mWindow = nullptr;
+	}
+
+	if (sdlWin != nullptr) {
+		SDL_DestroyWindow(sdlWin);
+		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+		sdlWin = nullptr;
+	}
+
+	delete mRoot;
+	mRoot = nullptr;
 }
 
 void WindowRenderer::initWindow()
@@ -85,8 +103,7 @@ void WindowRenderer::setupWindow()
 
 	sdlWin = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
 	SDL_SysWMinfo wmInfo;
-	SDL_VERSION(&wmInfo.version);
-	SDL_GetWindowWMInfo(sdlWin, &wmInfo);
+	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(sdlWin, &wmInfo);
 
 	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
@@ -100,15 +117,50 @@ void WindowRenderer::initializeResources()
 
 void WindowRenderer::setupResources()
 {
+	Ogre::ConfigFile cf;
+#if _DEBUG
+	cf.load("resources_d.cfg");
+#else
+	cf.load("resources.cfg");
+#endif
+
+	Ogre::String sec, type, arch;
+	Ogre::ConfigFile::SettingsBySection_::const_iterator seci;
+
+	//secciones
+	for (seci = cf.getSettingsBySection().begin(); seci != cf.getSettingsBySection().end(); ++seci)
+	{
+		sec = seci->first;
+		const Ogre::ConfigFile::SettingsMultiMap& settings = seci->second;
+		Ogre::ConfigFile::SettingsMultiMap::const_iterator i;
+
+		//elementos de cada seccion
+		for (i = settings.begin(); i != settings.end(); ++i)
+		{
+			type = i->first;
+			arch = Ogre::FileSystemLayer::resolveBundlePath(i->second);
+			Ogre::ResourceGroupManager::getSingleton().addResourceLocation(arch, type, sec);
+		}
+	}
+
+	sec = Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME;
+
+	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 }
+
 
 WindowRenderer* WindowRenderer::getSingleton()
 {
+	return instance_;
+}
+
+bool WindowRenderer::initSingleton()
+{
 	if (instance_ == nullptr) {
 		instance_ = new WindowRenderer();
+		return true;
 	}
-
-	return instance_;
+	return false;
 }
 
 void WindowRenderer::renderFrame(float t)
@@ -116,26 +168,41 @@ void WindowRenderer::renderFrame(float t)
 	mRoot->renderOneFrame();
 }
 
-bool WindowRenderer::handleEvents(const SDL_Event evt)
+bool WindowRenderer::handleEvents()
 {
 	bool handled = false;
+	SDL_Event e;
 
-	switch (evt.type)
+	while (SDL_PollEvent(&e))
 	{
-	case SDL_WINDOWEVENT:
-		if (evt.window.windowID == SDL_GetWindowID(sdlWin)) {
-			if (evt.window.event == SDL_WINDOWEVENT_RESIZED) {
-				Ogre::RenderWindow* win = mWindow;
-				win->windowMovedOrResized();
-				//windowResized(win);
-				handled = true;
+		switch (e.type)
+		{
+		case SDL_WINDOWEVENT:
+			if (e.window.windowID == SDL_GetWindowID(sdlWin)) {
+				if (e.window.event == SDL_WINDOWEVENT_RESIZED) {
+					Ogre::RenderWindow* win = mWindow;
+					win->windowMovedOrResized();
+					windowResized(win);
+					handled = true;
+				}
 			}
+
+			break;
+
+		case SDL_QUIT:
+			windowClosed(mWindow);
+			break;
+
+		default:
+			break;
 		}
-
-		break;
-
-	default:
-		break;
 	}
+
 	return handled;
+}
+
+void WindowRenderer::windowClosed()
+{
+	mWindow->destroy();
+	SDL_DestroyWindow(sdlWin);
 }

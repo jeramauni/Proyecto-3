@@ -23,13 +23,10 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\GameManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\GmInputComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\GmInputListener.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\InitOgre.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Input_OIS_Listener.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\OgreApp.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\PlayerInputComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\PlayerInputListener.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderComponent.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderUtilities.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\weirdTimer.h" />
@@ -40,13 +37,10 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\GameManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\GmInputComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\GmInputListener.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\InitOgre.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Input_OIS_Listener.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\OgreApp.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\PlayerInputComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\PlayerInputListener.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderComponent.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderUtilities.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\weirdTimer.cpp" />
@@ -116,8 +110,8 @@
     <OutDir>$(SolutionDir)exes</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderTest\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -129,8 +123,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderTest\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -155,7 +149,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -192,7 +186,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

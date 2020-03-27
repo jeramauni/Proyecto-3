@@ -21,13 +21,7 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\GmInputListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\InitOgre.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Input_OIS_Listener.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\OgreApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\PlayerInputComponent.h">
@@ -37,9 +31,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderUtilities.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h">
@@ -68,13 +59,7 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\GmInputListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\InitOgre.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Input_OIS_Listener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\OgreApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\PlayerInputComponent.cpp">
@@ -84,9 +69,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderUtilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp">

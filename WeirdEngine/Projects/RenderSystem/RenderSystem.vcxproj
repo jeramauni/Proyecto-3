@@ -20,11 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\RenderSystem\Header Files\EasyDefines.h" />
+    <ClInclude Include="..\..\src\RenderSystem\Header Files\RenderSystem.h" />
     <ClInclude Include="..\..\src\RenderSystem\Header Files\WindowRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\RenderSystem\Source Files\EasyDefines.cpp" />
-    <ClCompile Include="..\..\src\RenderSystem\Source Files\main.cpp" />
+    <ClCompile Include="..\..\src\RenderSystem\Source Files\RenderSystem.cpp" />
     <ClCompile Include="..\..\src\RenderSystem\Source Files\WindowRenderer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -115,6 +116,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OgreMain_d.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>OgreMain_d.lib;SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -167,6 +171,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>OgreMain.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>OgreMain.lib;SDL2main.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
