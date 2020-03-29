@@ -17,11 +17,13 @@ private:
 	btDiscreteDynamicsWorld* dynamicsWorld;
 	std::vector<btCollisionShape*> collisionShapes;
 	std::map<std::string, btRigidBody*> physicsAccessors;
+	//void detectCollisions();
 
 public:
 	void initObjects();
 	void floor();
 	void basicMesh(Ogre::SceneNode* newNode);
+	void planeMesh(Ogre::SceneNode* newNode);
 	bool physicsLoop();
 };
 

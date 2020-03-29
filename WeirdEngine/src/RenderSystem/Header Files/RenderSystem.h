@@ -96,7 +96,7 @@ public:
 	void setSkyBox(Ogre::String matName, Ogre::Real distance = 5000);
 
 	// Sets up a new rendering scene and starts rendering it
-	void addCamera(Ogre::SceneManager* s);
+	void addCamera(int zOrder);
 
 	// Creates a new scene and adds it to the scenes dictionary with the given key
 	void createScene(Ogre::String sceneName);

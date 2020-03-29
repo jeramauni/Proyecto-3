@@ -146,38 +146,38 @@ void RenderSystem::setSkyBox(Ogre::String matName, Ogre::Real distance)
 	mScnMgr->setSkyBox(true, matName, distance);
 }
 
-void RenderSystem::addCamera(Ogre::SceneManager* s)
+void RenderSystem::addCamera(int zOrder)
 {
 
 	float viewportWidth = 0.88f;
 	float viewportHeight = 0.88f;
 	float viewportLeft = (1.0f - viewportWidth) * 0.5f;
 	float viewportTop = (1.0f - viewportHeight) * 0.5f;
-	unsigned short mainViewportZOrder = 100;
+	//unsigned short mainViewportZOrder = 100;
 
 
 	Ogre::Camera* mCamera = nullptr;
-	mCamera = s->createCamera("MainCam");
+	mCamera = mScnMgr->createCamera("MainCam");
 
 	Ogre::SceneNode* mCamNode = nullptr;
-	mCamNode = s->getRootSceneNode()->createChildSceneNode("nCam");
+	mCamNode = mScnMgr->getRootSceneNode()->createChildSceneNode("nCam");
 	mCamNode->attachObject(mCamera);
 
 	mCamNode->setPosition(0, 0, 1);
 	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
-	//Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(s->getCamera("MainCam"),
-	//	mainViewportZOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
-	//camera = s->getCamera("MainCam");
+	Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(mScnMgr->getCamera("MainCam"),
+		zOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
+	camera = mScnMgr->getCamera("MainCam");
 
 
-	//vp->setAutoUpdated(true);
+	vp->setAutoUpdated(true);
 
 	// Color for the viewPort
-	//vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
+	vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
 
 	// I choose the visual ratio of the camera. To make it looks real, I want it the same as the viewport. 
-	//float ratio = float(vp->getActualWidth()) / float(vp->getActualHeight());
+	float ratio = float(vp->getActualWidth()) / float(vp->getActualHeight());
 	mCamera->setAutoAspectRatio(true);
 
 
@@ -191,12 +191,16 @@ void RenderSystem::addCamera(Ogre::SceneManager* s)
 void RenderSystem::createScene(Ogre::String sceneName)
 {
 	Ogre::SceneManager* s = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
-	scenes.erase(sceneName);
-	scenes.insert({ sceneName, s });
-	
 	mScnMgr = s;
+	scenes.erase(sceneName);
+	scenes.insert({ sceneName, mScnMgr });
+	
+	int zOrder;
 
-	addCamera(s);
+	if (sceneName == "gameplay") zOrder = 100;
+	else zOrder = 50;
+
+	addCamera(zOrder);
 
 	setAmbientLight(Ogre::ColourValue(0.2f, 0.0f, 0.2f, 1.0f));
 

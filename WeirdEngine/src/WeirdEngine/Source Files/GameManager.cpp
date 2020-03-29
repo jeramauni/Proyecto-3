@@ -73,8 +73,9 @@ void GameManager::pushScene(Scene* newScene) {
 }
 
 void GameManager::popScene() {
-	renderSystem->clearScene();
+	//renderSystem->clearScene();
 	escenas.pop();
+	renderSystem->setRenderingScene(escenas.top()->getID());
 	escenas.top()->render();
 }
 
@@ -100,7 +101,19 @@ void GameManager::createMenuScene()
 
 	py->basicMesh(_util->getNode());
 
+	EntityC* _plano = new EntityC("plano");
+	Rcomp->Init((_plano)->_id,
+		renderSystem->addOgreEntity((_plano)->_id));
+	(_plano)->setNode(Rcomp->getOgreNode());
+	(_plano)->AddComponent(Rcomp);
+
+	_plano->getNode()->setPosition(_plano->getNode()->getPosition().x, _plano->getNode()->getPosition().y - 200, _plano->getNode()->getPosition().z);
+	_plano->getNode()->pitch(Ogre::Radian(10));
+
+	py->planeMesh(_plano->getNode());
+
 	menu->push(_util);
+	menu->push(_plano);
 }
 
 void GameManager::createGameScene()
