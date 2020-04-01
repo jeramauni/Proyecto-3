@@ -30,6 +30,5 @@ private:
 	Ogre::Vector3 position;	
 	Ogre::Vector3 rotation;	
 	Ogre::Vector3 scale;
-
 };
 

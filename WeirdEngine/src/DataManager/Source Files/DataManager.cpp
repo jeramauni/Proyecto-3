@@ -3,6 +3,7 @@
 #include "DataManager.h"
 #include <iostream>
 #include <fstream>
+#include <ctime>
 
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
@@ -18,11 +19,35 @@ json DataManager::ReadJson(const std::string& file_name)
 	return j;
 }
 
-//Outputs on console a readable debug of a json file
-void DataManager::Debug(json json_file)
+std::vector<std::vector<std::string>> DataManager::ReadMap(const std::string& file_name)
 {
-	int file_type = 0;
-	if (json_file.begin().key() == "Map") { file_type = 1; }
+	std::vector<std::vector<std::string>> map;
+	std::ifstream input;
+	//AUX
+	std::string s;
+	input.open(file_name);
+
+	while (!input.eof())
+	{
+		//Si la siguiente linea se debe leer..
+		if (ReadNext(input))
+		{
+			getline(input, s);
+			map.push_back(GetWords(s));
+		}
+		else
+		{
+			getline(input, s);
+		}
+	}
+
+	input.close();
+	return map;
+}
+
+//Outputs on console a readable debug of a json file
+void DataManager::DebugJson(json json_file)
+{
 
 	std::cout << "Debugging " << json_file.begin().key() << " file... " << '\n' << '\n';
 	json_file = json_file.at(json_file.begin().key());
@@ -31,7 +56,6 @@ void DataManager::Debug(json json_file)
 	for (size_t i = 0; i < json_file.size(); i++)
 	{
 		std::cout << "----------------------" << '\n';
-		if (file_type) { std::cout << "id:     " << json_file[i].at("name") << '\n'; }	//Entity id (if map file)
 		std::cout << "Entity: " << json_file[i].at("id") << '\n';						//Entity type
 
 		std::cout << "Components :" << '\n';
@@ -45,7 +69,7 @@ void DataManager::Debug(json json_file)
 			//For each  component in components[]...
 			for (size_t j = 0; j < json_file[i].at("components").size(); j++)
 			{
-				if (!file_type) { std::cout << '*' << json_file[i].at("components")[j].at("id") << '*' << '\n'; }	//Component type
+				std::cout << '*' << json_file[i].at("components")[j].at("id") << '*' << '\n'; 	//Component type
 				std::cout << json_file[i].at("components")[j] << '\n';								//Component description
 			}
 		}
@@ -54,12 +78,88 @@ void DataManager::Debug(json json_file)
 	}
 }
 
+void DataManager::DebugMap(std::vector<std::vector<std::string>> map, bool output_debugTxt)
+{
+	std::ofstream output;
+	time_t now = time(0);
+	char dateTime[26];
+
+	if (output_debugTxt) {
+		output.open("debug_map.txt");
+		ctime_s(dateTime, sizeof(dateTime), &now);
+		output  << "Debugging at " << dateTime << '\n';
+	}
+
+	for (auto i = map.begin(); i != map.end(); i++)
+	{	
+		if (output_debugTxt)
+			output << "--------------------------------------" << '\n';
+		std::cout << "--------------------------------------" << '\n';
+
+		for (auto j = i->begin(); j != i->end(); j++)
+		{
+			if (output_debugTxt)
+				output << j->c_str() << '|';
+			std::cout << j->c_str() << '|';
+		}
+		if (output_debugTxt)
+			output << '\n' << "--------------------------------------" << '\n';
+		std::cout << '\n' << "--------------------------------------" << '\n';
+	}
+
+	if (output_debugTxt)
+		output.close();
+}
+
+bool DataManager::ReadNext(std::ifstream& input)
+{
+	char c;
+	c = input.peek();
+
+	//Si es un salto de línea -> no lee 
+	if (c == '\n')
+		return false;
+
+	//Si es un comentario -> no lee
+	else if (c == '/')
+	{
+		input.get();
+		c = input.peek();
+		if (c == '/') 
+			return false;		
+	}
+
+	//En cualquier otro caso si lee
+	return true;
+}
+
+std::vector<std::string> DataManager::GetWords(std::string& s)
+{
+	std::vector<std::string> words;
+	std::string word;
+	for (auto x : s)
+	{
+		if (x == ' ')
+		{
+			words.push_back(word);
+			word = "";
+		}
+		else
+		{
+			word = word + x;
+		}
+	}
+	words.push_back(word);
+	return words;
+}
+
+
 std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
 {
 	//Vector de entidades del mapa
 	std::vector<EntityC*> entities;
-	json map;		//Map data
-	json prefabs;	//Prefabs data
+	json prefabs;								//Prefabs data
+	std::vector<std::vector<std::string>> map;	//Map data
 
 	//Error fuse
 	bool fail = false;
@@ -69,7 +169,8 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 	//Lectura y carga del archivo mapa ----------------------------------------
 	try
 	{
-		map = ReadJson(map_file);
+		map = ReadMap(map_file);
+		DebugMap(map, true);
 	}
 	catch (const std::exception& e)
 	{
@@ -94,8 +195,7 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 		if (!fail)
 		{
 			//----------------------------PLACEHOLDER----------------------------------
-			Debug(map);
-			Debug(prefabs);
+			DebugJson(prefabs);
 			//-------------------------------------------------------------------------
 			if (!fail)
 			{

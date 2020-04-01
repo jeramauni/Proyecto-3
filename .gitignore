@@ -375,3 +375,5 @@ cmake-build-*/
 
 # Ignore vim files
 *.swp
+
+WeirdEngine/exes/debug_map.txt

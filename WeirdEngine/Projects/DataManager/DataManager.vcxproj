@@ -24,12 +24,14 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\DataManager.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\EntityC.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\json.hpp" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\TestComponent.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp" />
+    <ClCompile Include="..\..\src\DataManager\Source Files\TestComponent.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\TransformComponent.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
