@@ -1,17 +1,19 @@
 #pragma once
 #include "Component.h"
-#include "RenderComponent.h"
-#include "PlayerInputComponent.h"
+
+// Componentes de entidades
 #include "GmInputComponent.h"
+#include "RenderComponent.h"
+#include "InputComponent.h"
 #include "TransformComponent.h"
 
 #define CREATE_FACTORY(x) class x##Factory {public: x##Component* Create(){ return new x##Component();}}
 #define GENERATE_COMPONENT(x)  new x##Factory()->Create(); 
-#define DECLARE_COMPONENT(x) x##Component* x##Comp_ = GENERATE_COMPONENT(x);
+#define DECLARE_COMPONENT(x) x##Component* Comp_ = GENERATE_COMPONENT(x);
 
-CREATE_FACTORY(Render);
-CREATE_FACTORY(PlayerInput);
 CREATE_FACTORY(GmInput);
+CREATE_FACTORY(Render);
+CREATE_FACTORY(Input);
 CREATE_FACTORY(Transform);
 /////////////////////////Aclaraciones///////////////////////////////
 

@@ -112,7 +112,4 @@ public:
 
 	// Get the current SceneManager of the scene
 	Ogre::SceneManager* getCurrentSceneManager() { return mScnMgr; };
-
-	// aux 
-	void squareGeneration();
 };

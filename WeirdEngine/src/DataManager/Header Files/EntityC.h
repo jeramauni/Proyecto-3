@@ -13,10 +13,19 @@ public:
 	// Añadir/quitar un componente
 	void AddComponent(Component* c);
 	void DelComponent(Component* c);
+	Component* getComponent(Ogre::String s);
+
+	//Recorre los componentes de la entidad y actualizan los que sean necesarios.
+	void update();
 
 	// Metodo para coger el nodo
 	void setNode(Ogre::SceneNode* node);
 	Ogre::SceneNode* getNode();
+
+	//Da la posicion al nodo de Ogre
+	void setPos(Ogre::Vector3 p);
+
+	// Activar/Desactivar
 	void setActive(bool sw);
 	bool isActive();
 	// ID de la entidad
@@ -24,11 +33,7 @@ public:
 
 private:
 	// Vector de componentes
-	std::vector<Component*> _components;
-
-	// Vector3 para gestionar la posicion
-	Ogre::Vector3 _position;
-
+	std::map<Ogre::String, Component*> _components;
 
 	// Puntero al nodo de la escena
 	Ogre::SceneNode* _Node = nullptr;

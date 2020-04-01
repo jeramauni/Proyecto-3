@@ -4,6 +4,12 @@
 #include <iostream>
 #include <fstream>
 
+DataManager::DataManager() {
+	//rComp = _rF->Create();
+	//iComp = _iF->Create();
+	tComp = _tF->Create();
+}
+
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
 {
@@ -54,6 +60,66 @@ void DataManager::Debug(json json_file)
 	}
 }
 
+
+std::vector<EntityC*> DataManager::LoadSceneEntities(const std::string& entities_file) {
+	//Vector de entidades del mapa
+	std::vector<EntityC*> entities;
+	bool fail = false;
+	json ent;
+	//Lectura y carga del archivo mapa ----------------------------------------
+	try {
+		ent = ReadJson(entities_file);
+	}
+	catch (const std::exception & e) {
+		std::cerr << "Couldn't load the map file: \"" << entities_file << "\" \n" << e.what();
+		fail = true;
+	}
+
+	ent = ent.at(ent.begin().key());
+
+	//For each object in the file...
+	for (size_t i = 0; i < ent.size(); i++)
+	{
+		//Entity type
+		EntityC* e = new EntityC(ent[i].at("id"));
+
+		//For each element  in the object...
+		if (!ent[i].at("components").size())
+		{
+			std::cout << "\"None\"" << '\n';
+		}
+		else
+		{
+			//For each  component in components[]...
+			for (size_t j = 0; j < ent[i].at("components").size(); j++)
+			{
+				//Componente de input
+				if(ent[i].at("components")[j].at("id") == "input") {
+					//iComp->Init(e);
+				}
+				// Componente transform
+				else if (ent[i].at("components")[j].at("id") == "transform") {
+					std::vector<int> p = ent[i].at("components")[j].at("posicion");
+					Ogre::Vector3 pos = Ogre::Vector3(p[0], p[1], p[2]);
+					std::vector<int> es = ent[i].at("components")[j].at("escala");
+					Ogre::Vector3 esc = Ogre::Vector3(es[0], es[1], es[2]);
+					std::vector<int> r = ent[i].at("components")[j].at("rotacion");
+					Ogre::Vector3 rot = Ogre::Vector3(r[0], r[1], r[2]);
+					tComp->Init(pos, esc, rot);
+					e->AddComponent(tComp);
+				}
+				//std::cout << ent[i].at("components")[j] << '\n';								//Component description
+			}
+		}
+
+		std::cout << "----------------------" << '\n';
+		entities.push_back(e);
+	}
+	
+
+	return entities;
+}
+
 std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
 {
 	//Vector de entidades del mapa
@@ -67,35 +133,30 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 	std::cout << "Game Data loading initiated... \n";
 
 	//Lectura y carga del archivo mapa ----------------------------------------
-	try
-	{
+	try	{
 		map = ReadJson(map_file);
 	}
-	catch (const std::exception& e)
-	{
+	catch (const std::exception& e) {
 		std::cerr << "Couldn't load the map file: \"" << map_file << "\" \n" << e.what();
 		fail = true;
 	}
 	//-------------------------------------------------------------------------
 
-	if (!fail)
-	{		
+	if (!fail) {		
 		//Lectura y carga del archivo de prefabs ----------------------------------
-		try
-		{
+		try	{
 			prefabs = ReadJson(prefabs_file);
 		}
-		catch (const std::exception& e)
-		{
+		catch (const std::exception& e)	{
 			std::cerr << "Couldn't load the prefabs file: \"" << prefabs_file << "\" \n" << e.what();
 			fail = true;
 		}
 		//-------------------------------------------------------------------------
-		if (!fail)
-		{
+		if (!fail) {
 			//----------------------------PLACEHOLDER----------------------------------
 			Debug(map);
 			Debug(prefabs);
+
 			//-------------------------------------------------------------------------
 			if (!fail)
 			{

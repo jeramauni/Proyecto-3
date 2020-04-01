@@ -1,5 +1,9 @@
 #include "TransformComponent.h"
 
+TransformComponent::TransformComponent() {
+	name = "transform";
+}
+
 // INIT
 void TransformComponent::Init()
 {

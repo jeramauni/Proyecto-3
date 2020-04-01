@@ -3,17 +3,16 @@
 #include <iostream>
 //Podemos llamar a Ogre.h directamente e incluiriamos estas y mas
 #include <Ogre.h>
+#include <EasyDefines.h>
 
 #include "GameManager.h"
-//TEST-------------------TEST-----------DATAMANAGER
-#include<DataManager.h>
-//TEST-------------------TEST-----------DATAMANAGER
 
 int main()
 
 {
 	try {
 		GameManager Game = GameManager();
+		Game.Init();
 		while (Game.update())
 		{
 			//Bucle del juego

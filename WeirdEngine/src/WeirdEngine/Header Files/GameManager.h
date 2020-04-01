@@ -4,74 +4,73 @@
 #pragma once
 #include "Scene.h"
 #include "EntityC.h"
-#include "RenderUtilities.h"
-
-// Componentes
-#include "ComponentFactory.h"
-
-// Physics
-#include <PhysicsEngine.h> //Error
-
-// Input
-#include <InputManager.h>
 
 class WindowRenderer;
 class RenderSystem;
+class InputManager;
+class PhysicsEngine;
+class DataManager;
+
+class InputListener;
 
 class GameManager {
 public:
 	//Constructoras
 	GameManager();
-
 	~GameManager();
+
+	// Inicializa
+	void Init();
+
+	bool end = false;
+	void close() { end = true; };
+
+	// Crea la escena leyendo del archivo
+	void generateScene(std::string sceneName);
 
 	//Update
 	bool update();
 
-	//Metodos para la pila
-	void pushScene(Scene *newScene);
-	void popScene();
-
-	Scene* getGamePlay() { return gamePlay; }
-
 	// Para añadir listeners fuera de GameManager
 	InputManager* getInputManager() { return mInputManager; }
 
+	//Temp
+	Scene* getGamePlay() { return gamePlay; }
+
+	//Metodos para la pila
+	void pushScene(Scene* newScene);
+	void popScene();
 protected:
-	//Pila de escenas
-	std::stack<Scene*> escenas;
-	//Men・
-	Scene* menu = new Scene();
+
+	//-------------------------
+	//MainMenu
+	Scene* menu;
 	//Juego
-	Scene* gamePlay = new Scene();
+	Scene* gamePlay;
 	//FIN
-	Scene* theEnd = new Scene();
+	Scene* theEnd;
 	//Son solo escenas de prueba
+	//-----
+
+	void createMenuScene();
+	void createGameScene();
+private:
+	//Physics
+	PhysicsEngine* py;
+
+	//LectorDatos
+	DataManager* dM;
 
 	//Rendering
 	WindowRenderer* windowRenderer = nullptr;
 	RenderSystem* renderSystem = nullptr;
 
-	//Physics
-	PhysicsEngine* py;
-
 	//Input Mng
 	InputManager* mInputManager;
-	//Para que el gm controle el fin de juego
-	GmInputComponent* input;
-	PlayerInputComponent* pInput;
+	//Temp del input
+	InputListener* iList;
 
-
-	// Componentes que usa el gm
-	GmInputFactory* _gmiF;
-
-	//Esto iria en inicializacion de las entities
-	PlayerInputFactory* _piF;
-
-
-	RenderFactory* _rF;
-
-	void createMenuScene();
-	void createGameScene();
+	//Pila de escenas
+	std::stack<Scene*> escenas;
 };
 #endif

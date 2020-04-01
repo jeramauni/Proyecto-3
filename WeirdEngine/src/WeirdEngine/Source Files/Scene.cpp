@@ -1,40 +1,21 @@
 #include "Scene.h"
-#include "RenderUtilities.h"
-#include "InitOgre.h"
 
+#include <EntityC.h>
 
-Scene::Scene()
-{
-	_rF = new RenderFactory();
-}
-
-Scene::Scene(std::string id) :_id(id)
-{
-	_rF = new RenderFactory();
+Scene::Scene() {
 
 }
 
-void Scene::update()
-{
-	printf("UPDATE");
+Scene::Scene(std::string id) :_id(id) {
+
 }
 
-void Scene::render()
-{
-	/*for (auto i = entidades.begin(); i != entidades.end(); ++i) {
-		RenderComponent* Rcomp = _rF->Create();
-		Rcomp->Init((*i)->_id, ogreApp->addEntityToScene((*i)->_id));
-		(*i)->setNode(Rcomp->getOgreNode());
-		(*i)->AddComponent(Rcomp);
-	}*/
+void Scene::update() {
+	for (auto i = entidades.begin(); i != entidades.end(); ++i) {
+		static_cast<EntityC*>(*i)->update();
+	}
 }
 
-void Scene::push(EntityC * e)
-{
+void Scene::addEntity(EntityC * e) {
 	entidades.push_back(e);
-}
-
-void Scene::setID(std::string id)
-{
-	_id = id;
 }
