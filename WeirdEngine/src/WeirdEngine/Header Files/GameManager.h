@@ -34,26 +34,10 @@ public:
 	// Para añadir listeners fuera de GameManager
 	InputManager* getInputManager() { return mInputManager; }
 
-	//Temp
-	Scene* getGamePlay() { return gamePlay; }
-
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
-protected:
 
-	//-------------------------
-	//MainMenu
-	Scene* menu;
-	//Juego
-	Scene* gamePlay;
-	//FIN
-	Scene* theEnd;
-	//Son solo escenas de prueba
-	//-----
-
-	void createMenuScene();
-	void createGameScene();
 private:
 	//Physics
 	PhysicsEngine* py;
