@@ -4,6 +4,7 @@
 #include <OgreSceneNode.h>
 #include <vector>
 #include "Component.h"
+#include "Observer.h"
 
 class EntityC {
 public:
@@ -30,6 +31,8 @@ public:
 	bool isActive();
 	// ID de la entidad
 	Ogre::String _id;
+
+	void receive(const void* senderObj, const msg::Message& msg);
 
 private:
 	// Vector de componentes

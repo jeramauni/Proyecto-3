@@ -3,6 +3,7 @@
 #include <list>
 #include <stack>
 #include <string>
+#include "Messages_decl.h"
 
 class EntityC;
 
@@ -25,5 +26,7 @@ public:
 	void addEntity(EntityC* e);
 
 	std::string getID() { return _id; };
+
+	void send(const void* senderObj, const msg::Message& msg);
 };
 

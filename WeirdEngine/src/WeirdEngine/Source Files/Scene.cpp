@@ -1,4 +1,5 @@
 #include "Scene.h"
+#include "Messages_defs.h"
 
 #include <EntityC.h>
 
@@ -18,4 +19,15 @@ void Scene::update() {
 
 void Scene::addEntity(EntityC * e) {
 	entidades.push_back(e);
+}
+
+void Scene::send(const void* senderObj, const msg::Message& msg)
+{
+	for (EntityC* e : entidades) {
+		if (senderObj != e) {
+			// TODO: hgdsf
+			if (msg.destination_ == msg::Broadcast /*|| msg.destination_ == e.getID()*/)
+			e->receive(senderObj, msg);
+		}
+	}
 }

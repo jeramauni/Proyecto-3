@@ -4,6 +4,7 @@
 #pragma once
 #include "Scene.h"
 #include "EntityC.h"
+#include "Messages_decl.h"
 
 class WindowRenderer;
 class RenderSystem;
@@ -34,10 +35,28 @@ public:
 	// Para añadir listeners fuera de GameManager
 	InputManager* getInputManager() { return mInputManager; }
 
+	//Temp
+	Scene* getGamePlay() { return gamePlay; }
+
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
 
+	void send(const void* senderObj, const msg::Message& msg);
+protected:
+
+	//-------------------------
+	//MainMenu
+	Scene* menu;
+	//Juego
+	Scene* gamePlay;
+	//FIN
+	Scene* theEnd;
+	//Son solo escenas de prueba
+	//-----
+
+	void createMenuScene();
+	void createGameScene();
 private:
 	//Physics
 	PhysicsEngine* py;
