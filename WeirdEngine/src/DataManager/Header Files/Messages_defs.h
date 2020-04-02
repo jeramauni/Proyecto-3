@@ -27,7 +27,11 @@ namespace msg {
 
 	struct Prueba : public msg::Message{
 		Prueba(msg::ObjectId sender, msg::ObjectId destination) :
-			Message(msg::PRUEBA, sender, destination) {
-		}
+			Message(msg::PRUEBA, sender, destination) {}
+	};
+
+	struct Close_Win : public msg::Message {
+		Close_Win(msg::ObjectId sender, msg::ObjectId dest) :
+			Message(msg::CLOSE_WIN, sender, dest) {}
 	};
 };

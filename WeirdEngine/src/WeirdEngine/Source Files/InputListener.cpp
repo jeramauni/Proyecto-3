@@ -24,7 +24,8 @@ bool InputListener::keyPressed(const OIS::KeyEvent& ke) {
 		std::cout << "Moverse D!\n";
 		break;
 	case OIS::KC_ESCAPE:
-		_owner->close();
+		_owner->send(this, msg::Close_Win(msg::GameManager, msg::Broadcast));
+		break;
 	case OIS::KC_SPACE:
 		_owner->send(this, msg::Prueba(msg::GameManager, msg::Broadcast));
 		break;

@@ -54,8 +54,7 @@ bool EntityC::isActive()
 	return _active;
 }
 
-void EntityC::receive(const void* senderObj, const msg::Message& msg)
-{
+void EntityC::receive(const void* senderObj, const msg::Message& msg) {
 	if (msg.type_ == msg::PRUEBA)
 		std::cout << "vaya";
 }

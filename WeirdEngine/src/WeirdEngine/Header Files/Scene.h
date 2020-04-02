@@ -14,8 +14,6 @@ private:
 	//Lista de entidades
 	std::list<EntityC*> entidades;
 
-	//GmInputFactory* _rF;
-
 public:
 	Scene();
 	Scene(std::string id);

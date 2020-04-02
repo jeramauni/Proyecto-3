@@ -33,45 +33,29 @@ public:
 	bool update();
 
 	// Para añadir listeners fuera de GameManager
-	InputManager* getInputManager() { return mInputManager; }
-
-	//Temp
-	Scene* getGamePlay() { return gamePlay; }
+	void addListener(InputListener *iL, Ogre::String name);
 
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
 
 	void send(const void* senderObj, const msg::Message& msg);
-protected:
+	void receive(const void* senderObj, const msg::Message& msg);
 
-	//-------------------------
-	//MainMenu
-	Scene* menu;
-	//Juego
-	Scene* gamePlay;
-	//FIN
-	Scene* theEnd;
-	//Son solo escenas de prueba
-	//-----
-
-	void createMenuScene();
-	void createGameScene();
 private:
+	//-----------SISTEMAS------------
 	//Physics
 	PhysicsEngine* py;
-
 	//LectorDatos
 	DataManager* dM;
-
 	//Rendering
 	WindowRenderer* windowRenderer = nullptr;
 	RenderSystem* renderSystem = nullptr;
-
 	//Input Mng
 	InputManager* mInputManager;
 	//Temp del input
 	InputListener* iList;
+	//------------------------------------
 
 	//Pila de escenas
 	std::stack<Scene*> escenas;
