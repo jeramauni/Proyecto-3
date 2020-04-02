@@ -19,28 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\EasyDefines.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\GameManager.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\GmInputComponent.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\GmInputListener.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Input_OIS_Listener.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\PlayerInputComponent.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\PlayerInputListener.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderComponent.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\InputListener.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\weirdTimer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Application.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\EasyDefines.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\GameManager.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\GmInputComponent.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\GmInputListener.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Input_OIS_Listener.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\PlayerInputComponent.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\PlayerInputListener.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderComponent.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\InputListener.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\weirdTimer.cpp" />

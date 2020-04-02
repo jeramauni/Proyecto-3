@@ -5,8 +5,7 @@
 */
 
 
-class TimeManager
-{
+class TimeManager {
 public:
 
 	void StartTime();

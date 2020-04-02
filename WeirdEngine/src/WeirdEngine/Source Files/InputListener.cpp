@@ -1,14 +1,13 @@
-#include "PlayerInputListener.h"
+#include "InputListener.h"
+#include "GameManager.h"
 
 #include <iostream>
 
-PlayerInputListener::PlayerInputListener(PlayerInputComponent* ow)
-{
+InputListener::InputListener(GameManager* ow) {
 	_owner = ow;
 }
 
-bool PlayerInputListener::keyPressed(const OIS::KeyEvent& ke)
-{
+bool InputListener::keyPressed(const OIS::KeyEvent& ke) {
 	switch (ke.key) {
 	case OIS::KC_W:
 		std::cout << "Moverse W!\n";
@@ -22,6 +21,8 @@ bool PlayerInputListener::keyPressed(const OIS::KeyEvent& ke)
 	case OIS::KC_D:
 		std::cout << "Moverse D!\n";
 		break;
+	case OIS::KC_ESCAPE:
+		_owner->close();
 	default:
 		break;
 	}
@@ -29,7 +30,6 @@ bool PlayerInputListener::keyPressed(const OIS::KeyEvent& ke)
 	return true;
 }
 
-bool PlayerInputListener::keyReleased(const OIS::KeyEvent& ke)
-{
+bool InputListener::keyReleased(const OIS::KeyEvent& ke) {
 	return false;
 }

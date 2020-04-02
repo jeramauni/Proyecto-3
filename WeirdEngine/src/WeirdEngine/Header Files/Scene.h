@@ -1,31 +1,29 @@
 #pragma once
-#include "OgreApp.h"
-#include <ComponentFactory.h>
+//#include <ComponentFactory.h>
 #include <list>
 #include <stack>
 #include <string>
-#include <EntityC.h>
 
-class Scene
-{
+class EntityC;
+
+class Scene {
 private:
 	std::string _id;
+
+	//Lista de entidades
 	std::list<EntityC*> entidades;
-	std::list<EntityC*> _updates;
-	//Por ahora lo hará el update
-	//std::list<EntityC*> _handleEvents; 
-	std::list<EntityC*> _render;
-	RenderFactory* _rF;
+
+	//GmInputFactory* _rF;
 
 public:
 	Scene();
 	Scene(std::string id);
 
+	//Actualiza las entidades para que llamen a sus componentes
 	void update();
-	void render();
-	void push(EntityC* e);
+	//Añade una entidad a la escena
+	void addEntity(EntityC* e);
 
 	std::string getID() { return _id; };
-	void setID(std::string id);
 };
 

@@ -5,7 +5,7 @@
 class TransformComponent : public Component
 {
 public:
-	TransformComponent() {};
+	TransformComponent();
 	~TransformComponent() {};
 	//Default Init. Sets all values to 0
 	void Init();
@@ -14,7 +14,7 @@ public:
 	//Inits with specified Ogre::Vector3 components values
 	void Init(float positionx_, float positiony_, float positionz_, float rotationx_, float rotationy_, float rotationz_, float scalex_, float scaley_, float scalez_);
 
-	//Getters and Setters
+	//Getters & Setters
 	Ogre::Vector3 GetPosition();
 	Ogre::Vector3 GetRotation();
 	Ogre::Vector3 GetScale();

@@ -5,8 +5,10 @@
 #include <vector>
 using json = nlohmann::json;
 
-class DataManager 
-{
+// Componentes
+#include "ComponentFactory.h"
+
+class DataManager {
 public:
 
 	std::vector<EntityC*> Load(const std::string& map_file, const std::string& prefabs_file);

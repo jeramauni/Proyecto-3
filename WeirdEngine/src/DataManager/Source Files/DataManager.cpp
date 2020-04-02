@@ -5,6 +5,12 @@
 #include <fstream>
 #include <ctime>
 
+DataManager::DataManager() {
+	//rComp = _rF->Create();
+	//iComp = _iF->Create();
+	tComp = _tF->Create();
+}
+
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
 {
@@ -172,28 +178,23 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 		map = ReadMap(map_file);
 		DebugMap(map, true);
 	}
-	catch (const std::exception& e)
-	{
+	catch (const std::exception& e) {
 		std::cerr << "Couldn't load the map file: \"" << map_file << "\" \n" << e.what();
 		fail = true;
 	}
 	//-------------------------------------------------------------------------
 
-	if (!fail)
-	{		
+	if (!fail) {		
 		//Lectura y carga del archivo de prefabs ----------------------------------
-		try
-		{
+		try	{
 			prefabs = ReadJson(prefabs_file);
 		}
-		catch (const std::exception& e)
-		{
+		catch (const std::exception& e)	{
 			std::cerr << "Couldn't load the prefabs file: \"" << prefabs_file << "\" \n" << e.what();
 			fail = true;
 		}
 		//-------------------------------------------------------------------------
-		if (!fail)
-		{
+		if (!fail) {
 			//----------------------------PLACEHOLDER----------------------------------
 			DebugJson(prefabs);
 			//-------------------------------------------------------------------------

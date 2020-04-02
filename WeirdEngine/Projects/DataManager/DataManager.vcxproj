@@ -23,6 +23,10 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\ComponentFactory.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\DataManager.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\EntityC.h" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\GmInputComponent.h" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\GmInputListener.h" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\InputComponent.h" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\Input_OIS_Listener.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\json.hpp" />
     <ClInclude Include="..\..\src\DataManager\Header Files\TestComponent.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\TransformComponent.h" />
@@ -114,7 +118,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\OIS\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -164,7 +168,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\OIS\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
