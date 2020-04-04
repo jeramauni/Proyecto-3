@@ -34,6 +34,6 @@ Debajo de la linea 6, usar la funcion CREATE_FACTORY(##x) donde ##x es el prefij
 2) Declarar la nueva factoria
 3) Incluir ComponentFactory.h donde se requiera
 
-Cuando estÈ hecho el paso de datos para crear entidades del todo, realizar una MACRO para llamar a x constructora recibiendo solo el prefijo ##x
+Cuando estÅEhecho el paso de datos para crear entidades del todo, realizar una MACRO para llamar a x constructora recibiendo solo el prefijo ##x
 
 */

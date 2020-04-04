@@ -1,5 +1,6 @@
 #include "EntityC.h"
 #include "TransformComponent.h"
+#include "Messages_defs.h"
 #include <iostream>
 
 EntityC::EntityC(Ogre::String id) : _id(id) {
@@ -51,4 +52,9 @@ void EntityC::setActive(bool sw)
 bool EntityC::isActive()
 {
 	return _active;
+}
+
+void EntityC::receive(const void* senderObj, const msg::Message& msg) {
+	if (msg.type_ == msg::PRUEBA)
+		std::cout << "vaya";
 }

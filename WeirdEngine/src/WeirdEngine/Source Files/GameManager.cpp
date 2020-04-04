@@ -1,6 +1,6 @@
 #include "GameManager.h"
 
-// Rendering
+// Renderizado
 #include <WindowRenderer.h>
 #include <RenderSystem.h>
 // PhysicsManager
@@ -11,8 +11,10 @@
 // DataManager
 #include<DataManager.h>
 
-GameManager::GameManager() {
-}
+//Mensajes
+#include "Messages_defs.h"
+
+GameManager::GameManager() {}
 
 GameManager::~GameManager() {
 	while (!escenas.empty()) {
@@ -41,27 +43,26 @@ void GameManager::Init() {
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(windowRenderer->getWin());
-	
+
 	//-------------------------- MATERIALS -------------------------------
 	//Carga de los materiales que usaremos
 	renderSystem->materialGeneration(" Mat");
 
 
-	// A PARTIR DE AQUI SE HARIA EN EL CPP DEL JUEGO
-	////-----*INPUT DE CADA JUEGO*-------------
-	// Este input se crearia en cada juego con las teclas especificas que se van a usar en el juego, se usa para que
+	//COSAS DE CADA JUEGO
+	////-----*INPUT*-------------
+	// Este input se crearia en cada juego con las teclas especificas que se van a usar en el juego, y se usaria para que
 	// cuando el input detecta entrada de una de las teclas, el gm mande un mensaje broadcast a todas las entidades 
-	// de la escena, afectadas por ese mensaje, tambien se lo mandara el mensaje a si mismo (al gm) para actuar en funcion
+	// de la escena, afectadas por ese emnsaje, tambien se lo mandara el mensaje a si mismo (al gm) para actuar en funcion
 	// al mensaje si tiene que hacerlo
 	iList = new InputListener(this);
-	mInputManager->addKeyListener(iList, "JuegosKeys");
-
+	this->addListener(iList, "JuegosKeys");
 
 	/// Esto va en otro ladu
 	generateScene("nivel1.json");
 }
 
-// Genera la escena leyendo de archivos
+// Genera la escena leyendo del archivo de datos
 void GameManager::generateScene(std::string sceneName) {
 	//Creamos la escena
 	Scene *mScene = new Scene(sceneName);
@@ -94,11 +95,6 @@ void GameManager::generateScene(std::string sceneName) {
 bool GameManager::update() {
 	//------Input------
 	mInputManager->capture();
-	if (end) {
-		windowRenderer->windowClosed();
-		return false;
-	}
-	//La cosa es que los componentes le digan a su entidad lo que hacer.
 
 	// Fisicas
 	py->physicsLoop();
@@ -112,7 +108,17 @@ bool GameManager::update() {
 	//------Ventana------
 	windowRenderer->handleEvents();
 
+	//Cerrar ventana
+	if (end) {
+		windowRenderer->windowClosed();
+		return false;
+	}
+
 	return true;
+}
+
+void GameManager::addListener(InputListener *iL, Ogre::String name) {
+	mInputManager->addKeyListener(iL, name);
 }
 
 void GameManager::pushScene(Scene* newScene) {
@@ -123,4 +129,20 @@ void GameManager::pushScene(Scene* newScene) {
 void GameManager::popScene() {
 	escenas.pop();
 	renderSystem->setRenderingScene(escenas.top()->getID());
+}
+
+void GameManager::send(const void* senderObj, const msg::Message& msg) {
+	escenas.top()->send(senderObj, msg);
+	receive(senderObj, msg);
+}
+
+void GameManager::receive(const void* senderObj, const msg::Message& msg) {
+	switch (msg.type_)
+	{
+	case msg::CLOSE_WIN:
+		end = true;
+		break;
+	default:
+		break;
+	}
 }

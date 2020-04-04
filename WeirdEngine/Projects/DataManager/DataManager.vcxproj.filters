@@ -54,6 +54,15 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\Input_OIS_Listener.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\Observer.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\Messages_decl.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\Messages_defs.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\src\DataManager\Header Files\TestComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -85,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\Input_OIS_Listener.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\TestComponent.cpp">
       <Filter>Archivos de origen</Filter>

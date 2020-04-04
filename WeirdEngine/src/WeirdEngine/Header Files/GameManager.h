@@ -4,6 +4,7 @@
 #pragma once
 #include "Scene.h"
 #include "EntityC.h"
+#include "Messages_decl.h"
 
 class WindowRenderer;
 class RenderSystem;
@@ -32,27 +33,29 @@ public:
 	bool update();
 
 	// Para añadir listeners fuera de GameManager
-	InputManager* getInputManager() { return mInputManager; }
+	void addListener(InputListener *iL, Ogre::String name);
 
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
 
+	void send(const void* senderObj, const msg::Message& msg);
+	void receive(const void* senderObj, const msg::Message& msg);
+
 private:
+	//-----------SISTEMAS------------
 	//Physics
 	PhysicsEngine* py;
-
 	//LectorDatos
 	DataManager* dM;
-
 	//Rendering
 	WindowRenderer* windowRenderer = nullptr;
 	RenderSystem* renderSystem = nullptr;
-
 	//Input Mng
 	InputManager* mInputManager;
 	//Temp del input
 	InputListener* iList;
+	//------------------------------------
 
 	//Pila de escenas
 	std::stack<Scene*> escenas;
