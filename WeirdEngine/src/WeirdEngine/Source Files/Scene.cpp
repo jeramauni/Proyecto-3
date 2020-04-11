@@ -25,8 +25,7 @@ void Scene::send(const void* senderObj, const msg::Message& msg)
 {
 	for (EntityC* e : entidades) {
 		if (senderObj != e) {
-			// TODO: hgdsf
-			if (msg.destination_ == msg::Broadcast /*|| msg.destination_ == e.getID()*/)
+			if (msg.destination_ == msg::Broadcast || msg.destination_ == e->getId())
 			e->receive(senderObj, msg);
 		}
 	}

@@ -13,3 +13,8 @@ msg::ObjectId Observer::getId() {
 void Observer::setId(msg::ObjectId id) {
 	id_ = id;
 }
+
+bool Observer::receive(const void* senderObj, const msg::Message& msg)
+{
+	return false;
+}

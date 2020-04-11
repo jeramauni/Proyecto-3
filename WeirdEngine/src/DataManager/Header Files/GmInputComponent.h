@@ -18,6 +18,7 @@ public:
 	bool _state = false;
 	bool _playing = false;
 	GmInputListener* getListener() { return listener; }
+
 private:
 	// Puntero al gameManager
 	GameManager* _gm;
