@@ -6,7 +6,7 @@
 #include "Component.h"
 #include "Observer.h"
 
-class EntityC {
+class EntityC : public Observer {
 public:
 	EntityC(Ogre::String id);
 	~EntityC();
@@ -32,7 +32,8 @@ public:
 	// ID de la entidad
 	Ogre::String _id;
 
-	void receive(const void* senderObj, const msg::Message& msg);
+	bool receive(const void* senderObj, const msg::Message& msg);
+	void send(const void* senderObj, const msg::Message& msg);
 
 private:
 	// Vector de componentes

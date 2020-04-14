@@ -54,7 +54,19 @@ bool EntityC::isActive()
 	return _active;
 }
 
-void EntityC::receive(const void* senderObj, const msg::Message& msg) {
-	if (msg.type_ == msg::PRUEBA)
-		std::cout << "vaya";
+bool EntityC::receive(const void* senderObj, const msg::Message& msg) {
+	if (msg.type_ == msg::PRUEBA) {
+		send(senderObj, msg);
+		return true;
+	}
+	return false;
+}
+
+void EntityC::send(const void* senderObj, const msg::Message& msg)
+{
+	for (std::map <Ogre::String, Component*>::iterator it = _components.begin(); it != _components.end(); ++it) {
+		if (msg.destination_ == msg::Broadcast || msg.destination_ == (*it).second->getId()) {
+			(*it).second->receive(senderObj, msg);
+		}
+	}
 }
