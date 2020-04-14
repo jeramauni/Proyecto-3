@@ -5,7 +5,7 @@ echo ---------------------------------------------------
 echo Add CMake al proyecto
 echo Darle la opcion de directorio "D"
 echo ---------------------------------------------------
-xcopy ..\cmake-3.17.0-rc1-win64-x64 ..\ProyectoBasico\Dependencias\cmake /E
+xcopy ..\cmake-3.17.0-rc1-win64-x64 ..\WeirdEngine\Dependencias\cmake /E
 
 echo ---------------------------------------------------
 echo Creando la carpetas "Build" en Ogre y Ois

@@ -3,7 +3,10 @@
 #include "Messages_decl.h"
 #include "Observer.h"
 
-#define CREATE_FACTORY(x) class x##Factory {public: x##Component* Create(){ return new x##Component();}}
+//Factorias
+#include <unordered_map>
+//Vars Globales
+extern std::unordered_map<std::string, CompFactory*> factories;
 
 class Component : public Observer {
 public:

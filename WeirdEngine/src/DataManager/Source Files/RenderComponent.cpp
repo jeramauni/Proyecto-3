@@ -1,5 +1,6 @@
 #include "RenderComponent.h"
-
+#include "ComponentFactory.h"
+DEFINE_FACTORY(Render);
 RenderComponent::RenderComponent() {
 	
 }
