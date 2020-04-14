@@ -4,12 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
-
-DataManager::DataManager() {
-	//rComp = _rF->Create();
-	//iComp = _iF->Create();
-	tComp = _tF->Create();
-}
+#include <map>
 
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
@@ -81,6 +76,31 @@ void DataManager::DebugJson(json json_file)
 		}
 
 		std::cout << "----------------------" << '\n';
+	}
+}
+
+EntityC* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_entities)
+{
+	prefabs = prefabs.at(prefabs.begin().key());
+	uint32_t i = 0;
+	//Busqueda de id en el archivo de prefabs
+	while ( i < prefabs.size() && prefabs[i].at("id") != id)
+	{
+		i++;
+	}
+	//Si no lo encuentra lo notifica y devuelve nullptr
+	if (i >= prefabs.size())
+	{
+		std::cerr << "Entity " << id << " not found on prefabs file!" << '\n';
+		return nullptr;
+	}
+	//Si lo encuentra crea y devuelve la entidad 
+	else
+	{
+		std::string entity_name = id + "_" + std::to_string(n_entities);
+		EntityC* e = new EntityC(entity_name);
+		std::cout << "Entity " << entity_name << " successfully created !" << '\n';
+		return e;
 	}
 }
 
@@ -159,6 +179,82 @@ std::vector<std::string> DataManager::GetWords(std::string& s)
 	return words;
 }
 
+std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs)
+{
+	std::vector<EntityC*> entities;
+	int n = std::stoi(map[0][0]);	//Number of entities on legend
+	int aux = n + 1;				//row aux variable
+	int ct = 0;						//row counter 
+	std::map<int, std::string> legend;	//Map of entitie types on map (id on map - name on prefabs file)
+	char xyz[3];					//Axis representation on map (Columns x Rows / Between layers) (x-y-z)
+	int r, c;						//Mapsize (Row - columns)
+	float s;						//Size between tiles
+	//Entity processing
+	float slyr;						//Size between layers
+	int id = -1;					//id of entity to process
+
+	//Legend
+	for (size_t i = 1; i <= n; i++)
+	{
+		legend[std::stoi(map[i][0])] = map[i][1];
+	}
+	//Axis representation
+	for (size_t i = 0; i < 3; i++)
+		xyz[i] = map[aux][i].back(); aux++;
+	//Size between tiles
+	s = std::stof(map[aux][0]);	aux++;
+	//Mapsize (columns - rows)
+	c = std::stoi(map[aux][0]);
+	r = std::stoi(map[aux][1]); aux++;
+
+	//Layers
+	for (auto row = map.begin() + aux++; row != map.end(); row++)
+	{
+		ct++;
+		for (auto column = row->begin(); column != row->end(); column++)
+		{	 
+			if (ct > r)	//If we are at the row between layers we get the distance between layers
+			{
+				slyr = std::stof(*column);
+				ct = 0;
+			}
+			else		//If not we get the next id..
+			{
+				id = std::stoi(*column);
+				if (id != -1)
+				{					
+					//..and create the proper entity
+					entities.push_back(CreateEntity(legend[id], prefabs, entities.size()));
+				}
+			}
+		}
+		std::cout << '\n';
+	}
+
+	//DEBUG----------------------------------
+	std::cout << "---------------------------------------ProcessMap---------------------------------------" << '\n';
+	std::cout << "n leyenda: " << n << '\n';
+	//Legend
+	for (auto it = legend.begin(); it != legend.end(); it++)
+	{
+		std::cout << "id: " << it->first << " - " << it->second << '\n'; 
+	}
+	//Axis representation
+	std::cout << "Axis representation: ";
+	for (size_t i = 0; i < 3; i++)
+		std::cout << xyz[i];
+	std::cout << '\n';
+	//Size between tiles
+	std::cout << "size between tiles: " << s << '\n';
+	//Mapsize 
+	std::cout << "Mapsize (CxR): " << c << 'x' << r << '\n';
+
+	std::cout << "---------------------------------------ProcessMap---------------------------------------" << '\n';
+	//DEBUG----------------------------------
+
+	return entities;
+}
+
 
 std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
 {
@@ -176,7 +272,6 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 	try
 	{
 		map = ReadMap(map_file);
-		DebugMap(map, true);
 	}
 	catch (const std::exception& e) {
 		std::cerr << "Couldn't load the map file: \"" << map_file << "\" \n" << e.what();
@@ -195,8 +290,9 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 		}
 		//-------------------------------------------------------------------------
 		if (!fail) {
-			//----------------------------PLACEHOLDER----------------------------------
-			DebugJson(prefabs);
+			//----------------------------MAIN-----------------------------------------
+			DebugMap(map, false);
+			entities = ProcessMap(map, prefabs);
 			//-------------------------------------------------------------------------
 			if (!fail)
 			{

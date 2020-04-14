@@ -69,7 +69,7 @@ void GameManager::generateScene(std::string sceneName) {
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
-	std::vector<EntityC*> ent = dM->LoadSceneEntities(sceneName);
+	std::vector<EntityC*> ent = dM->Load("map.txt", "entities.json");
 
 	for (int i = 0; i < ent.size(); i++) { //Muy feo esto
 		// ToDo:: 

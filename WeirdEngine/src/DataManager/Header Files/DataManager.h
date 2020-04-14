@@ -22,4 +22,6 @@ private:
 	void DebugMap(std::vector<std::vector<std::string>> map, bool output_debugTxt);
 	bool ReadNext(std::ifstream& input);
 	std::vector<std::string> GetWords(std::string& s);
+	std::vector<EntityC*> ProcessMap(std::vector<std::vector<std::string>> map, json prefabs);
+	EntityC* CreateEntity(std::string id, json prefabs, uint32_t n_entities);
 };
