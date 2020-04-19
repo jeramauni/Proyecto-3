@@ -75,9 +75,9 @@ void GameManager::generateScene(std::string sceneName) {
 		// ToDo:: 
 		// Mirar los componentes de las entidades y añadimos 
 		// con el transform generamos el nodo
-		ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->_id));
+		/*ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->_id));
 		Component *tcomp = ent[i]->getComponent("transform");
-		ent[i]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());
+		ent[i]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());*/
 		// si tiene fisicos a las fisicas
 		//
 		// si tiene input al controlador de input
@@ -86,7 +86,8 @@ void GameManager::generateScene(std::string sceneName) {
 		//
 
 		// Añadimos la entidad a la escena
-		mScene->addEntity(ent[i]);
+		
+		///mScene->addEntity(ent[i]);
 	}
 
 	pushScene(mScene);

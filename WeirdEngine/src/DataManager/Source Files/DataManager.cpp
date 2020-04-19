@@ -1,22 +1,26 @@
 // DataManager.cpp : Define las funciones de la biblioteca estática.
 // BE AWARE! Los archivos de mapas y prefabs deben guardarse en el directorio resources del directorio exes del proyecto.
 #include "DataManager.h"
+
+#include "ComponentFactory.h"
 #include <iostream>
 #include <fstream>
 #include <ctime>
 #include <map>
 
+extern FactoriesGestor* aux = FactoriesGestor::getInstance();
+
+CREATE_REGISTER(Render);
+CREATE_REGISTER(Transform);
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
 {
 	json j;
 	std::ifstream input;
-
 	input.open(file_name);
-
 	input >> j;
-	input.close();
 
+	input.close();
 	return j;
 }
 
@@ -97,8 +101,16 @@ EntityC* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_enti
 	//Si lo encuentra crea y devuelve la entidad 
 	else
 	{
+		//Hay que hacer la lectura de id's de componentes
 		std::string entity_name = id + "_" + std::to_string(n_entities);
 		EntityC* e = new EntityC(entity_name);
+		///TEST///
+
+		//std::string st = "Transform";
+		//TransformComponent* tc =dynamic_cast<TransformComponent*> (FactoriesGestor::getInstance()->getFactories().at(st)->Create());
+		//tc->Init();
+		//e->AddComponent(tc);
+
 		std::cout << "Entity " << entity_name << " successfully created !" << '\n';
 		return e;
 	}

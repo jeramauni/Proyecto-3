@@ -24,6 +24,7 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\C_Factory.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\DataManager.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\EntityC.h" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\FactoriesGestor.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\FactoryRegister.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\GmInputComponent.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\GmInputListener.h" />
@@ -41,6 +42,7 @@
     <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp" />
+    <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoryRegister.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\GmInputComponent.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\GmInputListener.cpp" />

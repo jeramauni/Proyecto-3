@@ -66,6 +66,15 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\TestComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\C_Factory.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\FactoryRegister.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\FactoriesGestor.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp">
@@ -99,6 +108,12 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\TestComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\FactoryRegister.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
