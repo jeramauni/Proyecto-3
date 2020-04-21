@@ -8,8 +8,6 @@ class InputListener : public Input_OIS_Listener {
 public:
 	InputListener(GameManager* ow);
 	~InputListener() {};
-	bool _state = false;
-	bool _playing = false;
 
 private:
 	virtual bool keyPressed(const OIS::KeyEvent& ke);

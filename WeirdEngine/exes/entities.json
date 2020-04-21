@@ -65,6 +65,18 @@
           "timeIncreased": 0.1
         }
       ]
+    },
+    
+    {
+      "id": "ninja",
+      "components": [
+        {
+          "id": "transform",
+          "posicion": [20, 20, -600],
+          "escala": [ 1, 1, 1 ],
+          "rotacion": [ 0, 0, 0 ]
+        }
+      ]
     }
   ]
 }

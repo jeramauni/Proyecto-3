@@ -2,10 +2,11 @@
 //Los comentarios deben ir en su propia línea, nunca junto a código útil
 //El espacio es el separador
 //Número de entidades en la Leyenda
-3
+4
 //Leyenda
 0 floor
 1 wall
+2 ninja
 3 collectable
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
@@ -15,7 +16,7 @@ x z y
 5 3
 //La primera capa siempre está a la altura 0
 0 1 3 1 0
-0 1 0 0 1
+0 1 0 2 1
 0 1 1 1 1
 //Altura entre capas(Float)
 2.457

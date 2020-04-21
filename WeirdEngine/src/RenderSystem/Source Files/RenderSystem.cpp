@@ -35,7 +35,6 @@ RenderSystem* RenderSystem::getSingleton()
 
 RenderSystem::RenderSystem() {
 	WindowRenderer::initSingleton();
-	//mScnMgr = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 }
 
 RenderSystem::~RenderSystem() {
@@ -50,12 +49,6 @@ Ogre::SceneNode* RenderSystem::addOgreEntity(Ogre::String name)
 	mEntity->setMaterialName(name);
 
 	mNode->attachObject(mEntity);
-
-	// Mover el nodo para que lo vea la camara
-	//float lPositionOffset = float(1 * 2) - (float(1));
-	//lPositionOffset = lPositionOffset * 20;
-	//mNode->translate(lPositionOffset, lPositionOffset, -600.0f);
-	//mNode->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(90));
 
 	return mNode;
 }
@@ -146,15 +139,13 @@ void RenderSystem::setSkyBox(Ogre::String matName, Ogre::Real distance)
 	mScnMgr->setSkyBox(true, matName, distance);
 }
 
-void RenderSystem::addCamera(int zOrder)
+void RenderSystem::addCamera()
 {
-
 	float viewportWidth = 0.88f;
 	float viewportHeight = 0.88f;
 	float viewportLeft = (1.0f - viewportWidth) * 0.5f;
 	float viewportTop = (1.0f - viewportHeight) * 0.5f;
-	//unsigned short mainViewportZOrder = 100;
-
+	unsigned short mainViewportZOrder = 100;
 
 	Ogre::Camera* mCamera = nullptr;
 	mCamera = mScnMgr->createCamera("MainCam");
@@ -167,25 +158,21 @@ void RenderSystem::addCamera(int zOrder)
 	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
 	Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(mScnMgr->getCamera("MainCam"),
-		zOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
+		mainViewportZOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);
 	camera = mScnMgr->getCamera("MainCam");
-
 
 	vp->setAutoUpdated(true);
 
 	// Color for the viewPort
-	vp->setBackgroundColour(Ogre::ColourValue(1, 0, 1));
+	vp->setBackgroundColour(Ogre::ColourValue(0, 0, 1));
 
 	// I choose the visual ratio of the camera. To make it looks real, I want it the same as the viewport. 
 	float ratio = float(vp->getActualWidth()) / float(vp->getActualHeight());
 	mCamera->setAutoAspectRatio(true);
 
-
-
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
 	mCamera->setNearClipDistance(3.0f);
 	mCamera->setFarClipDistance(4000.0f);
-
 }
 
 void RenderSystem::createScene(Ogre::String sceneName)
@@ -195,12 +182,7 @@ void RenderSystem::createScene(Ogre::String sceneName)
 	scenes.erase(sceneName);
 	scenes.insert({ sceneName, mScnMgr });
 	
-	int zOrder;
-
-	if (sceneName == "gameplay") zOrder = 100;
-	else zOrder = 50;
-
-	addCamera(zOrder);
+	addCamera();
 
 	//--------------------------- LIGHT -----------------------------
 	//Creacion de la luz en la escena

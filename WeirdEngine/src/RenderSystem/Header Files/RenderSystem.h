@@ -23,7 +23,6 @@ namespace Ogre {
 	class Quaternion;
 };
 
-
 class RenderSystem {
 
 private:
@@ -95,8 +94,8 @@ public:
 	// Adds a skybox to the current scene
 	void setSkyBox(Ogre::String matName, Ogre::Real distance = 5000);
 
-	// Sets up a new rendering scene and starts rendering it
-	void addCamera(int zOrder);
+	// Sets up a camera in the actual rendering scene
+	void addCamera();
 
 	// Creates a new scene and adds it to the scenes dictionary with the given key
 	void createScene(Ogre::String sceneName);

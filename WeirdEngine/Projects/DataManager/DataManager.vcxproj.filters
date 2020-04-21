@@ -19,19 +19,25 @@
     <Filter Include="Archivos de origen\Componentes">
       <UniqueIdentifier>{7a7ec980-f087-4b80-ba73-cc443d11b33b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Componentes\Factorias">
+      <UniqueIdentifier>{355b0096-6d28-4af5-80be-82f6ffcd4bf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Mensajes">
+      <UniqueIdentifier>{26e2fd15-3ac2-4e43-8e09-1e11511ec0d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Componentes\Factorias">
+      <UniqueIdentifier>{0da9b413-12ab-40d6-86ef-082b5ac5c1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Mensajes">
+      <UniqueIdentifier>{0c44f31d-c1f0-42eb-a22b-40a406f80de3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\DataManager\Header Files\DataManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\EntityC.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\DataManager\Header Files\json.hpp">
       <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\ComponentFactory.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\DataManager\Header Files\Component.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
@@ -54,37 +60,37 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\Input_OIS_Listener.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\Observer.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\Messages_decl.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\Messages_defs.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\TestComponent.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="..\..\src\DataManager\Header Files\ComponentFactory.h">
+      <Filter>Archivos de encabezado\Componentes\Factorias</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\DataManager\Header Files\C_Factory.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\FactoryRegister.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Componentes\Factorias</Filter>
     </ClInclude>
     <ClInclude Include="..\..\src\DataManager\Header Files\FactoriesGestor.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Componentes\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\FactoryRegister.h">
+      <Filter>Archivos de encabezado\Componentes\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\EntityC.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\Messages_decl.h">
+      <Filter>Archivos de encabezado\Mensajes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\Messages_defs.h">
+      <Filter>Archivos de encabezado\Mensajes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\Observer.h">
+      <Filter>Archivos de encabezado\Mensajes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\TestComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp">
       <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp">
-      <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\TransformComponent.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
@@ -101,20 +107,20 @@
     <ClCompile Include="..\..\src\DataManager\Source Files\GmInputListener.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\Input_OIS_Listener.cpp">
+    <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\TestComponent.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\FactoryRegister.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Componentes\Factorias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\FactoryRegister.cpp">
+      <Filter>Archivos de origen\Componentes\Factorias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp">
+      <Filter>Archivos de origen\Mensajes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

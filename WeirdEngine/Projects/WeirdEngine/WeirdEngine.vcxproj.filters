@@ -13,17 +13,8 @@
     <Filter Include="Source Files\Time">
       <UniqueIdentifier>{772781d3-d09e-43a5-9d06-a7c6bd2fe585}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Varios">
-      <UniqueIdentifier>{63fec7e6-b83f-4eb7-9808-8aee54255d39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Varios">
-      <UniqueIdentifier>{f8892f94-cac4-4480-bb91-a3fde5d0037e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\GameManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -33,14 +24,11 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h">
       <Filter>Header Files\Time</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\InputListener.h">
-      <Filter>Header Files\Varios</Filter>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\GameManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Application.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\GameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,9 +40,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp">
       <Filter>Source Files\Time</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\InputListener.cpp">
-      <Filter>Source Files\Varios</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

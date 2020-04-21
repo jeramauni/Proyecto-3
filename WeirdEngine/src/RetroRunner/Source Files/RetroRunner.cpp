@@ -5,16 +5,16 @@
 #include <Ogre.h>
 #include <EasyDefines.h>
 
-#include "GameManager.h"
+#include "Game.h"
 
 int main() {
 	try {
-		GameManager Game = GameManager();
-		Game.Init();
-		while (Game.update())
-		{
-			//Bucle del juego
-		}
+		Game _g = Game();
+		_g.Init();
+
+		//Bucle del juego
+		while (_g.update()) {}
+
 		std::cout << "end of the program" << std::endl;
 	}
 	catch (Ogre::Exception & e) {

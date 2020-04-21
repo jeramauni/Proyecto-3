@@ -39,7 +39,6 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp" />
@@ -47,7 +46,6 @@
     <ClCompile Include="..\..\src\DataManager\Source Files\GmInputComponent.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\GmInputListener.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\InputComponent.cpp" />
-    <ClCompile Include="..\..\src\DataManager\Source Files\Input_OIS_Listener.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\RenderComponent.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\TestComponent.cpp" />

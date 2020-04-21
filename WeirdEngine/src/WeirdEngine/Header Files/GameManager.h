@@ -3,16 +3,16 @@
 
 #pragma once
 #include "Scene.h"
-#include "EntityC.h"
 #include "Messages_decl.h"
+
+// InputManager
+#include <InputManager.h>
 
 class WindowRenderer;
 class RenderSystem;
 class InputManager;
 class PhysicsEngine;
 class DataManager;
-
-class InputListener;
 
 class GameManager {
 public:
@@ -23,21 +23,14 @@ public:
 	// Inicializa
 	void Init();
 
-	bool end = false;
-	void close() { end = true; };
+	//Update
+	bool update();
 
 	// Crea la escena leyendo del archivo
 	void generateScene(std::string sceneName);
 
-	//Update
-	bool update();
-
-	// Para añadir listeners fuera de GameManager
-	void addListener(InputListener *iL, Ogre::String name);
-
-	//Metodos para la pila
-	void pushScene(Scene* newScene);
-	void popScene();
+	// Para coger el inputMng
+	InputManager* getInputMg() { return mInputManager; };
 
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
@@ -53,11 +46,17 @@ private:
 	RenderSystem* renderSystem = nullptr;
 	//Input Mng
 	InputManager* mInputManager;
-	//Temp del input
-	InputListener* iList;
 	//------------------------------------
 
 	//Pila de escenas
 	std::stack<Scene*> escenas;
+
+	// Fin de bucle de juego
+	bool end = false;
+	void close();
+
+	//Metodos para la pila
+	void pushScene(Scene* newScene);
+	void popScene();
 };
 #endif

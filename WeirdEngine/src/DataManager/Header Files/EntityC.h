@@ -19,7 +19,7 @@ public:
 	//Recorre los componentes de la entidad y actualizan los que sean necesarios.
 	void update();
 
-	// Metodo para coger el nodo
+	// Setter/getter Node
 	void setNode(Ogre::SceneNode* node);
 	Ogre::SceneNode* getNode();
 
@@ -29,6 +29,7 @@ public:
 	// Activar/Desactivar
 	void setActive(bool sw);
 	bool isActive();
+
 	// ID de la entidad
 	Ogre::String _id;
 

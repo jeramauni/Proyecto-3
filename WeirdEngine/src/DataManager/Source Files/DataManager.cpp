@@ -8,7 +8,7 @@
 #include <ctime>
 #include <map>
 
-extern FactoriesGestor* aux = FactoriesGestor::getInstance();
+extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 CREATE_REGISTER(Render);
 CREATE_REGISTER(Transform);
@@ -106,10 +106,13 @@ EntityC* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_enti
 		EntityC* e = new EntityC(entity_name);
 		///TEST///
 
-		//std::string st = "Transform";
-		//TransformComponent* tc =dynamic_cast<TransformComponent*> (FactoriesGestor::getInstance()->getFactories().at(st)->Create());
-		//tc->Init();
-		//e->AddComponent(tc);
+		/*
+		std::string st = "Transform";
+		TransformComponent* tc =dynamic_cast<TransformComponent*> (factoriesGestor->getFactories().at(st)->Create());
+		tc->Init();
+		tc->SetPosition(20, 20, -600);
+		e->AddComponent(tc);
+		*/
 
 		std::cout << "Entity " << entity_name << " successfully created !" << '\n';
 		return e;
@@ -236,7 +239,8 @@ std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::strin
 				if (id != -1)
 				{					
 					//..and create the proper entity
-					entities.push_back(CreateEntity(legend[id], prefabs, entities.size()));
+					EntityC* e = CreateEntity(legend[id], prefabs, entities.size());
+					if (e != nullptr) entities.push_back(e);
 				}
 			}
 		}

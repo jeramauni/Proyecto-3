@@ -1,7 +1,6 @@
 ﻿#include "InputListener.h"
-#include "GameManager.h"
-#include "Messages_defs.h"
-
+#include <GameManager.h>
+#include <Messages_defs.h>
 
 #include <iostream>
 

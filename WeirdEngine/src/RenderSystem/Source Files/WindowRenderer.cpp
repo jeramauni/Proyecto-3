@@ -1,4 +1,5 @@
 #include "WindowRenderer.h"
+#include "EasyDefines.h"
 
 #include <exception>
 
@@ -65,24 +66,24 @@ void WindowRenderer::createRoot()
 		// Asignar desde los plugins disponibles un sistema de renderizado
 		const Ogre::RenderSystemList& lRenderSystemList = mRoot->getAvailableRenderers();
 		if (lRenderSystemList.size() == 0) {
-			//MWARNING("Sorry, no rendersystem was found.");
+			MWARNING("Sorry, no rendersystem was found.");
 		}
 		
 		renderSystem = lRenderSystemList[0];
 		mRoot->setRenderSystem(renderSystem);
 	}
 	catch (Ogre::Exception & e) {
-		//MWARNING("!!!!Ogre::Exception!!!!" << e.what());
+		MWARNING("!!!!Ogre::Exception!!!!" << e.what());
 	}
 	catch (std::exception & e) {
-		//MWARNING("!!!!std::exception!!!!" << e.what());
+		MWARNING("!!!!std::exception!!!!" << e.what());
 	}
 }
 
 void WindowRenderer::setupWindow()
 {
 	// Aqui se configura la ventana del juego
-	Ogre::String winTitle = "WeirdEngine";
+	Ogre::String winTitle = "WeirdEngineWin";
 	unsigned int winWidth = 800;
 	unsigned int winHeight = 600;
 
@@ -107,7 +108,7 @@ void WindowRenderer::setupWindow()
 
 	//miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
-	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false);//, &miscParams);
+	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false);/*, &miscParams);*/
 }
 
 void WindowRenderer::initializeResources()
