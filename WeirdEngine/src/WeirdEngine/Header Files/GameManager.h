@@ -33,7 +33,7 @@ public:
 	bool update();
 
 	// Para añadir listeners fuera de GameManager
-	void addListener(InputListener *iL, Ogre::String name);
+	void addListener(InputListener *iL, std::string name);
 
 	//Metodos para la pila
 	void pushScene(Scene* newScene);

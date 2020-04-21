@@ -42,7 +42,7 @@ RenderSystem::~RenderSystem() {
 
 }
 
-Ogre::SceneNode* RenderSystem::addOgreEntity(Ogre::String name)
+Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name)
 {
 	Ogre::Entity* mEntity = mScnMgr->createEntity(name, name + ".mesh");
 	Ogre::SceneNode* mNode = addEmpty(name);
@@ -60,12 +60,12 @@ Ogre::SceneNode* RenderSystem::addOgreEntity(Ogre::String name)
 	return mNode;
 }
 
-Ogre::SceneNode* RenderSystem::addEmpty(Ogre::String name)
+Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
 {
 	return mScnMgr->getRootSceneNode()->createChildSceneNode(name);
 }
 
-Ogre::Entity* RenderSystem::getEntityByName(Ogre::String name)
+Ogre::Entity* RenderSystem::getEntityByName(std::string name)
 {
 	return mScnMgr->getEntity(name);
 }
@@ -80,7 +80,7 @@ inline void RenderSystem::setSceneManager(Ogre::SceneManager* sm)
 	mScnMgr = sm;
 }
 
-Ogre::SceneNode* RenderSystem::createLight(Ogre::String name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular)
+Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular)
 {
 	Ogre::Light* light = mScnMgr->createLight(name);
 	light->setType(Ogre::Light::LightTypes(type));
@@ -98,17 +98,17 @@ void RenderSystem::setAmbientLight(Ogre::ColourValue color)
 	mScnMgr->setAmbientLight(color);
 }
 
-void RenderSystem::setMaterial(Ogre::String entity, Ogre::String matName)
+void RenderSystem::setMaterial(std::string entity, std::string matName)
 {
 	getEntityByName(entity)->setMaterialName(matName);
 }
 
-void RenderSystem::setMaterial(Ogre::Entity* ent, Ogre::String matName)
+void RenderSystem::setMaterial(Ogre::Entity* ent, std::string matName)
 {
 	ent->setMaterialName(matName);
 }
 
-void RenderSystem::materialGeneration(Ogre::String nameOfResourceGroup)
+void RenderSystem::materialGeneration(std::string nameOfResourceGroup)
 {
 	Ogre::MaterialManager& materialManager = Ogre::MaterialManager::getSingleton();
 
@@ -116,7 +116,7 @@ void RenderSystem::materialGeneration(Ogre::String nameOfResourceGroup)
 	mRgMgr.createResourceGroup(nameOfResourceGroup);
 
 	// Textures directory path
-	Ogre::String textureDirectory = "resources/textures";
+	std::string textureDirectory = "resources/textures";
 	mRgMgr.addResourceLocation(textureDirectory, "FileSystem", nameOfResourceGroup);
 
 	// Initialise all resources
@@ -141,7 +141,7 @@ Ogre::Viewport* RenderSystem::getViewport()
 	return camera->getViewport();
 }
 
-void RenderSystem::setSkyBox(Ogre::String matName, Ogre::Real distance)
+void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance)
 {
 	mScnMgr->setSkyBox(true, matName, distance);
 }
@@ -188,7 +188,7 @@ void RenderSystem::addCamera(int zOrder)
 
 }
 
-void RenderSystem::createScene(Ogre::String sceneName)
+void RenderSystem::createScene(std::string sceneName)
 {
 	Ogre::SceneManager* s = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 	mScnMgr = s;
@@ -207,7 +207,7 @@ void RenderSystem::createScene(Ogre::String sceneName)
 	setAmbientLight(Ogre::ColourValue(0.2f, 0.0f, 0.2f, 1.0f));
 }
 
-void RenderSystem::setRenderingScene(Ogre::String sceneName) {
+void RenderSystem::setRenderingScene(std::string sceneName) {
 	WindowRenderer::getSingleton()->getWin()->removeAllViewports();
 
 	Ogre::SceneManager* sm = scenes.find(sceneName)->second;
@@ -234,7 +234,7 @@ void RenderSystem::clearScene()
 	mScnMgr->destroyAllEntities();
 }
 
-Ogre::String RenderSystem::getCurrentScene()
+std::string RenderSystem::getCurrentScene()
 {
 	return currentScene;
 }

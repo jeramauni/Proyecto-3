@@ -118,7 +118,7 @@ bool GameManager::update() {
 	return true;
 }
 
-void GameManager::addListener(InputListener *iL, Ogre::String name) {
+void GameManager::addListener(InputListener *iL, std::string name) {
 	mInputManager->addKeyListener(iL, name);
 }
 

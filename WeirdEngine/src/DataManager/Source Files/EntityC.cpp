@@ -3,7 +3,7 @@
 #include "Messages_defs.h"
 #include <iostream>
 
-EntityC::EntityC(Ogre::String id) : _id(id) {
+EntityC::EntityC(std::string id) : _id(id) {
 	_active = true;
 }
 
@@ -24,7 +24,7 @@ void EntityC::DelComponent(Component* c) {
 }
 
 
-Component* EntityC::getComponent(Ogre::String s)
+Component* EntityC::getComponent(std::string s)
 {
 	return _components.at(s);
 }
@@ -64,7 +64,7 @@ bool EntityC::receive(const void* senderObj, const msg::Message& msg) {
 
 void EntityC::send(const void* senderObj, const msg::Message& msg)
 {
-	for (std::map <Ogre::String, Component*>::iterator it = _components.begin(); it != _components.end(); ++it) {
+	for (std::map <std::string, Component*>::iterator it = _components.begin(); it != _components.end(); ++it) {
 		if (msg.destination_ == msg::Broadcast || msg.destination_ == (*it).second->getId()) {
 			(*it).second->receive(senderObj, msg);
 		}

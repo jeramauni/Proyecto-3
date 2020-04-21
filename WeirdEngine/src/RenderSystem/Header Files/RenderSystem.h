@@ -29,10 +29,10 @@ class RenderSystem {
 private:
 	Ogre::SceneManager* mScnMgr = nullptr;
 	Ogre::Camera* camera = nullptr;
-	Ogre::String currentScene;
+	std::string currentScene;
 
 	// Contains Scene names and the SceneManager attached to
-	std::map<Ogre::String, Ogre::SceneManager*> scenes;
+	std::map<std::string, Ogre::SceneManager*> scenes;
 
 	static RenderSystem* instance_;
 	
@@ -44,13 +44,13 @@ public:
 	static RenderSystem* getSingleton();
 
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
-	Ogre::SceneNode* addOgreEntity(Ogre::String name);
+	Ogre::SceneNode* addOgreEntity(std::string name);
 	
 	// Adds an empty node to the scene
-	Ogre::SceneNode* addEmpty(Ogre::String name);
+	Ogre::SceneNode* addEmpty(std::string name);
 
 	// Returns the entity attached to the scene with the given name
-	Ogre::Entity* getEntityByName(Ogre::String name);
+	Ogre::Entity* getEntityByName(std::string name);
 
 	// Gets the root SceneNode
 	inline Ogre::SceneNode* getRootNode();
@@ -69,19 +69,19 @@ public:
 	};
 
 	// Creates a light and adds the lightNode to the scene
-	Ogre::SceneNode* createLight(Ogre::String name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular);
+	Ogre::SceneNode* createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular);
 
 	// Sets the ambient light of the scene
 	void setAmbientLight(Ogre::ColourValue color);
 
 	// Sets the material to entity
-	void setMaterial(Ogre::String entity, Ogre::String matName);
+	void setMaterial(std::string entity, std::string matName);
 
 	// Sets the material to entity with entity access
-	void setMaterial(Ogre::Entity* ent, Ogre::String matName);
+	void setMaterial(Ogre::Entity* ent, std::string matName);
 
 	// Generates the different Resource Groups where take the materials
-	void materialGeneration(Ogre::String nameOfResourceGroup);
+	void materialGeneration(std::string nameOfResourceGroup);
 
 	// Returns the camera to modify camera attributes 
 	Ogre::Camera* getCamera();
@@ -93,22 +93,22 @@ public:
 	Ogre::Viewport* getViewport();
 
 	// Adds a skybox to the current scene
-	void setSkyBox(Ogre::String matName, Ogre::Real distance = 5000);
+	void setSkyBox(std::string matName, Ogre::Real distance = 5000);
 
 	// Sets up a new rendering scene and starts rendering it
 	void addCamera(int zOrder);
 
 	// Creates a new scene and adds it to the scenes dictionary with the given key
-	void createScene(Ogre::String sceneName);
+	void createScene(std::string sceneName);
 
 	// Sets the displayed scene to the scene given by parameter
-	void setRenderingScene(Ogre::String sceneName);
+	void setRenderingScene(std::string sceneName);
 
 	// Destroy all render entities
 	void clearScene();
 
 	// Gets the name of the displayed scene
-	Ogre::String getCurrentScene();
+	std::string getCurrentScene();
 
 	// Get the current SceneManager of the scene
 	Ogre::SceneManager* getCurrentSceneManager() { return mScnMgr; };

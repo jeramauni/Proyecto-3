@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#include <OgreString.h>
 #include <OgreSceneNode.h>
 #include <vector>
 #include "Component.h"
@@ -8,13 +7,13 @@
 
 class EntityC : public Observer {
 public:
-	EntityC(Ogre::String id);
+	EntityC(std::string id);
 	~EntityC();
 
 	// Añadir/quitar un componente
 	void AddComponent(Component* c);
 	void DelComponent(Component* c);
-	Component* getComponent(Ogre::String s);
+	Component* getComponent(std::string s);
 
 	//Recorre los componentes de la entidad y actualizan los que sean necesarios.
 	void update();
@@ -30,14 +29,14 @@ public:
 	void setActive(bool sw);
 	bool isActive();
 	// ID de la entidad
-	Ogre::String _id;
+	std::string _id;
 
 	bool receive(const void* senderObj, const msg::Message& msg);
 	void send(const void* senderObj, const msg::Message& msg);
 
 private:
 	// Vector de componentes
-	std::map<Ogre::String, Component*> _components;
+	std::map<std::string, Component*> _components;
 
 	// Puntero al nodo de la escena
 	Ogre::SceneNode* _Node = nullptr;
