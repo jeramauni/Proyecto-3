@@ -57,7 +57,7 @@ void GameManager::generateScene(std::string sceneName) {
 
 	for (int i = 0; i < ent.size(); i++) { //Muy feo esto
 		// ToDo:: 
-		// Mirar los componentes de las entidades y añadimos 
+		// Mirar los componentes de las entidades y aï¿½adimos 
 		// con el transform generamos el nodo
 		/*
 		ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->_id));
@@ -72,7 +72,7 @@ void GameManager::generateScene(std::string sceneName) {
 		// En entidad separar por tipos de componentes 
 		//
 
-		// Añadimos la entidad a la escena
+		// Aï¿½adimos la entidad a la escena
 		
 		///mScene->addEntity(ent[i]);
 	}
@@ -105,6 +105,10 @@ bool GameManager::update() {
 	}
 
 	return true;
+}
+
+void GameManager::addListener(InputListener *iL, std::string name) {
+	mInputManager->addKeyListener(iL, name);
 }
 
 void GameManager::pushScene(Scene* newScene) {

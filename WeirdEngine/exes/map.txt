@@ -1,25 +1,17 @@
-//Evitar dejar espacios o saltos de línea al final del archivo
-//Los comentarios deben ir en su propia línea, nunca junto a código útil
+//Evitar dejar espacios o saltos de lï¿½nea al final del archivo
+//Los comentarios deben ir en su propia lï¿½nea, nunca junto a cï¿½digo ï¿½til
 //El espacio es el separador
-//Número de entidades en la Leyenda
-4
+//Nï¿½mero de entidades en la Leyenda
+1
 //Leyenda
-0 floor
-1 wall
-2 ninja
-3 collectable
+0 testEntity
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
 1.0
-//Tamaño del mapa (Columnas x Filas)
-5 3
-//La primera capa siempre está a la altura 0
-0 1 3 1 0
-0 1 0 2 1
-0 1 1 1 1
-//Altura entre capas(Float)
-2.457
-0 1 3 1 0
-0 1 0 0 1
-0 1 1 1 1
+//Tamaï¿½o del mapa (Columnas x Filas)
+3 3
+//La primera capa siempre estï¿½ a la altura 0
+0 0 0
+0 0 0
+0 0 0

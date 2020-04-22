@@ -26,8 +26,8 @@ public:
 	//Update
 	bool update();
 
-	// Crea la escena leyendo del archivo
-	void generateScene(std::string sceneName);
+	// Para añadir listeners fuera de GameManager
+	void addListener(InputListener *iL, std::string name);
 
 	// Para coger el inputMng
 	InputManager* getInputMg() { return mInputManager; };

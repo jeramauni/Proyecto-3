@@ -7,16 +7,17 @@
 
 class RenderComponent: public Component {
 public:
-	//RenderComponent(Ogre::SceneManager* scene, Ogre::String s, Ogre::SceneNode* n);
-	RenderComponent();
-	~RenderComponent();
-	void Init(Ogre::String name, Ogre::SceneNode* node);
-	void Init() {};
+	//RenderComponent(Ogre::SceneManager* scene, std::string s, Ogre::SceneNode* n);
+	RenderComponent() {};
+	~RenderComponent() {};
+	void Init(std::string name, Ogre::SceneNode* node);
+	void Init(std::unordered_map<std::string, std::string>& param) {};
+
 	//Ogre::Entity* getOgreEntity() { return _entPointer; }
 	Ogre::SceneNode* getOgreNode() { return _node; }
 
 private:
 	Ogre::SceneNode* _node;
-	Ogre::String _NameOfTheMesh;
+	std::string _NameOfTheMesh;
 	//Ogre::Entity* _entPointer;
 };

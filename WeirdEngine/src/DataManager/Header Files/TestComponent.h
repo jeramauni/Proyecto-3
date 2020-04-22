@@ -1,5 +1,5 @@
 #pragma once
-//***********!ADVERTENCIA¡***********
+//***********¡ADVERTENCIA!***********
 // Clase utilizada para testear el funcionamiento del proyecto: "DataManager"
 //***********************************
 #include "Component.h"
@@ -7,10 +7,9 @@
 class TestComponent :	public Component
 {
 public:
-	TestComponent();
+	TestComponent() { name = "Test"; };
 	~TestComponent() {};
-	void Init();
-	void Init(const float& f_, const int intArray_[3], const std::string& s_, const bool& b_);
+	void Init(std::unordered_map<std::string, std::string>& param);
 	void Debug();
 
 private:
