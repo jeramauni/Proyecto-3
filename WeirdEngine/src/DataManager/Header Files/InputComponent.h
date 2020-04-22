@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Component.h"
-
 class EntityC;
 
 class InputComponent : public Component {

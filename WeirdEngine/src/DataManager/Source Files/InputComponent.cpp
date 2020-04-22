@@ -1,4 +1,5 @@
 #include "InputComponent.h"
+
 #include "EntityC.h"
 
 InputComponent::InputComponent() { _entity = nullptr; }

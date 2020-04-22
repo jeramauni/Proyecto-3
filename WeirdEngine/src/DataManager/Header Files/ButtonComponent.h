@@ -1,8 +1,9 @@
 #pragma once
-#include "Component.h"
 
-class ButtonComponent : public Component
-{
+#include <string>
+class Component;
+
+class ButtonComponent : public Component {
 public:
 	ButtonComponent();
 	~ButtonComponent() {};
@@ -19,4 +20,4 @@ public:
 private:
 	std::string text;
 	std::string destination;
-}
+};
