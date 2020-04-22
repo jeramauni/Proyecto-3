@@ -23,6 +23,19 @@ bool GmInputListener::keyPressed(const OIS::KeyEvent& ke)
 	
 	return true;
 }
+
+bool GmInputListener::mousePressed(const OIS::MouseEvent& e, OIS::MouseButtonID id) {
+	
+	if (id == OIS::MB_Left) {
+		float x = e.state.X.abs;
+		float y = e.state.Y.abs;
+
+		owner->Left_Mouse(x, y);
+	}
+}
+
+
+
 bool GmInputListener::keyReleased(const OIS::KeyEvent& ke) {
 	return false;
 }

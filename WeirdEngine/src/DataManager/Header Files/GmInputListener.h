@@ -12,6 +12,7 @@ public:
 private:
 	virtual bool keyPressed(const OIS::KeyEvent& ke);
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
+	virtual bool mousePressed(const OIS::MouseEvent& e, OIS::MouseButtonID id) = 0;
 	GmInputComponent* owner;
 };
 

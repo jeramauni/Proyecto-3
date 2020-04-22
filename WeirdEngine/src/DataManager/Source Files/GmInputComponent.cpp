@@ -26,4 +26,11 @@ void GmInputComponent::Esc_Key()
 	_state = true;
 }
 
+void GmInputComponent::Left_Mouse(float x, float y)
+{
+
+	_gm->send(this, )
+	//llamar a la funcion onClick de los botones
+}
+
 
