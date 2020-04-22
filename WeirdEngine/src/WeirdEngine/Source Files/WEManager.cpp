@@ -1,7 +1,10 @@
 #include "WEManager.h"
 
 #include <iostream>
-
+//Entity
+#include <EntityC.h>
+//Factories
+#include <ComponentFactory.h>
 // Renderizado
 #include <WindowRenderer.h>
 #include <RenderSystem.h>
@@ -17,7 +20,18 @@
 #include "Scene.h"
 #include <Messages_defs.h>
 
-WEManager::WEManager() {}
+WEManager::WEManager()
+{
+	py = nullptr;
+	dM = nullptr;
+	windowRenderer = nullptr;
+	renderSystem = nullptr;
+	mInputManager = nullptr;
+	input = nullptr;
+	end = false;
+	windowRenderer = nullptr;
+	renderSystem = nullptr;
+}
 
 WEManager::~WEManager() {
 	while (!escenas.empty()) {

@@ -1,15 +1,8 @@
 #include "InputComponent.h"
 #include "EntityC.h"
 
-InputComponent::InputComponent() {}
-InputComponent::~InputComponent() {}
+InputComponent::InputComponent() { _entity = nullptr; }
 
-void InputComponent::Init(EntityC* ent) {
-	_entity = ent;
-	//_listener = new InputListener(this);
+void InputComponent::Init(std::unordered_map<std::string, std::string>& param)
+{
 }
-/*
-InputListener* InputComponent::getListener() {
-	return _listener;
-}
-*/

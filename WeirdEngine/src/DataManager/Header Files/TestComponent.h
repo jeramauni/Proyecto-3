@@ -1,13 +1,13 @@
 #pragma once
 //***********!ADVERTENCIA¡***********
-// Clase utilizada para testear el funcionamiento del proyecto: "DataManager"
+// Clase utilizada para testear el funcionamiento del proyecto.
 //***********************************
 #include "Component.h"
 #include <string>
 class TestComponent :	public Component
 {
 public:
-	TestComponent() { name = "Test"; };
+	TestComponent();
 	~TestComponent() {};
 	void Init(std::unordered_map<std::string, std::string>& param);
 	void Debug();

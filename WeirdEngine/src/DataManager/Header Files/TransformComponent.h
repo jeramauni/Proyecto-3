@@ -5,9 +5,8 @@
 class TransformComponent : public Component
 {
 public:
-	TransformComponent() { name = "Transform"; };
+	TransformComponent() ;
 	~TransformComponent() {};
-	//Default Init. Sets all values to 0
 	void Init(std::unordered_map<std::string, std::string>& param);
 
 	//Getters & Setters

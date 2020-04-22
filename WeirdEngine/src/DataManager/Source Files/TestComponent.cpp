@@ -1,6 +1,11 @@
 #include "TestComponent.h"
 #include <iostream>
 
+TestComponent::TestComponent()
+{
+	name = "Test";
+}
+
 void TestComponent::Init(std::unordered_map<std::string, std::string>& param)
 {
 	f = std::stof(param.at("float"));

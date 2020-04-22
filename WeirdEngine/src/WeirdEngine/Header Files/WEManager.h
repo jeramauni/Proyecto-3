@@ -50,8 +50,8 @@ private:
 	//LectorDatos
 	DataManager* dM;
 	//Rendering
-	WindowRenderer* windowRenderer = nullptr;
-	RenderSystem* renderSystem = nullptr;
+	WindowRenderer* windowRenderer;
+	RenderSystem* renderSystem;
 	//Input Mng
 	InputManager* mInputManager;
 	InputKeyListener* input;
@@ -61,7 +61,7 @@ private:
 	std::stack<Scene*> escenas;
 
 	// Fin de bucle de juego
-	bool end = false;
+	bool end;
 	void close();
 
 	//Metodos para la pila

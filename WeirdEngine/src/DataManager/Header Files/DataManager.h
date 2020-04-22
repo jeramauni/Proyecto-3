@@ -1,25 +1,28 @@
 #pragma once
 
 #include "json.hpp"
-#include "EntityC.h"
-#include <vector>
+
 using json = nlohmann::json;
 
-// Componentes
-#include "ComponentFactory.h"
+class EntityC;
 
 class DataManager {
 public:
 
+	//Main loader
 	std::vector<EntityC*> Load(const std::string& map_file, const std::string& prefabs_file);
 
 private:
 
+	//Readers
 	json ReadJson(const std::string& file_name);
 	std::vector<std::vector<std::string>> ReadMap(const std::string& file_name);
-	//Auxiliares
+
+	//Debugs
 	void DebugJson(json json_file);
 	void DebugMap(std::vector<std::vector<std::string>> map, bool output_debugTxt);
+
+	//Auxiliares
 	bool ReadNext(std::ifstream& input);
 	std::vector<std::string> GetWords(std::string& s);
 	std::vector<EntityC*> ProcessMap(std::vector<std::vector<std::string>> map, json prefabs);

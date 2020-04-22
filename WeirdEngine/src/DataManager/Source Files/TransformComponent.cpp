@@ -1,15 +1,19 @@
 #include "TransformComponent.h"
 #include <iostream>
 
+TransformComponent::TransformComponent()
+{
+	name = "Transform";
+}
+
 void TransformComponent::Init(std::unordered_map<std::string, std::string>& param)
 {
-	std::cout << "AQUI LLEGA SOSIO EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << "\n";
 	std::vector<std::string> aux = GetWords(param.at("posicion"));
 	position.x = std::stof(aux[0]);
 	position.y = std::stof(aux[1]);
 	position.z = std::stof(aux[2]);
-	std::cout << aux[0] << "EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" << "\n";
 	aux.clear();
+
 	aux = GetWords(param.at("escalaT"));
 	scale.x = std::stof(aux[0]);
 	scale.y = std::stof(aux[1]);

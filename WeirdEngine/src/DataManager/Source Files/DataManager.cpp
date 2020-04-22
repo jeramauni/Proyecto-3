@@ -1,8 +1,10 @@
 // DataManager.cpp : Define las funciones de la biblioteca estática.
 // BE AWARE! Los archivos de mapas y prefabs deben guardarse en el directorio resources del directorio exes del proyecto.
-#include "DataManager.h"
 
+#include "DataManager.h"
+#include "EntityC.h"
 #include "ComponentFactory.h"
+
 #include <iostream>
 #include <fstream>
 #include <ctime>
@@ -13,6 +15,7 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 CREATE_REGISTER(Render);
 CREATE_REGISTER(Transform);
 CREATE_REGISTER(Test);
+
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
 {

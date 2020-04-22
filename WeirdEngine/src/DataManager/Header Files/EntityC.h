@@ -1,9 +1,7 @@
 ﻿#pragma once
 
 #include <OgreSceneNode.h>
-#include <vector>
 #include "Component.h"
-#include "Observer.h"
 
 class EntityC : public Observer {
 public:
@@ -36,7 +34,7 @@ public:
 	void send(const void* senderObj, const msg::Message& msg);
 
 private:
-	// Vector de componentes
+	// Mapa de componentes
 	std::map<std::string, Component*> _components;
 
 	// Puntero al nodo de la escena
