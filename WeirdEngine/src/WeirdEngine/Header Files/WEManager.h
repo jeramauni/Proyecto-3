@@ -69,5 +69,8 @@ private:
 	// Input
 	virtual bool keyPressed(const OIS::KeyEvent& ke);
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
+
+	virtual bool mousePressed(const OIS::MouseEvent& ke);
+	virtual bool mouseReleased(const OIS::MouseEvent& ke);
 };
 #endif
