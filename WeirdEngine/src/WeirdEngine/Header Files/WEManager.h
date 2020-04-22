@@ -13,6 +13,7 @@ namespace msg {
 namespace OIS {
 	class KeyListener;
 	class KeyEvent;
+	class MouseEvent;
 }
 
 class Scene;
@@ -40,6 +41,7 @@ public:
 
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
+
 
 private:
 	//-----------SISTEMAS------------
@@ -70,7 +72,7 @@ private:
 	virtual bool keyPressed(const OIS::KeyEvent& ke);
 	virtual bool keyReleased(const OIS::KeyEvent& ke);
 
-	virtual bool mousePressed(const OIS::MouseEvent& ke);
-	virtual bool mouseReleased(const OIS::MouseEvent& ke);
+	//virtual bool mousePressed(const OIS::MouseEvent& ke) {};
+	//virtual bool mouseReleased(const OIS::MouseEvent& ke) {};
 };
 #endif

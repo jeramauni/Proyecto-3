@@ -3,6 +3,7 @@
 // Componentes de entidades
 #include "TransformComponent.h"
 #include "RenderComponent.h"
+#include "TestComponent.h"
 #include "FactoriesGestor.h"
 
 #define DEFINE_FACTORY(x) class x##Factory : public CompFactory {public: x##Component* Create(){ return new x##Component();}}

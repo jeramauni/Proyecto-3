@@ -36,6 +36,7 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\DataManager\Header Files\Component.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp" />

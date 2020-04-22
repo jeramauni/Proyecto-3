@@ -1,6 +1,20 @@
 {
   "Entities": [
     {
+
+      "id": "testEntity",
+      "components": [
+        {
+          "id": "Test",
+          "float": "2.35",
+          "aint": "1/2/3",
+          "string": "sexo",
+          "bool": "false"
+        }
+      ]
+    },
+    {
+
       "id": "wall",
       "components": [
         {
@@ -65,16 +79,15 @@
           "timeIncreased": 0.1
         }
       ]
-    },
-    
+    },      
     {
       "id": "ninja",
       "components": [
         {
           "id": "transform",
-          "posicion": [20, 20, -600],
-          "escala": [ 1, 1, 1 ],
-          "rotacion": [ 0, 0, 0 ]
+          "posicion": "20/20/-600",
+          "escala": "1/1/1",
+          "rotacion": "0/0/0"
         }
       ]
     }

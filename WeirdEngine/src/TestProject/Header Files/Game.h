@@ -4,7 +4,6 @@
 #pragma once
 
 class WEManager;
-class InputListener;
 
 class Game {
 public:
@@ -17,7 +16,5 @@ public:
 
 private:
 	WEManager* _weM;
-
-	InputListener* input = NULL;
 };
 #endif

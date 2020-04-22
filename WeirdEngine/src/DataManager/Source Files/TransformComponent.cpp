@@ -1,29 +1,9 @@
 #include "TransformComponent.h"
 
-TransformComponent::TransformComponent() {
-	name = "transform";
-}
 
-// INIT
-void TransformComponent::Init()
+void TransformComponent::Init(std::unordered_map<std::string, std::string>& param)
 {
-	position = Ogre::Vector3(0.0);
-	rotation = Ogre::Vector3(0.0);
-	scale = Ogre::Vector3(0.0);
-}
 
-void TransformComponent::Init(const Ogre::Vector3& position_, const Ogre::Vector3& rotation_, const Ogre::Vector3& scale_)
-{
-	position = position_;
-	rotation = rotation_;
-	scale = scale_;
-}
-
-void TransformComponent::Init(float positionx_, float positiony_, float positionz_, float rotationx_, float rotationy_, float rotationz_, float scalex_, float scaley_, float scalez_)
-{
-	position = Ogre::Vector3(positionx_, positiony_, positionz_);
-	rotation = Ogre::Vector3(rotationx_, rotationy_, rotationz_);
-	scale = Ogre::Vector3(scalex_, scaley_, scalez_);
 }
 
 //GETTERS

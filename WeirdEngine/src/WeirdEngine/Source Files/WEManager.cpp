@@ -69,13 +69,13 @@ void WEManager::generateScene(std::string sceneName) {
 	std::vector<EntityC*> ent = dM->Load(sceneName, "entities.json");
 
 
-	//--------------TEMP
-	ent[8]->setNode(renderSystem->addOgreEntity(ent[8]->_id));
-	Component* tcomp = ent[8]->getComponent("transform");
-	ent[8]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());
+	////--------------TEMP
+	ent[0]->setNode(renderSystem->addOgreEntity(ent[0]->_id));
+	Component* tcomp = ent[0]->getComponent("transform");
+	ent[0]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());
 
-	mScene->addEntity(ent[8]);
-	//---------------------
+	mScene->addEntity(ent[0]);
+	////---------------------
 
 	for (int i = 0; i < ent.size(); i++) { //Muy feo esto
 		// ToDo:: 

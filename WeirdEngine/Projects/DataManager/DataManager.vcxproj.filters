@@ -107,5 +107,8 @@
     <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp">
       <Filter>Archivos de origen\Mensajes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Header Files\Component.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
