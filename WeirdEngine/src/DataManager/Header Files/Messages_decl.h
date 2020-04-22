@@ -5,7 +5,7 @@ namespace msg {
 	enum ObjectId {
 		None,  	// special value indicating no object (or more precisely component)
 		Broadcast,   // special value indicating all objects
-		GameManager
+		WEManager
 		// ...
 	};
 

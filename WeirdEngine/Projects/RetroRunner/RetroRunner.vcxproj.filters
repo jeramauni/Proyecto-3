@@ -15,22 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\RetroRunner\Source Files\RetroRunner.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\RetroRunner\Source Files\Game.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\RetroRunner\Source Files\InputListener.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
+    <ClInclude Include="..\..\src\TestProject\Header Files\Game.h">
+      <Filter>Archivos de origen</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\RetroRunner\Header Files\Game.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\RetroRunner\Header Files\InputListener.h">
-      <Filter>Archivos de origen</Filter>
-    </ClInclude>
+    <ClCompile Include="..\..\src\TestProject\Source Files\Game.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TestProject\Source Files\TestMain.cpp">
+      <Filter>Archivos de recursos</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

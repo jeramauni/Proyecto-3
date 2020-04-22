@@ -18,9 +18,15 @@
     <ClInclude Include="..\..\src\Input\Header Files\InputManager.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\Input\Header Files\InputKeyListener.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\Input\Source Files\InputManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\Input\Source Files\InputKeyListener.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

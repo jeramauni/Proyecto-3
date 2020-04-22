@@ -3,7 +3,7 @@
 
 #pragma once
 
-class GameManager;
+class WEManager;
 class InputListener;
 
 class Game {
@@ -16,7 +16,7 @@ public:
 	bool update();
 
 private:
-	GameManager* _gm;
+	WEManager* _weM;
 
 	InputListener* input = NULL;
 };

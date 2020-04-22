@@ -5,10 +5,10 @@
 class TransformComponent : public Component
 {
 public:
-	TransformComponent() {};
+	TransformComponent();
 	~TransformComponent() {};
 	//Default Init. Sets all values to 0
-	void Init(std::unordered_map<std::string, std::string>& param) {};
+	void Init();
 	//Inits with specified Ogre::Vector3 vectors
 	void Init(const Ogre::Vector3& position_,const Ogre::Vector3& rotation_,const Ogre::Vector3& scale_);
 	//Inits with specified Ogre::Vector3 components values

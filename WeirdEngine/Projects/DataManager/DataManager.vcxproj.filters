@@ -51,15 +51,6 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\InputComponent.h">
       <Filter>Archivos de encabezado\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\GmInputComponent.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\GmInputListener.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\DataManager\Header Files\Input_OIS_Listener.h">
-      <Filter>Archivos de encabezado\Componentes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\src\DataManager\Header Files\ComponentFactory.h">
       <Filter>Archivos de encabezado\Componentes\Factorias</Filter>
     </ClInclude>
@@ -99,12 +90,6 @@
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\InputComponent.cpp">
-      <Filter>Archivos de origen\Componentes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\GmInputComponent.cpp">
-      <Filter>Archivos de origen\Componentes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Source Files\GmInputListener.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp">

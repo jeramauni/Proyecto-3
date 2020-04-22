@@ -21,9 +21,8 @@ void Scene::addEntity(EntityC * e) {
 	entidades.push_back(e);
 }
 
-void Scene::send(const void* senderObj, const msg::Message& msg)
-{
-	for (EntityC* e : entidades) {
+void Scene::send(const void* senderObj, const msg::Message& msg) {
+	for (EntityC* e : listeners) {
 		if (senderObj != e) {
 			if (msg.destination_ == msg::Broadcast || msg.destination_ == e->getId())
 			e->receive(senderObj, msg);

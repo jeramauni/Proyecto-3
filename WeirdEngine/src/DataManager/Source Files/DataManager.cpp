@@ -12,8 +12,6 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 CREATE_REGISTER(Render);
 CREATE_REGISTER(Transform);
-CREATE_REGISTER(Test);
-
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)
 {
@@ -104,24 +102,18 @@ EntityC* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_enti
 	else
 	{
 		//Hay que hacer la lectura de id's de componentes
-		std::string entity_name = id + "_" + std::to_string(n_entities);
+		//std::string entity_name = id + "_" + std::to_string(n_entities);
+		std::string entity_name = id;// + "_" + std::to_string(n_entities);
 		EntityC* e = new EntityC(entity_name);
+		///TEST///
 
-		std::unordered_map<std::string, std::string> param;
-		int size_ = prefabs[i].at("components").size();
-		//Para cada componente en la lista de componentes
-		for (size_t j = 0; j < size_; j++)
-		{
-			e->AddComponent(FactoriesGestor::getInstance()->getFactories().at(prefabs[i].at("components")[j].at("id"))->Create());
-			//Para cada parametro del componente excluyendo el id
-
-			for (auto x = prefabs[i].at("components")[j].begin(); x != prefabs[i].at("components")[j].end(); x++)
-			{
-				
-				param.insert(std::pair<std::string, std::string>( x.key(), x.value()));
-			}
-			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
-		}
+		
+		std::string st = "Transform";
+		TransformComponent* tc =dynamic_cast<TransformComponent*> (factoriesGestor->getFactories().at(st)->Create());
+		tc->Init();
+		tc->SetPosition(20, 20, -600);
+		e->AddComponent(tc);
+		
 
 		std::cout << "Entity " << entity_name << " successfully created !" << '\n';
 		return e;

@@ -59,13 +59,7 @@ void InputManager::initialise(Ogre::RenderWindow* renderWindow) {
         paramList.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
 
         // Create inputsystem
-		paramList.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_FOREGROUND")));
-		paramList.insert(std::make_pair(std::string("w32_mouse"), std::string("DISCL_NONEXCLUSIVE")));
-		paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_FOREGROUND")));
-		paramList.insert(std::make_pair(std::string("w32_keyboard"), std::string("DISCL_NONEXCLUSIVE")));
-
         mInputSystem = OIS::InputManager::createInputSystem(paramList);
-
 
         // If possible create a buffered keyboard
         // (note: if below line doesn't compile, try:  if (mInputSystem->getNumberOfDevices(OIS::OISKeyboard) > 0) {

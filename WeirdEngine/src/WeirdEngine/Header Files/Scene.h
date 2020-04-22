@@ -13,6 +13,8 @@ private:
 
 	//Lista de entidades
 	std::list<EntityC*> entidades;
+	//Lista de listeners
+	std::list<EntityC*> listeners;
 
 public:
 	Scene();
@@ -25,6 +27,5 @@ public:
 
 	std::string getID() { return _id; };
 
-	void send(const void* senderObj, const msg::Message& msg);
+	virtual void send(const void* senderObj, const msg::Message& msg);
 };
-

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Input", "Projects\Input\Input.vcxproj", "{61AA4DCE-12AB-4548-8E99-F735E434F970}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3345353F-DB2D-4B25-8EC3-8EBAD897C493} = {3345353F-DB2D-4B25-8EC3-8EBAD897C493}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysicsEngine", "Projects\PhysicsEngine\PhysicsEngine.vcxproj", "{CDFFC06D-F609-46B9-8E3F-F63475CAB5EE}"
 EndProject
@@ -20,6 +23,9 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RenderSystem", "Projects\RenderSystem\RenderSystem.vcxproj", "{B7932FF5-2BA5-413B-B058-D6E9B6523766}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RetroRunner", "Projects\RetroRunner\RetroRunner.vcxproj", "{EDC42D08-04BF-4827-A0A4-40F04B2F4867}"
+	ProjectSection(ProjectDependencies) = postProject
+		{447EBEB4-B570-4784-9484-F49FBEAB39D4} = {447EBEB4-B570-4784-9484-F49FBEAB39D4}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

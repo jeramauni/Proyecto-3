@@ -52,13 +52,13 @@ void WindowRenderer::createRoot()
 {
 	try
 	{
-		std::string configFileName = "";
+		Ogre::String configFileName = "";
 #ifdef _DEBUG
-		std::string pluginsFileName = "plugins_d.cfg";
-		std::string logFileName = "Ogre_d.log";
+		Ogre::String pluginsFileName = "plugins_d.cfg";
+		Ogre::String logFileName = "Ogre_d.log";
 #else
-		std::string pluginsFileName = "plugins.cfg";
-		std::string logFileName = "Ogre.log";
+		Ogre::String pluginsFileName = "plugins.cfg";
+		Ogre::String logFileName = "Ogre.log";
 #endif
 
 		mRoot = new Ogre::Root(pluginsFileName, configFileName, logFileName);
@@ -83,7 +83,7 @@ void WindowRenderer::createRoot()
 void WindowRenderer::setupWindow()
 {
 	// Aqui se configura la ventana del juego
-	std::string winTitle = "WeirdEngine";
+	Ogre::String winTitle = "WeirdEngineWin";
 	unsigned int winWidth = 800;
 	unsigned int winHeight = 600;
 
@@ -106,7 +106,7 @@ void WindowRenderer::setupWindow()
 	SDL_SysWMinfo wmInfo;
 	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(sdlWin, &wmInfo);
 
-	//miscParams["externalWindowHandle"] = std::stringConverter::toString(size_t(wmInfo.info.win.window));
+	//miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));
 
 	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false);/*, &miscParams);*/
 }
@@ -125,7 +125,7 @@ void WindowRenderer::setupResources()
 	cf.load("resources.cfg");
 #endif
 
-	std::string sec, type, arch;
+	Ogre::String sec, type, arch;
 	Ogre::ConfigFile::SettingsBySection_::const_iterator seci;
 
 	//secciones

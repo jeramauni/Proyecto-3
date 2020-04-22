@@ -1,5 +1,17 @@
 #include "TransformComponent.h"
 
+TransformComponent::TransformComponent() {
+	name = "transform";
+}
+
+// INIT
+void TransformComponent::Init()
+{
+	position = Ogre::Vector3(0.0);
+	rotation = Ogre::Vector3(0.0);
+	scale = Ogre::Vector3(0.0);
+}
+
 void TransformComponent::Init(const Ogre::Vector3& position_, const Ogre::Vector3& rotation_, const Ogre::Vector3& scale_)
 {
 	position = position_;

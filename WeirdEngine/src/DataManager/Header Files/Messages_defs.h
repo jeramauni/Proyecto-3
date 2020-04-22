@@ -2,14 +2,7 @@
 
 #include <vector>
 
-//#include "GameObject.h" <- tpv
-#include "EntityC.h"
-
-// you can replace these lines by corresponding
-// includes once the classes are defined
-
-//class Asteroid;
-//class Bullet;
+class EntityC;
 
 namespace msg {
 

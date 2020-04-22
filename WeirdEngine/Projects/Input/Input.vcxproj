@@ -19,9 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\src\Input\Header Files\InputKeyListener.h" />
     <ClInclude Include="..\..\src\Input\Header Files\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\Input\Source Files\InputKeyListener.cpp" />
     <ClCompile Include="..\..\src\Input\Source Files\InputManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -111,6 +113,10 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -163,6 +169,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

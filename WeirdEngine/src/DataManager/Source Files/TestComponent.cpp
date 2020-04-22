@@ -1,7 +1,22 @@
 #include "TestComponent.h"
 #include <iostream>
 
-/*void TestComponent::Init(const float& f_, const int intArray_[3], const std::string& s_, const bool& b_)
+TestComponent::TestComponent()
+{
+}
+
+void TestComponent::Init()
+{
+	f = 0.0;
+	for (size_t i = 0; i < 3; i++)
+	{
+		intArray[i] = 0;
+	}
+	s = "-1";
+	b = false;
+}
+
+void TestComponent::Init(const float& f_, const int intArray_[3], const std::string& s_, const bool& b_)
 {
 	f = f_;
 	for (size_t i = 0; i < 3; i++)
@@ -10,25 +25,6 @@
 	}
 	s = s_;
 	b = b_;
-}*/
-
-void TestComponent::Init(std::unordered_map<std::string, std::string>& param)
-{
-	f = std::stof(param.at("float"));
-
-	std::vector<std::string> words = GetWords(param.at("aint"));
-
-	for (size_t i = 0; i < 3; i++)
-	{
-		intArray[i] = std::stoi(words[i]);
-	}
-
-	s = param.at("string");
-
-	if (param.at("bool") == "true")
-		b = true;
-	else
-		b = false;
 }
 
 void TestComponent::Debug()

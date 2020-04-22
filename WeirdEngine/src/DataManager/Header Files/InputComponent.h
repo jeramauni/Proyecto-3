@@ -2,7 +2,6 @@
 #define InputComponent_H
 
 #include "Component.h"
-//#include "InputListener.h"
 
 class EntityC;
 

@@ -24,14 +24,11 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h">
       <Filter>Header Files\Time</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\GameManager.h">
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\WEManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\GameManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -40,6 +37,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp">
       <Filter>Source Files\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\WEManager.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\GameManager.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\WEManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\weirdTimer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\GameManager.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\WEManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\weirdTimer.cpp" />

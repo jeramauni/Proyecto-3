@@ -1,24 +1,33 @@
-﻿#ifndef GAME_MANAGER_H
-#define GAME_MANAGER_H
+﻿#ifndef WE_MANAGER_H
+#define WE_MANAGER_H
 
 #pragma once
-#include "Scene.h"
-#include "Messages_decl.h"
 
-// InputManager
-#include <InputManager.h>
+#include <stack>
+#include <string>
 
+namespace msg {
+	class Message;
+}
+
+namespace OIS {
+	class KeyListener;
+	class KeyEvent;
+}
+
+class Scene;
 class WindowRenderer;
 class RenderSystem;
 class InputManager;
+class InputKeyListener;
 class PhysicsEngine;
 class DataManager;
 
-class GameManager {
+class WEManager {
 public:
 	//Constructoras
-	GameManager();
-	~GameManager();
+	WEManager();
+	~WEManager();
 
 	// Inicializa
 	void Init();
@@ -26,11 +35,8 @@ public:
 	//Update
 	bool update();
 
-	// Para añadir listeners fuera de GameManager
-	void addListener(InputListener *iL, std::string name);
-
-	// Para coger el inputMng
-	InputManager* getInputMg() { return mInputManager; };
+	// Crea la escena leyendo del archivo
+	void generateScene(std::string sceneName);
 
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
@@ -46,6 +52,7 @@ private:
 	RenderSystem* renderSystem = nullptr;
 	//Input Mng
 	InputManager* mInputManager;
+	InputKeyListener* input;
 	//------------------------------------
 
 	//Pila de escenas
@@ -58,5 +65,9 @@ private:
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
+
+	// Input
+	virtual bool keyPressed(const OIS::KeyEvent& ke);
+	virtual bool keyReleased(const OIS::KeyEvent& ke);
 };
 #endif

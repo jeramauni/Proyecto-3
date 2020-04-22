@@ -3,6 +3,8 @@
 #include "Messages_defs.h"
 #include <iostream>
 
+class SceneNode;
+
 EntityC::EntityC(std::string id) : _id(id) {
 	_active = true;
 }

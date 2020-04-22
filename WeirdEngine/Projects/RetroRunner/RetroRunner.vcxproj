@@ -19,19 +19,18 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\RetroRunner\Source Files\Game.cpp" />
-    <ClCompile Include="..\..\src\RetroRunner\Source Files\InputListener.cpp" />
-    <ClCompile Include="..\..\src\RetroRunner\Source Files\RetroRunner.cpp" />
+    <ClInclude Include="..\..\src\TestProject\Header Files\Game.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\RetroRunner\Header Files\Game.h" />
-    <ClInclude Include="..\..\src\RetroRunner\Header Files\InputListener.h" />
+    <ClCompile Include="..\..\src\TestProject\Source Files\Game.cpp" />
+    <ClCompile Include="..\..\src\TestProject\Source Files\TestMain.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{EDC42D08-04BF-4827-A0A4-40F04B2F4867}</ProjectGuid>
     <RootNamespace>RetroRunner</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>TestProject</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,7 +82,7 @@
     <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
     <TargetName>$(ProjectName)_debug</TargetName>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(SolutionDir)src\RetroRunner\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(SolutionDir)src\TestProject\Header Files;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -96,7 +95,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)exes</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(SolutionDir)src\RetroRunner\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(SolutionDir)src\TestProject\Header Files;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
