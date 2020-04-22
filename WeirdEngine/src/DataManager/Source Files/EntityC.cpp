@@ -30,7 +30,9 @@ Component* EntityC::getComponent(std::string s)
 {
 	return _components.at(s);
 }
-
+bool EntityC::ComponentTracker(std::string s) {
+	return _components.find(s) != _components.end();
+}
 void EntityC::setNode(Ogre::SceneNode* node) {
 	_Node = node;
 	_Node->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(90));
@@ -41,9 +43,9 @@ Ogre::SceneNode* EntityC::getNode()
 	return _Node;
 }
 
-void EntityC::setPos(Ogre::Vector3 p) {
+void EntityC::setPos(Ogre::Vector3& p) {
 	_Node->setPosition(p);
-	static_cast<TransformComponent*>(this->getComponent("transform"))->SetPosition(p);
+	
 }
 
 void EntityC::setActive(bool sw)

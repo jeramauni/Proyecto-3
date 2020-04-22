@@ -22,15 +22,15 @@
           "Mesh": "malla.mesh"
         },
         {
-          "id": "transform",
-          "posicion": [ 0, 0, 0 ],
-          "escala": [ 1, 1, 1 ],
-          "rotacion": [ 0, 0, 0 ]
+          "id": "Transform",
+          "posicion": "0/0/0",
+          "escalaT": "1/1/1",
+          "rotacion": "0/0/0"
         },
         {
           "id": "physic",
-          "collision": true,
-          "escala": [ 1, 1, 1 ]
+          "collision": "false",
+          "escalaP": "1/1/1"
         }
       ]
     },
@@ -43,15 +43,15 @@
           "Mesh": "malla.mesh"
         },
         {
-          "id": "transform",
-          "posicion": [ 0, 0, 0 ],
-          "escala": [ 1, 1, 1 ],
-          "rotacion": [ 0, 0, 0 ]
+          "id": "Transform",
+          "posicion": "0/0/0",
+          "escalaT": "1/1/1",
+          "rotacion": "0/0/0"
         },
         {
           "id": "physic",
-          "collision": true,
-          "escala": [ 1, 1, 1 ]
+          "collision": "true",
+          "escalaP": [ 1, 1, 1 ]
         }
       ]
     },
@@ -64,15 +64,15 @@
           "Mesh": "malla.mesh"
         },
         {
-          "id": "transform",
-          "posicion": [ 0, 0, 0 ],
-          "escala": [ 1, 1, 1 ],
-          "rotacion": [ 0, 0, 0 ]
+          "id": "Transform",
+          "posicion": "0/0/0",
+          "escalaT": "1/1/1",
+          "rotacion": "0/0/0"
         },
         {
           "id": "physic",
-          "collision": false,
-          "escala": [ 1, 1, 1 ]
+          "collision": "false",
+          "escalaP": "1/1/1"
         },
         {
           "id": "coleccionableComponent",
@@ -84,10 +84,14 @@
       "id": "ninja",
       "components": [
         {
-          "id": "transform",
+          "id": "Transform",
           "posicion": "20/20/-600",
-          "escala": "1/1/1",
+          "escalaT": "1/1/1",
           "rotacion": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "ninja"
         }
       ]
     }

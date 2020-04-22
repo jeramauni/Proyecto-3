@@ -14,6 +14,7 @@ public:
 	void AddComponent(Component* c);
 	void DelComponent(Component* c);
 	Component* getComponent(std::string s);
+	bool ComponentTracker(std::string s);
 
 	//Recorre los componentes de la entidad y actualizan los que sean necesarios.
 	void update();
@@ -21,9 +22,8 @@ public:
 	// Setter/getter Node
 	void setNode(Ogre::SceneNode* node);
 	Ogre::SceneNode* getNode();
-
 	//Da la posicion al nodo de Ogre
-	void setPos(Ogre::Vector3 p);
+	void setPos(Ogre::Vector3& p);
 
 	// Activar/Desactivar
 	void setActive(bool sw);

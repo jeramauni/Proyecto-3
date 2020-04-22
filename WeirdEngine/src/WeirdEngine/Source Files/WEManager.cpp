@@ -70,11 +70,11 @@ void WEManager::generateScene(std::string sceneName) {
 
 
 	////--------------TEMP
-	ent[0]->setNode(renderSystem->addOgreEntity(ent[0]->_id));
-	Component* tcomp = ent[0]->getComponent("transform");
-	ent[0]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());
-
-	mScene->addEntity(ent[0]);
+	/*ent[0]->setNode(renderSystem->addOgreEntity(static_cast<RenderComponent*>(ent[0]->getComponent("Render"))->getMeshName()));
+	Component* tcomp = ent[0]->getComponent("Transform");
+	ent[0]->setPos(*static_cast<TransformComponent*>(tcomp)->GetPosition());
+	
+	mScene->addEntity(ent[0]);*/
 	////---------------------
 
 	for (int i = 0; i < ent.size(); i++) { //Muy feo esto
@@ -84,10 +84,16 @@ void WEManager::generateScene(std::string sceneName) {
 		
 		// Si le guardamos el nombre del "mesh" en la info de la entidad
 		// eso es lo que habra que pasarle a addOgreEntity
+		if (ent[i]->ComponentTracker("Render")) {
+			ent[i]->setNode(renderSystem->addOgreEntity(static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
+		}
 		//ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->_id));
 		//Component *tcomp = ent[i]->getComponent("transform");
 		//ent[i]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());
-		
+		if (ent[i]->ComponentTracker("Transform")) {
+			Component* tcomp = ent[i]->getComponent("Transform");
+			ent[i]->setPos(*static_cast<TransformComponent*>(tcomp)->GetPosition());
+		}
 
 		// si tiene fisicos a las fisicas
 		//
@@ -97,7 +103,7 @@ void WEManager::generateScene(std::string sceneName) {
 		//
 
 		// Añadimos la entidad a la escena
-		//mScene->addEntity(ent[i]);
+		mScene->addEntity(ent[i]);
 	}
 
 	pushScene(mScene);

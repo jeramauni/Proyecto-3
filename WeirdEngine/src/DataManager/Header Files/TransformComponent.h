@@ -11,9 +11,9 @@ public:
 	void Init(std::unordered_map<std::string, std::string>& param);
 
 	//Getters & Setters
-	Ogre::Vector3 GetPosition();
-	Ogre::Vector3 GetRotation();
-	Ogre::Vector3 GetScale();
+	Ogre::Vector3* GetPosition();
+	Ogre::Vector3* GetRotation();
+	Ogre::Vector3* GetScale();
 
 	void SetPosition(Ogre::Vector3 v_);
 	void SetPosition(float x_, float y_, float z_);
