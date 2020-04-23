@@ -1,7 +1,4 @@
-﻿#ifndef WE_MANAGER_H
-#define WE_MANAGER_H
-
-#pragma once
+﻿#pragma once
 
 #include <stack>
 #include <string>
@@ -75,4 +72,3 @@ private:
 	//virtual bool mousePressed(const OIS::MouseEvent& ke) {};
 	//virtual bool mouseReleased(const OIS::MouseEvent& ke) {};
 };
-#endif

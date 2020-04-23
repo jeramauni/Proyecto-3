@@ -1,6 +1,8 @@
 #pragma once
+
 #include <string>
 #include <map>
+
 namespace Ogre {
 	class OverlayManager;
 	class Camera;

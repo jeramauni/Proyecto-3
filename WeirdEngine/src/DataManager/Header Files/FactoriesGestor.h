@@ -1,7 +1,5 @@
 #pragma once
 
-//#include "ComponentFactory.h"CAMBIO
-
 #include <unordered_map>
 #include <string>
 
