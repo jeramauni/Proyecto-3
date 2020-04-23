@@ -8,19 +8,19 @@ TransformComponent::TransformComponent()
 
 void TransformComponent::Init(std::unordered_map<std::string, std::string>& param)
 {
-	std::vector<std::string> aux = GetWords(param.at("posicion"));
+	std::vector<std::string> aux = GetWords(param.at("positionT"));
 	position.x = std::stof(aux[0]);
 	position.y = std::stof(aux[1]);
 	position.z = std::stof(aux[2]);
 	aux.clear();
 
-	aux = GetWords(param.at("escalaT"));
+	aux = GetWords(param.at("scaleT"));
 	scale.x = std::stof(aux[0]);
 	scale.y = std::stof(aux[1]);
 	scale.z = std::stof(aux[2]);
 
 	aux.clear();
-	aux = GetWords(param.at("rotacion"));
+	aux = GetWords(param.at("rotationT"));
 	rotation.x = std::stof(aux[0]);
 	rotation.y = std::stof(aux[1]);
 	rotation.z = std::stof(aux[2]);

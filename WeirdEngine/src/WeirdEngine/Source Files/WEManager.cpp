@@ -80,7 +80,7 @@ void WEManager::generateScene(std::string sceneName) {
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
-	std::vector<EntityC*> ent = dM->Load(sceneName, "entities.json");
+	std::vector<EntityC*> ent = dM->Load(sceneName, "entities.json", true);
 
 
 	////--------------TEMP
@@ -91,7 +91,7 @@ void WEManager::generateScene(std::string sceneName) {
 	mScene->addEntity(ent[0]);*/
 	////---------------------
 
-	for (int i = 0; i < ent.size(); i++) { //Muy feo esto
+	for (int i = 0; i < ent.size(); i++) {
 		// ToDo:: 
 		// Mirar los componentes de las entidades y añadimos 
 		// con el transform generamos el nodo
