@@ -30,6 +30,28 @@
     },
 
     {
+
+      "id": "plano",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "20/-150/-600",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "cube"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "100/50/100"
+        }
+      ]
+    },
+
+    {
       "id": "ninja",
       "components": [
         {
@@ -41,17 +63,21 @@
         {
           "id": "Render",
           "Mesh": "ninja"
+        },
+        {
+          "id": "Physics",
+          "gravity": "true",
+          "collSize": "1/1/1"
         }
       ]
     },
 
     {
       "id": "ToDo",
-      "components": 
-      [
+      "components": [
         {
           "id": "MoveInput"
-        }                
+        }
       ]
     }
   ]

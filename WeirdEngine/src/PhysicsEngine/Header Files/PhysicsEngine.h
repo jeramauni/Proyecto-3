@@ -20,9 +20,9 @@ private:
 
 public:
 	void initObjects();
-	void floor();
 	int basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity);
-	void planeMesh(Ogre::SceneNode* newNode);
+	void addForce(int id, btVector3 fDirection);
+	void changeVelocity(int id, btVector3 vDirection);
 	bool physicsLoop();
 };
 
