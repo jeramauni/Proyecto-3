@@ -1,7 +1,4 @@
-#ifndef WE_MANAGER_H
-#define WE_MANAGER_H
-
-#pragma once
+﻿#pragma once
 
 #include <stack>
 #include <string>
@@ -70,4 +67,3 @@ private:
 	void pushScene(Scene* newScene);
 	void popScene();
 };
-#endif

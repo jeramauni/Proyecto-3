@@ -1,5 +1,4 @@
-#ifndef InputManager_H
-#define InputManager_H
+#pragma once
 
 #include <OISMouse.h>
 #include <OISKeyboard.h>
@@ -81,4 +80,3 @@ private:
 
     static InputManager* mInputManager;
 };
-#endif

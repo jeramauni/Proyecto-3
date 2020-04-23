@@ -11,10 +11,12 @@ class DataManager {
 public:
 
 	//Main loader
-	std::vector<Container*> Load(const std::string& map_file, const std::string& prefabs_file);
+	std::vector<EntityC*> Load(const std::string& map_file, const std::string& prefabs_file, bool debug_mode);
 	void setWEM(WEManager* wem);
 
 private:
+
+	bool debug_ = true;
 
 	//Readers
 	json ReadJson(const std::string& file_name);
@@ -27,7 +29,7 @@ private:
 	//Auxiliares
 	bool ReadNext(std::ifstream& input);
 	std::vector<std::string> GetWords(std::string& s);
-	std::vector<Container*> ProcessMap(std::vector<std::vector<std::string>> map, json prefabs);
+	std::vector<EntityC*> ProcessMap(std::vector<std::vector<std::string>> map, json prefabs, bool debug);
 	Container* CreateEntity(std::string id, json prefabs, uint32_t n_entities);
 
 	// Puntero al motor

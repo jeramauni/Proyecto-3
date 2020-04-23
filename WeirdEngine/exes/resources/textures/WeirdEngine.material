@@ -34,7 +34,7 @@ material penguin
 }
 
 ------------------------------------------
-material plano
+material cube
 {
 	technique {
 			pass {

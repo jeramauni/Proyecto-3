@@ -15,12 +15,17 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 CREATE_REGISTER(Render);
 CREATE_REGISTER(Transform);
 CREATE_REGISTER(Test);
+CREATE_REGISTER(Physics);
 
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name) {
 	json j;
 	std::ifstream input;
-	input.open(file_name);
+	//AUX
+	std::string s;
+	s = "resources/gameFiles/" + file_name;
+	input.open(s);
+
 	input >> j;
 
 	input.close();
@@ -32,7 +37,10 @@ std::vector<std::vector<std::string>> DataManager::ReadMap(const std::string& fi
 	std::ifstream input;
 	//AUX
 	std::string s;
-	input.open(file_name);
+
+	s = "resources/gameFiles/" + file_name;
+	input.open(s);
+	s.clear();
 
 	while (!input.eof())
 	{
@@ -55,6 +63,7 @@ std::vector<std::vector<std::string>> DataManager::ReadMap(const std::string& fi
 //Outputs on console a readable debug of a json file
 void DataManager::DebugJson(json json_file)
 {
+	std::cout << '\n' << "---------------------------------------JsonDebug-Start--------------------------------------" << '\n';
 
 	std::cout << "Debugging " << json_file.begin().key() << " file... " << '\n' << '\n';
 	json_file = json_file.at(json_file.begin().key());
@@ -83,6 +92,7 @@ void DataManager::DebugJson(json json_file)
 
 		std::cout << "----------------------" << '\n';
 	}
+	std::cout << '\n' << "---------------------------------------JsonDebug-End--------------------------------------" << '\n';
 }
 
 Container* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_entities)
@@ -124,7 +134,9 @@ Container* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_en
 			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
 		}
 
+		if(debug_)
 		std::cout << "Entity " << entity_name << " successfully created !" << '\n';
+
 		return e;
 	}
 }
@@ -134,11 +146,43 @@ void DataManager::DebugMap(std::vector<std::vector<std::string>> map, bool outpu
 	std::ofstream output;
 	time_t now = time(0);
 	char dateTime[26];
+	std::string d_file_name;
 
 	if (output_debugTxt) {
-		output.open("debug_map.txt");
+		d_file_name = "resources/gameFiles/mapDebugs/debug_map_";
 		ctime_s(dateTime, sizeof(dateTime), &now);
-		output  << "Debugging at " << dateTime << '\n';
+
+		int i = 0;
+		bool end = false;
+		while (!end && i < sizeof(dateTime))
+		{
+			if (dateTime[i] == '\n')
+			{
+				end = true;
+			}
+
+			else if (dateTime[i] == ' ')
+			{
+				dateTime[i] = '_';
+			}
+
+			else if (dateTime[i] == ':')
+			{
+				dateTime[i] = '-';
+			}
+			
+			if (!end)
+			{
+				d_file_name += dateTime[i];
+				i++;
+			}	
+		}
+		d_file_name += ".txt";
+
+		std::cout << '\n' << "---------------------------------------MapDebug-Start--------------------------------------" << '\n';
+		std::cout << "Map debug file created at: " << d_file_name << "\n";
+
+		output.open(d_file_name);
 	}
 
 	for (auto i = map.begin(); i != map.end(); i++)
@@ -157,7 +201,7 @@ void DataManager::DebugMap(std::vector<std::vector<std::string>> map, bool outpu
 			output << '\n' << "--------------------------------------" << '\n';
 		std::cout << '\n' << "--------------------------------------" << '\n';
 	}
-
+	std::cout << '\n' << "---------------------------------------MapDebug-End--------------------------------------" << '\n';
 	if (output_debugTxt)
 		output.close();
 }
@@ -204,7 +248,7 @@ std::vector<std::string> DataManager::GetWords(std::string& s)
 	return words;
 }
 
-std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs)
+std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs, bool debug)
 {
 	std::vector<Container*> entities;
 	int n = std::stoi(map[0][0]);	//Number of entities on legend
@@ -258,32 +302,37 @@ std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::str
 	}
 
 	//DEBUG----------------------------------
-	std::cout << "---------------------------------------ProcessMap---------------------------------------" << '\n';
-	std::cout << "n leyenda: " << n << '\n';
-	//Legend
-	for (auto it = legend.begin(); it != legend.end(); it++)
+	if (debug)
 	{
-		std::cout << "id: " << it->first << " - " << it->second << '\n'; 
-	}
-	//Axis representation
-	std::cout << "Axis representation: ";
-	for (size_t i = 0; i < 3; i++)
-		std::cout << xyz[i];
-	std::cout << '\n';
-	//Size between tiles
-	std::cout << "size between tiles: " << s << '\n';
-	//Mapsize 
-	std::cout << "Mapsize (CxR): " << c << 'x' << r << '\n';
+		std::cout << '\n' << "---------------------------------------ProcessMap-Start--------------------------------------" << '\n';
+		std::cout << "n leyenda: " << n << '\n';
+		//Legend
+		for (auto it = legend.begin(); it != legend.end(); it++)
+		{
+			std::cout << "id: " << it->first << " - " << it->second << '\n';
+		}
+		//Axis representation
+		std::cout << "Axis representation: ";
+		for (size_t i = 0; i < 3; i++)
+			std::cout << xyz[i];
+		std::cout << '\n';
+		//Size between tiles
+		std::cout << "size between tiles: " << s << '\n';
+		//Mapsize 
+		std::cout << "Mapsize (CxR): " << c << 'x' << r << '\n';
 
-	std::cout << "---------------------------------------ProcessMap---------------------------------------" << '\n';
+		std::cout << '\n' << "---------------------------------------ProcessMap-End--------------------------------------" << '\n';
+	}
 	//DEBUG----------------------------------
 
 	return entities;
 }
 
 
-std::vector<Container*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
+std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file, bool debug_mode)
 {
+	debug_ = debug_mode;
+
 	//Vector de entidades del mapa
 	std::vector<Container*> entities;
 	json prefabs;								//Prefabs data
@@ -292,7 +341,7 @@ std::vector<Container*> DataManager::Load(const std::string& map_file, const std
 	//Error fuse
 	bool fail = false;
 
-	std::cout << "Game Data loading initiated... \n";
+	std::cout << '\n' << "Game Data loading initiated... \n";
 
 	//Lectura y carga del archivo mapa ----------------------------------------
 	try
@@ -317,12 +366,16 @@ std::vector<Container*> DataManager::Load(const std::string& map_file, const std
 		//-------------------------------------------------------------------------
 		if (!fail) {
 			//----------------------------MAIN-----------------------------------------
-			DebugMap(map, false);
-			entities = ProcessMap(map, prefabs);
+			if (debug_)
+			{
+				DebugJson(prefabs);
+				DebugMap(map, true);
+			}			
+			entities = ProcessMap(map, prefabs, debug_);
 			//-------------------------------------------------------------------------
 			if (!fail)
 			{
-				std::cout << "Game Data loading finished successfully! \n";
+				std::cout << "Game Data loading finished successfully! \n \n";
 			}
 		}
 	}

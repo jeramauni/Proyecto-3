@@ -1,3 +1,4 @@
+#pragma once
 //
 // Copyright (c) 2007-2011, 'Madmarx' from the ogre3D forums (ogre3D.org).
 // All rights reserved.
@@ -26,9 +27,6 @@
 // ------------------------------------------------------------------------------//
 // ------------------------------------------------------------------------------//
 
-#ifndef EASYDEFINES_H
-#define EASYDEFINES_H
-
 #include <sstream>
 #include <iostream>
 
@@ -53,5 +51,3 @@ namespace OgreEasy
 	/// usefull at the end of the program
 	void waitForUser();
 }
-
-#endif

@@ -87,6 +87,9 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\WEInput.h">
       <Filter>Archivos de encabezado\Entidades\Componentes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\PhysicsComponent.h">
+      <Filter>Archivos de encabezado\Componentes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\WEInput.cpp">
       <Filter>Archivos de origen\Componentes\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\PhysicsComponent.cpp">
+      <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

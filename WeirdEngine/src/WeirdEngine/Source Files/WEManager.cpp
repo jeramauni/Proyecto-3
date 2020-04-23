@@ -18,6 +18,15 @@
 //Escena
 #include "Scene.h"
 #include <Messages_defs.h>
+	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Jugador
+EntityC* player;
+btVector3 velocity = btVector3(0,0,0);
+	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 WEManager::WEManager()
 {
@@ -61,7 +70,7 @@ void WEManager::Init() {
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(windowRenderer->getWin());
 
-	// Añadimos al InputMng el InputKeyListener k vayamos a usar para la gestion de las teclas
+	// Aï¿½adimos al InputMng el InputKeyListener k vayamos a usar para la gestion de las teclas
 	//input = new InputListener(this);
 	//mInputManager->addKeyListener(input, "input");
 	//mInputManager->addKeyListener(this, "input");
@@ -78,9 +87,16 @@ void WEManager::generateScene(std::string sceneName) {
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
-	std::vector<Container*> ent = dM->Load(sceneName, "entities.json");
+	std::vector<EntityC*> ent = dM->Load(sceneName, "entities.json", true);
 
 	for (int i = 0; i < ent.size(); i++) {
+	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		player = ent[0];
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Creamos el nodo de ogre a partir de la mesh del renderComponent
 		if (ent[i]->hasComponent("Render")) {
 			ent[i]->setNode(renderSystem->addOgreEntity(static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
@@ -94,13 +110,16 @@ void WEManager::generateScene(std::string sceneName) {
 
 		// ToDo:: 
 		// si tiene fisicos a las fisicas
-		//
+		if (ent[i]->ComponentTracker("Physics")) {
+			PhysicsComponent* p = static_cast<PhysicsComponent*>(ent[i]->getComponent("Physics"));
+			p->SetID(py->basicMesh(ent[i]->getNode(), p->GetScale(), p->HaveGravity()));
+		}
 		// si tiene input al controlador de input
 
 		// En entidad separar por tipos de componentes 
 		//
 
-		// Añadimos la entidad a la escena
+		// Aï¿½adimos la entidad a la escena
 		mScene->addEntity(ent[i]);
 	}
 
@@ -112,13 +131,49 @@ void WEManager::close() { end = true; }
 bool WEManager::update() {
 	//------Input------
 	mInputManager->capture();
-
+	
 	// Fisicas
 	py->physicsLoop();
 
 	//Update
 	//escenas.top()->update();
 
+
+	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	py->changeVelocity(static_cast<PhysicsComponent*>(player->getComponent("Physics"))->GetID(), velocity);
+	if (input->w)
+	{
+		velocity = btVector3(0.0f, 0.0f, -5.0f);
+	}
+	else if (input->s)
+	{
+		velocity = btVector3(0.0f, 0.0f, 5.0f);
+	}
+	else if (input->a)
+	{
+		velocity = btVector3(-5.0f, 0.0f,  0.0f);
+	}
+	else if (input->d)
+	{
+		velocity = btVector3(5.0f, 0.0f, 0.0f);
+	}
+	else
+	{
+		velocity = btVector3(0.0f, 0.0f, 0.0f);
+	}
+	if (input->space)
+	{
+		if (player->getNode()->getPosition().y < -90) {
+			py->addForce(static_cast<PhysicsComponent*>(player->getComponent("Physics"))->GetID(), btVector3(0.0f, 5.0f, 0.0f));
+		}
+	}
+	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	std::cout << player->getNode()->getPosition().y << "\n";
 	//------Renderizado------
 	windowRenderer->renderFrame(0);
 

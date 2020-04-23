@@ -1,6 +1,3 @@
-#ifndef GAME_H
-#define GAME_H
-
 #pragma once
 
 class WEManager;
@@ -17,4 +14,3 @@ public:
 private:
 	WEManager* _weM;
 };
-#endif

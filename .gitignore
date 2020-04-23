@@ -377,3 +377,5 @@ cmake-build-*/
 *.swp
 
 WeirdEngine/exes/debug_map.txt
+
+WeirdEngine/exes/resources/gameFiles/mapDebugs/

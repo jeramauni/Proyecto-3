@@ -4,13 +4,13 @@
 //Número de entidades en la Leyenda
 2
 //Leyenda
-0 testEntity
-1 ninja
+0 ninja
+1 plano
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
 1.0
 //Tamaño del mapa (Columnas x Filas)
-1 1
+2 1
 //La primera capa siempre está a la altura 0
-1
+0 1

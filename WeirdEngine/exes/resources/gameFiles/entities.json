@@ -1,0 +1,84 @@
+{
+  "Entities": [
+    {
+
+      "id": "testEntity",
+      "components": [
+        {
+          "id": "Test",
+          "float": "2.35",
+          "aint": "1/2/3",
+          "string": "test",
+          "bool": "false"
+        },
+        {
+          "id": "Transform",
+          "positionT": "20/20/-600",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "ogrehead"
+        },
+        {
+          "id": "Physics",
+          "gravity": "true",
+          "collSize": "1/1/1"
+        }
+      ]
+    },
+
+    {
+
+      "id": "plano",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "20/-150/-600",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "cube"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "100/50/100"
+        }
+      ]
+    },
+
+    {
+      "id": "ninja",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "20/20/-600",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "ninja"
+        },
+        {
+          "id": "Physics",
+          "gravity": "true",
+          "collSize": "1/1/1"
+        }
+      ]
+    },
+
+    {
+      "id": "ToDo",
+      "components": [
+        {
+          "id": "MoveInput"
+        }
+      ]
+    }
+  ]
+}
