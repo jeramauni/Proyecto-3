@@ -110,7 +110,11 @@ void WEManager::generateScene(std::string sceneName) {
 		}
 
 		// si tiene fisicos a las fisicas
-		//
+		if (ent[i]->ComponentTracker("Physics")) {
+			//py->basicMesh(ent[i]->getNode());
+			PhysicsComponent* p = static_cast<PhysicsComponent*>(ent[i]->getComponent("Physics"));
+			p->SetID(py->basicMesh(ent[i]->getNode(), p->GetScale(), p->HaveGravity()));
+		}
 		// si tiene input al controlador de input
 
 		// En entidad separar por tipos de componentes 

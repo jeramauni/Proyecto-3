@@ -10,29 +10,6 @@ void PhysicsEngine::initObjects()
 	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 }
 
-void PhysicsEngine::floor()
-{
-	//create the plane entity to the physics engine, and attach it to the node
-
-	btTransform groundTransform;
-	groundTransform.setIdentity();
-	groundTransform.setOrigin(btVector3(0, -50, 0));
-
-	btScalar groundMass(0.); //the mass is 0, because the ground is immovable (static)
-	btVector3 localGroundInertia(0, 0, 0);
-
-	btCollisionShape* groundShape = new btBoxShape(btVector3(btScalar(50.), btScalar(50.), btScalar(50.)));
-	btDefaultMotionState* groundMotionState = new btDefaultMotionState(groundTransform);
-
-	groundShape->calculateLocalInertia(groundMass, localGroundInertia);
-
-	btRigidBody::btRigidBodyConstructionInfo groundRBInfo(groundMass, groundMotionState, groundShape, localGroundInertia);
-	btRigidBody* groundBody = new btRigidBody(groundRBInfo);
-
-	//add the body to the dynamics world
-	dynamicsWorld->addRigidBody(groundBody);
-}
-
 void PhysicsEngine::planeMesh(Ogre::SceneNode* newNode)
 {
 	//create the plane entity to the physics engine, and attach it to the node
@@ -56,10 +33,10 @@ void PhysicsEngine::planeMesh(Ogre::SceneNode* newNode)
 	dynamicsWorld->addRigidBody(groundBody);
 }
 
-void PhysicsEngine::basicMesh(Ogre::SceneNode* newNode)
+int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity)
 {
 	//create the new shape, and tell the physics that is a Box
-	btCollisionShape* newRigidShape = new btBoxShape(btVector3(newNode->getScale().x, newNode->getScale().y, newNode->getScale().z));
+	btCollisionShape* newRigidShape = new btBoxShape(collSize);
 	collisionShapes.push_back(newRigidShape);
 	//getCollisionShapes().push_back(newRigidShape);
 
@@ -69,7 +46,9 @@ void PhysicsEngine::basicMesh(Ogre::SceneNode* newNode)
 	startTransform.setRotation(btQuaternion(newNode->getOrientation().x, newNode->getOrientation().y, newNode->getOrientation().z, newNode->getOrientation().w));
 
 	//set the mass of the object. a mass of "0" means that it is an immovable object
-	btScalar mass = 0.1f;
+	btScalar mass;
+	if(gravity) mass = 0.1f;
+	else mass = 0.0f; //the mass is 0, because the ground is immovable (static)
 	btVector3 localInertia(0, 0, 0);
 
 	startTransform.setOrigin(btVector3(newNode->getPosition().x, newNode->getPosition().y, newNode->getPosition().z));
@@ -84,6 +63,7 @@ void PhysicsEngine::basicMesh(Ogre::SceneNode* newNode)
 	body->setUserPointer(newNode);
 
 	dynamicsWorld->addRigidBody(body);
+	return (dynamicsWorld->getNumCollisionObjects()-1);
 }
 
 bool PhysicsEngine::physicsLoop()
