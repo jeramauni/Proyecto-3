@@ -15,6 +15,7 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 CREATE_REGISTER(Render);
 CREATE_REGISTER(Transform);
 CREATE_REGISTER(Test);
+CREATE_REGISTER(Physics);
 
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name)

@@ -5,8 +5,6 @@
 #include "btBulletDynamicsCommon.h"
 #include "LinearMath/btHashMap.h"
 #include <Ogre.h>
-#include <vector>
-#include <map>
 #include <string>
 
 class PhysicsComponent : public Component {
@@ -24,7 +22,7 @@ public:
 
 private:
 	bool gravity;
-	int id = -1;
+	int id;
 	btVector3 collSize;
 };
 

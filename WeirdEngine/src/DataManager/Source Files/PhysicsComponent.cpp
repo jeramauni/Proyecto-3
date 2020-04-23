@@ -5,6 +5,7 @@ DEFINE_FACTORY(Physics);
 PhysicsComponent::PhysicsComponent()
 {
 	name = "Physics";
+	id = -1;
 }
 
 PhysicsComponent::~PhysicsComponent()
@@ -13,17 +14,22 @@ PhysicsComponent::~PhysicsComponent()
 }
 void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 {
-	std::vector<std::string> aux = GetWords(param.at("gravity"));
-	if (std::stof(aux[0]) == 0) gravity = false;
-	else gravity = true;
-	aux.clear();
+	//Aux
+	std::vector<std::string> aux;
 
+	//Gravity
+	if (param.at("gravity") == "true")
+		gravity = true;
+	else
+		gravity = false;
+
+	//CollSize
 	aux = GetWords(param.at("collSize"));
 	collSize = btVector3(std::stof(aux[0]), 
 						 std::stof(aux[1]), 
 						 std::stof(aux[2]));
-	aux.clear();
 }
+
 int PhysicsComponent::GetID()
 {
 	return id;

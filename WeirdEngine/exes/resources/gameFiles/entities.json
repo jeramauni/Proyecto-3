@@ -10,6 +10,21 @@
           "aint": "1/2/3",
           "string": "test",
           "bool": "false"
+        },
+        {
+          "id": "Transform",
+          "positionT": "20/20/-600",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "ogrehead"
+        },
+        {
+          "id": "Physics",
+          "gravity": "true",
+          "collSize": "1/1/1"
         }
       ]
     },
