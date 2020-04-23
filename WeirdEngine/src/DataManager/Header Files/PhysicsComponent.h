@@ -8,7 +8,6 @@
 #include <string>
 
 class PhysicsComponent : public Component {
-
 public:
 	PhysicsComponent();
 	~PhysicsComponent();
@@ -17,10 +16,9 @@ public:
 
 	// Implementar la que sea necesaria
 	void update(Container* c, float time) {};
-	void handleInput(Container* c, float time) {};
 
 	//Receive implementation
-	void receive(Container* c, const msg::Message& msg) {};
+	void receive(Container* c, const msg::Message& msg);
 
 	int GetID();
 	void SetID(int newID);

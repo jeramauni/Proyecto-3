@@ -15,7 +15,6 @@ public:
 
 	// Implementar la que sea necesaria
 	void update(Container* c, float time) {};
-	void handleInput(Container* c, float time) {};
 
 	//Receive implementation
 	void receive(Container* c, const msg::Message& msg) {};

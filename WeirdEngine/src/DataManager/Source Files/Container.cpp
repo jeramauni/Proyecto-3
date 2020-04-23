@@ -1,11 +1,14 @@
 #include "Container.h"
 
 #include "Component.h"
+#include "InputComponent.h"
 #include "Messages_defs.h"
 
+/*
 Container::Container() :
 	EntityC() {
 }
+*/
 
 Container::Container(std::string id, WEManager* wem) :
 	EntityC(id, wem) {
@@ -14,17 +17,7 @@ Container::Container(std::string id, WEManager* wem) :
 Container::~Container() {
 }
 
-//--- *UPDATE* --- *RENDER* --- *HANDLEINPUT* ---
-void Container::handleInput(float time) {
-	if (isActive()) {
-		for (auto c : _components) {
-			if (c.active && c.data->hasInput()) {
-				c.data->handleInput(this, time);
-			}
-		}
-	}
-}
-
+//--- *UPDATE* ---
 void Container::update(float time) {
 	if (isActive()) {
 		for (auto c : _components) {
@@ -38,36 +31,32 @@ void Container::update(float time) {
 //---------------------
 
 //---Componentes---
+//Añadir un componente
 void Container::AddComponent(Component* c) {
-	if (c == nullptr)
-		return;
-
-	wrapper<Component> r = { true, c };
-
-	auto position = std::find(_components.begin(), _components.end(), r);
-
-	if (position != _components.end()) {
-		(*position).active = true;
-	}
-	else {
-		_components.push_back(r);
-	}
+	AddC(_components, c);
 }
 
+void Container::AddComponent(InputComponent* c) {
+	AddC(_InputComponents, c);
+}
+
+//Eliminar un componente
 void Container::DelComponent(Component* c) {
-	if (c == nullptr)
-		return;
-
-	wrapper<Component> r = { true, c };
-	auto position = std::find(_components.begin(), _components.end(), r);
-
-	if (position != _components.end()) {
-		(*position).active = false;
-	}
+	removeC(_components, c);
 }
 
+void Container::DelComponent(InputComponent* c) {
+	removeC(_InputComponents, c);
+}
+
+// Comprobar si tiene un componente
 bool Container::hasComponent(std::string s) {
 	for (auto pos : _components) {
+		if (pos.data->getName(s)) {
+			return true;
+		}
+	}
+	for (auto pos : _InputComponents) {
 		if (pos.data->getName(s)) {
 			return true;
 		}
@@ -76,8 +65,8 @@ bool Container::hasComponent(std::string s) {
 	return false;
 }
 
-Component* Container::getComponent(std::string s)
-{
+// Obtener un componente
+Component* Container::getComponent(std::string s) {
 	for (auto pos : _components) {
 		if (pos.data->getName(s)) {
 			return pos.data;
@@ -86,8 +75,19 @@ Component* Container::getComponent(std::string s)
 	return nullptr;
 }
 
+InputComponent* Container::getInputComponent(std::string s) {
+	for (auto pos : _InputComponents) {
+		if (pos.data->getName(s)) {
+			return pos.data;
+		}
+	}
+	return nullptr;
+}
+
+//Reset
 void Container::reset() {
 	_components.clear();
+	_InputComponents.clear();
 }
 //-------------------------
 

@@ -6,11 +6,6 @@
 
 class SceneNode;
 
-EntityC::EntityC() {
-	_weM = nullptr;
-	_active = false;
-}
-
 EntityC::EntityC(std::string name, WEManager* wem) {
 	_entName = name;
 	_weM = wem;

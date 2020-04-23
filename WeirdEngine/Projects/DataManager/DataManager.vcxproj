@@ -27,6 +27,7 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\EntityC.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\FactoriesGestor.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\FactoryRegister.h" />
+    <ClInclude Include="..\..\src\DataManager\Header Files\InputComponent.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\json.hpp" />
     <ClInclude Include="..\..\src\DataManager\Header Files\Messages_decl.h" />
     <ClInclude Include="..\..\src\DataManager\Header Files\Messages_defs.h" />
@@ -38,12 +39,13 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\WEInput.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\DataManager\Header Files\Component.cpp" />
+    <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\Container.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoryRegister.cpp" />
+    <ClCompile Include="..\..\src\DataManager\Source Files\InputComponent.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\PhysicsComponent.cpp" />
     <ClCompile Include="..\..\src\DataManager\Source Files\RenderComponent.cpp" />

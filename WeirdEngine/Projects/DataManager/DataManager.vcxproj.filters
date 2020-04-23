@@ -90,6 +90,9 @@
     <ClInclude Include="..\..\src\DataManager\Header Files\PhysicsComponent.h">
       <Filter>Archivos de encabezado\Entidades\Componentes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\DataManager\Header Files\InputComponent.h">
+      <Filter>Archivos de encabezado\Entidades\Componentes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\DataManager\Source Files\DataManager.cpp">
@@ -110,9 +113,6 @@
     <ClCompile Include="..\..\src\DataManager\Source Files\Container.cpp">
       <Filter>Archivos de origen\Componentes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\DataManager\Header Files\Component.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\RenderComponent.cpp">
       <Filter>Archivos de origen\Componentes\Componentes</Filter>
     </ClCompile>
@@ -126,6 +126,12 @@
       <Filter>Archivos de origen\Componentes\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\PhysicsComponent.cpp">
+      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp">
+      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\DataManager\Source Files\InputComponent.cpp">
       <Filter>Archivos de origen\Componentes\Componentes</Filter>
     </ClCompile>
   </ItemGroup>
