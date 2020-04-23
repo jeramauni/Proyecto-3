@@ -44,7 +44,7 @@ public:
 	static RenderSystem* getSingleton();
 
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
-	Ogre::SceneNode* addOgreEntity(std::string name);
+	Ogre::SceneNode* addOgreEntity(std::string name, std::string mesh_name);
 	
 	// Adds an empty node to the scene
 	Ogre::SceneNode* addEmpty(std::string name);

@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include "Observer.h"
 
@@ -26,6 +26,9 @@ public:
 	// Activar/Desactivar
 	void setActive(bool sw);
 	bool isActive();
+
+	//Getters y setters
+	std::string GetEntityName();
 
 	virtual void receive(const void* senderObj, const msg::Message& msg);
 

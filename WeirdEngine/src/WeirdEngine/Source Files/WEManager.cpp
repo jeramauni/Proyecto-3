@@ -86,7 +86,7 @@ void WEManager::generateScene(std::string sceneName) {
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
-	std::vector<Container*> ent = dM->Load(sceneName, "entities.json", true);
+	std::vector<Container*> ent = dM->Load(sceneName, "entities.json", false);
 
 	for (int i = 0; i < ent.size(); i++) {
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,7 @@ void WEManager::generateScene(std::string sceneName) {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Creamos el nodo de ogre a partir de la mesh del renderComponent
 		if (ent[i]->hasComponent("Render")) {
-			ent[i]->setNode(renderSystem->addOgreEntity(static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
+			ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->GetEntityName(), static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
 		}
 
 		// Cambiamos la posicion del nodo de ogre a partir del componente Transform

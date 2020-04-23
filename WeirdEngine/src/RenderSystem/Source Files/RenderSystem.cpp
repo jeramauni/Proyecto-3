@@ -41,12 +41,12 @@ RenderSystem::~RenderSystem() {
 
 }
 
-Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name)
+Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_name)
 {
-	Ogre::Entity* mEntity = mScnMgr->createEntity(name, name + ".mesh");
+	Ogre::Entity* mEntity = mScnMgr->createEntity(name, mesh_name + ".mesh");
 	Ogre::SceneNode* mNode = addEmpty(name);
 	
-	mEntity->setMaterialName(name);
+	mEntity->setMaterialName(mesh_name);
 	//mEntity->getSubEntity.setMar
 
 	mNode->attachObject(mEntity);

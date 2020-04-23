@@ -9,8 +9,13 @@
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
-1.0
+5
 //Tamaño del mapa (Columnas x Filas)
-2 1
-//La primera capa siempre está a la altura 0
+2 2
+//La primera capa siempre está en la altura 0
+1 0
 0 1
+//Segunda capa
+20.0
+0 0
+1 1

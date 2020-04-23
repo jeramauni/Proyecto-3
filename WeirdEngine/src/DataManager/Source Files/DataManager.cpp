@@ -94,13 +94,13 @@ void DataManager::DebugJson(json json_file)
 	std::cout << '\n' << "---------------------------------------JsonDebug-End--------------------------------------" << '\n';
 }
 
-Container* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_entities)
+Container* DataManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Ogre::Vector3 position_)
 {
 	prefabs = prefabs.at(prefabs.begin().key());
 	uint32_t i = 0;
 	//Busqueda de id en el archivo de prefabs
 	while (i < prefabs.size() && prefabs[i].at("id") != id)
-	{
+	{		
 		i++;
 	}
 	//Si no lo encuentra lo notifica y devuelve nullptr
@@ -133,9 +133,24 @@ Container* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_en
 			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
 		}
 
-		if(debug_)
-		std::cout << "Entity " << entity_name << " successfully created !" << '\n';
+		//Set the proper position of the entity
+		if (e->hasComponent("Transform"))
+		{
+			static_cast<TransformComponent*>(e->getComponent("Transform"))->SetPosition(position_);
+			
+		}
+		else
+		{
+			std::cerr << "Couldn't set " << e->GetEntityName() << " position to the one on the map. \n Position set to the one of its prefab. \n" ;
+		}
 
+		if (debug_) 
+		{
+			std::cout << "Entity " << entity_name << " successfully created at position: { ";
+			Ogre::Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
+			std::cout << v->x << ", " << v->y << ", " << v->z << " }" << '\n';
+		}
+		
 		return e;
 	}
 }
@@ -247,20 +262,44 @@ std::vector<std::string> DataManager::GetWords(std::string& s)
 	return words;
 }
 
+Ogre::Vector3 DataManager::setProperPosition(int row, int column, int layer, char xyz[3], float size_tiles, float size_layer)
+{
+	Ogre::Vector3 propperPos = { 0.0f, 0.0f, 0.0f };
+	float x = 0.0, y = 0.0, z = 0.0;
+
+	//Column value
+	if (xyz[0] == 'x')		x = column * size_tiles;
+	else if (xyz[0] == 'y')	y = column * size_tiles;
+	else if (xyz[0] == 'z')	z = column * size_tiles;
+	//Row value
+	if (xyz[1] == 'x')		x = row * size_tiles;
+	else if (xyz[1] == 'y')	y = row * size_tiles;
+	else if (xyz[1] == 'z')	z = row * size_tiles;
+	//Layer value
+	if (xyz[2] == 'x')		x = size_layer;
+	else if (xyz[2] == 'y')	y = size_layer;
+	else if (xyz[2] == 'z')	z = size_layer;
+
+	propperPos = { x, y, z};
+	return propperPos;
+}
+
 std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs, bool debug)
 {
 	std::vector<Container*> entities;
-	int n = std::stoi(map[0][0]);	//Number of entities on legend
-	int aux = n + 1;				//row aux variable
-	int ct = 0;						//row counter 
+	int n = std::stoi(map[0][0]);		//Number of entities on legend
+	int aux = n + 1;					//row aux variable
+	int ct = 0, cct = 0;				//row counter 
 	std::map<int, std::string> legend;	//Map of entitie types on map (id on map - name on prefabs file)
-	char xyz[3];					//Axis representation on map (Columns x Rows / Between layers) (x-y-z)
-	int r, c;						//Mapsize (Row - columns)
-	float s;						//Size between tiles
+	char xyz[3];						//Axis representation on map (Columns x Rows / Between layers) (x-y-z)
+	int r, c;							//Mapsize (Row - columns)
+	float s;							//Size between tiles
+	int layer = 0;
 	//Entity processing
-	float slyr;						//Size between layers
-	int id = -1;					//id of entity to process
-
+	float slyr = 0.0;						//Size between layers
+	int id = -1;						//id of entity to process
+	//Position processing
+	Ogre::Vector3 currentpos_ = { 0.0f, 0.0f, 0.0f };
 	//Legend
 	for (std::size_t i = 1; i <= n; i++)
 	{
@@ -276,27 +315,38 @@ std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::str
 	r = std::stoi(map[aux][1]); aux++;
 
 	//Layers
+	if (debug_)
+		std::cout << "Layer : " << layer << '\n';
 	for (auto row = map.begin() + aux++; row != map.end(); row++)
 	{
 		ct++;
 		for (auto column = row->begin(); column != row->end(); column++)
-		{	 
+		{				
 			if (ct > r)	//If we are at the row between layers we get the distance between layers
 			{
-				slyr = std::stof(*column);
+				layer++;
+				slyr += std::stof(*column);
 				ct = 0;
+				if (debug_) {
+					std::cout << "Layer: " << layer << '\n';
+				}
+				
 			}
 			else		//If not we get the next id..
 			{
 				id = std::stoi(*column);
 				if (id != -1)
-				{					
+				{	
+					//...set the next position..
+					currentpos_ = setProperPosition(ct-1, cct, layer, xyz, s, slyr);
 					//..and create the proper entity
-					Container* e = CreateEntity(legend[id], prefabs, entities.size());
+					Container* e = CreateEntity(legend[id], prefabs, entities.size(), currentpos_);
 					if (e != nullptr) entities.push_back(e);
 				}
 			}
+			cct++;
 		}
+		cct = 0;
 		std::cout << '\n';
 	}
 

@@ -42,8 +42,8 @@ public:
 
     static InputManager* getSingletonPtr(void);
 private:
-    InputManager(const InputManager&) { }
-    InputManager& operator = (const InputManager&);
+    InputManager(const InputManager&) { };
+    InputManager& operator = (const InputManager&) {};
 
     bool keyPressed(const OIS::KeyEvent& e);
     bool keyReleased(const OIS::KeyEvent& e);
