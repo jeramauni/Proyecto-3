@@ -6,7 +6,7 @@ TransformComponent::TransformComponent() {
 }
 
 void TransformComponent::Init(std::unordered_map<std::string, std::string>& param) {
-	std::vector<std::string> aux = GetWords(param.at("posicion"));
+	std::vector<std::string> aux = GetWords(param.at("positionT"));
 	position.x = std::stof(aux[0]);
 	position.y = std::stof(aux[1]);
 	position.z = std::stof(aux[2]);

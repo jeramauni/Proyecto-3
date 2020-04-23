@@ -69,8 +69,7 @@ void DataManager::DebugJson(json json_file)
 	json_file = json_file.at(json_file.begin().key());
 
 	//For each object in the file...
-	for (size_t i = 0; i < json_file.size(); i++)
-	{
+	for (std::size_t i = 0; i < json_file.size(); i++) {
 		std::cout << "----------------------" << '\n';
 		std::cout << "Entity: " << json_file[i].at("id") << '\n';						//Entity type
 
@@ -83,7 +82,7 @@ void DataManager::DebugJson(json json_file)
 		else
 		{
 			//For each  component in components[]...
-			for (size_t j = 0; j < json_file[i].at("components").size(); j++)
+			for (std::size_t j = 0; j < json_file[i].at("components").size(); j++)
 			{
 				std::cout << '*' << json_file[i].at("components")[j].at("id") << '*' << '\n'; 	//Component type
 				std::cout << json_file[i].at("components")[j] << '\n';								//Component description
@@ -121,7 +120,7 @@ Container* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_en
 		std::unordered_map<std::string, std::string> param;
 		int size_ = prefabs[i].at("components").size();
 		//Para cada componente en la lista de componentes
-		for (size_t j = 0; j < size_; j++)
+		for (std::size_t j = 0; j < size_; j++)
 		{
 			e->AddComponent(factoriesGestor->getFactories().at(prefabs[i].at("components")[j].at("id"))->Create());
 			//Para cada parametro del componente excluyendo el id
@@ -248,7 +247,7 @@ std::vector<std::string> DataManager::GetWords(std::string& s)
 	return words;
 }
 
-std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs, bool debug)
+std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs, bool debug)
 {
 	std::vector<Container*> entities;
 	int n = std::stoi(map[0][0]);	//Number of entities on legend
@@ -263,12 +262,12 @@ std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::strin
 	int id = -1;					//id of entity to process
 
 	//Legend
-	for (size_t i = 1; i <= n; i++)
+	for (std::size_t i = 1; i <= n; i++)
 	{
 		legend[std::stoi(map[i][0])] = map[i][1];
 	}
 	//Axis representation
-	for (size_t i = 0; i < 3; i++)
+	for (std::size_t i = 0; i < 3; i++)
 		xyz[i] = map[aux][i].back(); aux++;
 	//Size between tiles
 	s = std::stof(map[aux][0]);	aux++;
@@ -313,7 +312,7 @@ std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::strin
 		}
 		//Axis representation
 		std::cout << "Axis representation: ";
-		for (size_t i = 0; i < 3; i++)
+		for (std::size_t i = 0; i < 3; i++)
 			std::cout << xyz[i];
 		std::cout << '\n';
 		//Size between tiles
@@ -329,7 +328,7 @@ std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::strin
 }
 
 
-std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file, bool debug_mode)
+std::vector<Container*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file, bool debug_mode)
 {
 	debug_ = debug_mode;
 

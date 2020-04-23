@@ -9,7 +9,7 @@ public:
 	msg::ObjectId getId();
 	void setId(msg::ObjectId id);
 
-	virtual bool receive(const void* senderObj, const msg::Message& msg);
+	virtual void receive(const void* senderObj, const msg::Message& msg);
 
 private:
 	msg::ObjectId id_;

@@ -4,7 +4,7 @@ DEFINE_FACTORY(Physics);
 
 PhysicsComponent::PhysicsComponent()
 {
-	name = "Physics";
+	_name = "Physics";
 	id = -1;
 }
 

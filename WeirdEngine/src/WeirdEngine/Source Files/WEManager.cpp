@@ -22,14 +22,13 @@
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Jugador
-EntityC* player;
+Container* player;
 btVector3 velocity = btVector3(0,0,0);
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-WEManager::WEManager()
-{
+WEManager::WEManager() {
 	py = nullptr;
 	dM = nullptr;
 	windowRenderer = nullptr;
@@ -87,7 +86,7 @@ void WEManager::generateScene(std::string sceneName) {
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
-	std::vector<EntityC*> ent = dM->Load(sceneName, "entities.json", true);
+	std::vector<Container*> ent = dM->Load(sceneName, "entities.json", true);
 
 	for (int i = 0; i < ent.size(); i++) {
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -110,7 +109,7 @@ void WEManager::generateScene(std::string sceneName) {
 
 		// ToDo:: 
 		// si tiene fisicos a las fisicas
-		if (ent[i]->ComponentTracker("Physics")) {
+		if (ent[i]->hasComponent("Physics")) {
 			PhysicsComponent* p = static_cast<PhysicsComponent*>(ent[i]->getComponent("Physics"));
 			p->SetID(py->basicMesh(ent[i]->getNode(), p->GetScale(), p->HaveGravity()));
 		}
@@ -142,38 +141,34 @@ bool WEManager::update() {
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/*
 	py->changeVelocity(static_cast<PhysicsComponent*>(player->getComponent("Physics"))->GetID(), velocity);
-	if (input->w)
-	{
+	if (input->w) {
 		velocity = btVector3(0.0f, 0.0f, -5.0f);
 	}
-	else if (input->s)
-	{
+	else if (input->s) {
 		velocity = btVector3(0.0f, 0.0f, 5.0f);
 	}
-	else if (input->a)
-	{
+	else if (input->a) {
 		velocity = btVector3(-5.0f, 0.0f,  0.0f);
 	}
-	else if (input->d)
-	{
+	else if (input->d) {
 		velocity = btVector3(5.0f, 0.0f, 0.0f);
 	}
-	else
-	{
+	else {
 		velocity = btVector3(0.0f, 0.0f, 0.0f);
 	}
-	if (input->space)
-	{
+	if (input->space) {
 		if (player->getNode()->getPosition().y < -90) {
 			py->addForce(static_cast<PhysicsComponent*>(player->getComponent("Physics"))->GetID(), btVector3(0.0f, 5.0f, 0.0f));
 		}
 	}
+	*/
+	//std::cout << player->getNode()->getPosition().y << "\n";
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	std::cout << player->getNode()->getPosition().y << "\n";
 	//------Renderizado------
 	windowRenderer->renderFrame(0);
 
