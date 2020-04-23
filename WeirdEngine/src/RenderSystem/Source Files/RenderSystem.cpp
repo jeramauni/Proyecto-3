@@ -140,8 +140,7 @@ void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance)
 	mScnMgr->setSkyBox(true, matName, distance);
 }
 
-void RenderSystem::addCamera()
-{
+void RenderSystem::addCamera() {
 	float viewportWidth = 0.88f;
 	float viewportHeight = 0.88f;
 	float viewportLeft = (1.0f - viewportWidth) * 0.5f;

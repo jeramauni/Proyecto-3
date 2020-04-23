@@ -7,7 +7,6 @@
 
 class EntityC : public Observer {
 public:
-	EntityC();
 	EntityC(std::string name, WEManager* wem);
 	virtual ~EntityC();
 
@@ -37,7 +36,6 @@ public:
 	virtual void init();
 
 	//Lo implementan aquellas entidades que lo necesiten
-	virtual void handleInput(float time) = 0;
 	virtual void update(float time) = 0;
 
 private:

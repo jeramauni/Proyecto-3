@@ -3,12 +3,9 @@
 
 #include <Container.h>
 
-Scene::Scene() {
-
-}
-
-Scene::Scene(std::string id) :_id(id) {
-
+Scene::Scene(std::string id, WEManager* wem) : Container (id, wem) {
+	_weM = wem;
+	_id = id;
 }
 
 void Scene::update(float t) {

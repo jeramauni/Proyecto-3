@@ -21,7 +21,9 @@
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Jugador
+#include <WEInput.h>
+	
+	//Jugador
 Container* player;
 btVector3 velocity = btVector3(0,0,0);
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +84,7 @@ void WEManager::Init() {
 // Genera la escena leyendo del archivo de datos
 void WEManager::generateScene(std::string sceneName) {
 	//Creamos la escena
-	Scene *mScene = new Scene(sceneName);
+	Scene *mScene = new Scene(sceneName, this);
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
@@ -92,6 +94,9 @@ void WEManager::generateScene(std::string sceneName) {
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		WEInput* weinput = new WEInput(ent[0]);
+		mInputManager->addKeyListener(weinput->getListener(), "ninja");
+		ent[0]->AddComponent(weinput);
 		player = ent[0];
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
@@ -198,16 +203,8 @@ void WEManager::popScene() {
 //---------------------------------------Mensajes--------------------------------------
 // Para enviar los mensajes
 void WEManager::send(const void* senderObj, const msg::Message& msg) {
+	this->receive(senderObj, msg);
 	escenas.top()->receive(senderObj, msg);
-	//if(this != senderObj) receive(senderObj, msg);
-	/*for (Observer* o : observers_) {
-		if (senderObj != o) {
-			if (msg.destination_ == msg::Broadcast // we send to everyone, even to the one from whom we received the message!
-				|| msg.destination_ == o->getId()) {
-				o->receive(senderObj, msg);
-			}
-		}
-	}*/
 }
 
 

@@ -8,8 +8,7 @@
 
 class Scene : public Container {
 public:
-	Scene();
-	Scene(std::string id);
+	Scene(std::string id, WEManager* wem);
 
 	//Actualiza las entidades para que llamen a sus componentes
 	void update(float t);
@@ -28,4 +27,5 @@ private:
 	//Lista de entidades
 	std::list<Container*> entidades;
 
+	WEManager* _weM;
 };

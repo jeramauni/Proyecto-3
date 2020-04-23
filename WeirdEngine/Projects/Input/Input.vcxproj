@@ -23,7 +23,6 @@
     <ClInclude Include="..\..\src\Input\Header Files\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Input\Source Files\InputListener.cpp" />
     <ClCompile Include="..\..\src\Input\Source Files\InputManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
