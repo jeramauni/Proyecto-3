@@ -1,17 +1,18 @@
 #include "PhysicsComponent.h"
 #include "ComponentFactory.h"
+#include <messages_defs.h>
+
 DEFINE_FACTORY(Physics);
 
-PhysicsComponent::PhysicsComponent()
-{
+PhysicsComponent::PhysicsComponent() {
 	_name = "Physics";
 	id = -1;
 }
 
-PhysicsComponent::~PhysicsComponent()
-{
+PhysicsComponent::~PhysicsComponent() {
 	id = NULL;
 }
+
 void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 {
 	//Aux
@@ -30,13 +31,22 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 						 std::stof(aux[2]));
 }
 
+void PhysicsComponent::receive(Container* c, const msg::Message& msg) {
+	switch (msg.type_) {
+	case msg::PRUEBA:
+		
+		break;
+	default:
+		break;
+	}
+}
+
 int PhysicsComponent::GetID()
 {
 	return id;
 }
 
-void PhysicsComponent::SetID(int newID)
-{
+void PhysicsComponent::SetID(int newID) {
 	id = newID;
 }
 

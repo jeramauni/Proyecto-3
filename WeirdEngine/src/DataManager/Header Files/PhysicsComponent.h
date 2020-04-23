@@ -18,7 +18,7 @@ public:
 	void update(Container* c, float time) {};
 
 	//Receive implementation
-	void receive(Container* c, const msg::Message& msg) {};
+	void receive(Container* c, const msg::Message& msg);
 
 	int GetID();
 	void SetID(int newID);
