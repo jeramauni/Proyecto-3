@@ -2,7 +2,7 @@
 // BE AWARE! Los archivos de mapas y prefabs deben guardarse en el directorio resources del directorio exes del proyecto.
 
 #include "DataManager.h"
-#include "EntityC.h"
+#include "Container.h"
 #include "ComponentFactory.h"
 
 #include <iostream>
@@ -17,8 +17,7 @@ CREATE_REGISTER(Transform);
 CREATE_REGISTER(Test);
 
 //Reads a .json file ande parses it to a json class instance
-json DataManager::ReadJson(const std::string& file_name)
-{
+json DataManager::ReadJson(const std::string& file_name) {
 	json j;
 	std::ifstream input;
 	input.open(file_name);
@@ -28,8 +27,7 @@ json DataManager::ReadJson(const std::string& file_name)
 	return j;
 }
 
-std::vector<std::vector<std::string>> DataManager::ReadMap(const std::string& file_name)
-{
+std::vector<std::vector<std::string>> DataManager::ReadMap(const std::string& file_name) {
 	std::vector<std::vector<std::string>> map;
 	std::ifstream input;
 	//AUX
@@ -87,7 +85,7 @@ void DataManager::DebugJson(json json_file)
 	}
 }
 
-EntityC* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_entities)
+Container* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_entities)
 {
 	prefabs = prefabs.at(prefabs.begin().key());
 	uint32_t i = 0;
@@ -107,7 +105,8 @@ EntityC* DataManager::CreateEntity(std::string id, json prefabs, uint32_t n_enti
 	{
 		//Hay que hacer la lectura de id's de componentes
 		std::string entity_name = id + "_" + std::to_string(n_entities);
-		EntityC* e = new EntityC(entity_name);
+		//EntityC* e = new EntityC(entity_name);
+		Container* e = new Container(entity_name, _weM);
 
 		std::unordered_map<std::string, std::string> param;
 		int size_ = prefabs[i].at("components").size();
@@ -205,9 +204,9 @@ std::vector<std::string> DataManager::GetWords(std::string& s)
 	return words;
 }
 
-std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs)
+std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs)
 {
-	std::vector<EntityC*> entities;
+	std::vector<Container*> entities;
 	int n = std::stoi(map[0][0]);	//Number of entities on legend
 	int aux = n + 1;				//row aux variable
 	int ct = 0;						//row counter 
@@ -250,7 +249,7 @@ std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::strin
 				if (id != -1)
 				{					
 					//..and create the proper entity
-					EntityC* e = CreateEntity(legend[id], prefabs, entities.size());
+					Container* e = CreateEntity(legend[id], prefabs, entities.size());
 					if (e != nullptr) entities.push_back(e);
 				}
 			}
@@ -283,10 +282,10 @@ std::vector<EntityC*> DataManager::ProcessMap(std::vector<std::vector<std::strin
 }
 
 
-std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
+std::vector<Container*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file)
 {
 	//Vector de entidades del mapa
-	std::vector<EntityC*> entities;
+	std::vector<Container*> entities;
 	json prefabs;								//Prefabs data
 	std::vector<std::vector<std::string>> map;	//Map data
 
@@ -328,4 +327,8 @@ std::vector<EntityC*> DataManager::Load(const std::string& map_file, const std::
 		}
 	}
 	return entities;
+}
+
+void DataManager::setWEM(WEManager* wem) {
+	_weM = wem;
 }

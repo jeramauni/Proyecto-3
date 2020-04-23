@@ -19,3 +19,26 @@ std::vector<std::string> Component::GetWords(std::string& s)
 	words.push_back(word);
 	return words;
 }
+
+bool Component::getName(std::string name)
+{
+	return _name == name;
+}
+
+// Input
+bool Component::hasInput() {
+	return ic;
+}
+
+void Component::setInput() {
+	ic = true;
+}
+
+// Update
+bool Component::hasUpdate() {
+	return uc;
+}
+
+void Component::setUpdate() {
+	uc = true;
+}

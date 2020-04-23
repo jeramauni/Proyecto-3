@@ -14,7 +14,6 @@
 #include<DataManager.h>
 // InputManager
 #include <InputManager.h>
-#include <InputKeyListener.h>
 
 //Escena
 #include "Scene.h"
@@ -42,6 +41,7 @@ WEManager::~WEManager() {
 void WEManager::Init() {
 	//DataManager
 	dM = new DataManager();
+	dM->setWEM(this);
 
 	//Inicializar physics
 	py = new PhysicsEngine();
@@ -60,13 +60,11 @@ void WEManager::Init() {
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(windowRenderer->getWin());
-	// ToDo
-	// Editar el inputKeyListener para que pueda mandar mensajes
-	// Añadimos al InputMng el InputKeyListener k vayamos a usar para la gestion de las teclas
-	input = new InputKeyListener(this);
-	mInputManager->addKeyListener(input, "input");
-	//mInputManager->addKeyListener(this, "input");
 
+	// Añadimos al InputMng el InputKeyListener k vayamos a usar para la gestion de las teclas
+	//input = new InputListener(this);
+	//mInputManager->addKeyListener(input, "input");
+	//mInputManager->addKeyListener(this, "input");
 
 	//-------------------------- MATERIALS -------------------------------
 	//Carga de los materiales que usaremos
@@ -80,35 +78,21 @@ void WEManager::generateScene(std::string sceneName) {
 	renderSystem->createScene(mScene->getID());
 
 	//Leemos las entidades del archivo de datos
-	std::vector<EntityC*> ent = dM->Load(sceneName, "entities.json");
+	std::vector<Container*> ent = dM->Load(sceneName, "entities.json");
 
-
-	////--------------TEMP
-	/*ent[0]->setNode(renderSystem->addOgreEntity(static_cast<RenderComponent*>(ent[0]->getComponent("Render"))->getMeshName()));
-	Component* tcomp = ent[0]->getComponent("Transform");
-	ent[0]->setPos(*static_cast<TransformComponent*>(tcomp)->GetPosition());
-	
-	mScene->addEntity(ent[0]);*/
-	////---------------------
-
-	for (int i = 0; i < ent.size(); i++) { //Muy feo esto
-		// ToDo:: 
-		// Mirar los componentes de las entidades y añadimos 
-		// con el transform generamos el nodo
-		
-		// Si le guardamos el nombre del "mesh" en la info de la entidad
-		// eso es lo que habra que pasarle a addOgreEntity
-		if (ent[i]->ComponentTracker("Render")) {
+	for (int i = 0; i < ent.size(); i++) {
+		// Creamos el nodo de ogre a partir de la mesh del renderComponent
+		if (ent[i]->hasComponent("Render")) {
 			ent[i]->setNode(renderSystem->addOgreEntity(static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
 		}
-		//ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->_id));
-		//Component *tcomp = ent[i]->getComponent("transform");
-		//ent[i]->setPos(static_cast<TransformComponent*>(tcomp)->GetPosition());
-		if (ent[i]->ComponentTracker("Transform")) {
+
+		// Cambiamos la posicion del nodo de ogre a partir del componente Transform
+		if (ent[i]->hasComponent("Transform")) {
 			Component* tcomp = ent[i]->getComponent("Transform");
 			ent[i]->setPos(*static_cast<TransformComponent*>(tcomp)->GetPosition());
 		}
 
+		// ToDo:: 
 		// si tiene fisicos a las fisicas
 		//
 		// si tiene input al controlador de input
@@ -153,6 +137,7 @@ bool WEManager::update() {
 void WEManager::pushScene(Scene* newScene) {
 	renderSystem->setRenderingScene(newScene->getID());
 	escenas.push(newScene);
+	//addObserver(newScene);
 }
 
 void WEManager::popScene() {
@@ -160,11 +145,19 @@ void WEManager::popScene() {
 	renderSystem->setRenderingScene(escenas.top()->getID());
 }
 
-//---------------------------------------Input--------------------------------------
-// Componente para las entidades que escuchan del input
+//---------------------------------------Mensajes--------------------------------------
+// Para enviar los mensajes
 void WEManager::send(const void* senderObj, const msg::Message& msg) {
-	escenas.top()->send(senderObj, msg);
-	receive(senderObj, msg);
+	escenas.top()->receive(senderObj, msg);
+	//if(this != senderObj) receive(senderObj, msg);
+	/*for (Observer* o : observers_) {
+		if (senderObj != o) {
+			if (msg.destination_ == msg::Broadcast // we send to everyone, even to the one from whom we received the message!
+				|| msg.destination_ == o->getId()) {
+				o->receive(senderObj, msg);
+			}
+		}
+	}*/
 }
 
 
@@ -176,36 +169,4 @@ void WEManager::receive(const void* senderObj, const msg::Message& msg) {
 	default:
 		break;
 	}
-}
-
-// La idea es que el WEManager sea un KeyListener y mande los msg correspondientes pero no funciona :(
-bool WEManager::keyPressed(const OIS::KeyEvent& ke) {
-	switch (ke.key) {
-	case OIS::KC_W:
-		std::cout << "Moverse W!\n";
-		break;
-	case OIS::KC_A:
-		std::cout << "Moverse A!\n";
-		break;
-	case OIS::KC_S:
-		std::cout << "Moverse S!\n";
-		break;
-	case OIS::KC_D:
-		std::cout << "Moverse D!\n";
-		break;
-	case OIS::KC_ESCAPE:
-		this->send(this, msg::Close_Win(msg::WEManager, msg::Broadcast));
-		break;
-	case OIS::KC_SPACE:
-		this->send(this, msg::Prueba(msg::WEManager, msg::Broadcast));
-		break;
-	default:
-		break;
-	}
-
-	return true;
-}
-
-bool WEManager::keyReleased(const OIS::KeyEvent& ke) {
-	return false;
 }

@@ -4,13 +4,15 @@
 
 using json = nlohmann::json;
 
-class EntityC;
+class WEManager;
+class Container;
 
 class DataManager {
 public:
 
 	//Main loader
-	std::vector<EntityC*> Load(const std::string& map_file, const std::string& prefabs_file);
+	std::vector<Container*> Load(const std::string& map_file, const std::string& prefabs_file);
+	void setWEM(WEManager* wem);
 
 private:
 
@@ -25,6 +27,9 @@ private:
 	//Auxiliares
 	bool ReadNext(std::ifstream& input);
 	std::vector<std::string> GetWords(std::string& s);
-	std::vector<EntityC*> ProcessMap(std::vector<std::vector<std::string>> map, json prefabs);
-	EntityC* CreateEntity(std::string id, json prefabs, uint32_t n_entities);
+	std::vector<Container*> ProcessMap(std::vector<std::vector<std::string>> map, json prefabs);
+	Container* CreateEntity(std::string id, json prefabs, uint32_t n_entities);
+
+	// Puntero al motor
+	WEManager* _weM;
 };

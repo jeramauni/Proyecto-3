@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\Input\Header Files\InputKeyListener.h" />
+    <ClInclude Include="..\..\src\Input\Header Files\InputListener.h" />
     <ClInclude Include="..\..\src\Input\Header Files\InputManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\Input\Source Files\InputKeyListener.cpp" />
+    <ClCompile Include="..\..\src\Input\Source Files\InputListener.cpp" />
     <ClCompile Include="..\..\src\Input\Source Files\InputManager.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

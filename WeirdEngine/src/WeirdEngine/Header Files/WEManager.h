@@ -1,4 +1,4 @@
-﻿#ifndef WE_MANAGER_H
+#ifndef WE_MANAGER_H
 #define WE_MANAGER_H
 
 #pragma once
@@ -9,14 +9,16 @@
 namespace msg {
 	class Message;
 }
-
+/*
 namespace OIS {
 	class KeyListener;
 	class KeyEvent;
 	class MouseEvent;
 }
+*/
 
 class Scene;
+class Observer;
 class WindowRenderer;
 class RenderSystem;
 class InputManager;
@@ -67,12 +69,5 @@ private:
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
-
-	// Input
-	virtual bool keyPressed(const OIS::KeyEvent& ke);
-	virtual bool keyReleased(const OIS::KeyEvent& ke);
-
-	//virtual bool mousePressed(const OIS::MouseEvent& ke) {};
-	//virtual bool mouseReleased(const OIS::MouseEvent& ke) {};
 };
 #endif

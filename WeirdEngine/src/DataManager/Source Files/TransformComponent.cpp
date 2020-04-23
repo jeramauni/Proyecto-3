@@ -1,13 +1,11 @@
 #include "TransformComponent.h"
 #include <iostream>
 
-TransformComponent::TransformComponent()
-{
-	name = "Transform";
+TransformComponent::TransformComponent() {
+	_name = "Transform";
 }
 
-void TransformComponent::Init(std::unordered_map<std::string, std::string>& param)
-{
+void TransformComponent::Init(std::unordered_map<std::string, std::string>& param) {
 	std::vector<std::string> aux = GetWords(param.at("posicion"));
 	position.x = std::stof(aux[0]);
 	position.y = std::stof(aux[1]);

@@ -1,76 +1,62 @@
 #include "EntityC.h"
-#include "TransformComponent.h"
 #include "Messages_defs.h"
+
+#include <WEManager.h>
 #include <iostream>
 
 class SceneNode;
 
-EntityC::EntityC(std::string id) : _id(id) {
+EntityC::EntityC() {
+	_weM = nullptr;
+	_active = false;
+}
+
+EntityC::EntityC(std::string name, WEManager* wem) {
+	_entName = name;
+	_weM = wem;
 	_active = true;
 }
 
 EntityC::~EntityC() {}
 
-void EntityC::update() {
-	if (_active) {
-		std::cout << "Actualizando entidad: " + this->_id + "\n";
-	}
+// Manager
+WEManager* EntityC::getGame() const {
+	return _weM;
 }
 
-void EntityC::AddComponent(Component* c) {
-	_components.insert({ c->name, c });
+void EntityC::setGame(WEManager* wem) {
+	_weM = wem;
 }
 
-void EntityC::DelComponent(Component* c) {
-	_components.erase(c->name);
-}
-
-
-Component* EntityC::getComponent(std::string s)
-{
-	return _components.at(s);
-}
-bool EntityC::ComponentTracker(std::string s) {
-	return _components.find(s) != _components.end();
-}
+// Nodo
 void EntityC::setNode(Ogre::SceneNode* node) {
 	_Node = node;
-	_Node->rotate(Ogre::Vector3(0, 1, 0), Ogre::Radian(90));
 }
 
-Ogre::SceneNode* EntityC::getNode()
-{
+Ogre::SceneNode* EntityC::getNode() {
 	return _Node;
 }
 
-void EntityC::setPos(Ogre::Vector3& p) {
+// Posicion
+void EntityC::setPos(const Ogre::Vector3& p) {
 	_Node->setPosition(p);
-	
 }
 
-void EntityC::setActive(bool sw)
-{
-	_active = sw;
+Ogre::Vector3 EntityC::getPosition() const {
+	return _Node->getPosition();
 }
 
-bool EntityC::isActive()
-{
+void EntityC::setActive(bool a) {
+	_active = a;
+}
+
+bool EntityC::isActive() {
 	return _active;
 }
 
-bool EntityC::receive(const void* senderObj, const msg::Message& msg) {
-	if (msg.type_ == msg::PRUEBA) {
-		send(senderObj, msg);
-		return true;
-	}
-	return false;
+void EntityC::receive(const void* senderObj, const msg::Message& msg) {
+	// By default objects do no do anything when receiving a message.
+	// Only those interested will implement this method
 }
 
-void EntityC::send(const void* senderObj, const msg::Message& msg)
-{
-	for (std::map <std::string, Component*>::iterator it = _components.begin(); it != _components.end(); ++it) {
-		if (msg.destination_ == msg::Broadcast || msg.destination_ == (*it).second->getId()) {
-			(*it).second->receive(senderObj, msg);
-		}
-	}
-}
+void EntityC::init() {}

@@ -1,44 +1,54 @@
 ﻿#pragma once
 
+#include "Observer.h"
+
 #include <OgreSceneNode.h>
-#include "Component.h"
+#include <WEManager.h>
 
 class EntityC : public Observer {
 public:
-	EntityC(std::string id);
-	~EntityC();
+	EntityC();
+	EntityC(std::string name, WEManager* wem);
+	virtual ~EntityC();
 
-	// Añadir/quitar un componente
-	void AddComponent(Component* c);
-	void DelComponent(Component* c);
-	Component* getComponent(std::string s);
-	bool ComponentTracker(std::string s);
-
-	//Recorre los componentes de la entidad y actualizan los que sean necesarios.
-	void update();
+	// Manager
+	WEManager* getGame() const;
+	void setGame(WEManager* game);
 
 	// Setter/getter Node
 	void setNode(Ogre::SceneNode* node);
 	Ogre::SceneNode* getNode();
-	//Da la posicion al nodo de Ogre
-	void setPos(Ogre::Vector3& p);
+
+	// Posicion
+	Ogre::Vector3 getPosition() const;
+	void setPos(const Ogre::Vector3& p);
 
 	// Activar/Desactivar
 	void setActive(bool sw);
 	bool isActive();
 
-	// ID de la entidad
-	std::string _id;
+	virtual void receive(const void* senderObj, const msg::Message& msg);
 
-	bool receive(const void* senderObj, const msg::Message& msg);
-	void send(const void* senderObj, const msg::Message& msg);
+	// some GameObjects cannot be initialized in the constructor,
+	// for example when we create them using the default constructor
+	// and without passing the game. This method is supposed to
+	// be called once they are ready to be initialized. The
+	// default implementation does nothing.
+	virtual void init();
+
+	//Lo implementan aquellas entidades que lo necesiten
+	virtual void handleInput(float time) = 0;
+	virtual void update(float time) = 0;
 
 private:
-	// Mapa de componentes
-	std::map<std::string, Component*> _components;
-
 	// Puntero al nodo de la escena
 	Ogre::SceneNode* _Node = nullptr;
 
+	std::string _entName;
+
+	// Puntero al motor
+	WEManager* _weM;
+
+	// Inidica si la entidad esta activa
 	bool _active;
 };
