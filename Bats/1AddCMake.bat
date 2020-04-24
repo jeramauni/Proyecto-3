@@ -14,10 +14,17 @@ MD ..\WeirdEngine\Dependencias\ogre-1.12.5\Build
 MD ..\WeirdEngine\Dependencias\OIS\Build
 
 echo ---------------------------------------------------
+echo Creando la carpetas "dependencies" y "Build" en cegui
+echo ---------------------------------------------------
+MD ..\WeirdEngine\Dependencias\cegui-0.8.7\dependencies
+
+echo ---------------------------------------------------
 echo ejecucion del exe de CMake
 echo Generar Ogre en su carpeta Build
 echo Si os da problema al hacer el "generate" - buscar "imgui" desmarcarlo y volver a generar
 echo Generar Ois en su carpeta Build (Descargar desde Github/OIS)
+echo Generar las dependencias de cegui en la carpeta "dependencies" de cegui
+echo Después, generar cegui en su carpeta Build
 echo ---------------------------------------------------
 start ..\WeirdEngine\Dependencias\cmake\bin\cmake-gui.exe
 
