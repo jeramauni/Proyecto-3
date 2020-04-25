@@ -14,6 +14,8 @@
 #include<DataManager.h>
 // InputManager
 #include <InputManager.h>
+// AudioManager
+#include <AudioManager.h>
 
 //Escena
 #include "Scene.h"
@@ -66,6 +68,11 @@ void WEManager::Init() {
 		renderSystem = RenderSystem::getSingleton();
 	}
 
+	//Sistema de audio
+	if (AudioManager::initSingleton()) {
+		audioManager = AudioManager::getSingleton();
+	}
+
 	//----------------------------------INPUT----------------------------------
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
@@ -89,6 +96,12 @@ void WEManager::generateScene(std::string sceneName) {
 
 	//Leemos las entidades del archivo de datos
 	std::vector<Container*> ent = dM->Load(sceneName, "entities.json", false);
+
+	/////////////////////*********PRUEBAS***********//////////////////////////////
+	audioManager->createSound("audio1", "jerk-it-out.mp3");
+	audioManager->play("audio1", 0.2f);
+	/////////////////////////////////////////////////////////////////////////////
+
 
 	for (int i = 0; i < ent.size(); i++) {
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

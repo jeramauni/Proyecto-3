@@ -95,8 +95,8 @@
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(SolutionDir)src\AudioSystem\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(SolutionDir)Dependencias\fmod-2.00.07;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -108,8 +108,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(SolutionDir)src\AudioSystem\Header Files;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(SolutionDir)Dependencias\fmod-2.00.07;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\bullet\src;$(SolutionDir)Dependencias\fmod-2.00.07\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -170,7 +170,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\bullet\src;$(SolutionDir)Dependencias\fmod-2.00.07\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>

@@ -18,5 +18,8 @@ copy ..\WeirdEngine\Dependencias\OIS\Build\release\OIS.dll ..\WeirdEngine\exes
 ::SDL
 copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\x64\Debug\SDL2.dll ..\WeirdEngine\exes
 copy ..\WeirdEngine\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\VisualC\x64\Debug\SDL2.pdb ..\WeirdEngine\exes
+::FMOD
+copy ..\WeirdEngine\Dependencias\fmod-2.00.07\fmodL.dll ..\WeirdEngine\exes
+copy ..\WeirdEngine\Dependencias\fmod-2.00.07\fmod.dll ..\WeirdEngine\exes
 
 PAUSE

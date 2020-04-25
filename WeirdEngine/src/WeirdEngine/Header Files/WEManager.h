@@ -22,6 +22,7 @@ class InputManager;
 class InputKeyListener;
 class PhysicsEngine;
 class DataManager;
+class AudioManager;
 
 class WEManager {
 public:
@@ -54,6 +55,8 @@ private:
 	//Input Mng
 	InputManager* mInputManager;
 	InputKeyListener* input;
+	//Audio
+	AudioManager* audioManager;
 	//------------------------------------
 
 	//Pila de escenas
