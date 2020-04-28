@@ -379,3 +379,7 @@ cmake-build-*/
 WeirdEngine/exes/debug_map.txt
 
 WeirdEngine/exes/resources/gameFiles/mapDebugs/
+
+WeirdEngine/Dependencias/cegui-0.8.7/Build/
+
+WeirdEngine/Dependencias/cegui-0.8.7/dependencies/Build/
