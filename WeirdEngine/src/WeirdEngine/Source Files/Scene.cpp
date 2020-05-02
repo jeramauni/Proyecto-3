@@ -29,13 +29,12 @@ void Scene::receive(const void* senderObj, const msg::Message& msg) {
 	}
 }
 
-/*
+// No estoy seguro de que este metodo sea necesario, con el receive bastaria
 void Scene::send(const void* senderObj, const msg::Message& msg) {
-	for (EntityC* e : listeners) {
+	for (EntityC* e : entidades) {
 		if (senderObj != e) {
 			if (msg.destination_ == msg::Broadcast || msg.destination_ == e->getId())
 			e->receive(senderObj, msg);
 		}
 	}
 }
-*/

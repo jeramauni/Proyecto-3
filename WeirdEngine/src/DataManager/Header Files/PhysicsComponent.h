@@ -15,7 +15,7 @@ public:
 	void Init(std::unordered_map<std::string, std::string>& param);
 
 	// Implementar la que sea necesaria
-	void update(Container* c, float time) {};
+	void update(Container* c, float time);
 
 	//Receive implementation
 	void receive(Container* c, const msg::Message& msg);

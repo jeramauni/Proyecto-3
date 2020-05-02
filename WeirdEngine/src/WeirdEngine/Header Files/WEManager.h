@@ -6,13 +6,6 @@
 namespace msg {
 	class Message;
 }
-/*
-namespace OIS {
-	class KeyListener;
-	class KeyEvent;
-	class MouseEvent;
-}
-*/
 
 class Scene;
 class Observer;
@@ -22,7 +15,6 @@ class InputManager;
 class InputKeyListener;
 class PhysicsEngine;
 class DataManager;
-class AudioManager;
 
 class WEManager {
 public:
@@ -42,7 +34,6 @@ public:
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
 
-
 private:
 	//-----------SISTEMAS------------
 	//Physics
@@ -55,8 +46,6 @@ private:
 	//Input Mng
 	InputManager* mInputManager;
 	InputKeyListener* input;
-	//Audio
-	AudioManager* audioManager;
 	//------------------------------------
 
 	//Pila de escenas

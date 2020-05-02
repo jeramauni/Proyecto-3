@@ -11,6 +11,8 @@
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
 
+#include <OgreStringConverter.h>
+
 #include <SDL_video.h>
 #include <SDL_syswm.h>
 
@@ -21,23 +23,6 @@ WindowRenderer::WindowRenderer() : mRoot(0)
 	initWindow();
 }
 
-WindowRenderer::~WindowRenderer()
-{
-	if (mWindow != nullptr) {
-		mRoot->destroyRenderTarget(mWindow);
-		mWindow = nullptr;
-	}
-
-	if (sdlWin != nullptr) {
-		SDL_DestroyWindow(sdlWin);
-		SDL_QuitSubSystem(SDL_INIT_VIDEO);
-		sdlWin = nullptr;
-	}
-
-	delete mRoot;
-	mRoot = nullptr;
-}
-
 void WindowRenderer::initWindow()
 {
 	createRoot();
@@ -46,6 +31,39 @@ void WindowRenderer::initWindow()
 	setupWindow();
 	initializeResources();
 	mRoot->addFrameListener(this);
+}
+
+WindowRenderer::~WindowRenderer()
+{
+	if (mWindow != nullptr) {
+		mRoot->destroyRenderTarget(mWindow);
+		mWindow = nullptr;
+	}
+
+	/*
+	if (sdlWin != nullptr) {
+		SDL_DestroyWindow(sdlWin);
+		SDL_QuitSubSystem(SDL_INIT_VIDEO);
+		sdlWin = nullptr;
+	}
+	*/
+
+	delete mRoot;
+	mRoot = nullptr;
+}
+
+WindowRenderer* WindowRenderer::getSingleton()
+{
+	return instance_;
+}
+
+bool WindowRenderer::initSingleton()
+{
+	if (instance_ == nullptr) {
+		instance_ = new WindowRenderer();
+		return true;
+	}
+	return false;
 }
 
 void WindowRenderer::createRoot()
@@ -102,13 +120,14 @@ void WindowRenderer::setupWindow()
 	Uint32 flags = SDL_WINDOW_RESIZABLE;
 	if (renderOpts["Full Screen"].currentValue == "Yes")flags = SDL_WINDOW_FULLSCREEN;
 
-	sdlWin = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
-	SDL_SysWMinfo wmInfo;
-	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(sdlWin, &wmInfo);
+	//sdlWin = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
+	//mWindow = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
+	/*SDL_SysWMinfo wmInfo;
+	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(mWindow, &wmInfo);
+	
+	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));*/
 
-	//miscParams["externalWindowHandle"] = std::stringConverter::toString(size_t(wmInfo.info.win.window));
-
-	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false);/*, &miscParams);*/
+	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false, &miscParams);
 }
 
 void WindowRenderer::initializeResources()
@@ -150,20 +169,6 @@ void WindowRenderer::setupResources()
 }
 
 
-WindowRenderer* WindowRenderer::getSingleton()
-{
-	return instance_;
-}
-
-bool WindowRenderer::initSingleton()
-{
-	if (instance_ == nullptr) {
-		instance_ = new WindowRenderer();
-		return true;
-	}
-	return false;
-}
-
 void WindowRenderer::renderFrame(float t)
 {
 	mRoot->renderOneFrame();
@@ -179,13 +184,10 @@ bool WindowRenderer::handleEvents()
 		switch (e.type)
 		{
 		case SDL_WINDOWEVENT:
-			if (e.window.windowID == SDL_GetWindowID(sdlWin)) {
-				if (e.window.event == SDL_WINDOWEVENT_RESIZED) {
-					Ogre::RenderWindow* win = mWindow;
-					win->windowMovedOrResized();
-					windowResized(win);
-					handled = true;
-				}
+			if (e.window.event == SDL_WINDOWEVENT_RESIZED) {
+				mWindow->windowMovedOrResized();
+				windowResized(mWindow);
+				handled = true;
 			}
 
 			break;
@@ -205,5 +207,5 @@ bool WindowRenderer::handleEvents()
 void WindowRenderer::windowClosed()
 {
 	mWindow->destroy();
-	SDL_DestroyWindow(sdlWin);
+	//SDL_DestroyWindow(sdlWin);
 }

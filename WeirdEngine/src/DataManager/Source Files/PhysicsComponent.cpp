@@ -29,6 +29,12 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 	collSize = btVector3(std::stof(aux[0]), 
 						 std::stof(aux[1]), 
 						 std::stof(aux[2]));
+
+	
+}
+
+void PhysicsComponent::update(Container* c, float time) {
+
 }
 
 void PhysicsComponent::receive(Container* c, const msg::Message& msg) {

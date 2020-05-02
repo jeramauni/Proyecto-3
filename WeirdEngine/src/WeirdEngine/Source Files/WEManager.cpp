@@ -14,8 +14,6 @@
 #include<DataManager.h>
 // InputManager
 #include <InputManager.h>
-// AudioManager
-#include <AudioManager.h>
 
 //Escena
 #include "Scene.h"
@@ -68,20 +66,10 @@ void WEManager::Init() {
 		renderSystem = RenderSystem::getSingleton();
 	}
 
-	//Sistema de audio
-	if (AudioManager::initSingleton()) {
-		audioManager = AudioManager::getSingleton();
-	}
-
 	//----------------------------------INPUT----------------------------------
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(windowRenderer->getWin());
-
-	// A�adimos al InputMng el InputKeyListener k vayamos a usar para la gestion de las teclas
-	//input = new InputListener(this);
-	//mInputManager->addKeyListener(input, "input");
-	//mInputManager->addKeyListener(this, "input");
 
 	//-------------------------- MATERIALS -------------------------------
 	//Carga de los materiales que usaremos
@@ -94,15 +82,31 @@ void WEManager::generateScene(std::string sceneName) {
 	Scene *mScene = new Scene(sceneName, this);
 	renderSystem->createScene(mScene->getID());
 
+	//----------COSAS DE CAMARA--------------
+	//Sin vp no se ve nada, tenga color o no (MainCam es la camara creada por defecto en
+	//las escenas, se pueden añadir mas)
+	renderSystem->addVpToCam("MainCam", Ogre::ColourValue(0.2, 0, 0.2, 0.8));
+
+	//Por si queremos mover una camara
+	//renderSystem->moveCam("MainCam", 0, 0, 0);
+	//Por si queremos que una camara mire a otro lado
+	//renderSystem->camLookAt("MainCam", Ogre::Vector3(0, 0, 0));
+
+	//--------------------------- LIGHT -----------------------------
+	//Creacion de la luz en la escena, la luz se le aplica a las entidades
+	renderSystem->setAmbientLight(Ogre::ColourValue(0.0f, 1.0f, 0.0f, 1.0f));
+
+
+
+
+	//------------------------------------------------------------------
+	//----------------------------ENTIDADES-----------------------------
+	//------------------------------------------------------------------
 	//Leemos las entidades del archivo de datos
 	std::vector<Container*> ent = dM->Load(sceneName, "entities.json", false);
 
-	/////////////////////*********PRUEBAS***********//////////////////////////////
-	audioManager->createSound("audio1", "jerk-it-out.mp3");
-	audioManager->play("audio1", 0.2f);
-	/////////////////////////////////////////////////////////////////////////////
-
-
+	// Recorremos las entidades leidas para relacionarlas con los managers que necesiten
+	// y darles las caracteristicas que las haga falta
 	for (int i = 0; i < ent.size(); i++) {
 	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
@@ -136,7 +140,7 @@ void WEManager::generateScene(std::string sceneName) {
 		// En entidad separar por tipos de componentes 
 		//
 
-		// A�adimos la entidad a la escena
+		// Añadimos la entidad a la escena
 		mScene->addEntity(ent[i]);
 	}
 
@@ -153,39 +157,7 @@ bool WEManager::update() {
 	py->physicsLoop();
 
 	//Update
-	//escenas.top()->update();
-
-
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	/*
-	py->changeVelocity(static_cast<PhysicsComponent*>(player->getComponent("Physics"))->GetID(), velocity);
-	if (input->w) {
-		velocity = btVector3(0.0f, 0.0f, -5.0f);
-	}
-	else if (input->s) {
-		velocity = btVector3(0.0f, 0.0f, 5.0f);
-	}
-	else if (input->a) {
-		velocity = btVector3(-5.0f, 0.0f,  0.0f);
-	}
-	else if (input->d) {
-		velocity = btVector3(5.0f, 0.0f, 0.0f);
-	}
-	else {
-		velocity = btVector3(0.0f, 0.0f, 0.0f);
-	}
-	if (input->space) {
-		if (player->getNode()->getPosition().y < -90) {
-			py->addForce(static_cast<PhysicsComponent*>(player->getComponent("Physics"))->GetID(), btVector3(0.0f, 5.0f, 0.0f));
-		}
-	}
-	*/
-	//std::cout << player->getNode()->getPosition().y << "\n";
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//escenas.top()->update(0);
 
 	//------Renderizado------
 	windowRenderer->renderFrame(0);
@@ -205,7 +177,6 @@ bool WEManager::update() {
 void WEManager::pushScene(Scene* newScene) {
 	renderSystem->setRenderingScene(newScene->getID());
 	escenas.push(newScene);
-	//addObserver(newScene);
 }
 
 void WEManager::popScene() {

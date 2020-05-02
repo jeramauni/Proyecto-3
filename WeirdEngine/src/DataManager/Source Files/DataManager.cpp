@@ -136,8 +136,8 @@ Container* DataManager::CreateEntity(std::string& id, json prefabs, uint32_t n_e
 		//Set the proper position of the entity
 		if (e->hasComponent("Transform"))
 		{
+			position_.z = -600;
 			static_cast<TransformComponent*>(e->getComponent("Transform"))->SetPosition(position_);
-			
 		}
 		else
 		{

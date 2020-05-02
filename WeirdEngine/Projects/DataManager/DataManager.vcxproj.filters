@@ -13,14 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de origen\Componentes">
-      <UniqueIdentifier>{7a7ec980-f087-4b80-ba73-cc443d11b33b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de encabezado\Mensajes">
       <UniqueIdentifier>{26e2fd15-3ac2-4e43-8e09-1e11511ec0d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Archivos de origen\Componentes\Factorias">
-      <UniqueIdentifier>{0da9b413-12ab-40d6-86ef-082b5ac5c1e7}</UniqueIdentifier>
     </Filter>
     <Filter Include="Archivos de origen\Mensajes">
       <UniqueIdentifier>{0c44f31d-c1f0-42eb-a22b-40a406f80de3}</UniqueIdentifier>
@@ -34,7 +28,13 @@
     <Filter Include="Archivos de encabezado\Entidades\Componentes">
       <UniqueIdentifier>{f2bdb70b-5efe-47ab-897e-76637f326e1f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\Componentes\Componentes">
+    <Filter Include="Archivos de origen\Entidades">
+      <UniqueIdentifier>{7a7ec980-f087-4b80-ba73-cc443d11b33b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Entidades\Factorias">
+      <UniqueIdentifier>{0da9b413-12ab-40d6-86ef-082b5ac5c1e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Entidades\Componentes">
       <UniqueIdentifier>{90e3ff99-e24c-4138-a750-13bf85eb767a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -99,40 +99,40 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\EntityC.cpp">
-      <Filter>Archivos de origen\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoriesGestor.cpp">
-      <Filter>Archivos de origen\Componentes\Factorias</Filter>
+      <Filter>Archivos de origen\Entidades\Factorias</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\FactoryRegister.cpp">
-      <Filter>Archivos de origen\Componentes\Factorias</Filter>
+      <Filter>Archivos de origen\Entidades\Factorias</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\Observer.cpp">
       <Filter>Archivos de origen\Mensajes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\Container.cpp">
-      <Filter>Archivos de origen\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\RenderComponent.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\TestComponent.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\TransformComponent.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\WEInput.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\PhysicsComponent.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\Component.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\DataManager\Source Files\InputComponent.cpp">
-      <Filter>Archivos de origen\Componentes\Componentes</Filter>
+      <Filter>Archivos de origen\Entidades\Componentes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -19,7 +19,7 @@ private:
 
 	Ogre::Root* mRoot = nullptr; // ogre root
 	Ogre::RenderWindow* mWindow = nullptr; // ogre window
-	SDL_Window* sdlWin = nullptr; // window handled by SDL
+	//SDL_Window* sdlWin = nullptr; // window handled by SDL
 	Ogre::RenderSystem* renderSystem = nullptr;
 
 	

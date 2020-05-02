@@ -20,7 +20,7 @@ public:
 	//Receive
 	virtual void receive(const void* senderObj, const msg::Message& msg);
 
-	//virtual void send(const void* senderObj, const msg::Message& msg);
+	virtual void send(const void* senderObj, const msg::Message& msg);
 private:
 	std::string _id;
 
@@ -28,4 +28,7 @@ private:
 	std::list<Container*> entidades;
 
 	WEManager* _weM;
+
+	//Se pueden añadir componentes especificos a las escenas, como uno de input
+	//para controlar dependiendo de la escena que teclas queremos escuchar.
 };

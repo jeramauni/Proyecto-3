@@ -31,7 +31,7 @@ bool WEInputListener::keyPressed(const OIS::KeyEvent& ke) {
         break;
     case OIS::KC_SPACE:
         std::cout << "Funciona\n";
-        _owner->localSend(this, msg::Prueba(msg::Player, msg::Broadcast));
+        //_owner->localSend(this, msg::Prueba(msg::Player, msg::Broadcast));
         //_owner->send(this, msg::Prueba(msg::WEManager, msg::Broadcast));
         break;
     default:
