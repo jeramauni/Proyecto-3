@@ -5,17 +5,15 @@
 2
 //Leyenda
 0 ninja
-1 plano
+1 cuboRaro
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
-5
+75.0
 //Tamaño del mapa (Columnas x Filas)
-2 2
+5 1
 //La primera capa siempre está en la altura 0
-1 0
-0 1
+1 1 1 1 1
 //Segunda capa
-20.0
-0 0
-1 1
+200.0
+0 0 0 0 0

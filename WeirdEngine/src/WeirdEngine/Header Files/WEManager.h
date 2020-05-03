@@ -2,6 +2,7 @@
 
 #include <stack>
 #include <string>
+#include <vector>
 
 namespace msg {
 	class Message;
@@ -28,9 +29,23 @@ public:
 	//Update
 	bool update();
 
+
+	//---------Escena--------
 	// Crea la escena leyendo del archivo
 	void generateScene(std::string sceneName);
 
+	//Luz
+	void setLight(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
+
+	//Metodos para la camara
+	void addCameraToScene(std::string cameraName);
+	void addVpToCam(std::string cameraName, float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
+	void moveCam(std::string camName, float x, float y, float z);
+	void camLookAt(std::string camName, float x, float y, float z);
+
+
+
+	//----------Mensajes------
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
 

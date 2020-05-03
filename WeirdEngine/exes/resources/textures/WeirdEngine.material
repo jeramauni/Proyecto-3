@@ -33,8 +33,9 @@ material penguin
 	}
 }
 
-------------------------------------------
-material cube
+-----------------------------------------
+
+material ParedAzul2
 {
 	technique {
 			pass {
