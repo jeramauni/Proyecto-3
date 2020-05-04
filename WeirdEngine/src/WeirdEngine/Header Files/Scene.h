@@ -4,7 +4,10 @@
 #include <stack>
 #include <string>
 #include <Container.h>
-#include "Messages_decl.h"
+
+namespace msg {
+	class Message;
+}
 
 class Scene : public Container {
 public:
@@ -20,7 +23,7 @@ public:
 	//Receive
 	virtual void receive(const void* senderObj, const msg::Message& msg);
 
-	virtual void send(const void* senderObj, const msg::Message& msg);
+	//virtual void send(const void* senderObj, const msg::Message& msg);
 private:
 	std::string _id;
 

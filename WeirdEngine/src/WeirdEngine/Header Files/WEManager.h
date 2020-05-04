@@ -31,6 +31,8 @@ public:
 
 
 	//---------Escena--------
+	// Devuelve la escena activa
+	Scene* getTopScene();
 	// Crea la escena leyendo del archivo
 	void generateScene(std::string sceneName);
 
@@ -42,7 +44,7 @@ public:
 	void addVpToCam(std::string cameraName, float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
 	void moveCam(std::string camName, float x, float y, float z);
 	void camLookAt(std::string camName, float x, float y, float z);
-
+	void rotateCam(std::string camName, float w, float x, float y, float z);
 
 
 	//----------Mensajes------

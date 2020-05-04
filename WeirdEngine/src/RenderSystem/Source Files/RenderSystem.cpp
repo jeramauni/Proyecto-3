@@ -207,6 +207,10 @@ void RenderSystem::camLookAt(std::string cameraName, Ogre::Vector3 v) {
 	mScnMgr->getCamera(cameraName)->getParentSceneNode()->lookAt(v, Ogre::Node::TS_WORLD);
 }
 
+void RenderSystem::rotateCam(std::string cameraName, Ogre::Quaternion q) {
+	mScnMgr->getCamera(cameraName)->rotate(q);
+}
+
 
 //--------Especificos--------
 //Añadir una camara a una escena

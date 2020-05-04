@@ -105,6 +105,10 @@ void WEManager::close() { end = true; }
 
 //---------------------------------Escena----------------------------------------------------
 
+Scene* WEManager::getTopScene() {
+	return escenas.top();
+}
+
 // Genera la escena leyendo del archivo de datos
 void WEManager::generateScene(std::string sceneName) {
 	//Creamos la escena
@@ -123,7 +127,7 @@ void WEManager::generateScene(std::string sceneName) {
 
 	//--------------------------- LIGHT -----------------------------
 	//Creacion de la luz en la escena, la luz se le aplica a las entidades
-	setLight(1.0f, 1.0f, 1.0f, 1.0f);
+	setLight(1.0f, 1.0f, 1.0f, 1.0f); //Luz blanca
 
 	//--------------------------- ENTIDADES ---------------------------
 	//Leemos las entidades del archivo de datos
@@ -197,6 +201,10 @@ void WEManager::moveCam(std::string camName, float x, float y, float z) {
 
 void WEManager::camLookAt(std::string camName, float x, float y, float z) {
 	renderSystem->camLookAt(camName, Ogre::Vector3(x, y, z));
+}
+
+void WEManager::rotateCam(std::string camName, float w, float x, float y, float z) {
+	renderSystem->rotateCam(camName, Ogre::Quaternion(w, x, y, z));
 }
 
 //Luz

@@ -1,5 +1,6 @@
 #include "Scene.h"
-#include "Messages_defs.h"
+#include <Messages_defs.h>
+#include <Messages_decl.h>
 
 #include <Container.h>
 
@@ -30,6 +31,7 @@ void Scene::receive(const void* senderObj, const msg::Message& msg) {
 }
 
 // No estoy seguro de que este metodo sea necesario, con el receive bastaria
+/*
 void Scene::send(const void* senderObj, const msg::Message& msg) {
 	for (EntityC* e : entidades) {
 		if (senderObj != e) {
@@ -38,3 +40,4 @@ void Scene::send(const void* senderObj, const msg::Message& msg) {
 		}
 	}
 }
+*/

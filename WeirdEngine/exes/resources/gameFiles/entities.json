@@ -13,7 +13,7 @@
         },
         {
           "id": "Transform",
-          "positionT": "20/20/-600",
+          "positionT": "0/0/0",
           "scaleT": "1/1/1",
           "rotationT": "0/0/0"
         },
@@ -35,7 +35,7 @@
       "components": [
         {
           "id": "Transform",
-          "positionT": "20/-150/-600",
+          "positionT": "0/0/0",
           "scaleT": "1/1/1",
           "rotationT": "0/0/0"
         },
@@ -57,7 +57,7 @@
       "components": [
         {
           "id": "Transform",
-          "positionT": "20/-150/-600",
+          "positionT": "0/0/0",
           "scaleT": "5/5/5",
           "rotationT": "0/0/0"
         },
@@ -78,7 +78,7 @@
       "components": [
         {
           "id": "Transform",
-          "positionT": "20/20/-600",
+          "positionT": "0/0/0",
           "scaleT": "1/1/1",
           "rotationT": "0/0/0"
         },
