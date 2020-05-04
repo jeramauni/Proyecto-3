@@ -5,7 +5,7 @@
 #include <vector>
 
 namespace msg {
-	class Message;
+	struct Message;
 }
 
 class Scene;

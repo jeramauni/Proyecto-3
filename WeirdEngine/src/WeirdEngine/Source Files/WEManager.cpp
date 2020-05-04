@@ -101,7 +101,9 @@ bool WEManager::update() {
 	return true;
 }
 
-void WEManager::close() { end = true; }
+void WEManager::close() { 
+	end = true; 
+}
 
 //---------------------------------Escena----------------------------------------------------
 
@@ -120,11 +122,6 @@ void WEManager::generateScene(std::string sceneName) {
 	//las escenas, se pueden añadir mas)
 	addVpToCam("MainCam", 0.2, 0, 0.2, 0.8);
 
-	//Por si queremos mover una camara
-	//moveCam("MainCam", 0, 0, 0);
-	//Por si queremos que una camara mire a otro lado
-	//camLookAt("MainCam", Ogre::Vector3(0, 0, 0));
-
 	//--------------------------- LIGHT -----------------------------
 	//Creacion de la luz en la escena, la luz se le aplica a las entidades
 	setLight(1.0f, 1.0f, 1.0f, 1.0f); //Luz blanca
@@ -136,16 +133,7 @@ void WEManager::generateScene(std::string sceneName) {
 	// Recorremos las entidades leidas para relacionarlas con los managers que necesiten
 	// y darles las caracteristicas que las haga falta
 	for (int i = 0; i < ent.size(); i++) {
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		WEInput* weinput = new WEInput(ent[0]);
-		mInputManager->addKeyListener(weinput->getListener(), "ninja");
-		ent[0]->AddComponent(weinput);
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			// Creamos el nodo de ogre a partir de la mesh del renderComponent
+		// Creamos el nodo de ogre a partir de la mesh del renderComponent
 		if (ent[i]->hasComponent("Render")) {
 			ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->GetEntityName(), static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
 		}
@@ -162,14 +150,24 @@ void WEManager::generateScene(std::string sceneName) {
 			PhysicsComponent* p = static_cast<PhysicsComponent*>(ent[i]->getComponent("Physics"));
 			p->SetID(py->basicMesh(ent[i]->getNode(), p->GetScale(), p->HaveGravity()));
 		}
-		// si tiene input al controlador de input
 
+		// si tiene input al controlador de input
+		
 		// En entidad separar por tipos de componentes 
 		//
 
 		// Añadimos la entidad a la escena
 		mScene->addEntity(ent[i]);
 	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	WEInput* weinput = new WEInput(mScene);
+	mInputManager->addKeyListener(weinput->getListener(), "ninja");
+	mScene->AddComponent(weinput);
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	pushScene(mScene);
 }

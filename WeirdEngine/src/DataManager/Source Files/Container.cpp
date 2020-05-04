@@ -111,5 +111,5 @@ void Container::localSend(const void* senderObj, const msg::Message& msg) {
 }
 
 void Container::globalSend(const void* senderObj, const msg::Message& msg) {
-	//getGame()->send(senderObj, msg);
+	getGame()->send(senderObj, msg);
 }

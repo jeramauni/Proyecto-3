@@ -6,7 +6,7 @@
 #include "Messages_defs.h"
 
 WEInput::WEInput(Container* c) : InputComponent(c){
-    _listener = new WEInputListener(_owner);
+    _listener = new WEInputListener(c);
 }
 
 void WEInput::Init(std::unordered_map<std::string, std::string>& param) {
