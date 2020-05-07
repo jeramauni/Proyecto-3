@@ -10,6 +10,7 @@ class InputComponent;
  *
  */
 class Container : public EntityC {
+	friend class EntityC;
 public:
 	//Container();
 	Container(std::string id, WEManager* wem);

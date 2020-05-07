@@ -3,7 +3,9 @@
 #include <string>
 #include <unordered_map>
 
-#include "Messages_decl.h"
+namespace msg {
+	struct Message;
+}
 
 class Container;
 
@@ -30,6 +32,7 @@ protected:
 	std::vector<std::string> GetWords(std::string& s);
 
 	std::string _name;
+	Container* _parent;
 
 	bool uc;
 };

@@ -1,11 +1,11 @@
 #include "PhysicsComponent.h"
 #include "ComponentFactory.h"
-#include <messages_defs.h>
 
-DEFINE_FACTORY(Physics);
+CREATE_REGISTER(Physics);
 
-PhysicsComponent::PhysicsComponent() {
+PhysicsComponent::PhysicsComponent(Container* e) {
 	_name = "Physics";
+	_parent = e;
 	id = -1;
 }
 
@@ -13,8 +13,7 @@ PhysicsComponent::~PhysicsComponent() {
 	id = NULL;
 }
 
-void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
-{
+void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param) {
 	//Aux
 	std::vector<std::string> aux;
 
@@ -29,8 +28,6 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 	collSize = btVector3(std::stof(aux[0]), 
 						 std::stof(aux[1]), 
 						 std::stof(aux[2]));
-
-	
 }
 
 void PhysicsComponent::update(Container* c, float time) {
@@ -38,13 +35,7 @@ void PhysicsComponent::update(Container* c, float time) {
 }
 
 void PhysicsComponent::receive(Container* c, const msg::Message& msg) {
-	switch (msg.type_) {
-	case msg::PRUEBA:
-		
-		break;
-	default:
-		break;
-	}
+
 }
 
 int PhysicsComponent::GetID()

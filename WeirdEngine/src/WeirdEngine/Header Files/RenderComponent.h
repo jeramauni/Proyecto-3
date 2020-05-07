@@ -1,14 +1,13 @@
 #pragma once
 #include "Component.h"
 
-#include <OgreEntity.h>
 #include <OgreSceneManager.h>
 
 class Container;
 
 class RenderComponent : public Component {
 public:
-	RenderComponent();
+	RenderComponent(Container* e);
 	~RenderComponent();
 
 	void Init(std::unordered_map<std::string, std::string>& param);
@@ -27,5 +26,6 @@ public:
 
 private:
 	Ogre::SceneNode* _node;
+
 	std::string _NameOfTheMesh;
 };

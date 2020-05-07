@@ -4,17 +4,18 @@
 #include "LinearMath/btAlignedObjectArray.h"
 #include "btBulletDynamicsCommon.h"
 #include "LinearMath/btHashMap.h"
-#include <Ogre.h>
 #include <string>
+
+class Container;
 
 class PhysicsComponent : public Component {
 public:
-	PhysicsComponent();
+	PhysicsComponent(Container* e);
 	~PhysicsComponent();
 
 	void Init(std::unordered_map<std::string, std::string>& param);
 
-	// Implementar la que sea necesaria
+	// Es necesaria para actualizar la pos
 	void update(Container* c, float time);
 
 	//Receive implementation

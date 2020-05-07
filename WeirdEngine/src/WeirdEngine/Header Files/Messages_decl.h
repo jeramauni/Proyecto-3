@@ -17,7 +17,7 @@ namespace msg {
 		ROUND_START,
 		ROUND_OVER,
 		PRUEBA,
-		CLOSE_WIN
+		CLOSE_WIN,
 		//...
 	};
 

@@ -2,20 +2,20 @@
 // BE AWARE! Los archivos de mapas y prefabs deben guardarse en el directorio resources del directorio exes del proyecto.
 
 #include "DataManager.h"
-#include "Container.h"
-#include "ComponentFactory.h"
 
 #include <iostream>
 #include <fstream>
 #include <ctime>
 #include <map>
 
+/*
 extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 CREATE_REGISTER(Render);
 CREATE_REGISTER(Transform);
 CREATE_REGISTER(Test);
 CREATE_REGISTER(Physics);
+*/
 
 //Reads a .json file ande parses it to a json class instance
 json DataManager::ReadJson(const std::string& file_name) {
@@ -94,6 +94,7 @@ void DataManager::DebugJson(json json_file)
 	std::cout << '\n' << "---------------------------------------JsonDebug-End--------------------------------------" << '\n';
 }
 
+/*
 Container* DataManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Ogre::Vector3 position_)
 {
 	prefabs = prefabs.at(prefabs.begin().key());
@@ -127,19 +128,16 @@ Container* DataManager::CreateEntity(std::string& id, json prefabs, uint32_t n_e
 
 			for (auto x = prefabs[i].at("components")[j].begin(); x != prefabs[i].at("components")[j].end(); x++)
 			{
-
 				param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
 			}
 			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
 		}
 
 		//Set the proper position of the entity
-		if (e->hasComponent("Transform"))
-		{
+		if (e->hasComponent("Transform")) {
 			static_cast<TransformComponent*>(e->getComponent("Transform"))->SetPosition(position_);
 		}
-		else
-		{
+		else {
 			std::cerr << "Couldn't set " << e->GetEntityName() << " position to the one on the map. \n Position set to the one of its prefab. \n" ;
 		}
 
@@ -153,6 +151,7 @@ Container* DataManager::CreateEntity(std::string& id, json prefabs, uint32_t n_e
 		return e;
 	}
 }
+*/
 
 void DataManager::DebugMap(std::vector<std::vector<std::string>> map, bool output_debugTxt)
 {
@@ -261,6 +260,7 @@ std::vector<std::string> DataManager::GetWords(std::string& s)
 	return words;
 }
 
+/*
 Ogre::Vector3 DataManager::setProperPosition(int row, int column, int layer, char xyz[3], float size_tiles, float size_layer)
 {
 	Ogre::Vector3 propperPos = { 0.0f, 0.0f, 0.0f };
@@ -282,7 +282,9 @@ Ogre::Vector3 DataManager::setProperPosition(int row, int column, int layer, cha
 	propperPos = { x, y, z};
 	return propperPos;
 }
+*/
 
+/*
 std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::string>> map, json prefabs, bool debug)
 {
 	std::vector<Container*> entities;
@@ -375,8 +377,9 @@ std::vector<Container*> DataManager::ProcessMap(std::vector<std::vector<std::str
 
 	return entities;
 }
+*/
 
-
+/*
 std::vector<Container*> DataManager::Load(const std::string& map_file, const std::string& prefabs_file, bool debug_mode)
 {
 	debug_ = debug_mode;
@@ -429,7 +432,4 @@ std::vector<Container*> DataManager::Load(const std::string& map_file, const std
 	}
 	return entities;
 }
-
-void DataManager::setWEM(WEManager* wem) {
-	_weM = wem;
-}
+*/

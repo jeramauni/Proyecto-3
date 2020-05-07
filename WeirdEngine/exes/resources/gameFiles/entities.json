@@ -1,7 +1,15 @@
 {
   "Entities": [
-    {
+	{
+	  "id": "scene",
+	  "components": [
+        {
+          "id": "PlaySceneInput"
+        }
+      ]
+	},
 
+    {
       "id": "testEntity",
       "components": [
         {
@@ -90,6 +98,9 @@
           "id": "Physics",
           "gravity": "true",
           "collSize": "1/1/1"
+        }, 
+        {
+          "id": "PlayerInput"
         }
       ]
     },

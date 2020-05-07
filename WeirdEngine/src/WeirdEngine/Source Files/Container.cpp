@@ -4,12 +4,6 @@
 #include "InputComponent.h"
 #include "Messages_defs.h"
 
-/*
-Container::Container() :
-	EntityC() {
-}
-*/
-
 Container::Container(std::string id, WEManager* wem) :
 	EntityC(id, wem) {
 }
@@ -91,9 +85,9 @@ void Container::reset() {
 }
 //-------------------------
 
-
 //----Mensajes----
 void Container::receive(const void* senderObj, const msg::Message& msg) {
+	EntityC::receive(senderObj, msg);
 	broadcastToLocalComponents(senderObj, msg);
 }
 
@@ -111,5 +105,5 @@ void Container::localSend(const void* senderObj, const msg::Message& msg) {
 }
 
 void Container::globalSend(const void* senderObj, const msg::Message& msg) {
-	getGame()->send(senderObj, msg);
+	getWEManager()->send(senderObj, msg);
 }

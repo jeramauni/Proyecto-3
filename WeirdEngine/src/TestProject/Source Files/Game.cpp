@@ -15,7 +15,7 @@ void Game::Init() {
 	_weM->Init();
 
 	// Generamos la escena
-	_weM->generateScene("map.txt");
+	_weM->generateScene("map", "entities");
 }
 
 bool Game::update() {

@@ -7,6 +7,8 @@
 
 #include <OgreRenderWindow.h>
 
+#include "InputListener.h"
+
 class InputManager : public OIS::KeyListener, public OIS::MouseListener, public OIS::JoyStickListener {
 public:
     InputManager(void);

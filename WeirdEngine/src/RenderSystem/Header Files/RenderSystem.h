@@ -43,21 +43,44 @@ public:
 	static bool initSingleton();
 	static RenderSystem* getSingleton();
 
+	//-------------Entidades-----------------
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
 	Ogre::SceneNode* addOgreEntity(std::string name, std::string mesh_name);
 	
 	// Adds an empty node to the scene
 	Ogre::SceneNode* addEmpty(std::string name);
 
+	Ogre::SceneNode* getSceneNode(std::string name);
+
 	// Returns the entity attached to the scene with the given name
 	Ogre::Entity* getEntityByName(std::string name);
 
+	
+
+	const Ogre::Vector3 getEntityPos(std::string name);
+	void setEntityPos(std::string name, Ogre::Vector3 &p);
+
+	// Sets the material to entity
+	void setMaterial(std::string entity, std::string matName);
+
+	// Sets the material to entity with entity access
+	void setMaterial(Ogre::Entity* ent, std::string matName);
+
+	//-----------------------------
 	// Gets the root SceneNode
 	inline Ogre::SceneNode* getRootNode();
 
 	// Change the SceneManager
 	inline void setSceneManager(Ogre::SceneManager* sm);
 
+	// Generates the different Resource Groups where take the materials
+	void materialGeneration(std::string nameOfResourceGroup);
+
+	//------------ESCENA------------
+	// Creates a new scene and adds it to the scenes dictionary with the given key
+	void createScene(std::string sceneName);
+
+	//---Luces---
 	enum LightTypes
 	{
 		/// Point light sources give off light equally in all directions, so require only position not direction
@@ -68,22 +91,7 @@ public:
 		LT_SPOTLIGHT = 2
 	};
 
-	
 
-	// Sets the material to entity
-	void setMaterial(std::string entity, std::string matName);
-
-	// Sets the material to entity with entity access
-	void setMaterial(Ogre::Entity* ent, std::string matName);
-
-	// Generates the different Resource Groups where take the materials
-	void materialGeneration(std::string nameOfResourceGroup);
-
-	//------------ESCENA------------
-	// Creates a new scene and adds it to the scenes dictionary with the given key
-	void createScene(std::string sceneName);
-
-	//---Luces---
 	// Creates a light and adds the lightNode to the scene
 	Ogre::SceneNode* createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular);
 

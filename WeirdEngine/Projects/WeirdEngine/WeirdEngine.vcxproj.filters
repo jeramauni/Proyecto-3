@@ -13,6 +13,39 @@
     <Filter Include="Source Files\Time">
       <UniqueIdentifier>{772781d3-d09e-43a5-9d06-a7c6bd2fe585}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entidades">
+      <UniqueIdentifier>{0ea6cc40-1f97-4bdc-b8c8-dc32126ab962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entidades\Componentes">
+      <UniqueIdentifier>{1f147390-e991-48a9-aa5e-0582757f1a4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entidades">
+      <UniqueIdentifier>{ea7c4b47-f26c-471c-83a7-ab251236b7e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entidades\General">
+      <UniqueIdentifier>{b2a6fa8d-882f-48af-b072-dd13c53889af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entidades\Mensajes">
+      <UniqueIdentifier>{20e23e78-23ad-4e3b-9964-557aaefb0081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entidades\Factorias">
+      <UniqueIdentifier>{5dc40702-c97a-4b6f-a3fa-d93e4859b292}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entidades\Componentes">
+      <UniqueIdentifier>{0bd5e5a1-f685-4bd0-855d-2a99a0d3f8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entidades\General">
+      <UniqueIdentifier>{2bb0d958-1838-4701-80d6-9d266d2780ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entidades\Factorias">
+      <UniqueIdentifier>{d3c2b545-6d64-4d7e-a531-a6e97b760560}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{534dc69e-ad06-46a9-add7-488f972c4142}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{11fd454d-9382-466b-ad4b-23e927c49b9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h">
@@ -27,6 +60,57 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\WEManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\C_Factory.h">
+      <Filter>Header Files\Entidades\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Component.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\ComponentFactory.h">
+      <Filter>Header Files\Entidades\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Container.h">
+      <Filter>Header Files\Entidades\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\EntityC.h">
+      <Filter>Header Files\Entidades\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\FactoriesGestor.h">
+      <Filter>Header Files\Entidades\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\FactoryRegister.h">
+      <Filter>Header Files\Entidades\Factorias</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Messages_decl.h">
+      <Filter>Header Files\Entidades\Mensajes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Messages_defs.h">
+      <Filter>Header Files\Entidades\Mensajes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Observer.h">
+      <Filter>Header Files\Entidades\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderComponent.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\InputComponent.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\ButtonComponent.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\PhysicsComponent.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\TestComponent.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\TransformComponent.h">
+      <Filter>Header Files\Entidades\Componentes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Vector3.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp">
@@ -40,6 +124,48 @@
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\WEManager.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\ButtonComponent.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\InputComponent.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderComponent.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\PhysicsComponent.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\TransformComponent.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\TestComponent.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\C_Factory.cpp">
+      <Filter>Source Files\Entidades\Factorias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Component.cpp">
+      <Filter>Source Files\Entidades\Componentes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Container.cpp">
+      <Filter>Source Files\Entidades\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\EntityC.cpp">
+      <Filter>Source Files\Entidades\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\FactoriesGestor.cpp">
+      <Filter>Source Files\Entidades\Factorias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\FactoryRegister.cpp">
+      <Filter>Source Files\Entidades\Factorias</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Observer.cpp">
+      <Filter>Source Files\Entidades\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Vector3.cpp">
+      <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

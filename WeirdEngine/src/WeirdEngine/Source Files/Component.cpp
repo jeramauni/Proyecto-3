@@ -1,5 +1,6 @@
 #include "Component.h"
 #include "Container.h"
+#include "Messages_decl.h"
 
 std::vector<std::string> Component::GetWords(std::string& s)
 {
@@ -25,8 +26,6 @@ bool Component::getName(std::string name)
 {
 	return _name == name;
 }
-
-
 
 // Update
 bool Component::hasUpdate() {

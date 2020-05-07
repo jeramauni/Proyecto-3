@@ -19,6 +19,15 @@ void Scene::addEntity(Container * e) {
 	entidades.push_back(e);
 }
 
+Container* Scene::getEntity(std::string entName) {
+	for (Container* e : entidades) {
+		if (e->GetEntityName() == entName) {
+			return e;
+		}
+	}
+	return nullptr;
+}
+
 void Scene::receive(const void* senderObj, const msg::Message& msg) {
 	Container::receive(senderObj, msg);
 

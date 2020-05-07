@@ -1,11 +1,13 @@
 #include "ButtonComponent.h"
+#include "ComponentFactory.h"
 
-ButtonComponent::ButtonComponent() {
-	name = "button";
+CREATE_REGISTER(Button);
+
+ButtonComponent::ButtonComponent(Container* ent) {
+	_name = "button";
 }
 
-void ButtonComponent::Init()
-{
+void ButtonComponent::Init(std::unordered_map<std::string, std::string>& param) {
 	text = "Sample text";
 }
 

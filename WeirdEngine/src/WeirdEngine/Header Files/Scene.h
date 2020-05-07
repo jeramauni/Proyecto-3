@@ -19,6 +19,7 @@ public:
 	void addEntity(Container* e);
 
 	std::string getID() { return _id; };
+	Container* getEntity(std::string entName);
 
 	//Receive
 	virtual void receive(const void* senderObj, const msg::Message& msg);

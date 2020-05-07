@@ -4,13 +4,17 @@
 #include <unordered_map>
 
 #include "Component.h"
-#include "Messages_decl.h"
+#include <InputListener.h>
+
+namespace msg {
+	struct Message;
+}
 
 class Container;
 
 class InputComponent : public Component {
 public:
-	InputComponent(Container* c) {};
+	InputComponent(Container* e);
 	~InputComponent() {};
 
 	virtual void Init(std::unordered_map<std::string, std::string>& param) = 0;
@@ -22,6 +26,12 @@ public:
 	// Update
 	virtual void update(Container* c, float time) = 0;
 
+	virtual InputKeyListener* getKeyListener() = 0;
+	virtual InputMouseListener* getMouseListener() = 0;
+
+	Container* getParent() const;
+
 protected:
-	Container* _owner;
+	InputKeyListener* _keyListener;
+	InputMouseListener* _mouseListener;
 };

@@ -144,10 +144,24 @@ Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_
 	return mNode;
 }
 
-//Coger una entidad de la escena
-Ogre::Entity* RenderSystem::getEntityByName(std::string name)
+Ogre::SceneNode* RenderSystem::getSceneNode(std::string name)
 {
+	return getEntityByName(name)->getParentSceneNode();
+}
+
+//Coger una entidad de la escena
+Ogre::Entity* RenderSystem::getEntityByName(std::string name) {
 	return mScnMgr->getEntity(name);
+}
+
+// Devuelve la pos de una entidad de la escena
+const Ogre::Vector3 RenderSystem::getEntityPos(std::string name) {
+	return mScnMgr->getEntity(name)->getParentSceneNode()->getPosition();
+}
+
+// Da la pos a una entidad de la escena
+void RenderSystem::setEntityPos(std::string name, Ogre::Vector3 &p) {
+	getEntityByName(name)->getParentSceneNode()->setPosition(p);
 }
 
 //Dar material a una entidad de la escena
@@ -167,6 +181,7 @@ Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
 {
 	return mScnMgr->getRootSceneNode()->createChildSceneNode(name);
 }
+
 //------------------------------------------
 
 

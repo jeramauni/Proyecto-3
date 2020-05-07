@@ -2,7 +2,9 @@
 
 #include <iostream>
 //Entity
-#include <EntityC.h>
+#include <Container.h>
+#include "Vector3.h"
+
 //Factories
 #include <ComponentFactory.h>
 // Renderizado
@@ -11,20 +13,20 @@
 // PhysicsManager
 #include <PhysicsEngine.h>
 // DataManager
-#include<DataManager.h>
+#include <DataManager.h>
 // InputManager
 #include <InputManager.h>
 
 //Escena
 #include "Scene.h"
 #include <Messages_defs.h>
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#include <WEInput.h>
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	 ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Componentes
+#include "RenderComponent.h"
+#include "TransformComponent.h"
+#include "PhysicsComponent.h"
+
+extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 // Constructora
 WEManager::WEManager() {
@@ -33,10 +35,10 @@ WEManager::WEManager() {
 	windowRenderer = nullptr;
 	renderSystem = nullptr;
 	mInputManager = nullptr;
-	input = nullptr;
-	end = false;
 	windowRenderer = nullptr;
 	renderSystem = nullptr;
+	
+	end = false;
 }
 
 //Destructora
@@ -50,7 +52,6 @@ WEManager::~WEManager() {
 void WEManager::Init() {
 	//DataManager
 	dM = new DataManager();
-	dM->setWEM(this);
 
 	//Inicializar physics
 	py = new PhysicsEngine();
@@ -106,72 +107,195 @@ void WEManager::close() {
 }
 
 //---------------------------------Escena----------------------------------------------------
-
-Scene* WEManager::getTopScene() {
-	return escenas.top();
-}
-
-// Genera la escena leyendo del archivo de datos
-void WEManager::generateScene(std::string sceneName) {
-	//Creamos la escena
+void WEManager::generateScene(std::string sceneName, std::string entidades) {
+	// Creamos la escena
 	Scene* mScene = new Scene(sceneName, this);
 	renderSystem->createScene(mScene->getID());
 
 	//----------COSAS DE CAMARA--------------
-	//Sin vp no se ve nada, tenga color o no (MainCam es la camara creada por defecto en
-	//las escenas, se pueden añadir mas)
+	// Sin vp no se ve nada, tenga color o no (MainCam es la camara creada por defecto en
+	// las escenas, se pueden añadir mas)
 	addVpToCam("MainCam", 0.2, 0, 0.2, 0.8);
 
 	//--------------------------- LIGHT -----------------------------
-	//Creacion de la luz en la escena, la luz se le aplica a las entidades
+	// Creacion de la luz en la escena, la luz se le aplica a las entidades
 	setLight(1.0f, 1.0f, 1.0f, 1.0f); //Luz blanca
 
-	//--------------------------- ENTIDADES ---------------------------
-	//Leemos las entidades del archivo de datos
-	std::vector<Container*> ent = dM->Load(sceneName, "entities.json", false);
+	// Leemos las entidades y las guardamos para generarlas
+	std::vector<std::vector<std::string>> map = dM->ReadMap(sceneName + ".txt");
+	json prefabs = dM->ReadJson(entidades + ".json");
+	prefabs = prefabs.at(prefabs.begin().key());
 
-	// Recorremos las entidades leidas para relacionarlas con los managers que necesiten
-	// y darles las caracteristicas que las haga falta
-	for (int i = 0; i < ent.size(); i++) {
-		// Creamos el nodo de ogre a partir de la mesh del renderComponent
-		if (ent[i]->hasComponent("Render")) {
-			ent[i]->setNode(renderSystem->addOgreEntity(ent[i]->GetEntityName(), static_cast<RenderComponent*>(ent[i]->getComponent("Render"))->getMeshName()));
-		}
+	// Añadimos los componentes a la escena
+	addComponentsToScene(mScene, prefabs);
 
-		// Cambiamos la posicion del nodo de ogre a partir del componente Transform
-		if (ent[i]->hasComponent("Transform")) {
-			Component* tcomp = ent[i]->getComponent("Transform");
-			ent[i]->setPos(*static_cast<TransformComponent*>(tcomp)->GetPosition());
-		}
+	// Generamos las entidades en la escena
+	generateEntities(mScene, map, prefabs);
 
-		// ToDo:: 
-		// si tiene fisicos a las fisicas
-		if (ent[i]->hasComponent("Physics")) {
-			PhysicsComponent* p = static_cast<PhysicsComponent*>(ent[i]->getComponent("Physics"));
-			p->SetID(py->basicMesh(ent[i]->getNode(), p->GetScale(), p->HaveGravity()));
-		}
-
-		// si tiene input al controlador de input
-		
-		// En entidad separar por tipos de componentes 
-		//
-
-		// Añadimos la entidad a la escena
-		mScene->addEntity(ent[i]);
-	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-	  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	WEInput* weinput = new WEInput(mScene);
-	mInputManager->addKeyListener(weinput->getListener(), "ninja");
-	mScene->AddComponent(weinput);
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   ////////////////////////////////////////////     SOLO PARA PRUEBAS     ///////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+	// Añadimos la escena a la pila de escenas
 	pushScene(mScene);
 }
 
+void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::string>> map, json prefabs) {
+	// Recorremos el mapa generando las entidades
+	int n = std::stoi(map[0][0]);		//Number of entities on legend
+	int aux = n + 1;					//row aux variable
+	int ct = 0, cct = 0;				//row counter 
+	std::map<int, std::string> legend;	//Map of entitie types on map (id on map - name on prefabs file)
+	char xyz[3];						//Axis representation on map (Columns x Rows / Between layers) (x-y-z)
+	int r, c;							//Mapsize (Row - columns)
+	float s;							//Size between tiles
+	int layer = 0;
+	//Entity processing
+	float slyr = 0.0;						//Size between layers
+	int id = -1;						//id of entity to process
+	//Position processing
+	Vector3 currentpos_ = { 0.0f, 0.0f, 0.0f };
+	//Legend
+	for (std::size_t i = 1; i <= n; i++)
+	{
+		legend[std::stoi(map[i][0])] = map[i][1];
+	}
+	//Axis representation
+	for (std::size_t i = 0; i < 3; i++)
+		xyz[i] = map[aux][i].back(); aux++;
+	//Size between tiles
+	s = std::stof(map[aux][0]);	aux++;
+	//Mapsize (columns - rows)
+	c = std::stoi(map[aux][0]);
+	r = std::stoi(map[aux][1]); aux++;
+
+	int nEnt = 0;
+
+	//Layers
+	for (auto row = map.begin() + aux++; row != map.end(); row++)
+	{
+		ct++;
+		for (auto column = row->begin(); column != row->end(); column++)
+		{
+			if (ct > r)	//If we are at the row between layers we get the distance between layers
+			{
+				layer++;
+				slyr += std::stof(*column);
+				ct = 0;
+
+			}
+			else		//If not we get the next id..
+			{
+				id = std::stoi(*column);
+				if (id != -1)
+				{
+					//...set the next position..
+					currentpos_ = setProperPosition(ct - 1, cct, layer, xyz, s, slyr);
+					//..and create the proper entity
+					scene->addEntity(CreateEntity(legend[id], prefabs, nEnt, currentpos_));
+				}
+			}
+			cct++;
+			nEnt++;
+		}
+		cct = 0;
+		std::cout << '\n';
+	}
+}
+
+void WEManager::addComponentsToScene(Scene* scene, json prefabs) {
+	std::unordered_map<std::string, std::string> param;
+	int size_ = prefabs[0].at("components").size();
+	//Para cada componente en la lista de componentes
+	for (std::size_t j = 0; j < size_; j++)
+	{
+		scene->AddComponent(factoriesGestor->getFactories().at(prefabs[0].at("components")[j].at("id"))->Create(scene));
+		//Para cada parametro del componente excluyendo el id
+
+		for (auto x = prefabs[0].at("components")[j].begin(); x != prefabs[0].at("components")[j].end(); x++)
+		{
+			param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
+		}
+		scene->getComponent(prefabs[0].at("components")[j].at("id"))->Init(param);
+	}
+}
+
+
+Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_) {
+	uint32_t i = 1;
+	//Busqueda de id en el archivo de prefabs
+	while (i < prefabs.size() && prefabs[i].at("id") != id) {
+		i++;
+	}
+	//Si no lo encuentra lo notifica y devuelve nullptr
+	if (i >= prefabs.size())
+	{
+		std::cerr << "Entity " << id << " not found on prefabs file!" << '\n';
+		return nullptr;
+	}
+	//Si lo encuentra crea y devuelve la entidad 
+	else
+	{
+		//Hay que hacer la lectura de id's de componentes
+		std::string entity_name = id + "_" + std::to_string(n_entities);
+		Container* e = new Container(entity_name, this);
+
+		std::unordered_map<std::string, std::string> param;
+		int size_ = prefabs[i].at("components").size();
+		//Para cada componente en la lista de componentes
+		for (std::size_t j = 0; j < size_; j++)
+		{
+			e->AddComponent(factoriesGestor->getFactories().at(prefabs[i].at("components")[j].at("id"))->Create(e));
+			//Para cada parametro del componente excluyendo el id
+
+			for (auto x = prefabs[i].at("components")[j].begin(); x != prefabs[i].at("components")[j].end(); x++)
+			{
+				param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
+			}
+
+			if (prefabs[i].at("components")[j].at("id") == "Transform") {
+				if (param.find("positionT") != param.end()) {
+					std::string p = std::to_string(position_.x) + '/' + std::to_string(position_.y) + '/' + std::to_string(position_.z);
+					param.at("positionT") = p;
+				}
+			}
+			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
+		}
+
+		e->setPos(position_);
+
+		// si tiene fisicos a las fisicas
+		if (e->hasComponent("Physics")) {
+			PhysicsComponent* p = static_cast<PhysicsComponent*>(e->getComponent("Physics"));
+			p->SetID(py->basicMesh(e->getNode(), p->GetScale(), p->HaveGravity()));
+		}
+
+		if (true) {
+			std::cout << "Entity " << entity_name << " successfully created at position: { ";
+			Ogre::Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
+			std::cout << v->x << ", " << v->y << ", " << v->z << " }" << '\n';
+		}
+		
+		return e;
+	}
+}
+
+Vector3 WEManager::setProperPosition(int row, int column, int layer, char xyz[3], float size_tiles, float size_layer) {
+	Vector3 propperPos = { 0.0f, 0.0f, 0.0f };
+	float x = 0.0, y = 0.0, z = 0.0;
+
+	//Column value
+	if (xyz[0] == 'x')		x = column * size_tiles;
+	else if (xyz[0] == 'y')	y = column * size_tiles;
+	else if (xyz[0] == 'z')	z = column * size_tiles;
+	//Row value
+	if (xyz[1] == 'x')		x = row * size_tiles;
+	else if (xyz[1] == 'y')	y = row * size_tiles;
+	else if (xyz[1] == 'z')	z = row * size_tiles;
+	//Layer value
+	if (xyz[2] == 'x')		x = size_layer;
+	else if (xyz[2] == 'y')	y = size_layer;
+	else if (xyz[2] == 'z')	z = size_layer;
+
+	propperPos.set(x, y, z);
+	return propperPos;
+}
 
 // Pila de escenas
 void WEManager::pushScene(Scene* newScene) {
@@ -203,6 +327,16 @@ void WEManager::camLookAt(std::string camName, float x, float y, float z) {
 
 void WEManager::rotateCam(std::string camName, float w, float x, float y, float z) {
 	renderSystem->rotateCam(camName, Ogre::Quaternion(w, x, y, z));
+}
+
+
+//----------------------Input-------------------
+void WEManager::addKeyListener(InputKeyListener* iL, std::string name) {
+	mInputManager->addKeyListener(iL, name);
+}
+
+void WEManager::addMouseListener(InputMouseListener* iL, std::string name) {
+	mInputManager->addMouseListener(iL, name);
 }
 
 //Luz
