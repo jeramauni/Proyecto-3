@@ -98,7 +98,10 @@
           "id": "Physics",
           "gravity": "true",
           "collSize": "1/1/1"
-        }, 
+        },
+        {
+          "id": "PlayerMove"
+        },
         {
           "id": "PlayerInput"
         }

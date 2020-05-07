@@ -161,7 +161,7 @@ const Ogre::Vector3 RenderSystem::getEntityPos(std::string name) {
 
 // Da la pos a una entidad de la escena
 void RenderSystem::setEntityPos(std::string name, Ogre::Vector3 &p) {
-	getEntityByName(name)->getParentSceneNode()->setPosition(p);
+	getEntityByName(name)->getParentNode()->setPosition(p);
 }
 
 //Dar material a una entidad de la escena

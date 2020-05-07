@@ -1,12 +1,17 @@
 #include "PhysicsComponent.h"
 #include "ComponentFactory.h"
 
+#include <iostream>
+
+#include <PhysicsEngine.h>
+
 CREATE_REGISTER(Physics);
 
 PhysicsComponent::PhysicsComponent(Container* e) {
 	_name = "Physics";
 	_parent = e;
 	id = -1;
+	
 }
 
 PhysicsComponent::~PhysicsComponent() {
@@ -25,17 +30,21 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 
 	//CollSize
 	aux = GetWords(param.at("collSize"));
-	collSize = btVector3(std::stof(aux[0]), 
+	collSize = Vector3(std::stof(aux[0]), 
 						 std::stof(aux[1]), 
 						 std::stof(aux[2]));
+
+	_py = _parent->getPhysics();
+	//Vector3 pos = static_cast() _parent
+	std::cout << _parent->GetEntityName() << " : " << _parent->getNode()->getPosition() << std::endl;
+	id = _py->basicMesh(_parent->getNode(), btVector3(collSize.x, collSize.y, collSize.z), gravity);
 }
 
 void PhysicsComponent::update(Container* c, float time) {
-
 }
 
 void PhysicsComponent::receive(Container* c, const msg::Message& msg) {
-
+	
 }
 
 int PhysicsComponent::GetID()
@@ -43,11 +52,7 @@ int PhysicsComponent::GetID()
 	return id;
 }
 
-void PhysicsComponent::SetID(int newID) {
-	id = newID;
-}
-
-btVector3 PhysicsComponent::GetScale()
+Vector3 PhysicsComponent::GetScale()
 {
 	return collSize;
 }
@@ -55,4 +60,14 @@ btVector3 PhysicsComponent::GetScale()
 bool PhysicsComponent::HaveGravity()
 {
 	return gravity;
+}
+
+void PhysicsComponent::move(Vector3 dir)
+{
+	_py->changeVelocity(id, btVector3(dir.x, dir.y, dir.z));
+}
+
+void PhysicsComponent::jump(Vector3 dir)
+{
+	_py->addForce(id, btVector3(dir.x, dir.y, dir.z));
 }

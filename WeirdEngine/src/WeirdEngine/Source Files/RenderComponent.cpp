@@ -4,7 +4,10 @@
 #include "Container.h"
 #include "ComponentFactory.h"
 
-CREATE_REGISTER(Render);
+#include "Vector3.h"
+#include "TransformComponent.h"
+
+//CREATE_REGISTER(Render);
 
 RenderComponent::RenderComponent(Container* e) {
 	_name = "Render";
@@ -19,6 +22,7 @@ RenderComponent::~RenderComponent() {
 void RenderComponent::Init(std::unordered_map<std::string, std::string>& param) {
 	_NameOfTheMesh = param.at("Mesh");
 	_parent->getRSystem()->addOgreEntity(_parent->GetEntityName(), _NameOfTheMesh);
+	_parent->setPos(*static_cast<TransformComponent*>(_parent->getComponent("Transform"))->GetPosition());
 }
 
 std::string RenderComponent::getMeshName() {

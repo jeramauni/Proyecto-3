@@ -28,6 +28,8 @@
 
 extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
+CREATE_REGISTER(Render);
+
 // Constructora
 WEManager::WEManager() {
 	py = nullptr;
@@ -258,17 +260,17 @@ Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_ent
 			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
 		}
 
-		e->setPos(position_);
+		//e->setPos(position_);
 
 		// si tiene fisicos a las fisicas
 		if (e->hasComponent("Physics")) {
-			PhysicsComponent* p = static_cast<PhysicsComponent*>(e->getComponent("Physics"));
-			p->SetID(py->basicMesh(e->getNode(), p->GetScale(), p->HaveGravity()));
+			//PhysicsComponent* p = static_cast<PhysicsComponent*>(e->getComponent("Physics"));
+			//p->SetID(py->basicMesh(e->getNode(), p->GetScale(), p->HaveGravity()));
 		}
 
 		if (true) {
 			std::cout << "Entity " << entity_name << " successfully created at position: { ";
-			Ogre::Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
+			Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
 			std::cout << v->x << ", " << v->y << ", " << v->z << " }" << '\n';
 		}
 		

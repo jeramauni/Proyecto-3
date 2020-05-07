@@ -2,10 +2,11 @@
 //Los comentarios deben ir en su propia línea, nunca junto a código útil
 //El espacio es el separador
 //Número de entidades en la Leyenda
-2
+3
 //Leyenda
 0 ninja
 1 cuboRaro
+2 plano
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
@@ -17,5 +18,5 @@ x z y
 1 1 1 1 1
 //Segunda capa
 200.0
-0 0 0 0 0
+2 2 0 2 2
 1 1 1 1 1

@@ -2,6 +2,8 @@
 #include "Component.h"
 #include <OgreVector.h>
 
+#include"Vector3.h"
+
 class Container;
 
 class TransformComponent : public Component {
@@ -17,19 +19,19 @@ public:
 	void receive(Container* c, const msg::Message& msg) {};
 
 	//Getters & Setters
-	Ogre::Vector3* GetPosition();
-	Ogre::Vector3* GetRotation();
-	Ogre::Vector3* GetScale();
+	Vector3* GetPosition();
+	Vector3* GetRotation();
+	Vector3* GetScale();
 
-	void SetPosition(Ogre::Vector3 v_);
+	void SetPosition(Vector3 v_);
 	void SetPosition(float x_, float y_, float z_);
-	void SetRotation(Ogre::Vector3 v_);
+	void SetRotation(Vector3 v_);
 	void SetRotation(float x_, float y_, float z_);
-	void SetScale(Ogre::Vector3 v_);
+	void SetScale(Vector3 v_);
 	void SetScale(float x_, float y_, float z_);
 
 private:
-	Ogre::Vector3 position;
-	Ogre::Vector3 rotation;
-	Ogre::Vector3 scale;
+	Vector3 position;
+	Vector3 rotation;
+	Vector3 scale;
 };

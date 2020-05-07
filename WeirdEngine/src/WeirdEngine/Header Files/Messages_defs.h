@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include "Vector3.h"
 
 class EntityC;
 
@@ -18,9 +19,10 @@ namespace msg {
 		msg::ObjectId destination_;
 	};
 
-	struct Prueba : public msg::Message{
-		Prueba(msg::ObjectId sender, msg::ObjectId destination) :
-			Message(msg::PRUEBA, sender, destination) {}
+	struct Move : public msg::Message{
+		Move(msg::ObjectId sender, msg::ObjectId destination, Vector3 dir) :
+			Message(msg::MOVE, sender, destination), _dir(dir) {}
+		Vector3 _dir;
 	};
 
 	struct Close_Win : public msg::Message {
