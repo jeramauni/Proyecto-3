@@ -1,11 +1,11 @@
 #include "RenderComponent.h"
-#include <RenderSystem.h>
-
-#include "Container.h"
 #include "ComponentFactory.h"
 
+#include "Container.h"
 #include "Vector3.h"
 #include "TransformComponent.h"
+
+#include <RenderSystem.h>
 
 //CREATE_REGISTER(Render);
 

@@ -1,9 +1,9 @@
 #include "PhysicsComponent.h"
 #include "ComponentFactory.h"
-
-#include <iostream>
+#include "messages_defs.h"
 
 #include <PhysicsEngine.h>
+#include <iostream>
 
 CREATE_REGISTER(Physics);
 
@@ -11,7 +11,6 @@ PhysicsComponent::PhysicsComponent(Container* e) {
 	_name = "Physics";
 	_parent = e;
 	id = -1;
-	
 }
 
 PhysicsComponent::~PhysicsComponent() {
@@ -35,9 +34,8 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 						 std::stof(aux[2]));
 
 	_py = _parent->getPhysics();
-	//Vector3 pos = static_cast() _parent
-	std::cout << _parent->GetEntityName() << " : " << _parent->getNode()->getPosition() << std::endl;
 	id = _py->basicMesh(_parent->getNode(), btVector3(collSize.x, collSize.y, collSize.z), gravity);
+	//std::cout << id << std::endl;
 }
 
 void PhysicsComponent::update(Container* c, float time) {

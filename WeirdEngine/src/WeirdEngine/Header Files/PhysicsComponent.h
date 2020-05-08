@@ -2,10 +2,14 @@
 #include "Component.h"
 
 #include "Vector3.h"
-class PhysicsEngine;
 #include <string>
 
+class PhysicsEngine;
 class Container;
+
+namespace msg {
+	struct Message;
+}
 
 class PhysicsComponent : public Component {
 public:

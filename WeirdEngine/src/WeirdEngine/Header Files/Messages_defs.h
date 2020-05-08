@@ -25,6 +25,12 @@ namespace msg {
 		Vector3 _dir;
 	};
 
+	struct Jump : public msg::Message {
+		Jump(msg::ObjectId sender, msg::ObjectId destination, Vector3 dir) :
+			Message(msg::JUMP, sender, destination), _dir(dir) {}
+		Vector3 _dir;
+	};
+
 	struct Close_Win : public msg::Message {
 		Close_Win(msg::ObjectId sender, msg::ObjectId dest) :
 			Message(msg::CLOSE_WIN, sender, dest) {}

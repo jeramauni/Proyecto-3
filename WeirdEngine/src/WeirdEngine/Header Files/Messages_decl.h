@@ -17,6 +17,7 @@ namespace msg {
 		ROUND_START,
 		ROUND_OVER,
 		MOVE,
+		JUMP,
 		CLOSE_WIN,
 		//...
 	};
