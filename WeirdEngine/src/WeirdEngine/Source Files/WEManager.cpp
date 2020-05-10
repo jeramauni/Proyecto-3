@@ -87,7 +87,7 @@ bool WEManager::update() {
 	py->physicsLoop();
 
 	//Update
-	//escenas.top()->update(0);
+	escenas.top()->update(0);
 
 	//------Renderizado------
 	windowRenderer->renderFrame(0);

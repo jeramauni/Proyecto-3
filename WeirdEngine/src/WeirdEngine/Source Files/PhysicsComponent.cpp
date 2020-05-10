@@ -38,7 +38,8 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 	//std::cout << id << std::endl;
 }
 
-void PhysicsComponent::update(Container* c, float time) {
+void PhysicsComponent::update(Container* c, float time) 
+{
 }
 
 void PhysicsComponent::receive(Container* c, const msg::Message& msg) {

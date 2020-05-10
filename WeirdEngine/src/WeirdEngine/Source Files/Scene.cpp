@@ -3,6 +3,7 @@
 #include <Messages_decl.h>
 
 #include <Container.h>
+#include <iostream>
 
 Scene::Scene(std::string id, WEManager* wem) : Container (id, wem) {
 	_weM = wem;

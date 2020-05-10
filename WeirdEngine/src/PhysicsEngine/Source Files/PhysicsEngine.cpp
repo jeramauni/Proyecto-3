@@ -60,7 +60,7 @@ void PhysicsEngine::addForce(int id, btVector3 fDirection)
 {
 	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
 	btRigidBody* body = btRigidBody::upcast(obj);
-	body->applyCentralImpulse(fDirection);
+	if(std::abs(body->getLinearVelocity().y()) <= 1.0f)	body->applyCentralImpulse(fDirection);
 }
 
 void PhysicsEngine::changeVelocity(int id, btVector3 vDirection)
