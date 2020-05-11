@@ -4,8 +4,9 @@
 #include "Vector3.h"
 #include <string>
 
-class PhysicsEngine;
+
 class Container;
+class PhysicsEngine;
 
 namespace msg {
 	struct Message;
@@ -27,6 +28,7 @@ public:
 	int GetID();
 	Vector3 GetScale();
 	bool HaveGravity();
+	bool isColliding();
 
 	void move(Vector3 dir);
 	void jump(Vector3 dir);
@@ -34,7 +36,9 @@ public:
 private:
 	bool gravity;
 	int id;
+	bool* hit;
 	Vector3 collSize;
 	PhysicsEngine* _py;
+	//PhysicsEngine::bulletObject* btOB;
 };
 

@@ -9,6 +9,30 @@
 
 class PhysicsEngine
 {
+public:
+	struct bulletObject {
+	public:
+		int id;
+		bool hit;
+		btRigidBody* body;
+		btVector3 size;
+		bulletObject(btRigidBody* b, int i) : body(b), id(i), hit(false) {};
+		void setHit(bool _hit)
+		{
+			hit = _hit;
+		}
+		bool getHit()
+		{
+			return hit;
+		};
+	};
+	void initObjects();
+	int basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity);
+	void addForce(int id, btVector3 fDirection);
+	void changeVelocity(int id, btVector3 vDirection);
+	bool isColliding(int id);
+	bool physicsLoop();
+
 private:
 	btDefaultCollisionConfiguration* collisionConfiguration;
 	btCollisionDispatcher* dispatcher;
@@ -17,12 +41,6 @@ private:
 	btDiscreteDynamicsWorld* dynamicsWorld;
 	std::vector<btCollisionShape*> collisionShapes;
 	std::map<std::string, btRigidBody*> physicsAccessors;
-
-public:
-	void initObjects();
-	int basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity);
-	void addForce(int id, btVector3 fDirection);
-	void changeVelocity(int id, btVector3 vDirection);
-	bool physicsLoop();
+	std::list<bulletObject> bulletOBs;
 };
 

@@ -61,6 +61,10 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\weirdTimer.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{447EBEB4-B570-4784-9484-F49FBEAB39D4}</ProjectGuid>

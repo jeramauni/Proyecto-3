@@ -35,7 +35,6 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 
 	_py = _parent->getPhysics();
 	id = _py->basicMesh(_parent->getNode(), btVector3(collSize.x, collSize.y, collSize.z), gravity);
-	//std::cout << id << std::endl;
 }
 
 void PhysicsComponent::update(Container* c, float time) 
@@ -59,6 +58,11 @@ Vector3 PhysicsComponent::GetScale()
 bool PhysicsComponent::HaveGravity()
 {
 	return gravity;
+}
+
+bool PhysicsComponent::isColliding()
+{
+	return _py->isColliding(id);
 }
 
 void PhysicsComponent::move(Vector3 dir)
