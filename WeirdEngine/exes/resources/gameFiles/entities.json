@@ -97,7 +97,7 @@
         {
           "id": "Physics",
           "gravity": "true",
-          "collSize": "1/1/1"
+          "collSize": "5/5/5"
         },
         {
           "id": "PlayerMove"

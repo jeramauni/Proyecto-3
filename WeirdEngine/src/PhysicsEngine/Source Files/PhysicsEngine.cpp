@@ -8,31 +8,24 @@ void PhysicsEngine::initObjects()
 	overlappingPairCache = new btDbvtBroadphase();
 	solver = new btSequentialImpulseConstraintSolver();
 	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
-	//bool callbackFunc(btManifoldPoint & cp, const btCollisionObjectWrapper * colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper * colObj1Wrap, int partId1, int index1);
-	//gContactAddedCallback = callbackFunc;
 }
-//
-//bool callbackFunc(btManifoldPoint& cp, const btCollisionObjectWrapper* colObj0Wrap, int partId0, int index0, const btCollisionObjectWrapper* colObj1Wrap, int partId1, int index1)
-//{
-//	//PhysicsEngine::bulletObject* btOB = ((PhysicsEngine::bulletObject*)colObj0Wrap->getCollisionObject()->getUserPointer());//static_cast<PhysicsEngine::bulletObject*>(userPointer);
-//	//std::cout << "HIT!!" << std::endl;
-//	//btOB->setHit(true);
-//	
-//	//static_cast<PhysicsEngine::bulletObject*>(colObj0Wrap->getCollisionObject()->getUserPointer())->setHit(true);
-//	//((PhysicsEngine::bulletObject*)colObj0Wrap->getCollisionObject()->getUserPointer())->setHit(true);
-//	return false;
-//}
+
 
 int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity)
 {
 	//create the new shape, and tell the physics that is a Box
 	//btCollisionShape* newRigidShape = new btBoxShape(collSize);
-	btCollisionShape* newRigidShape = new btBoxShape(btVector3(newNode->getScale().x, newNode->getScale().y, newNode->getScale().z));
+	btVector3 dim;
+	Ogre::AxisAlignedBox df;
+	//df = newNode->_getWorldAABB().;
+	dim = btVector3(df.getSize().x, df.getSize().y, df.getSize().z);
+	btCollisionShape* newRigidShape = new btBoxShape(collSize);
 	collisionShapes.push_back(newRigidShape);
 	//getCollisionShapes().push_back(newRigidShape);
 	btRigidBody* body = nullptr;
 	bulletObject newBO = bulletObject(body, 0);
-	newBO.size = btVector3(newNode->getScale().x, newNode->getScale().y, newNode->getScale().z);
+	newBO.size = btVector3(collSize);
+	//std::cout << "X:" << df.getSize().x << " Y:" << dim.getX() << " Z:" << dim.getX() << std::endl;
 	//set the initial position and transform. For this demo, we set the tranform to be none
 	btTransform startTransform;
 	startTransform.setIdentity();
@@ -43,7 +36,6 @@ int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool 
 	if (gravity) mass = 10.1f;
 	else mass = 0.0f; //the mass is 0, because the ground is immovable (static)
 	btVector3 localInertia(0, 0, 0);
-
 	startTransform.setOrigin(btVector3(newNode->getPosition().x, newNode->getPosition().y, newNode->getPosition().z));
 	newRigidShape->calculateLocalInertia(mass, localInertia);
 
@@ -102,11 +94,11 @@ bool PhysicsEngine::isColliding(int id)
 		{
 			searching = false;
 			btOb0 = (*it);
-			float size_x = btOb0.size.getX() * 25;
+			float size_x = btOb0.size.getX() / 2/* * 25*/;
 			//std::cout << "Tamaño X: " << size_x << std::endl;
-			float size_y = btOb0.size.getY() * 25;
+			float size_y = btOb0.size.getY() /* * 25*/;
 			//std::cout << "Tamaño Y: " << size_y << std::endl;
-			float size_z = btOb0.size.getZ() * 25;
+			float size_z = btOb0.size.getZ() / 2/* * 25*/;
 			//std::cout << "Tamaño Z: " << size_z << std::endl;
 			btTransform f;
 			btVector3 s;
@@ -116,49 +108,39 @@ bool PhysicsEngine::isColliding(int id)
 			btTransform trans;
 			btOb0.body->getMotionState()->getWorldTransform(trans);
 			std::list<bulletObject>::iterator coll = bulletOBs.begin();
+			//std::cout << "[" << "NINJA" << "]" << "Pos X: " << trans.getOrigin().getX() << std::endl;
+			//std::cout << "[" << "NINJA" << "]" << "Pos Y: " << trans.getOrigin().getY() << std::endl;
+			//std::cout << "[" << "NINJA" << "]" << "Pos Z: " << trans.getOrigin().getZ() << std::endl;
 			while (coll != bulletOBs.end() && !colliding)
 			{
 				if ((*coll).id == btOb0.id) ++coll;
 				btTransform trans_coll;
 				(*coll).body->getMotionState()->getWorldTransform(trans_coll);
-				float distX = std::abs(trans.getOrigin().getX() - trans_coll.getOrigin().getX()) - (*coll).size.getX() * 25;
+				float distX = std::abs(trans.getOrigin().getX() - trans_coll.getOrigin().getX()) - (*coll).size.getX() / 2/* * 25*/;
+				//std::cout << "[" << (*coll).id << "]" << "Dist X: " << distX << std::endl;
+				//std::cout << "[" << (*coll).id << "]" << "Pos X: " << trans_coll.getOrigin().getX() << std::endl;
+				//std::cout << "[" << (*coll).id << "]" << "Size X (/2): " << (*coll).size.getX() / 2 << std::endl;
 				if (distX <= (size_x + 1))
 				{
-					float distY = std::abs(trans.getOrigin().getY() - trans_coll.getOrigin().getY()) - (*coll).size.getY() * 25;
+					float distY = std::abs(trans.getOrigin().getY() - trans_coll.getOrigin().getY()) - (*coll).size.getY()/* * 25*/;
+					/*std::cout << "[" << (*coll).id << "]" << "Dist Y: " << distY << std::endl;*/
+					//std::cout << "[" << (*coll).id << "]" << "Pos Y: " << trans_coll.getOrigin().getY() << std::endl;
+					//std::cout << "[" << (*coll).id << "]" << "Size Y (/2): " << (*coll).size.getY() / 2 << std::endl;
 					if (distY <= (size_y + 1))
 					{
-						float distZ = std::abs(trans.getOrigin().getZ() - trans_coll.getOrigin().getZ()) - (*coll).size.getZ() * 25;
+						float distZ = std::abs(trans.getOrigin().getZ() - trans_coll.getOrigin().getZ()) - (*coll).size.getZ() / 2/* * 25*/;
+						//std::cout << "[" << (*coll).id << "]" << "Dist Z: " << distZ << std::endl;
+						//std::cout << "[" << (*coll).id << "]" << "Pos Z: " << trans_coll.getOrigin().getZ() << std::endl;
+						//std::cout << "[" << (*coll).id << "]" << "Size Z (/2): " << (*coll).size.getZ() / 2 << std::endl;
 						if (distZ <= (size_z + 1))
 						{
+							//std::cout << "colliding with: " << (*coll).id << std::endl;
 							colliding = true;
 						}
 					}
 				}
 				++coll;
 			}
-			//for (std::list<bulletObject>::iterator coll = bulletOBs.begin(); coll != bulletOBs.end(); ++coll)
-			//{
-			//	if ((*coll).id == btOb0.id) ++coll;
-			//	btTransform trans_coll;
-			//	(*coll).body->getMotionState()->getWorldTransform(trans_coll);
-			//	float distX = std::abs(trans.getOrigin().getX() - trans_coll.getOrigin().getX()) - (*coll).size.getX() * 25;
-			//	std::cout << "Distancia en X con ["<< pruebas <<"]: " << distX << std::endl;
-			//	if (distX <= (size_x + 1))
-			//	{
-			//		float distY = std::abs(trans.getOrigin().getY() - trans_coll.getOrigin().getY()) - (*coll).size.getY() * 25;
-			//		std::cout << "Distancia en Y con [" << pruebas << "]: " << distY << std::endl;
-			//		if (distY <= (size_y + 1))
-			//		{
-			//			float distZ = std::abs(trans.getOrigin().getZ() - trans_coll.getOrigin().getZ()) - (*coll).size.getZ() * 25;
-			//			std::cout << "Distancia en Z con [" << pruebas << "]: " << distZ << std::endl;
-			//			if (distZ <= (size_z + 1))
-			//			{
-			//				colliding = true;
-			//			}
-			//		}
-			//	}
-			//	++pruebas;
-			//}
 		}
 		++it;
 	}
