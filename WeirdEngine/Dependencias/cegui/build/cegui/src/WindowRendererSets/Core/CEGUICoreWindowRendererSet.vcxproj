@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9B43857A-DBEF-3F44-B5EF-846131928B97}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>CEGUICoreWindowRendererSet</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CEGUICoreWindowRendererSet.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CEGUICoreWindowRendererSet_d</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CEGUICoreWindowRendererSet.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CEGUICoreWindowRendererSet</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CEGUICoreWindowRendererSet.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">CEGUICoreWindowRendererSet</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\bin\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CEGUICoreWindowRendererSet.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">CEGUICoreWindowRendererSet</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="Debug";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"Debug\";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\lib\CEGUIBase-0_d.lib;..\..\..\..\..\dependencies\lib\dynamic\freetype_d.lib;winmm.lib;DbgHelp.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/lib/CEGUICoreWindowRendererSet_d.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/bin/CEGUICoreWindowRendererSet_d.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="Release";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"Release\";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\lib\CEGUIBase-0.lib;..\..\..\..\..\dependencies\lib\dynamic\freetype.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/lib/CEGUICoreWindowRendererSet.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/bin/CEGUICoreWindowRendererSet.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="MinSizeRel";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"MinSizeRel\";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\lib\CEGUIBase-0.lib;..\..\..\..\..\dependencies\lib\dynamic\freetype.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/lib/CEGUICoreWindowRendererSet.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/bin/CEGUICoreWindowRendererSet.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR="RelWithDebInfo";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS;NOMINMAX;CMAKE_INTDIR=\"RelWithDebInfo\";CEGUICOREWINDOWRENDERERSET_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\WindowRendererSets\Core;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\..\..\..\lib\CEGUIBase-0.lib;..\..\..\..\..\dependencies\lib\dynamic\freetype.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/lib/CEGUICoreWindowRendererSet.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/bin/CEGUICoreWindowRendererSet.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/WindowRendererSets/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"D:\Universidad\5 Quinto\2.Proyecto3\cmake-3.17.0-rc1-win64-x64\bin\cmake.exe" -SC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7 -BC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build --check-stamp-file C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/WindowRendererSets/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/WindowRendererSets/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"D:\Universidad\5 Quinto\2.Proyecto3\cmake-3.17.0-rc1-win64-x64\bin\cmake.exe" -SC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7 -BC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build --check-stamp-file C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/WindowRendererSets/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/WindowRendererSets/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"D:\Universidad\5 Quinto\2.Proyecto3\cmake-3.17.0-rc1-win64-x64\bin\cmake.exe" -SC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7 -BC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build --check-stamp-file C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/WindowRendererSets/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/WindowRendererSets/Core/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"D:\Universidad\5 Quinto\2.Proyecto3\cmake-3.17.0-rc1-win64-x64\bin\cmake.exe" -SC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7 -BC:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build --check-stamp-file C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/WindowRendererSets/Core/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\Core\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Button.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Default.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Editbox.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\FrameWindow.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ItemEntry.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ItemListbox.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ListHeader.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ListHeaderSegment.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Listbox.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\MenuItem.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Menubar.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Module.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\MultiColumnList.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\MultiLineEditbox.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\PopupMenu.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ProgressBar.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ScrollablePane.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Scrollbar.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Slider.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Static.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\StaticImage.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\StaticText.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\TabButton.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\TabControl.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Titlebar.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\ToggleButton.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Tooltip.cpp" />
+    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\WindowRendererSets\Core\Tree.cpp" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Button.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Default.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Editbox.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\FrameWindow.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ItemEntry.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ItemListbox.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ListHeader.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ListHeaderSegment.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Listbox.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\MenuItem.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Menubar.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Module.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\MultiColumnList.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\MultiLineEditbox.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\PopupMenu.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ProgressBar.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ScrollablePane.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Scrollbar.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Slider.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Static.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\StaticImage.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\StaticText.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\TabButton.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\TabControl.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Titlebar.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\ToggleButton.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Tooltip.h" />
+    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\WindowRendererSets\Core\Tree.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\ZERO_CHECK.vcxproj">
+      <Project>{6874D581-4833-3482-A7BD-3EC85ACB0E75}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\CEGUIBase-0.vcxproj">
+      <Project>{F74518AF-EB32-3176-8BE7-212152A3A0CA}</Project>
+      <Name>CEGUIBase-0</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,81 @@
+# CMake generation dependency list for this directory.
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/CMakeLists.txt
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/CMakeFiles/3.17.0-rc1/CMakeCCompiler.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/CMakeFiles/3.17.0-rc1/CMakeCXXCompiler.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/CMakeFiles/3.17.0-rc1/CMakeRCCompiler.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/CMakeFiles/3.17.0-rc1/CMakeSystem.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/include/CEGUI/Config.h.in
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/include/CEGUI/ModuleConfig.h.in
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/include/CEGUI/Version.h.in
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/CEGUIFindHelpers.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/CEGUIMacros.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindCorona.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindD3DX11Effects.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindDevIL.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindDirectFB.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindDirectXSDK.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindEXPAT.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindEpoxy.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindFreeImage.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindFreetype.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindFribidi.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindGLEW.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindGLFW.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindGLFW3.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindGLM.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindIrrlicht.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindLua51.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindMinizip.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindOIS.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindOgre.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindOpenGLES.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindPCRE.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindPVRTools.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindPythonVersion.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindRapidXML.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindSDL2.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindSDL2_image.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindSILLY.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindTOLUAPP.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindTinyXML.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cmake/FindXercesC.cmake
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/doc/doxygen/doxyfile.in
+C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/samples/common/include/CEGUISamplesConfig.h.in
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeCInformation.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeCXXInformation.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeCommonLanguageInclude.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeDependentOption.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeFindFrameworks.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeGenericSystem.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeInitializeConfigs.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeLanguageInformation.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeRCInformation.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeSystemSpecificInformation.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CMakeSystemSpecificInitialize.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CPack.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CPackComponent.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CheckCSourceCompiles.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CheckCXXSourceCompiles.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CheckIncludeFile.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/CheckLibraryExists.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Compiler/MSVC-C.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Compiler/MSVC-CXX.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindBoost.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindDoxygen.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindGTK2.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindLibXml2.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindOpenGL.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindPackageMessage.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindPkgConfig.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindPythonInterp.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindPythonLibs.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/FindThreads.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Platform/Windows-MSVC-C.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Platform/Windows-MSVC-CXX.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Platform/Windows-MSVC.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Platform/Windows.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/Platform/WindowsPaths.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Modules/SelectLibraryConfigurations.cmake
+D:/Universidad/5 Quinto/2.Proyecto3/cmake-3.17.0-rc1-win64-x64/share/cmake-3.17/Templates/CPackConfig.cmake.in
