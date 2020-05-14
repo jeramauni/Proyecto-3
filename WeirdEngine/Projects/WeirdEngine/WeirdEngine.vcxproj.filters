@@ -108,7 +108,10 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TransformComponent.h">
       <Filter>Header Files\Entidades\Componentes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Vector3.h">
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Utilities\Vector3.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Utilities\Vector4.h">
       <Filter>Header Files\Utilities</Filter>
     </ClInclude>
   </ItemGroup>
@@ -165,6 +168,9 @@
       <Filter>Source Files\Entidades\General</Filter>
     </ClCompile>
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Vector3.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Vector4.cpp">
       <Filter>Source Files\Utilities</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,8 @@
 #include <WEManager.h>
 
 #include "Game.h"
+#include "Utilities\Vector3.h"
+#include "Utilities\Vector4.h"
 
 Game::Game() {
 	_weM = new WEManager();
@@ -16,6 +18,16 @@ void Game::Init() {
 
 	// Generamos la escena
 	_weM->generateScene("map", "entities");
+
+	// Colocamos la camara
+	_weM->moveCam("MainCam", { 250, 400, -700 });
+	_weM->camLookAt("MainCam", { 250, 0, 0 });
+	_weM->rotateCam("MainCam", { 0, 0, 180, 1 });
+
+	// Boton
+	//_weM->createButton("TaharezLook/FrameWindow", "TestButton", "Hello World!", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+	//_weM->createButton("TaharezLook/Button", "TestButton", "Hello World!", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+
 }
 
 bool Game::update() {

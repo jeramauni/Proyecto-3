@@ -22,6 +22,7 @@ class DataManager;
 
 using json = nlohmann::json;
 class Vector3;
+class Vector4;
 
 class WEManager {
 	friend class EntityC;
@@ -39,16 +40,18 @@ public:
 	//---------Escena--------
 	// Crea la escena leyendo del archivo
 	void generateScene(std::string sceneName, std::string entidades);
+	// Añadir widgets a la escena activa
+	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
 
 	//Luz
 	void setLight(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
 
 	//Metodos para la camara
 	void addCameraToScene(std::string cameraName);
-	void addVpToCam(std::string cameraName, float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
-	void moveCam(std::string camName, float x, float y, float z);
-	void camLookAt(std::string camName, float x, float y, float z);
-	void rotateCam(std::string camName, float w, float x, float y, float z);
+	void addVpToCam(std::string cameraName, Vector4 colors); //Vector4->rgba
+	void moveCam(std::string camName, Vector3 pos);
+	void camLookAt(std::string camName, Vector3 pos);
+	void rotateCam(std::string camName, Vector4 quat);
 
 	//Input
 	void addKeyListener(InputKeyListener* iL, std::string name);

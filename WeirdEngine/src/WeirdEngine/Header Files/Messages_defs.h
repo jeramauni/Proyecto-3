@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Vector3.h"
+#include "Utilities\Vector3.h"
 
 class EntityC;
 
