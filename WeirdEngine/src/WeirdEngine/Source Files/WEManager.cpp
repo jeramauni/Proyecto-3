@@ -3,7 +3,6 @@
 #include <iostream>
 //Entity
 #include <Container.h>
-#include "Vector3.h"
 
 //Factories
 #include <ComponentFactory.h>
@@ -19,16 +18,19 @@
 
 //Escena
 #include "Scene.h"
-#include <Messages_defs.h>
+#include "Messages_defs.h"
 
-//Componentes
-#include "RenderComponent.h"
-#include "TransformComponent.h"
-#include "PhysicsComponent.h"
+//Utilities
+#include "Utilities\Vector3.h"
+#include "Utilities\Vector4.h"
 
 extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
+//------------------Quitar estoo-------------------------
+//Componentes
+#include "RenderComponent.h"
 CREATE_REGISTER(Render);
+//------------------Quitar estoo-------------------------
 
 // Constructora
 WEManager::WEManager() {
@@ -37,8 +39,6 @@ WEManager::WEManager() {
 	windowRenderer = nullptr;
 	renderSystem = nullptr;
 	mInputManager = nullptr;
-	windowRenderer = nullptr;
-	renderSystem = nullptr;
 	
 	end = false;
 }
@@ -46,8 +46,15 @@ WEManager::WEManager() {
 //Destructora
 WEManager::~WEManager() {
 	while (!escenas.empty()) {
+		delete escenas.top();
 		escenas.pop();
 	}
+
+	delete dM;
+	delete py;
+	//delete windowRenderer;
+	//delete renderSystem;
+	delete mInputManager;
 }
 
 //Inicializacion
@@ -82,18 +89,16 @@ void WEManager::Init() {
 bool WEManager::update() {
 	//------Input------
 	mInputManager->capture();
-	
-	// Fisicas
-	py->physicsLoop();
 
 	//Update
 	escenas.top()->update(0);
 
-	//------Renderizado------
-	windowRenderer->renderFrame(0);
+	// Fisicas
+	py->physicsLoop();
 
-	//------Ventana------
-	windowRenderer->handleEvents();
+	//------Renderizado------
+	renderSystem->draw(0);
+	
 
 	//Cerrar ventana -> esto lo tiene que hacer el juego
 	if (end) {
@@ -117,7 +122,7 @@ void WEManager::generateScene(std::string sceneName, std::string entidades) {
 	//----------COSAS DE CAMARA--------------
 	// Sin vp no se ve nada, tenga color o no (MainCam es la camara creada por defecto en
 	// las escenas, se pueden añadir mas)
-	addVpToCam("MainCam", 0.2, 0, 0.2, 0.8);
+	addVpToCam("MainCam", Vector4{0.2, 0.0, 0.2, 0.8});
 
 	//--------------------------- LIGHT -----------------------------
 	// Creacion de la luz en la escena, la luz se le aplica a las entidades
@@ -138,6 +143,76 @@ void WEManager::generateScene(std::string sceneName, std::string entidades) {
 	pushScene(mScene);
 }
 
+void WEManager::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
+	renderSystem->createButton(type, widgetName, text, Perc, Pixels);
+}
+
+// Pila de escenas
+void WEManager::pushScene(Scene* newScene) {
+	renderSystem->setRenderingScene(newScene->getID());
+	escenas.push(newScene);
+}
+
+void WEManager::popScene() {
+	escenas.pop();
+	renderSystem->setRenderingScene(escenas.top()->getID());
+}
+
+//---------------------------CONTROL DE CAMARA-----------------------------------------
+void WEManager::addCameraToScene(std::string cameraName) {
+	renderSystem->addCamera(cameraName);
+}
+
+void WEManager::addVpToCam(std::string cameraName, Vector4 colors) {
+	renderSystem->addVpToCam(cameraName, Ogre::ColourValue(colors.x, colors.y, colors.z, colors.w));
+}
+
+void WEManager::moveCam(std::string camName, Vector3 p) {
+	renderSystem->moveCam(camName, p.x, p.y, p.z);
+}
+
+void WEManager::camLookAt(std::string camName, Vector3 p) {
+	renderSystem->camLookAt(camName, Ogre::Vector3(p.x, p.y, p.z));
+}
+
+void WEManager::rotateCam(std::string camName, Vector4 quat) {
+	renderSystem->rotateCam(camName, Ogre::Quaternion(quat.w, quat.x, quat.y, quat.z));
+}
+
+
+//----------------------Input-------------------
+void WEManager::addKeyListener(InputKeyListener* iL, std::string name) {
+	mInputManager->addKeyListener(iL, name);
+}
+
+void WEManager::addMouseListener(InputMouseListener* iL, std::string name) {
+	mInputManager->addMouseListener(iL, name);
+}
+
+//Luz
+void WEManager::setLight(float r, float g, float b, float a) {
+	renderSystem->setAmbientLight(Ogre::ColourValue(r, g, b, a));
+}
+
+//---------------------------------------Mensajes--------------------------------------
+// Para enviar los mensajes
+void WEManager::send(const void* senderObj, const msg::Message& msg) {
+	this->receive(senderObj, msg);
+	escenas.top()->receive(senderObj, msg);
+}
+
+
+void WEManager::receive(const void* senderObj, const msg::Message& msg) {
+	switch (msg.type_) {
+	case msg::CLOSE_WIN:
+		end = true;
+		break;
+	default:
+		break;
+	}
+}
+
+//Privates
 void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::string>> map, json prefabs) {
 	// Recorremos el mapa generando las entidades
 	int n = std::stoi(map[0][0]);		//Number of entities on legend
@@ -207,17 +282,21 @@ void WEManager::addComponentsToScene(Scene* scene, json prefabs) {
 	//Para cada componente en la lista de componentes
 	for (std::size_t j = 0; j < size_; j++)
 	{
-		scene->AddComponent(factoriesGestor->getFactories().at(prefabs[0].at("components")[j].at("id"))->Create(scene));
-		//Para cada parametro del componente excluyendo el id
+		if (factoriesGestor->getFactories().find(prefabs[0].at("components")[j].at("id")) != factoriesGestor->getFactories().end()) {
+			scene->AddComponent(factoriesGestor->getFactories().at(prefabs[0].at("components")[j].at("id"))->Create(scene));
+			//Para cada parametro del componente excluyendo el id
 
-		for (auto x = prefabs[0].at("components")[j].begin(); x != prefabs[0].at("components")[j].end(); x++)
-		{
-			param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
+			for (auto x = prefabs[0].at("components")[j].begin(); x != prefabs[0].at("components")[j].end(); x++)
+			{
+				param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
+			}
+			scene->getComponent(prefabs[0].at("components")[j].at("id"))->Init(param);
 		}
-		scene->getComponent(prefabs[0].at("components")[j].at("id"))->Init(param);
+		else {
+			std::cout << "WARNING!! -------> " /*+ std::string(prefabs[0].at("components")[j].at("id")) +*/ " no esta declarado en las factorias\n";
+		}
 	}
 }
-
 
 Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_) {
 	uint32_t i = 1;
@@ -243,37 +322,34 @@ Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_ent
 		//Para cada componente en la lista de componentes
 		for (std::size_t j = 0; j < size_; j++)
 		{
-			e->AddComponent(factoriesGestor->getFactories().at(prefabs[i].at("components")[j].at("id"))->Create(e));
-			//Para cada parametro del componente excluyendo el id
+			if (factoriesGestor->getFactories().find(prefabs[i].at("components")[j].at("id")) != factoriesGestor->getFactories().end()) {
+				e->AddComponent(factoriesGestor->getFactories().at(prefabs[i].at("components")[j].at("id"))->Create(e));
+				//Para cada parametro del componente excluyendo el id
 
-			for (auto x = prefabs[i].at("components")[j].begin(); x != prefabs[i].at("components")[j].end(); x++)
-			{
-				param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
-			}
-
-			if (prefabs[i].at("components")[j].at("id") == "Transform") {
-				if (param.find("positionT") != param.end()) {
-					std::string p = std::to_string(position_.x) + '/' + std::to_string(position_.y) + '/' + std::to_string(position_.z);
-					param.at("positionT") = p;
+				for (auto x = prefabs[i].at("components")[j].begin(); x != prefabs[i].at("components")[j].end(); x++)
+				{
+					param.insert(std::pair<std::string, std::string>(x.key(), x.value()));
 				}
+
+				if (prefabs[i].at("components")[j].at("id") == "Transform") {
+					if (param.find("positionT") != param.end()) {
+						std::string p = std::to_string(position_.x) + '/' + std::to_string(position_.y) + '/' + std::to_string(position_.z);
+						param.at("positionT") = p;
+					}
+				}
+				e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
 			}
-			e->getComponent(prefabs[i].at("components")[j].at("id"))->Init(param);
-		}
-
-		//e->setPos(position_);
-
-		// si tiene fisicos a las fisicas
-		if (e->hasComponent("Physics")) {
-			//PhysicsComponent* p = static_cast<PhysicsComponent*>(e->getComponent("Physics"));
-			//p->SetID(py->basicMesh(e->getNode(), p->GetScale(), p->HaveGravity()));
+			else {
+				std::cout << "WARNING!! -------> " /*+ std::string(prefabs[i].at("components")[j].at("id")) +*/ " no esta declarado en las factorias\n";
+			}
 		}
 
 		if (true) {
-			std::cout << "Entity " << entity_name << " successfully created at position: { ";
-			Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
-			std::cout << v->x << ", " << v->y << ", " << v->z << " }" << '\n';
+			std::cout << "Entity " << entity_name << " successfully created";
+			//Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
+			//std::cout << v->x << ", " << v->y << ", " << v->z << " }" << '\n';
 		}
-		
+
 		return e;
 	}
 }
@@ -297,69 +373,4 @@ Vector3 WEManager::setProperPosition(int row, int column, int layer, char xyz[3]
 
 	propperPos.set(x, y, z);
 	return propperPos;
-}
-
-// Pila de escenas
-void WEManager::pushScene(Scene* newScene) {
-	renderSystem->setRenderingScene(newScene->getID());
-	escenas.push(newScene);
-}
-
-void WEManager::popScene() {
-	escenas.pop();
-	renderSystem->setRenderingScene(escenas.top()->getID());
-}
-
-//---------------------------CONTROL DE CAMARA-----------------------------------------
-void WEManager::addCameraToScene(std::string cameraName) {
-	renderSystem->addCamera(cameraName);
-}
-
-void WEManager::addVpToCam(std::string cameraName, float r, float g, float b, float a) {
-	renderSystem->addVpToCam(cameraName, Ogre::ColourValue(r, g, b, a));
-}
-
-void WEManager::moveCam(std::string camName, float x, float y, float z) {
-	renderSystem->moveCam(camName, x, y, z);
-}
-
-void WEManager::camLookAt(std::string camName, float x, float y, float z) {
-	renderSystem->camLookAt(camName, Ogre::Vector3(x, y, z));
-}
-
-void WEManager::rotateCam(std::string camName, float w, float x, float y, float z) {
-	renderSystem->rotateCam(camName, Ogre::Quaternion(w, x, y, z));
-}
-
-
-//----------------------Input-------------------
-void WEManager::addKeyListener(InputKeyListener* iL, std::string name) {
-	mInputManager->addKeyListener(iL, name);
-}
-
-void WEManager::addMouseListener(InputMouseListener* iL, std::string name) {
-	mInputManager->addMouseListener(iL, name);
-}
-
-//Luz
-void WEManager::setLight(float r, float g, float b, float a) {
-	renderSystem->setAmbientLight(Ogre::ColourValue(r, g, b, a));
-}
-
-//---------------------------------------Mensajes--------------------------------------
-// Para enviar los mensajes
-void WEManager::send(const void* senderObj, const msg::Message& msg) {
-	this->receive(senderObj, msg);
-	escenas.top()->receive(senderObj, msg);
-}
-
-
-void WEManager::receive(const void* senderObj, const msg::Message& msg) {
-	switch (msg.type_) {
-	case msg::CLOSE_WIN:
-		end = true;
-		break;
-	default:
-		break;
-	}
 }

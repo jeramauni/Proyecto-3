@@ -35,7 +35,8 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\RenderComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TestComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TransformComponent.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Vector3.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Utilities\Vector3.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\Utilities\Vector4.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\WEManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h" />
@@ -56,6 +57,7 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TestComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TransformComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Vector3.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\Vector4.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\WEManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />

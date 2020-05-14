@@ -3,6 +3,7 @@
 
 #include <exception>
 
+//Ogre
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
 #include <OgreRenderWindow.h>
@@ -10,9 +11,9 @@
 #include <OgreFileSystemLayer.h>
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
-
 #include <OgreStringConverter.h>
 
+//SDL
 #include <SDL_video.h>
 #include <SDL_syswm.h>
 
@@ -39,14 +40,6 @@ WindowRenderer::~WindowRenderer()
 		mRoot->destroyRenderTarget(mWindow);
 		mWindow = nullptr;
 	}
-
-	/*
-	if (sdlWin != nullptr) {
-		SDL_DestroyWindow(sdlWin);
-		SDL_QuitSubSystem(SDL_INIT_VIDEO);
-		sdlWin = nullptr;
-	}
-	*/
 
 	delete mRoot;
 	mRoot = nullptr;
@@ -115,10 +108,12 @@ void WindowRenderer::setupWindow()
 	// Gamma level
 	miscParams["gamma"] = renderOpts["sRGB Gamma Conversion"].currentValue;
 
+	/*
 	if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_InitSubSystem(SDL_INIT_VIDEO);
 
 	Uint32 flags = SDL_WINDOW_RESIZABLE;
 	if (renderOpts["Full Screen"].currentValue == "Yes")flags = SDL_WINDOW_FULLSCREEN;
+	*/
 
 	//sdlWin = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
 	//mWindow = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
@@ -167,7 +162,6 @@ void WindowRenderer::setupResources()
 
 	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 }
-
 
 void WindowRenderer::renderFrame(float t)
 {

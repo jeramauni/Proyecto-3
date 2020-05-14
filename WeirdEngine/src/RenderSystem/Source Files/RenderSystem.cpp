@@ -1,6 +1,13 @@
 #include "RenderSystem.h"
 #include "WindowRenderer.h"
 
+#include <Utilities/Vector3.h>
+#include <Utilities/Vector4.h>
+
+//Cegui
+#include "GUI.h"
+
+//Ogre
 #include <Ogre.h>
 #include <OgrePrerequisites.h>
 #include <OgreResourceGroupManager.h>
@@ -34,16 +41,28 @@ RenderSystem* RenderSystem::getSingleton()
 	return instance_;
 }
 
+// Render
+void RenderSystem::draw(float t) {
+	WindowRenderer::getSingleton()->handleEvents();
+	WindowRenderer::getSingleton()->renderFrame(t);
+	//guiManager->draw();
+}
+
 // Constructora / Destructora
 RenderSystem::RenderSystem() {
 	WindowRenderer::initSingleton();
+
+	guiManager = new GUI();
+	guiManager->Init("resources/cegui");
+	guiManager->loadScheme("TaharezLook.scheme");
+	guiManager->loadScheme("AlfiskoSkin.scheme");
+	guiManager->setFont("DejaVuSans-10");
 }
 
 RenderSystem::~RenderSystem() {
-
+	guiManager->destroy();
+	delete guiManager;
 }
-
-
 
 //-------------------------------------------------
 //Carga de materiales
@@ -65,15 +84,16 @@ void RenderSystem::materialGeneration(std::string nameOfResourceGroup)
 	mRgMgr.loadResourceGroup(nameOfResourceGroup);
 }
 
-
-
-
 //---------------------------ESCENA---------------------------------
 // Crear una escena
 void RenderSystem::createScene(std::string sceneName)
 {
 	Ogre::SceneManager* sMng = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 	mScnMgr = sMng;
+
+	//CEGUI::OgreRenderer->v
+
+	//guiManager->setRenderTarget(WindowRenderer::getSingleton()->getRoot()->renderer);
 
 	addCamera("MainCam");
 
@@ -186,8 +206,11 @@ Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
 
 
 
+//------------------------GUI----------------------------
 
-
+void RenderSystem::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
+	guiManager->createButton(type, Perc, Pixels, text, widgetName);
+}
 
 
 

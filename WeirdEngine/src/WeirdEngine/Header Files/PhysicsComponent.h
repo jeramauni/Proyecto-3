@@ -1,7 +1,7 @@
 #pragma once
 #include "Component.h"
 
-#include "Vector3.h"
+#include "Utilities/Vector3.h"
 #include <string>
 
 class PhysicsEngine;

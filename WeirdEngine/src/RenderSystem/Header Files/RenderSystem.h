@@ -24,6 +24,11 @@ namespace Ogre {
 	class Quaternion;
 };
 
+class GUI;
+
+class Vector3;
+class Vector4;
+
 class RenderSystem {
 
 private:
@@ -39,9 +44,15 @@ private:
 	RenderSystem();
 	~RenderSystem();
 
+	//Cegui (UI)
+	GUI* guiManager;
+
 public:
 	static bool initSingleton();
 	static RenderSystem* getSingleton();
+
+	void draw(float t);
+
 
 	//-------------Entidades-----------------
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
@@ -53,9 +64,7 @@ public:
 	Ogre::SceneNode* getSceneNode(std::string name);
 
 	// Returns the entity attached to the scene with the given name
-	Ogre::Entity* getEntityByName(std::string name);
-
-	
+	Ogre::Entity* getEntityByName(std::string name);	
 
 	const Ogre::Vector3 getEntityPos(std::string name);
 	void setEntityPos(std::string name, Ogre::Vector3 &p);
@@ -79,6 +88,8 @@ public:
 	//------------ESCENA------------
 	// Creates a new scene and adds it to the scenes dictionary with the given key
 	void createScene(std::string sceneName);
+
+	void createMenuScene(std::string sceneName);
 
 	//---Luces---
 	enum LightTypes
@@ -136,4 +147,8 @@ public:
 
 	// Get the current SceneManager of the scene
 	Ogre::SceneManager* getCurrentSceneManager() { return mScnMgr; };
+
+
+	//--------------------CEGUI----------------------
+	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
 };
