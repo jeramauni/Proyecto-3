@@ -1,66 +1,66 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\GeometryBuffer.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\GeometryBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\ImageCodec.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\ImageCodec.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\Renderer.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\ResourceProvider.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\ResourceProvider.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\Texture.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\Texture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\TextureTarget.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\TextureTarget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\WindowTarget.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\WindowTarget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\GeometryBuffer.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\GeometryBuffer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\ImageCodec.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\ImageCodec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\RenderTarget.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\RenderTarget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\Renderer.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\Renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\ResourceProvider.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\ResourceProvider.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\Texture.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\Texture.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\TextureTarget.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\TextureTarget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\RendererModules\Ogre\WindowTarget.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\RendererModules\Ogre\WindowTarget.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\RenderTarget.inl">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\RenderTarget.inl">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\RendererModules\Ogre\CMakeLists.txt" />
+    <CustomBuild Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\RendererModules\Ogre\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{C5FFA1ED-16CF-3662-91EC-797D2063CEB6}</UniqueIdentifier>
+      <UniqueIdentifier>{CC5D01D7-F391-3097-8185-E680348AFD2E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{12023C6E-A6DA-3498-98F0-6A94329A7738}</UniqueIdentifier>
+      <UniqueIdentifier>{1AE052E2-7FEB-3843-89D3-97FF21028B45}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

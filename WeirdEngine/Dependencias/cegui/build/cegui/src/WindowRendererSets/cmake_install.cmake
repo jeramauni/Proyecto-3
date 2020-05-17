@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/WindowRendererSets
+# Install script for directory: D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/cegui/src/WindowRendererSets
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/WindowRendererSets/Core/cmake_install.cmake")
+  include("D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/build/cegui/src/WindowRendererSets/Core/cmake_install.cmake")
 
 endif()
 

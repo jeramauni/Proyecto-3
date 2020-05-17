@@ -120,7 +120,7 @@
       <AdditionalDependencies>OgreMain_d.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>OgreMain_d.lib;SDL2main.lib;SDL2.lib;CEGUIBase-0_d.lib;CEGUIOpenGLRenderer-0_d.lib;CEGUICoreWindowRendererSet_d.lib;CEGUISILLYImageCodec_d.lib;CEGUIExpatParser_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain_d.lib;SDL2main.lib;SDL2.lib;CEGUIBase-0_d.lib;CEGUIOgreRenderer-0_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -176,7 +176,7 @@
       <AdditionalDependencies>OgreMain.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>OgreMain.lib;SDL2main.lib;SDL2.lib;CEGUIBase-0.lib;CEGUIOpenGLRenderer-0.lib;CEGUICoreWindowRendererSet.lib;CEGUISILLYImageCodec.lib;CEGUIExpatParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>OgreMain.lib;SDL2main.lib;SDL2.lib;CEGUIBase-0.lib;CEGUICommonDialogs-0.lib;CEGUICoreWindowRendererSet.lib;CEGUIOgreRenderer-0.lib;CEGUISILLYImageCodec.lib;CEGUITinyXMLParser.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

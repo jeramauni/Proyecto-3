@@ -19,11 +19,11 @@ class GUI {
 public:
 	GUI();
 
-	void Init(const std::string& resourceDir);
+	void Init();
+	void InitResources();
 	void destroy();
 
 	void draw();
-	void setRenderTarget(CEGUI::OgreRenderer* rTg);
 
 	void loadScheme(const std::string& schemeFile);
 	void setFont(const std::string& fontFile);

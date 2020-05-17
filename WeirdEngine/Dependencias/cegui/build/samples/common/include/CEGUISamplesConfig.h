@@ -46,7 +46,7 @@ Each item in here has a comment to describe what it's for.
 
 // Define the default place where samples will look for datafiles
 #if defined(_WIN32) || defined(__WIN32__)
-#   define CEGUI_SAMPLE_DATAPATH "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles"
+#   define CEGUI_SAMPLE_DATAPATH "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles"
 #else
 #   define CEGUI_SAMPLE_DATAPATH "C:/Program Files (x86)/cegui/share/cegui-0"
 #endif
@@ -56,10 +56,10 @@ Each item in here has a comment to describe what it's for.
 //////////////////////////////////////////////////////////////////////////
 // Comment/Uncomment these lines to control renderer use in samples.
 //////////////////////////////////////////////////////////////////////////
-#define CEGUI_BUILD_RENDERER_OPENGL
-#define CEGUI_BUILD_RENDERER_OPENGL3
+/* #undef CEGUI_BUILD_RENDERER_OPENGL */
+/* #undef CEGUI_BUILD_RENDERER_OPENGL3 */
 /* #undef CEGUI_SAMPLES_SUPPORT_RENDERER_OPENGLES2 */
-#define CEGUI_USE_GLFW_VER 2
+/* #undef CEGUI_USE_GLFW_VER */
 #define CEGUI_BUILD_RENDERER_OGRE
 /* #undef CEGUI_BUILD_RENDERER_IRRLICHT */
 /* #undef CEGUI_OPENGL_VER_MAJOR_FORCE */
@@ -70,7 +70,7 @@ Each item in here has a comment to describe what it's for.
 /* #undef CEGUI_BUILD_RENDERER_DIRECTFB */
 /* #undef CEGUI_SAMPLES_USE_GTK2 */
 
-#define CEGUI_SAMPLES_RENDERER_OPENGL_ACTIVE
+/* #undef CEGUI_SAMPLES_RENDERER_OPENGL_ACTIVE */
 #define CEGUI_SAMPLES_RENDERER_OGRE_ACTIVE
 /* #undef CEGUI_SAMPLES_RENDERER_IRRLICHT_ACTIVE */
 /* #undef CEGUI_SAMPLES_RENDERER_DIRECT3D9_ACTIVE */

@@ -65,13 +65,13 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = . "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/doc/doxygen/" "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/include/"
+INPUT                  = . "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/doc/doxygen/" "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/cegui/include/"
 FILE_PATTERNS          = *.h *.cpp *.hpp *.dox
 RECURSIVE              = YES
 EXCLUDE                =
 EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       =
-EXAMPLE_PATH           = "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/doc" "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/ScriptModules/Lua/support/tolua++bin"
+EXAMPLE_PATH           = "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/doc" "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/cegui/src/ScriptModules/Lua/support/tolua++bin"
 EXAMPLE_PATTERNS       =
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             =

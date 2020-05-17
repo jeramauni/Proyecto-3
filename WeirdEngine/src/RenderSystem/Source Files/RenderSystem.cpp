@@ -45,7 +45,6 @@ RenderSystem* RenderSystem::getSingleton()
 void RenderSystem::draw(float t) {
 	WindowRenderer::getSingleton()->handleEvents();
 	WindowRenderer::getSingleton()->renderFrame(t);
-	//guiManager->draw();
 }
 
 // Constructora / Destructora
@@ -53,10 +52,8 @@ RenderSystem::RenderSystem() {
 	WindowRenderer::initSingleton();
 
 	guiManager = new GUI();
-	guiManager->Init("resources/cegui");
-	guiManager->loadScheme("TaharezLook.scheme");
-	guiManager->loadScheme("AlfiskoSkin.scheme");
-	guiManager->setFont("DejaVuSans-10");
+	guiManager->Init();
+	guiManager->InitResources();
 }
 
 RenderSystem::~RenderSystem() {
@@ -90,10 +87,6 @@ void RenderSystem::createScene(std::string sceneName)
 {
 	Ogre::SceneManager* sMng = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 	mScnMgr = sMng;
-
-	//CEGUI::OgreRenderer->v
-
-	//guiManager->setRenderTarget(WindowRenderer::getSingleton()->getRoot()->renderer);
 
 	addCamera("MainCam");
 

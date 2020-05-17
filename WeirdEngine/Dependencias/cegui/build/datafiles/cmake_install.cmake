@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles
+# Install script for directory: D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -33,34 +33,34 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/animations")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/animations")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/fonts")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/fonts")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/imagesets")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/imagesets")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/layouts")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/layouts")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/looknfeel")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/looknfeel")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/lua_scripts")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/lua_scripts")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/schemes")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/schemes")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/datafiles/xml_schemas")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/cegui-0" TYPE DIRECTORY FILES "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/datafiles/xml_schemas")
 endif()
 

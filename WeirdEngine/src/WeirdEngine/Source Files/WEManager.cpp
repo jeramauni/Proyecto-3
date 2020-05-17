@@ -52,8 +52,6 @@ WEManager::~WEManager() {
 
 	delete dM;
 	delete py;
-	//delete windowRenderer;
-	//delete renderSystem;
 	delete mInputManager;
 }
 
@@ -66,13 +64,11 @@ void WEManager::Init() {
 	py = new PhysicsEngine();
 	py->initObjects();
 
-	// Ogre
-	if (WindowRenderer::initSingleton())
-		windowRenderer = WindowRenderer::getSingleton();
-
 	//Sistema de render
 	if (RenderSystem::initSingleton()) {
 		renderSystem = RenderSystem::getSingleton();
+		// Ogre Window
+		windowRenderer = WindowRenderer::getSingleton();
 	}
 
 	//----------------------------------INPUT----------------------------------

@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/application_templates
+# Install script for directory: D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/application_templates
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

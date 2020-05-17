@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\XMLParserModules\TinyXML\XMLParser.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\XMLParserModules\TinyXML\XMLParser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\XMLParserModules\TinyXML\XMLParserModule.cpp">
+    <ClCompile Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\XMLParserModules\TinyXML\XMLParserModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\XMLParserModules\TinyXML\XMLParser.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\XMLParserModules\TinyXML\XMLParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include\CEGUI\XMLParserModules\TinyXML\XMLParserModule.h">
+    <ClInclude Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI\XMLParserModules\TinyXML\XMLParserModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\src\XMLParserModules\TinyXML\CMakeLists.txt" />
+    <CustomBuild Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\src\XMLParserModules\TinyXML\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{C5FFA1ED-16CF-3662-91EC-797D2063CEB6}</UniqueIdentifier>
+      <UniqueIdentifier>{CC5D01D7-F391-3097-8185-E680348AFD2E}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{12023C6E-A6DA-3498-98F0-6A94329A7738}</UniqueIdentifier>
+      <UniqueIdentifier>{1AE052E2-7FEB-3843-89D3-97FF21028B45}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
