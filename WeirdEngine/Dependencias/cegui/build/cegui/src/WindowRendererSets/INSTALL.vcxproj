@@ -22,7 +22,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D2217D98-6A3F-30C2-BA75-69B5650D1750}</ProjectGuid>
+    <ProjectGuid>{69313DAC-F6AC-31FF-B162-2DA70C71B535}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
@@ -66,7 +66,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\include;D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -88,7 +88,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\include;D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -110,7 +110,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\include;D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -132,7 +132,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\include;C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\include;D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -153,7 +153,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\CMakeFiles\01791b84056d08a25fe9371771589f64\INSTALL_force.rule">
+    <CustomBuild Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\CMakeFiles\b396d8214060abca6d7990ae0d4175f4\INSTALL_force.rule">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"> </Message>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
 cd .
@@ -165,7 +165,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"> </Message>
@@ -179,7 +179,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"> </Message>
@@ -193,7 +193,7 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
       <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"> </Message>
@@ -207,20 +207,20 @@ exit /b %1
 :cmDone
 if %errorlevel% neq 0 goto :VCEnd</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\cegui\src\WindowRendererSets\CMakeFiles\INSTALL_force</Outputs>
       <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
       <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\ZERO_CHECK.vcxproj">
-      <Project>{6874D581-4833-3482-A7BD-3EC85ACB0E75}</Project>
+    <ProjectReference Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\ZERO_CHECK.vcxproj">
+      <Project>{A04E5F39-571E-30A9-9939-E8E715744141}</Project>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\ALL_BUILD.vcxproj">
-      <Project>{804A384C-982E-3E48-BFA7-385916EBF287}</Project>
+    <ProjectReference Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\ALL_BUILD.vcxproj">
+      <Project>{444AC707-1F79-3ECB-B6A4-32A4D0225C29}</Project>
       <Name>ALL_BUILD</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

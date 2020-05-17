@@ -25,8 +25,7 @@ void Game::Init() {
 	_weM->rotateCam("MainCam", { 0, 0, 180, 1 });
 
 	// Boton
-	//_weM->createButton("TaharezLook/FrameWindow", "TestButton", "Hello World!", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
-	//_weM->createButton("TaharezLook/Button", "TestButton", "Hello World!", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+	_weM->createButton("TaharezLook/Button", "TestButton", "Hello World!", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
 
 }
 

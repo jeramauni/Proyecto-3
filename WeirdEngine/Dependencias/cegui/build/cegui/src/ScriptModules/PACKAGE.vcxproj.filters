@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\andres\Desktop\CEGUI\cegui\cegui-0.8.7\build\CMakeFiles\2f1245e219c541fefdf940ca805f2d18\PACKAGE_force.rule">
+    <CustomBuild Include="D:\Universidad\5 Quinto\2.Proyecto3\Github\Proyecto-3\WeirdEngine\Dependencias\cegui\build\CMakeFiles\8ae733355c0fc4557e4feabef16da19b\PACKAGE_force.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{A980D6B6-EFE9-3D9B-BF6D-B9F9DBA31CF1}</UniqueIdentifier>
+      <UniqueIdentifier>{DF95E7DC-90AD-3723-B304-D08A7DD0D658}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

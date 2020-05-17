@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/cegui/src/ScriptModules
+# Install script for directory: D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/cegui/src/ScriptModules
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -30,12 +30,5 @@ endif()
 # Is this installation the result of a crosscompile?
 if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/ScriptModules/Lua/support/tolua++bin/cmake_install.cmake")
-  include("C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/cegui/src/ScriptModules/Lua/cmake_install.cmake")
-
 endif()
 

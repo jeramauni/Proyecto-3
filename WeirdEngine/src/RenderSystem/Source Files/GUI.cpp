@@ -10,26 +10,25 @@ GUI::GUI() {
 	m_root = nullptr;
 }
 
-void GUI::Init(const std::string& resourceDir) {
+void GUI::Init() {
 	if (ogre_renderer == nullptr) {
 		ogre_renderer = &CEGUI::OgreRenderer::bootstrapSystem();
-		//ogre_renderer->
 
-		CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*>(CEGUI::System::getSingleton().getResourceProvider());
+		//CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*>(CEGUI::System::getSingleton().getResourceProvider());
 
-		rp->setResourceGroupDirectory("imagesets", resourceDir + "/imagesets/");
-		rp->setResourceGroupDirectory("schemes", resourceDir + "/schemes/");
-		rp->setResourceGroupDirectory("fonts", resourceDir + "/fonts/");
-		rp->setResourceGroupDirectory("layouts", resourceDir + "/layouts/");
-		rp->setResourceGroupDirectory("looknfeels", resourceDir + "/looknfeel/");
-		rp->setResourceGroupDirectory("lua_scripts", resourceDir + "/lua_scripts/");
+		//rp->setResourceGroupDirectory("imagesets", resourceDir + "/imagesets/");
+		//rp->setResourceGroupDirectory("schemes", resourceDir + "/schemes/");
+		//rp->setResourceGroupDirectory("fonts", resourceDir + "/fonts/");
+		//rp->setResourceGroupDirectory("layouts", resourceDir + "/layouts/");
+		//rp->setResourceGroupDirectory("looknfeels", resourceDir + "/looknfeel/");
+		//rp->setResourceGroupDirectory("lua_scripts", resourceDir + "/lua_scripts/");
 
-		CEGUI::ImageManager::setImagesetDefaultResourceGroup("imagesets");
-		CEGUI::Scheme::setDefaultResourceGroup("schemes");
-		CEGUI::Font::setDefaultResourceGroup("fonts");
-		CEGUI::WindowManager::setDefaultResourceGroup("layouts");
-		CEGUI::WidgetLookManager::setDefaultResourceGroup("looknfeels");
-		CEGUI::ScriptModule::setDefaultResourceGroup("lua_scripts ");
+		CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
+		CEGUI::Scheme::setDefaultResourceGroup("Schemes");
+		CEGUI::Font::setDefaultResourceGroup("Fonts");
+		CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
+		CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
+		CEGUI::ScriptModule::setDefaultResourceGroup("Scripts");
 	}
 
 	m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
@@ -37,7 +36,14 @@ void GUI::Init(const std::string& resourceDir) {
 	m_context->setRootWindow(m_root);
 }
 
-void GUI::setRenderTarget(CEGUI::OgreRenderer* rTg) {
+void GUI::InitResources() {
+
+	loadScheme("TaharezLook");
+	loadScheme("AlfiskoSkin");
+	setFont("DejaVuSans-10");
+
+	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
+
 	/*
 	if (ogre_renderer == nullptr) {
 		ogre_renderer = rTg;
@@ -70,7 +76,7 @@ void GUI::draw() {
 }
 
 void GUI::loadScheme(const std::string& schemeFile) {
-	CEGUI::SchemeManager::getSingleton().createFromFile(schemeFile);
+	CEGUI::SchemeManager::getSingleton().createFromFile(schemeFile+ ".scheme");
 }
 
 void GUI::setFont(const std::string& fontFile) {
@@ -83,7 +89,6 @@ void GUI::createButton(const std::string& type, Vector4 Percents, Vector4 Pixels
 	CEGUI::PushButton* pb = static_cast<CEGUI::PushButton*>(createWidget(type, Percents, Pixels, name));
 	pb->setText(text);
 }
-
 
 CEGUI::Window* GUI::createWidget(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& name) {
 	CEGUI::Window* newWindow = CEGUI::WindowManager::getSingleton().createWindow(type, name);
