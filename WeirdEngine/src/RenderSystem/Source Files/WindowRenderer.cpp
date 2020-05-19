@@ -152,6 +152,10 @@ void WindowRenderer::setupResources()
 	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 }
 
+void WindowRenderer::removeVp() {
+	mWindow->removeAllViewports();
+}
+
 void WindowRenderer::renderFrame(float t)
 {
 	mRoot->renderOneFrame();

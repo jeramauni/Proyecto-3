@@ -26,8 +26,7 @@
 RenderSystem* RenderSystem::instance_ = nullptr;
 
 //Singleton
-bool RenderSystem::initSingleton()
-{
+bool RenderSystem::initSingleton() {
 	if (instance_ == nullptr) {
 		instance_ = new RenderSystem();
 
@@ -36,8 +35,7 @@ bool RenderSystem::initSingleton()
 	return false;
 }
 
-RenderSystem* RenderSystem::getSingleton()
-{
+RenderSystem* RenderSystem::getSingleton() {
 	return instance_;
 }
 
@@ -45,8 +43,6 @@ RenderSystem* RenderSystem::getSingleton()
 void RenderSystem::draw(float t) {
 	WindowRenderer::getSingleton()->handleEvents();
 	WindowRenderer::getSingleton()->renderFrame(t);
-
-	//guiManager->draw();
 }
 
 // Constructora / Destructora
@@ -91,8 +87,6 @@ void RenderSystem::createScene(std::string sceneName) {
 
 	addCamera("MainCam");
 
-	//guiManager->relocate();
-
 	scenes.erase(sceneName);
 	scenes.insert({ sceneName, sMng });
 }
@@ -100,8 +94,6 @@ void RenderSystem::createScene(std::string sceneName) {
 // Indica cual es la escena a renderizar
 void RenderSystem::setRenderingScene(std::string sceneName) {
 	mScnMgr = scenes.find(sceneName)->second;
-
-	//guiManager->
 
 	camera = mScnMgr->getCamera("MainCam");
 
@@ -205,6 +197,10 @@ Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
 
 
 //------------------------GUI----------------------------
+//Carga una layout de los archivos de layouts
+void RenderSystem::setLayout(std::string layoutName) {
+	
+}
 
 void RenderSystem::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
 	guiManager->createButton(type, Perc, Pixels, text, widgetName);
@@ -264,9 +260,11 @@ void RenderSystem::addCamera(std::string cameraName) {
 	mCamera->setFarClipDistance(4000.0f);
 }
 
-
-//Añadir un vp a una camara con un color
+//Añadir un vp a una camara con un color y un ZOrder
 void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
+	// Limpiamos los vp existentes
+	WindowRenderer::getSingleton()->getWin()->removeAllViewports();
+
 	float viewportWidth = 0.88f;
 	float viewportHeight = 0.88f;
 	float viewportLeft = (1.0f - viewportWidth) * 0.5f;
@@ -280,6 +278,7 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 
 	vp->setAutoUpdated(true);
 
+	//Para CEGUI
 	vp->setOverlaysEnabled(false); 
 	vp->setClearEveryFrame(true);
 
@@ -294,13 +293,11 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 
 
 //----------------------------------------------------
-inline Ogre::SceneNode* RenderSystem::getRootNode()
-{
+inline Ogre::SceneNode* RenderSystem::getRootNode() {
 	return mScnMgr->getRootSceneNode();
 }
 
-inline void RenderSystem::setSceneManager(Ogre::SceneManager* sm)
-{
+inline void RenderSystem::setSceneManager(Ogre::SceneManager* sm) {
 	mScnMgr = sm;
 }
 //-------------------------------------------------

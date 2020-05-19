@@ -120,6 +120,11 @@ void WEManager::generateScene(std::string sceneName, std::string entidades) {
 	// las escenas, se pueden añadir mas)
 	addVpToCam("MainCam", Vector4{0.2, 0.0, 0.2, 0.8});
 
+	//Colocamos la camara
+	moveCam("MainCam", { 250, 400, -700 });
+	camLookAt("MainCam", { 250, 0, 0 });
+	rotateCam("MainCam", { 0, 0, 180, 1 });
+
 	//--------------------------- LIGHT -----------------------------
 	// Creacion de la luz en la escena, la luz se le aplica a las entidades
 	setLight(1.0f, 1.0f, 1.0f, 1.0f); //Luz blanca
@@ -145,6 +150,7 @@ void WEManager::createButton(std::string type, std::string widgetName, std::stri
 
 // Pila de escenas
 void WEManager::pushScene(Scene* newScene) {
+	//renderSystem->clearScene();
 	renderSystem->setRenderingScene(newScene->getID());
 	escenas.push(newScene);
 }
@@ -292,6 +298,10 @@ void WEManager::addComponentsToScene(Scene* scene, json prefabs) {
 			std::cout << "WARNING!! -------> " /*+ std::string(prefabs[0].at("components")[j].at("id")) +*/ " no esta declarado en las factorias\n";
 		}
 	}
+}
+
+void WEManager::setCeguiLayout(std::string layoutName) {
+	renderSystem->setLayout(layoutName);
 }
 
 Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_) {

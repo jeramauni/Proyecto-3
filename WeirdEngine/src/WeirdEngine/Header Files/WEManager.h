@@ -87,6 +87,9 @@ private:
 	void generateEntities(Scene* scene, std::vector<std::vector<std::string>> map, json prefabs);
 	void addComponentsToScene(Scene* scene, json prefabs);
 
+	//cegui en la escena
+	void setCeguiLayout(std::string layoutName);
+
 	//Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();

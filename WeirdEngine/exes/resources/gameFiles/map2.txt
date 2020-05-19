@@ -14,6 +14,6 @@ x z y
 //Tamaño del mapa (Columnas x Filas)
 5 3
 //La primera capa siempre está en la altura 0
-1 1 1 1 1
-1 1 1 1 1
-1 1 1 1 1
+0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0

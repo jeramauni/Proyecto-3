@@ -23,10 +23,9 @@ public:
 	void InitResources();
 	void destroy();
 
-	void relocate();
+	void setRender(bool rend);
 
-	void draw();
-
+	void loadLayout(const std::string& layoutName);
 	void loadScheme(const std::string& schemeFile);
 	void setFont(const std::string& fontFile);
 	void createButton(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& text, const std::string& name = "");

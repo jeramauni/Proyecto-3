@@ -23,48 +23,37 @@ void GUI::Init() {
 	}
 
 	m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
-	m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
-	m_context->setRootWindow(m_root);
-	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(m_root);
+	//m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
+	//m_context->setRootWindow(m_root);
+	//CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(m_root);
 }
 
 void GUI::InitResources() {
 	loadScheme("TaharezLook");
 	loadScheme("AlfiskoSkin");
+	loadScheme("Generic");
+	loadScheme("HUDDemo");
 	setFont("DejaVuSans-10");
 
-	//CEGUI::WindowManager::getSingleton().
-	
-	//local w = CEGUI::WindowManager::getSingleton().loadWindowLayout("../datafiles/layouts/test.layout");
-	//CEGUI::System::getSingleton().
-	//CEGUI::System::getSingleton().getGUISheet().addChildWindow(w);
-	
+	// Esto se debera indicar en los parametros de la escena, ademas de si se renderiza o no cegui
+	loadLayout("TabPage");
+	//loadLayout("HUDDemoGameOver");
+	//loadLayout("HUDDemoIngame");
 
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-	//CEGUI::System::getSingleton().setDefaultMouseCursor(“TaharezLook”, “MouseArrow”);
 }
 
 void GUI::destroy() {
 	CEGUI::System::getSingleton().destroyGUIContext(*m_context);
 }
 
-void GUI::relocate() {
-	m_context = &CEGUI::System::getSingleton().getDefaultGUIContext();
-	//m_root = CEGUI::WindowManager::getSingleton().wind
-	//ogre_renderer = &ogre_renderer->getDefaultRenderTarget();
-	//&CEGUI::OgreRenderer::
-
-	//m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
-	//m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
-	//m_context->setRootWindow(m_root);
+void GUI::setRender(bool rend) {
+	ogre_renderer->setRenderingEnabled(rend);
 }
 
-void GUI::draw() {
-	ogre_renderer->beginRendering();
-	m_context->draw();
-	ogre_renderer->endRendering();
-	
-	//glDisable(GL_SCISSOR_TEST);
+void GUI::loadLayout(const std::string& layoutName) {
+	m_root = CEGUI::WindowManager::getSingleton().loadLayoutFromFile(layoutName + ".layout", "Layouts");
+	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(m_root);
 }
 
 void GUI::loadScheme(const std::string& schemeFile) {
@@ -80,8 +69,6 @@ void GUI::setFont(const std::string& fontFile) {
 void GUI::createButton(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& text, const std::string& name) {
 	CEGUI::PushButton* pb = static_cast<CEGUI::PushButton*>(createWidget(type, Percents, Pixels, name));
 	pb->setText(text);
-
-
 
 	//Para pulsaciones
 	/*

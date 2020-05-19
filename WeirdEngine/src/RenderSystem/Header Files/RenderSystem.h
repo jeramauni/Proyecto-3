@@ -147,5 +147,6 @@ public:
 
 
 	//--------------------CEGUI----------------------
+	void setLayout(std::string layoutName);
 	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
 };

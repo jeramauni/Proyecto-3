@@ -37,6 +37,7 @@ public:
 	static WindowRenderer* getSingleton();
 	static bool initSingleton();
 
+	void removeVp();
 	void renderFrame(float t);
 	bool handleEvents();
 
