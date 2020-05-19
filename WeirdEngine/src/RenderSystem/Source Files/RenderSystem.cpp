@@ -45,6 +45,8 @@ RenderSystem* RenderSystem::getSingleton()
 void RenderSystem::draw(float t) {
 	WindowRenderer::getSingleton()->handleEvents();
 	WindowRenderer::getSingleton()->renderFrame(t);
+
+	//guiManager->draw();
 }
 
 // Constructora / Destructora
@@ -83,12 +85,13 @@ void RenderSystem::materialGeneration(std::string nameOfResourceGroup)
 
 //---------------------------ESCENA---------------------------------
 // Crear una escena
-void RenderSystem::createScene(std::string sceneName)
-{
+void RenderSystem::createScene(std::string sceneName) {
 	Ogre::SceneManager* sMng = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 	mScnMgr = sMng;
 
 	addCamera("MainCam");
+
+	//guiManager->relocate();
 
 	scenes.erase(sceneName);
 	scenes.insert({ sceneName, sMng });
@@ -97,6 +100,8 @@ void RenderSystem::createScene(std::string sceneName)
 // Indica cual es la escena a renderizar
 void RenderSystem::setRenderingScene(std::string sceneName) {
 	mScnMgr = scenes.find(sceneName)->second;
+
+	//guiManager->
 
 	camera = mScnMgr->getCamera("MainCam");
 
@@ -206,8 +211,6 @@ void RenderSystem::createButton(std::string type, std::string widgetName, std::s
 }
 
 
-
-
 //--------------------CAMARA--------------------------
 //--Generales--
 //Obtener la camara activa
@@ -277,6 +280,9 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 
 	vp->setAutoUpdated(true);
 
+	vp->setOverlaysEnabled(false); 
+	vp->setClearEveryFrame(true);
+
 	// Color for the viewPort
 	vp->setBackgroundColour(c);
 
@@ -285,9 +291,6 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 	camera->setAspectRatio(ratio);
 }
 //----------------------------------------------------
-
-
-
 
 
 //----------------------------------------------------
