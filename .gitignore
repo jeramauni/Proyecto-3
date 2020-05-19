@@ -32,7 +32,6 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-[Bb]uild/
 
 #.dlls
 *.dll
@@ -386,3 +385,4 @@ WeirdEngine/exes/resources/gameFiles/mapDebugs/
 WeirdEngine/Dependencias/cegui-0.8.7/Build/
 
 WeirdEngine/Dependencias/cegui-0.8.7/dependencies/Build/
+WeirdEngine/Dependencias/OIS/Build/

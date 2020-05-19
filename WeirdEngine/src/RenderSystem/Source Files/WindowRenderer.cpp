@@ -3,6 +3,7 @@
 
 #include <exception>
 
+//Ogre
 #include <OgreRoot.h>
 #include <OgreRenderSystem.h>
 #include <OgreRenderWindow.h>
@@ -10,55 +11,42 @@
 #include <OgreFileSystemLayer.h>
 #include <OgreViewport.h>
 #include <OgreSceneManager.h>
-
 #include <OgreStringConverter.h>
 
+//SDL
 #include <SDL_video.h>
 #include <SDL_syswm.h>
 
 WindowRenderer* WindowRenderer::instance_ = nullptr;
 
-WindowRenderer::WindowRenderer() : mRoot(0)
-{
+WindowRenderer::WindowRenderer() : mRoot(0) {
 	initWindow();
 }
 
-void WindowRenderer::initWindow()
-{
+void WindowRenderer::initWindow() {
 	createRoot();
 	setupResources();
-	mRoot->initialise(false);
+	//mRoot->initialise(false);
 	setupWindow();
 	initializeResources();
 	mRoot->addFrameListener(this);
 }
 
-WindowRenderer::~WindowRenderer()
-{
+WindowRenderer::~WindowRenderer() {
 	if (mWindow != nullptr) {
 		mRoot->destroyRenderTarget(mWindow);
 		mWindow = nullptr;
 	}
 
-	/*
-	if (sdlWin != nullptr) {
-		SDL_DestroyWindow(sdlWin);
-		SDL_QuitSubSystem(SDL_INIT_VIDEO);
-		sdlWin = nullptr;
-	}
-	*/
-
 	delete mRoot;
 	mRoot = nullptr;
 }
 
-WindowRenderer* WindowRenderer::getSingleton()
-{
+WindowRenderer* WindowRenderer::getSingleton() {
 	return instance_;
 }
 
-bool WindowRenderer::initSingleton()
-{
+bool WindowRenderer::initSingleton() {
 	if (instance_ == nullptr) {
 		instance_ = new WindowRenderer();
 		return true;
@@ -98,8 +86,7 @@ void WindowRenderer::createRoot()
 	}
 }
 
-void WindowRenderer::setupWindow()
-{
+void WindowRenderer::setupWindow() {
 	// Aqui se configura la ventana del juego
 	std::string winTitle = "WeirdEngineWin";
 	unsigned int winWidth = 800;
@@ -116,18 +103,15 @@ void WindowRenderer::setupWindow()
 	miscParams["gamma"] = renderOpts["sRGB Gamma Conversion"].currentValue;
 
 	if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_InitSubSystem(SDL_INIT_VIDEO);
-
 	Uint32 flags = SDL_WINDOW_RESIZABLE;
 	if (renderOpts["Full Screen"].currentValue == "Yes")flags = SDL_WINDOW_FULLSCREEN;
 
-	//sdlWin = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
-	//mWindow = SDL_CreateWindow(winTitle.c_str(), SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, winWidth, winHeight, flags);
-	/*SDL_SysWMinfo wmInfo;
-	SDL_VERSION(&wmInfo.version); SDL_GetWindowWMInfo(mWindow, &wmInfo);
+	//Creamos la ventana de Ogre
+	mWindow = mRoot->initialise(true, winTitle);
+	mWindow->resize(winWidth, winHeight);
+	mWindow->windowMovedOrResized();
 	
-	miscParams["externalWindowHandle"] = Ogre::StringConverter::toString(size_t(wmInfo.info.win.window));*/
-
-	mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false, &miscParams);
+	//mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false, &miscParams);
 }
 
 void WindowRenderer::initializeResources()
@@ -168,28 +152,30 @@ void WindowRenderer::setupResources()
 	const Ogre::ResourceGroupManager::LocationList genLocs = Ogre::ResourceGroupManager::getSingleton().getResourceLocationList(sec);
 }
 
-
 void WindowRenderer::renderFrame(float t)
 {
 	mRoot->renderOneFrame();
 }
 
-bool WindowRenderer::handleEvents()
-{
+bool WindowRenderer::handleEvents() {
 	bool handled = false;
 	SDL_Event e;
 
-	while (SDL_PollEvent(&e))
-	{
-		switch (e.type)
-		{
+	while (SDL_PollEvent(&e)) {
+		switch (e.type) {
+		case SDL_WINDOWEVENT_RESIZED:
+			std::cout << "Resized\n";
+			break;
+		case SDL_WINDOWEVENT_MOVED:
+			std::cout << "Moved\n";
+			break;
 		case SDL_WINDOWEVENT:
 			if (e.window.event == SDL_WINDOWEVENT_RESIZED) {
+				std::cout << mWindow->getWidth() << ", " << mWindow->getHeight() << "\n";
 				mWindow->windowMovedOrResized();
 				windowResized(mWindow);
 				handled = true;
 			}
-
 			break;
 
 		case SDL_QUIT:

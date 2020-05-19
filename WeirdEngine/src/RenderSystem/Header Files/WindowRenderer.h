@@ -37,7 +37,6 @@ public:
 	static WindowRenderer* getSingleton();
 	static bool initSingleton();
 
-
 	void renderFrame(float t);
 	bool handleEvents();
 
@@ -57,6 +56,5 @@ public:
 
 	inline  Ogre::Root* getRoot() { return mRoot; };
 	inline Ogre::RenderWindow* getWin() { return mWindow; };
-
 };
 

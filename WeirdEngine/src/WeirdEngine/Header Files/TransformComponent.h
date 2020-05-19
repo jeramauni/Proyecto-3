@@ -2,7 +2,7 @@
 #include "Component.h"
 #include <OgreVector.h>
 
-#include"Vector3.h"
+#include "Utilities\Vector3.h"
 
 class Container;
 

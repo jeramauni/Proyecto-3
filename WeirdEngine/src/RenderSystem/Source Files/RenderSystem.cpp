@@ -1,6 +1,13 @@
 #include "RenderSystem.h"
 #include "WindowRenderer.h"
 
+#include <Utilities/Vector3.h>
+#include <Utilities/Vector4.h>
+
+//Cegui
+#include "GUI.h"
+
+//Ogre
 #include <Ogre.h>
 #include <OgrePrerequisites.h>
 #include <OgreResourceGroupManager.h>
@@ -34,16 +41,27 @@ RenderSystem* RenderSystem::getSingleton()
 	return instance_;
 }
 
+// Render
+void RenderSystem::draw(float t) {
+	WindowRenderer::getSingleton()->handleEvents();
+	WindowRenderer::getSingleton()->renderFrame(t);
+
+	//guiManager->draw();
+}
+
 // Constructora / Destructora
 RenderSystem::RenderSystem() {
 	WindowRenderer::initSingleton();
+
+	guiManager = new GUI();
+	guiManager->Init();
+	guiManager->InitResources();
 }
 
 RenderSystem::~RenderSystem() {
-
+	guiManager->destroy();
+	delete guiManager;
 }
-
-
 
 //-------------------------------------------------
 //Carga de materiales
@@ -65,17 +83,15 @@ void RenderSystem::materialGeneration(std::string nameOfResourceGroup)
 	mRgMgr.loadResourceGroup(nameOfResourceGroup);
 }
 
-
-
-
 //---------------------------ESCENA---------------------------------
 // Crear una escena
-void RenderSystem::createScene(std::string sceneName)
-{
+void RenderSystem::createScene(std::string sceneName) {
 	Ogre::SceneManager* sMng = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 	mScnMgr = sMng;
 
 	addCamera("MainCam");
+
+	//guiManager->relocate();
 
 	scenes.erase(sceneName);
 	scenes.insert({ sceneName, sMng });
@@ -84,6 +100,8 @@ void RenderSystem::createScene(std::string sceneName)
 // Indica cual es la escena a renderizar
 void RenderSystem::setRenderingScene(std::string sceneName) {
 	mScnMgr = scenes.find(sceneName)->second;
+
+	//guiManager->
 
 	camera = mScnMgr->getCamera("MainCam");
 
@@ -186,10 +204,11 @@ Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
 
 
 
+//------------------------GUI----------------------------
 
-
-
-
+void RenderSystem::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
+	guiManager->createButton(type, Perc, Pixels, text, widgetName);
+}
 
 
 //--------------------CAMARA--------------------------
@@ -261,6 +280,9 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 
 	vp->setAutoUpdated(true);
 
+	vp->setOverlaysEnabled(false); 
+	vp->setClearEveryFrame(true);
+
 	// Color for the viewPort
 	vp->setBackgroundColour(c);
 
@@ -269,9 +291,6 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 	camera->setAspectRatio(ratio);
 }
 //----------------------------------------------------
-
-
-
 
 
 //----------------------------------------------------
