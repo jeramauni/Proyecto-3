@@ -27,6 +27,7 @@ void Game::Init() {
 	// Boton
 	_weM->createButton("TaharezLook/Button", "TestButton", "Hello World!", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
 
+	//_weM->generateScene("map2", "entities");
 }
 
 bool Game::update() {

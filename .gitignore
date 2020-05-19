@@ -98,7 +98,6 @@ StyleCopReport.xml
 *.scc
 *.exe
 !premake4.exe
-!WeirdEngine\Dependencias\cegui\build*
 *.lib
 *.exp
 

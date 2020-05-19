@@ -23,6 +23,8 @@ public:
 	void InitResources();
 	void destroy();
 
+	void relocate();
+
 	void draw();
 
 	void loadScheme(const std::string& schemeFile);

@@ -14,15 +14,6 @@ void GUI::Init() {
 	if (ogre_renderer == nullptr) {
 		ogre_renderer = &CEGUI::OgreRenderer::bootstrapSystem();
 
-		//CEGUI::DefaultResourceProvider* rp = static_cast<CEGUI::DefaultResourceProvider*>(CEGUI::System::getSingleton().getResourceProvider());
-
-		//rp->setResourceGroupDirectory("imagesets", resourceDir + "/imagesets/");
-		//rp->setResourceGroupDirectory("schemes", resourceDir + "/schemes/");
-		//rp->setResourceGroupDirectory("fonts", resourceDir + "/fonts/");
-		//rp->setResourceGroupDirectory("layouts", resourceDir + "/layouts/");
-		//rp->setResourceGroupDirectory("looknfeels", resourceDir + "/looknfeel/");
-		//rp->setResourceGroupDirectory("lua_scripts", resourceDir + "/lua_scripts/");
-
 		CEGUI::ImageManager::setImagesetDefaultResourceGroup("Imagesets");
 		CEGUI::Scheme::setDefaultResourceGroup("Schemes");
 		CEGUI::Font::setDefaultResourceGroup("Fonts");
@@ -34,37 +25,38 @@ void GUI::Init() {
 	m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
 	m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
 	m_context->setRootWindow(m_root);
+	CEGUI::System::getSingleton().getDefaultGUIContext().setRootWindow(m_root);
 }
 
 void GUI::InitResources() {
-
 	loadScheme("TaharezLook");
 	loadScheme("AlfiskoSkin");
 	setFont("DejaVuSans-10");
 
+	//CEGUI::WindowManager::getSingleton().
+	
+	//local w = CEGUI::WindowManager::getSingleton().loadWindowLayout("../datafiles/layouts/test.layout");
+	//CEGUI::System::getSingleton().
+	//CEGUI::System::getSingleton().getGUISheet().addChildWindow(w);
+	
+
 	CEGUI::System::getSingleton().getDefaultGUIContext().getMouseCursor().setDefaultImage("TaharezLook/MouseArrow");
-
-	/*
-	if (ogre_renderer == nullptr) {
-		ogre_renderer = rTg;
-		Init("resources/cegui");
-	}
-	else {
-		ogre_renderer = rTg;
-	}
-
-	m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
-	m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
-	m_context->setRootWindow(m_root);
-	*/
-	//guiManager->loadScheme("TaharezLook.scheme");
-	//guiManager->loadScheme("AlfiskoSkin.scheme");
-	//guiManager->setFont("DejaVuSans-10");
+	//CEGUI::System::getSingleton().setDefaultMouseCursor(“TaharezLook”, “MouseArrow”);
 }
-
 
 void GUI::destroy() {
 	CEGUI::System::getSingleton().destroyGUIContext(*m_context);
+}
+
+void GUI::relocate() {
+	m_context = &CEGUI::System::getSingleton().getDefaultGUIContext();
+	//m_root = CEGUI::WindowManager::getSingleton().wind
+	//ogre_renderer = &ogre_renderer->getDefaultRenderTarget();
+	//&CEGUI::OgreRenderer::
+
+	//m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
+	//m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
+	//m_context->setRootWindow(m_root);
 }
 
 void GUI::draw() {
@@ -88,6 +80,19 @@ void GUI::setFont(const std::string& fontFile) {
 void GUI::createButton(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& text, const std::string& name) {
 	CEGUI::PushButton* pb = static_cast<CEGUI::PushButton*>(createWidget(type, Percents, Pixels, name));
 	pb->setText(text);
+
+
+
+	//Para pulsaciones
+	/*
+	El primer parámetro es el evento en sí. El segundo parámetro es un objeto Event::Subscriber. 
+	Cuando se crea  un  objeto  Subscriber,  la  primera  cosa  que  se  pasa  es  un  puntero  a  
+	la  función  que  manejará  el evento  (nota,  el  símbolo  &  da  un  puntero  de  la  función).  
+	La  segunda  cosa  que  se  pasa  es  el  objeto TutorialListener que manejará el evento 
+	(en este caso this). Ahora la función TutorialListener::quit (que ya ha sido definida) manejará el 
+	clic del ratón y finalizará el programa.
+	*/
+	//quit->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&TutorialListener::quit, this));
 }
 
 CEGUI::Window* GUI::createWidget(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& name) {

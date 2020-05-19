@@ -53,7 +53,6 @@ public:
 
 	void draw(float t);
 
-
 	//-------------Entidades-----------------
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
 	Ogre::SceneNode* addOgreEntity(std::string name, std::string mesh_name);
@@ -88,8 +87,6 @@ public:
 	//------------ESCENA------------
 	// Creates a new scene and adds it to the scenes dictionary with the given key
 	void createScene(std::string sceneName);
-
-	void createMenuScene(std::string sceneName);
 
 	//---Luces---
 	enum LightTypes
