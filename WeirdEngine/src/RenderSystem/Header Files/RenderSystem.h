@@ -2,6 +2,7 @@
 
 #include <string>
 #include <map>
+#include <OIS.h>
 
 namespace Ogre {
 	class OverlayManager;
@@ -29,8 +30,7 @@ class GUI;
 class Vector3;
 class Vector4;
 
-class RenderSystem {
-
+class RenderSystem : public OIS::MouseListener {
 private:
 	Ogre::SceneManager* mScnMgr = nullptr;
 	Ogre::Camera* camera = nullptr;
@@ -148,5 +148,12 @@ public:
 
 	//--------------------CEGUI----------------------
 	void setLayout(std::string layoutName);
+	void setVisible(bool b);
 	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
+
+	//---------------------OIS-------------------------
+	// Raton
+	virtual bool mouseMoved(const OIS::MouseEvent& me);
+	virtual bool mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id);
+	virtual bool mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id);
 };

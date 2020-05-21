@@ -75,6 +75,7 @@ void WEManager::Init() {
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
 	mInputManager->initialise(windowRenderer->getWin());
+	mInputManager->addMouseListener(renderSystem, "renderListener");
 
 	//-------------------------- MATERIALS -------------------------------
 	//Carga de los materiales que usaremos

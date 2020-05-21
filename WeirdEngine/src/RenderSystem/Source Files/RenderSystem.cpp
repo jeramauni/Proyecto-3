@@ -6,6 +6,7 @@
 
 //Cegui
 #include "GUI.h"
+#include <OIS.h>
 
 //Ogre
 #include <Ogre.h>
@@ -187,8 +188,7 @@ void RenderSystem::setMaterial(Ogre::Entity* ent, std::string matName)
 }
 
 // Crear un nodo vacio
-Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
-{
+Ogre::SceneNode* RenderSystem::addEmpty(std::string name) {
 	return mScnMgr->getRootSceneNode()->createChildSceneNode(name);
 }
 
@@ -199,11 +199,32 @@ Ogre::SceneNode* RenderSystem::addEmpty(std::string name)
 //------------------------GUI----------------------------
 //Carga una layout de los archivos de layouts
 void RenderSystem::setLayout(std::string layoutName) {
-	
+	guiManager->loadLayout(layoutName);
+}
+
+// Activa o desactiva si se ven los elementos de cegui
+void RenderSystem::setVisible(bool b) {
+	guiManager->setVisible(b);
 }
 
 void RenderSystem::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
 	guiManager->createButton(type, Perc, Pixels, text, widgetName);
+}
+
+//------------------------OIS----------------------------
+bool RenderSystem::mouseMoved(const OIS::MouseEvent& me) {
+	guiManager->onOISMouseEvent(me);
+	return true;
+}
+
+bool RenderSystem::mousePressed(const OIS::MouseEvent& me, OIS::MouseButtonID id) {
+	guiManager->onOISMousePressed(me, id);
+	return true;
+}
+
+bool RenderSystem::mouseReleased(const OIS::MouseEvent& me, OIS::MouseButtonID id) {
+	guiManager->onOISMouseReleased(me, id);
+	return true;
 }
 
 

@@ -1,17 +1,9 @@
 #pragma once
 
 #include <string>
-
-namespace CEGUI {
-	class OgreRenderer;
-	class OpenGL3Renderer;
-	class Window;
-	class GUIContext;
-}
-
-namespace Ogre {
-	class RenderTarget;
-}
+#include <CEGUI\CEGUI.h>
+#include <CEGUI\RendererModules\Ogre\Renderer.h>
+#include <OIS.h>
 
 class Vector4;
 
@@ -23,19 +15,30 @@ public:
 	void InitResources();
 	void destroy();
 
-	void setRender(bool rend);
+	// Cambia el estado de renderizado de todos los elementos de CEGUI
+	void setVisible(bool rend);
 
+	// Carga de layouts, schemes y fuentes
 	void loadLayout(const std::string& layoutName);
 	void loadScheme(const std::string& schemeFile);
 	void setFont(const std::string& fontFile);
+
+	void setMouseCursor(const std::string& schemeFile);
 	void createButton(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& text, const std::string& name = "");
+	void addEventToButton(CEGUI::Window* widget, bool (*f));
+
+	bool pruebaEvent(const CEGUI::EventArgs& e);
 
 	static void setWidgetDestRect(CEGUI::Window* widget, Vector4 Percents, Vector4 Pixels);
 
-	//const CEGUI::OpenGL3Renderer* getRenderer();
+	CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID);
+	void onOISMouseEvent(const OIS::MouseEvent& evnt);
+	void onOISMousePressed(const OIS::MouseEvent& evnt, OIS::MouseButtonID id);
+	void onOISMouseReleased(const OIS::MouseEvent& evnt, OIS::MouseButtonID id);
+	void onOISKeyEvent(const OIS::KeyEvent& evnt);
+
 	const CEGUI::OgreRenderer* getRenderer();
 	const CEGUI::GUIContext* getContext();
-
 private:
 	CEGUI::OgreRenderer* ogre_renderer;
 	CEGUI::GUIContext* m_context;

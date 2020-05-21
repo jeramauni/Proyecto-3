@@ -26,7 +26,6 @@ WindowRenderer::WindowRenderer() : mRoot(0) {
 void WindowRenderer::initWindow() {
 	createRoot();
 	setupResources();
-	//mRoot->initialise(false);
 	setupWindow();
 	initializeResources();
 	mRoot->addFrameListener(this);
@@ -92,6 +91,7 @@ void WindowRenderer::setupWindow() {
 	unsigned int winWidth = 800;
 	unsigned int winHeight = 600;
 
+	/*
 	Ogre::ConfigOptionMap renderOpts = mRoot->getRenderSystem()->getConfigOptions();
 	// Parametros adicionales para la configuracion
 	Ogre::NameValuePairList miscParams;
@@ -105,22 +105,19 @@ void WindowRenderer::setupWindow() {
 	if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_InitSubSystem(SDL_INIT_VIDEO);
 	Uint32 flags = SDL_WINDOW_RESIZABLE;
 	if (renderOpts["Full Screen"].currentValue == "Yes")flags = SDL_WINDOW_FULLSCREEN;
+	*/
 
 	//Creamos la ventana de Ogre
 	mWindow = mRoot->initialise(true, winTitle);
 	mWindow->resize(winWidth, winHeight);
 	mWindow->windowMovedOrResized();
-	
-	//mWindow = mRoot->createRenderWindow(winTitle, winWidth, winHeight, false, &miscParams);
 }
 
-void WindowRenderer::initializeResources()
-{
+void WindowRenderer::initializeResources() {
 	Ogre::ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 }
 
-void WindowRenderer::setupResources()
-{
+void WindowRenderer::setupResources() {
 	Ogre::ConfigFile cf;
 #if _DEBUG
 	cf.load("resources_d.cfg");
