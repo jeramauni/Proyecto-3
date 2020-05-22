@@ -25,6 +25,10 @@ namespace Ogre {
 	class Quaternion;
 };
 
+namespace CEGUI {
+	class SubscriberSlot;
+}
+
 class GUI;
 
 class Vector3;
@@ -148,8 +152,9 @@ public:
 
 	//--------------------CEGUI----------------------
 	void setLayout(std::string layoutName);
-	void setVisible(bool b);
+	void setGUIVisible(bool b);
 	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
+	void addEventToButton(const std::string& name, CEGUI::SubscriberSlot f);
 
 	//---------------------OIS-------------------------
 	// Raton

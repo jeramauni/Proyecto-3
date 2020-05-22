@@ -2,18 +2,14 @@
 //Los comentarios deben ir en su propia línea, nunca junto a código útil
 //El espacio es el separador
 //Número de entidades en la Leyenda
-3
+1
 //Leyenda
 0 ninja
-1 cuboRaro
-2 plano
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
 125.0
 //Tamaño del mapa (Columnas x Filas)
-5 3
+1 0
 //La primera capa siempre está en la altura 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
+0

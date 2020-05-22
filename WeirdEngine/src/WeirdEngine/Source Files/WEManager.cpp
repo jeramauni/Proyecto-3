@@ -9,6 +9,7 @@
 // Renderizado
 #include <WindowRenderer.h>
 #include <RenderSystem.h>
+#include <CEGUI/CEGUI.h>
 // PhysicsManager
 #include <PhysicsEngine.h>
 // DataManager
@@ -32,6 +33,8 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 CREATE_REGISTER(Render);
 //------------------Quitar estoo-------------------------
 
+bool WEManager::end = false;
+
 // Constructora
 WEManager::WEManager() {
 	py = nullptr;
@@ -54,6 +57,17 @@ WEManager::~WEManager() {
 	delete py;
 	delete mInputManager;
 }
+
+/*
+WEManager* WEManager::getInstance() {
+	if (_instance == nullptr) {
+		_instance = new WEManager();
+		_instance->Init();
+	}
+	
+	return _instance;
+}
+*/
 
 //Inicializacion
 void WEManager::Init() {
@@ -106,8 +120,10 @@ bool WEManager::update() {
 	return true;
 }
 
+//const CEGUI::EventArgs&
 void WEManager::close() { 
-	end = true; 
+	//std::cout << "Cerrando!\n";
+	end = true;
 }
 
 //---------------------------------Escena----------------------------------------------------
@@ -147,6 +163,18 @@ void WEManager::generateScene(std::string sceneName, std::string entidades) {
 
 void WEManager::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
 	renderSystem->createButton(type, widgetName, text, Perc, Pixels);
+}
+
+void WEManager::addEventToButton(std::string name, CEGUI::SubscriberSlot f) {
+	renderSystem->addEventToButton(name, f);
+}
+
+void WEManager::loadLayout(std::string layoutName) {
+	renderSystem->setLayout(layoutName);
+}
+
+void WEManager::setGUIVisible(bool b) {
+	renderSystem->setGUIVisible(b);
 }
 
 // Pila de escenas

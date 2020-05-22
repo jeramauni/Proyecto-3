@@ -21,6 +21,7 @@ void GUI::Init() {
 		CEGUI::ScriptModule::setDefaultResourceGroup("Scripts");
 	}
 
+	m_root = CEGUI::WindowManager::getSingleton().createWindow("DefaultWindow", "root");
 	m_context = &CEGUI::System::getSingleton().createGUIContext(ogre_renderer->getDefaultRenderTarget());
 	m_context = &CEGUI::System::getSingleton().getDefaultGUIContext();
 }
@@ -33,17 +34,16 @@ void GUI::InitResources() {
 	setFont("DejaVuSans-10");
 
 	// Esto se debera indicar en los parametros de la escena, ademas de si se renderiza o no cegui
-	loadLayout("TabPage");
+	//loadLayout("TabPage");
 	//loadLayout("EmptyWindow");
 	//loadLayout("HUDDemoGameOver");
 	//loadLayout("HUDDemoIngame");
 
 	//ADD EVENT TO BUTTON
 	//addEventToButton(m_root->getChild("Button1/Button"), &pruebaEvent);
-	//m_root->getChild("Button1/Button")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GUI::pruebaEvent, this));
+	//m_root->getChild("Play/Button")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GUI::pruebaEvent, this));
 
 	setMouseCursor("TaharezLook/MouseArrow");
-	
 }
 
 void GUI::destroy() {
@@ -76,14 +76,16 @@ void GUI::setMouseCursor(const std::string& schemeFile) {
 //Crear Boton
 void GUI::createButton(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& text, const std::string& name) {
 	CEGUI::PushButton* pb = static_cast<CEGUI::PushButton*>(createWidget(type, Percents, Pixels, name));
+	//addEventToButton(name, &GUI::pruebaEvent);
 	pb->setText(text);
 }
 
-void GUI::addEventToButton(CEGUI::Window* widget, bool (*f)) {
-	//widget->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(f));
+void GUI::addEventToButton(const std::string& name, CEGUI::SubscriberSlot f) {
+	CEGUI::Window *w = m_root->getChild(name);
+	w->subscribeEvent(CEGUI::PushButton::EventClicked, f);
 }
 
-bool GUI::pruebaEvent(const CEGUI::EventArgs& e) {
+bool GUI::pruebaEvent(const CEGUI::EventArgs&) {
 	std::cout << "Repuesta!!!\n";
 	return true;
 }
@@ -119,6 +121,7 @@ void GUI::onOISMouseEvent(const OIS::MouseEvent& evnt) {
 	m_context->injectMouseMove(evnt.state.X.rel, evnt.state.Y.rel);
 	if (evnt.state.Z.rel) {
 		m_context->injectMouseWheelChange(evnt.state.Z.rel / 120.0f);
+		loadLayout("EmptyWindow");
 	}
 }
 

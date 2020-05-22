@@ -8,6 +8,10 @@ namespace msg {
 	struct Message;
 }
 
+namespace CEGUI {
+	class SubscriberSlot;
+}
+
 class Scene;
 class Container;
 class EntityC;
@@ -24,12 +28,16 @@ using json = nlohmann::json;
 class Vector3;
 class Vector4;
 
+
 class WEManager {
 	friend class EntityC;
 public:
 	//Constructoras
 	WEManager();
 	~WEManager();
+
+	//static WEManager* _instance;
+	//static WEManager* getInstance();
 
 	// Inicializa
 	void Init();
@@ -42,6 +50,11 @@ public:
 	void generateScene(std::string sceneName, std::string entidades);
 	// Añadir widgets a la escena activa
 	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
+	void addEventToButton(std::string name, CEGUI::SubscriberSlot f);
+	// Cargar una layout de cegui
+	void loadLayout(std::string layoutName);
+	//Activar/desactivar el renderizado de cegui
+	void setGUIVisible(bool b);
 
 	//Luz
 	void setLight(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
@@ -61,6 +74,11 @@ public:
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
 
+	// Cerrado del juego
+	static void close();
+	// Fin de la app
+	static bool end;
+
 private:
 	//-----------SISTEMAS------------
 	//Physics
@@ -77,9 +95,6 @@ private:
 	//Pila de escenas
 	std::stack<Scene*> escenas;
 
-	// Fin de bucle de juego
-	bool end;
-	void close();
 
 	//Creacion de escena
 	Container* CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_);

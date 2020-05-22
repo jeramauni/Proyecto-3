@@ -10,7 +10,9 @@ public:
 	void Init();
 
 	bool update();
-
 private:
 	WEManager* _weM;
+
+	//Eventos
+	static void EventEnd();
 };

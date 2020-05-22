@@ -16,8 +16,8 @@ void ButtonComponent::Init(std::unordered_map<std::string, std::string>& param) 
 std::string ButtonComponent::GetText() { return text; }
 std::string ButtonComponent::GetDestination() { return destination; }
 
-void ButtonComponent::onClick()
-{
+void ButtonComponent::onClick() {
+
 }
 
 //SETTERS

@@ -25,9 +25,9 @@ public:
 
 	void setMouseCursor(const std::string& schemeFile);
 	void createButton(const std::string& type, Vector4 Percents, Vector4 Pixels, const std::string& text, const std::string& name = "");
-	void addEventToButton(CEGUI::Window* widget, bool (*f));
+	void addEventToButton(const std::string& name, CEGUI::SubscriberSlot f);
 
-	bool pruebaEvent(const CEGUI::EventArgs& e);
+	static bool pruebaEvent(const CEGUI::EventArgs& e);
 
 	static void setWidgetDestRect(CEGUI::Window* widget, Vector4 Percents, Vector4 Pixels);
 

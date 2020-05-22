@@ -203,12 +203,16 @@ void RenderSystem::setLayout(std::string layoutName) {
 }
 
 // Activa o desactiva si se ven los elementos de cegui
-void RenderSystem::setVisible(bool b) {
+void RenderSystem::setGUIVisible(bool b) {
 	guiManager->setVisible(b);
 }
 
 void RenderSystem::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
 	guiManager->createButton(type, Perc, Pixels, text, widgetName);
+}
+
+void RenderSystem::addEventToButton(const std::string& name, CEGUI::SubscriberSlot f) {
+	guiManager->addEventToButton(name, f);
 }
 
 //------------------------OIS----------------------------

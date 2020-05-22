@@ -25,9 +25,6 @@
     <ClCompile Include="..\..\src\TestProject\Source Files\Game.cpp" />
     <ClCompile Include="..\..\src\TestProject\Source Files\TestMain.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{EDC42D08-04BF-4827-A0A4-40F04B2F4867}</ProjectGuid>
@@ -107,7 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)\Dependencias\cegui\cegui\include;$(SolutionDir)Dependencias\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -152,7 +149,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)Dependencias\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\ogre-1.12.5\Build\include;$(SolutionDir)Dependencias\ogre-1.12.5\OgreMain\include;$(SolutionDir)\Dependencias\ogre-1.12.5\Build\SDL2-2.0.10\include;$(SolutionDir)\Dependencias\cegui\cegui\include;$(SolutionDir)Dependencias\bullet\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
