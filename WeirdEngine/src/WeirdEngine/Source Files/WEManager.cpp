@@ -94,7 +94,7 @@ void WEManager::Init() {
 		audioManager = AudioManager::getSingleton();
 	}
 
-	audioManager->createSound("audio1", "jerk-it-out.mp3");
+	audioManager->createSound("audio1", "menumusic.wav");
 	audioManager->play("audio1");
 
 	//----------------------------------INPUT----------------------------------
