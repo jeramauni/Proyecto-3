@@ -8,11 +8,16 @@ public:
 	~Game();
 
 	void Init();
-
 	bool update();
+
+	static Game instance;
 private:
 	WEManager* _weM;
 
+	void GenerateMainScene();
+	void GenerateMenuScene();
+
 	//Eventos
 	static void EventEnd();
+	static void EventStart();
 };

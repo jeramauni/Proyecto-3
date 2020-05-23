@@ -179,12 +179,12 @@ void WEManager::setGUIVisible(bool b) {
 
 // Pila de escenas
 void WEManager::pushScene(Scene* newScene) {
-	//renderSystem->clearScene();
 	renderSystem->setRenderingScene(newScene->getID());
 	escenas.push(newScene);
 }
 
 void WEManager::popScene() {
+	renderSystem->clearScene();
 	escenas.pop();
 	renderSystem->setRenderingScene(escenas.top()->getID());
 }
@@ -236,7 +236,8 @@ void WEManager::send(const void* senderObj, const msg::Message& msg) {
 void WEManager::receive(const void* senderObj, const msg::Message& msg) {
 	switch (msg.type_) {
 	case msg::CLOSE_WIN:
-		end = true;
+		if (escenas.size() > 1) popScene();
+		else end = true;
 		break;
 	default:
 		break;

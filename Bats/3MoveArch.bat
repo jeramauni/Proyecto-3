@@ -1,5 +1,13 @@
 @echo off
 
+
+echo ---------------------------------------------------
+echo Moviendo Config de CEGUI
+echo ---------------------------------------------------
+copy ..\WeirdEngine\Dependencias\cegui\build\cegui\include\CEGUI\Config.h ..\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI
+copy ..\WeirdEngine\Dependencias\cegui\build\cegui\include\CEGUI\ModuleConfig.h ..\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI
+copy ..\WeirdEngine\Dependencias\cegui\build\cegui\include\CEGUI\Version.h ..\WeirdEngine\Dependencias\cegui\cegui\include\CEGUI
+
 echo ---------------------------------------------------
 echo Moviendo .dll a \Proyecto\exes
 echo ---------------------------------------------------

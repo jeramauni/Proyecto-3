@@ -7,6 +7,8 @@
 #include "Utilities\Vector3.h"
 #include "Utilities\Vector4.h"
 
+Game Game::instance;
+
 Game::Game() {
 	_weM = new WEManager();
 }
@@ -19,24 +21,34 @@ void Game::Init() {
 	// Iniciamos el gm
 	_weM->Init();
 
+	//Escena de menus
+	GenerateMenuScene();
+}
+
+void Game::GenerateMainScene() {
+	_weM->setGUIVisible(false);
+	// Generamos la escena
+	_weM->generateScene("map", "entities");
+}
+
+void Game::GenerateMenuScene() {
 	_weM->generateScene("menu", "entities");
+	_weM->setGUIVisible(true);
 	_weM->loadLayout("EmptyWindow");
 
-	// Generamos la escena
-	//_weM->generateScene("map", "entities");
-
-	// Boton
-	_weM->createButton("TaharezLook/Button", "TestButton", "EXIT", { 0.5f, 0.1f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
-	//CEGUI::SubscriberSlot ev = &Game::EventEnd;
-	_weM->addEventToButton("TestButton", &Game::EventEnd);
-
-	//Segunda escena
-	//_weM->generateScene("map2", "entities");
+	// Añadir a los botones los eventos correspondientes
+	_weM->createButton("TaharezLook/Button", "PlayButton", "PLAY", { 0.4f, 0.3f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+	_weM->addEventToButton("PlayButton", &Game::EventStart);
+	_weM->createButton("TaharezLook/Button", "ExitButton", "EXIT", { 0.4f, 0.5f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+	_weM->addEventToButton("ExitButton", &Game::EventEnd);
 }
 
 void Game::EventEnd() {
-	std::cout << "ENDINNNNG\n";
-	WEManager::close();
+	instance._weM->close();
+}
+
+void Game::EventStart() {
+	instance.GenerateMainScene();
 }
 
 
