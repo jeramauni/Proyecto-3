@@ -132,7 +132,7 @@
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\AudioSystem\Header Files;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,7 +145,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)build\libs\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)\inter\$(Platform)\$(Configuration)\$(ProjectName)</IntDir>
-    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)src\DataManager\Header Files;$(SolutionDir)Dependencias\OIS\includes;$(SolutionDir)Dependencias\externalLibs;$(SolutionDir)src\AudioSystem\Header Files;$(SolutionDir)src\RenderSystem\Header Files;$(SolutionDir)src\Input\Header Files;$(SolutionDir)src\WeirdEngine\Header Files;$(SolutionDir)src\PhysicsEngine\Header Files;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencias\OIS\Build\$(Configuration);$(SolutionDir)Dependencias\ogre-1.12.5\Build\lib\$(Configuration);$(SolutionDir)build\libs\x64\$(Configuration);$(SolutionDir)Dependencias\bullet\lib\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">

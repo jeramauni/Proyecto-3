@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\TestProject\Header Files\Game.h">
+    <ClCompile Include="..\..\src\TestProject\Source Files\TestMain.cpp">
       <Filter>Archivos de origen</Filter>
-    </ClInclude>
+    </ClCompile>
+    <ClCompile Include="..\..\src\TestProject\Source Files\Game.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\TestProject\Source Files\Game.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\TestProject\Source Files\TestMain.cpp">
-      <Filter>Archivos de recursos</Filter>
-    </ClCompile>
+    <ClInclude Include="..\..\src\TestProject\Header Files\Game.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

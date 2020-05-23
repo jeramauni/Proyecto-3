@@ -16,6 +16,8 @@
 #include <DataManager.h>
 // InputManager
 #include <InputManager.h>
+// AudioManager
+#include <AudioManager.h>
 
 //Escena
 #include "Scene.h"
@@ -42,6 +44,7 @@ WEManager::WEManager() {
 	windowRenderer = nullptr;
 	renderSystem = nullptr;
 	mInputManager = nullptr;
+	audioManager = nullptr;
 	
 	end = false;
 }
@@ -78,12 +81,21 @@ void WEManager::Init() {
 	py = new PhysicsEngine();
 	py->initObjects();
 
+
 	//Sistema de render
 	if (RenderSystem::initSingleton()) {
 		renderSystem = RenderSystem::getSingleton();
-		// Ogre Window
+		//Ogre window
 		windowRenderer = WindowRenderer::getSingleton();
 	}
+
+	//Sistema de audio
+	if (AudioManager::initSingleton()) {
+		audioManager = AudioManager::getSingleton();
+	}
+
+	audioManager->createSound("audio1", "jerk-it-out.mp3");
+	audioManager->play("audio1");
 
 	//----------------------------------INPUT----------------------------------
 	// Setup input

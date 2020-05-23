@@ -23,6 +23,7 @@ class InputKeyListener;
 class InputMouseListener;
 class PhysicsEngine;
 class DataManager;
+class AudioManager;
 
 using json = nlohmann::json;
 class Vector3;
@@ -88,6 +89,8 @@ private:
 	//Rendering
 	WindowRenderer* windowRenderer;
 	RenderSystem* renderSystem;
+	//Audio
+	AudioManager* audioManager;
 	//Input Mng
 	InputManager* mInputManager;
 	//------------------------------------
