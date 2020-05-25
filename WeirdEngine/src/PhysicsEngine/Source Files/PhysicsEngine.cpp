@@ -23,7 +23,7 @@ int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool 
 	collisionShapes.push_back(newRigidShape);
 	//getCollisionShapes().push_back(newRigidShape);
 	btRigidBody* body = nullptr;
-	bulletObject newBO = bulletObject(body, 0, false, name);
+	bulletObject newBO = bulletObject(body, 0, false);
 	newBO.size = btVector3(collSize);
 	//std::cout << "X:" << df.getSize().x << " Y:" << dim.getX() << " Z:" << dim.getX() << std::endl;
 	//set the initial position and transform. For this demo, we set the tranform to be none
@@ -84,7 +84,7 @@ void PhysicsEngine::changeVelocity(int id, btVector3 vDirection)
 
 void PhysicsEngine::checkColliding(int id)
 {
-	bulletObject* btOb0 = new bulletObject(nullptr, 0, false, "null");
+	bulletObject* btOb0 = new bulletObject(nullptr, 0, false);
 	bool searching = true;
 	bool colliding = false;
 	std::list<bulletObject>::iterator it = bulletOBs.begin();
@@ -99,17 +99,17 @@ void PhysicsEngine::checkColliding(int id)
 			float size_y = btOb0->size.getY() /* * 25*/;
 			//std::cout << "Tama->o Y: " << size_y << std::endl;
 			float size_z = btOb0->size.getZ() / 2/* * 25*/;
-			//std::cout << "Tamaño Z: " << size_z << std::endl;
+			//std::cout << "Tamaï¿½o Z: " << size_z << std::endl;
 			btTransform f;
 			btVector3 s;
 			btVector3 d;
 			btOb0->body->getCollisionShape()->getAabb(f, s, d);
 			int pruebas = 0;
 			btTransform trans;
-			btOb0->body->getMotionState()->getWorldTransform(trans);
-			btOb0->setHit(false);
-			bulletObject* collOb0 = new bulletObject(nullptr, 0, false, "null");
 			//std::cout << "[NINJA] Colliding: ";
+			bulletObject* collOb0 = new bulletObject(nullptr, 0, false);
+			btOb0->setHit(false);
+			btOb0->body->getMotionState()->getWorldTransform(trans);
 			//std::cout << "[" << "NINJA" << "]" << "Pos Y: " << trans.getOrigin().getY() << std::endl;
 			//std::cout << "[" << "NINJA" << "]" << "Pos Z: " << trans.getOrigin().getZ() << std::endl;
 			for (std::list<bulletObject>::iterator coll = bulletOBs.begin(); coll != bulletOBs.end(); ++coll)
@@ -152,31 +152,31 @@ void PhysicsEngine::checkColliding(int id)
 void PhysicsEngine::setPosition(int id, btVector3 newPosition)
 {
 	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
-	btRigidBody* body = btRigidBody::upcast(obj);
 	btTransform trans;
+	btRigidBody* body = btRigidBody::upcast(obj);
 	trans.getOrigin().setValue(newPosition.getX(), newPosition.getY(), newPosition.getZ());
 	body->getMotionState()->setWorldTransform(trans);
 }
-
 bool PhysicsEngine::isColliding(int id)
+
 {
-	bulletObject btOb0 = bulletObject(nullptr, 0, false, "null");
+	bulletObject btOb0 = bulletObject(nullptr, 0, false);
 	bool searching = true;
-	bool colliding = false;
-	std::list<bulletObject>::iterator it = bulletOBs.begin();
-	while (searching && it != bulletOBs.end())
-	{
-		if ((*it).id == id)
-		{
-			searching = false;
-			btOb0 = (*it);
-		}
-		++it;
-	}
 
-	return btOb0.getHit();
 }
+	return btOb0.getHit();
 
+	}
+		++it;
+			btOb0 = (*it);
+			searching = false;
+		}
+		if ((*it).id == id)
+	{
+		{
+	while (searching && it != bulletOBs.end())
+	std::list<bulletObject>::iterator it = bulletOBs.begin();
+	bool colliding = false;
 bool PhysicsEngine::physicsLoop()
 {
 	if (this != NULL) {

@@ -7,7 +7,8 @@ namespace msg {
 		None,  	// special value indicating no object (or more precisely component)
 		Broadcast,   // special value indicating all objects
 		WEManager, 
-		Player
+		Player,
+		ColisionObject
 		// ...
 	};
 
@@ -19,6 +20,7 @@ namespace msg {
 		MOVE,
 		JUMP,
 		CLOSE_WIN,
+		COLISION
 		//...
 	};
 

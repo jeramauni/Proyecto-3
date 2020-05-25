@@ -18,8 +18,8 @@ public:
 		bool hit;
 		btRigidBody* body;
 		btVector3 size;
+		bulletObject(btRigidBody* b, int i, bool hE) : body(b), id(i), haveEffect(hE), hit(false) {};
 		bool haveEffect;
-		bulletObject(btRigidBody* b, int i, bool hE, std::string n) : body(b), id(i), haveEffect(hE), name(n), hit(false) {};
 		void setHit(bool _hit)
 		{
 			hit = _hit;
@@ -48,4 +48,3 @@ private:
 	std::map<std::string, btRigidBody*> physicsAccessors;
 	std::list<bulletObject> bulletOBs;
 };
-
