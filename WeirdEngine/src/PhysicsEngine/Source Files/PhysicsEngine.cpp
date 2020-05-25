@@ -158,25 +158,23 @@ void PhysicsEngine::setPosition(int id, btVector3 newPosition)
 	body->getMotionState()->setWorldTransform(trans);
 }
 bool PhysicsEngine::isColliding(int id)
-
 {
 	bulletObject btOb0 = bulletObject(nullptr, 0, false);
 	bool searching = true;
-
-}
-	return btOb0.getHit();
-
-	}
-		++it;
-			btOb0 = (*it);
-			searching = false;
-		}
-		if ((*it).id == id)
-	{
-		{
-	while (searching && it != bulletOBs.end())
-	std::list<bulletObject>::iterator it = bulletOBs.begin();
 	bool colliding = false;
+	std::list<bulletObject>::iterator it = bulletOBs.begin();
+	while (searching && it != bulletOBs.end())
+	{
+		if ((*it).id == id)
+		{
+			searching = false;
+			btOb0 = (*it);
+		}
+		++it;
+	}
+
+	return btOb0.getHit();
+}
 bool PhysicsEngine::physicsLoop()
 {
 	if (this != NULL) {
