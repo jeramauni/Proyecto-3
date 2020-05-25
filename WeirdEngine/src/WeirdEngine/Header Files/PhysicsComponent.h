@@ -41,5 +41,4 @@ private:
 	bool* hit;
 	Vector3 collSize;
 	PhysicsEngine* _py;
-	//PhysicsEngine::bulletObject* btOB;
 };

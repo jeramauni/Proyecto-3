@@ -35,4 +35,11 @@ namespace msg {
 		Close_Win(msg::ObjectId sender, msg::ObjectId dest) :
 			Message(msg::CLOSE_WIN, sender, dest) {}
 	};
+
+	struct Colision : public msg::Message {
+		Colision(msg::ObjectId sender, msg::ObjectId dest, std::string type, bool doIt) :
+			Message(msg::COLISION, sender, dest), _type(type), _doIt(doIt) {}
+		std::string _type;
+		bool _doIt;
+	};
 };
