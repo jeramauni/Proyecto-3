@@ -36,7 +36,7 @@ void Game::GenerateMenuScene() {
 	_weM->setGUIVisible(true);
 	_weM->loadLayout("EmptyWindow");
 
-	// Añadir a los botones los eventos correspondientes
+	// Aï¿½adir a los botones los eventos correspondientes
 	_weM->createButton("TaharezLook/Button", "PlayButton", "PLAY", { 0.4f, 0.3f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
 	_weM->addEventToButton("PlayButton", &Game::EventStart);
 	_weM->createButton("TaharezLook/Button", "ExitButton", "EXIT", { 0.4f, 0.5f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });

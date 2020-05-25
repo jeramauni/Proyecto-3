@@ -29,20 +29,20 @@ void PhysicsComponent::Init(std::unordered_map<std::string, std::string>& param)
 
 	//CollSize
 	aux = GetWords(param.at("collSize"));
-	collSize = Vector3(std::stof(aux[0]), 
-						 std::stof(aux[1]), 
-						 std::stof(aux[2]));
+	collSize = Vector3(std::stof(aux[0]),
+		std::stof(aux[1]),
+		std::stof(aux[2]));
 
 	_py = _parent->getPhysics();
-	id = _py->basicMesh(_parent->getNode(), btVector3(collSize.x, collSize.y, collSize.z), gravity);
+	id = _py->basicMesh(_parent->getNode(), btVector3(collSize.x, collSize.y, collSize.z), gravity, "null");
 }
 
-void PhysicsComponent::update(Container* c, float time) 
+void PhysicsComponent::update(Container* c, float time)
 {
 }
 
 void PhysicsComponent::receive(Container* c, const msg::Message& msg) {
-	
+
 }
 
 int PhysicsComponent::GetID()
@@ -65,6 +65,11 @@ bool PhysicsComponent::isColliding()
 	return _py->isColliding(id);
 }
 
+void PhysicsComponent::checkColliding()
+{
+	_py->checkColliding(id);
+}
+
 void PhysicsComponent::move(Vector3 dir)
 {
 	_py->changeVelocity(id, btVector3(dir.x, dir.y, dir.z));
@@ -73,4 +78,9 @@ void PhysicsComponent::move(Vector3 dir)
 void PhysicsComponent::jump(Vector3 dir)
 {
 	_py->addForce(id, btVector3(dir.x, dir.y, dir.z));
+}
+
+void PhysicsComponent::moveComponent(Vector3 pos)
+{
+	_py->setPosition(id, btVector3(pos.x, pos.y, pos.z));
 }

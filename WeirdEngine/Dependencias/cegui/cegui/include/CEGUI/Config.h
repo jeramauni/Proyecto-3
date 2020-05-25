@@ -91,7 +91,7 @@ setting CMake options and regenerating, rather than editing directly.
 //////////////////////////////////////////////////////////////////////////
 // The following says which TinyXML api version has been found
 //////////////////////////////////////////////////////////////////////////
-/* #undef CEGUI_TINYXML_HAS_2_6_API */
+#define CEGUI_TINYXML_HAS_2_6_API 1
 
 //////////////////////////////////////////////////////////////////////////
 // The following controls the version of Lua that is going to be used.
@@ -176,7 +176,7 @@ setting CMake options and regenerating, rather than editing directly.
 /* #undef CEGUI_USE_FRIBIDI */
 
 // Controls whether to use GLEW as an OpenGL loading library.
-#define CEGUI_USE_GLEW
+/* #undef CEGUI_USE_GLEW */
 
 // Controls whether to use Epoxy as an OpenGL loading library.
 /* #undef CEGUI_USE_EPOXY */
@@ -194,7 +194,7 @@ setting CMake options and regenerating, rather than editing directly.
 // Define the default place where cegui will look for loadable modules
 // this can be changed at runtime via the CEGUI_MODULE_DIR environment var.
 #if defined(_WIN32) || defined(__WIN32__)
-#   define CEGUI_MODULE_DIR "C:/Users/andres/Desktop/CEGUI/cegui/cegui-0.8.7/build/bin/"
+#   define CEGUI_MODULE_DIR "D:/Universidad/5 Quinto/2.Proyecto3/Github/Proyecto-3/WeirdEngine/Dependencias/cegui/build/bin/"
 #elif !defined(__ANDROID__)
 #   define CEGUI_MODULE_DIR "C:/Program Files (x86)/cegui/lib/cegui-0.8/"
 #endif

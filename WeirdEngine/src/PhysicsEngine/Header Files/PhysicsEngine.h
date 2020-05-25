@@ -12,11 +12,14 @@ class PhysicsEngine
 public:
 	struct bulletObject {
 	public:
+		std::string name;
+		std::string coll_name;
 		int id;
 		bool hit;
 		btRigidBody* body;
 		btVector3 size;
-		bulletObject(btRigidBody* b, int i) : body(b), id(i), hit(false) {};
+		bool haveEffect;
+		bulletObject(btRigidBody* b, int i, bool hE, std::string n) : body(b), id(i), haveEffect(hE), name(n), hit(false) {};
 		void setHit(bool _hit)
 		{
 			hit = _hit;
@@ -27,9 +30,11 @@ public:
 		};
 	};
 	void initObjects();
-	int basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity);
+	int basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity, std::string name);
 	void addForce(int id, btVector3 fDirection);
 	void changeVelocity(int id, btVector3 vDirection);
+	void checkColliding(int id);
+	void setPosition(int id, btVector3 newPosition);
 	bool isColliding(int id);
 	bool physicsLoop();
 
