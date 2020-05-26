@@ -6,6 +6,8 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 class PhysicsEngine
 {
@@ -47,4 +49,11 @@ private:
 	std::vector<btCollisionShape*> collisionShapes;
 	std::map<std::string, btRigidBody*> physicsAccessors;
 	std::list<bulletObject> bulletOBs;
+
+	//FPS counter
+	bool knowActualFPS = false;
+	double secondsPassed;
+	clock_t startTime;
+	int frames = 0;
+	float FPS = 60.0f;
 };

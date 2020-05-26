@@ -1,6 +1,11 @@
 #include "PhysicsEngine.h"
 #include <iostream>
 
+clock_t deltaTime = 1;
+unsigned int frames = 60;
+double  frameRate = 30;
+double  averageFrameTimeMilliseconds = 0.016;
+
 void PhysicsEngine::initObjects()
 {
 	collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -175,12 +180,30 @@ bool PhysicsEngine::isColliding(int id)
 
 	return btOb0.getHit();
 }
+
+
 bool PhysicsEngine::physicsLoop()
 {
 	if (this != NULL) {
-		//PRIMERA FORMA
-		dynamicsWorld->stepSimulation(120.0f / 60.0f); //suppose you have 60 frames per second
+		frames++;
 
+		if(knowActualFPS)
+		{
+			startTime = clock(); //Start timer
+			knowActualFPS = false;
+		}
+		else
+		{
+			secondsPassed = (clock() - startTime);
+			if (secondsPassed/1000 >= 1.0f)
+			{
+				secondsPassed = 0;
+				knowActualFPS = true;
+				FPS = frames;
+				frames = 0;
+			}
+		}
+		dynamicsWorld->stepSimulation(1.0f/(FPS / 10.0f) , 0);
 		for (int i = 0; i < collisionShapes.size(); i++) {
 			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
 			btRigidBody* body = btRigidBody::upcast(obj);
