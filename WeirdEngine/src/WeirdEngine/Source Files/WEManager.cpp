@@ -61,17 +61,6 @@ WEManager::~WEManager() {
 	delete mInputManager;
 }
 
-/*
-WEManager* WEManager::getInstance() {
-	if (_instance == nullptr) {
-		_instance = new WEManager();
-		_instance->Init();
-	}
-	
-	return _instance;
-}
-*/
-
 //Inicializacion
 void WEManager::Init() {
 	//DataManager
@@ -123,7 +112,7 @@ bool WEManager::update() {
 	renderSystem->draw(0);
 	
 
-	//Cerrar ventana -> esto lo tiene que hacer el juego
+	//Cerrar la aplicacion
 	if (end) {
 		windowRenderer->windowClosed();
 		return false;
@@ -132,9 +121,7 @@ bool WEManager::update() {
 	return true;
 }
 
-//const CEGUI::EventArgs&
 void WEManager::close() { 
-	//std::cout << "Cerrando!\n";
 	end = true;
 }
 
@@ -173,6 +160,10 @@ void WEManager::generateScene(std::string sceneName, std::string entidades) {
 	pushScene(mScene);
 }
 
+void WEManager::switchComponentsState() {
+	send(this, msg::SwitchComp(msg::None, msg::Broadcast));
+}
+
 void WEManager::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
 	renderSystem->createButton(type, widgetName, text, Perc, Pixels);
 }
@@ -187,6 +178,10 @@ void WEManager::loadLayout(std::string layoutName) {
 
 void WEManager::setGUIVisible(bool b) {
 	renderSystem->setGUIVisible(b);
+}
+
+bool WEManager::getGUIvis() {
+	return renderSystem->getGUIvis();
 }
 
 // Pila de escenas
@@ -248,8 +243,7 @@ void WEManager::send(const void* senderObj, const msg::Message& msg) {
 void WEManager::receive(const void* senderObj, const msg::Message& msg) {
 	switch (msg.type_) {
 	case msg::CLOSE_WIN:
-		if (escenas.size() > 1) popScene();
-		else end = true;
+		end = true;
 		break;
 	default:
 		break;
@@ -342,10 +336,6 @@ void WEManager::addComponentsToScene(Scene* scene, json prefabs) {
 	}
 }
 
-void WEManager::setCeguiLayout(std::string layoutName) {
-	renderSystem->setLayout(layoutName);
-}
-
 Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_) {
 	uint32_t i = 1;
 	//Busqueda de id en el archivo de prefabs
@@ -394,8 +384,6 @@ Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_ent
 
 		if (true) {
 			std::cout << "Entity " << entity_name << " successfully created";
-			//Vector3* v = static_cast<TransformComponent*>(e->getComponent("Transform"))->GetPosition();
-			//std::cout << v->x << ", " << v->y << ", " << v->z << " }" << '\n';
 		}
 
 		return e;
@@ -421,4 +409,8 @@ Vector3 WEManager::setProperPosition(int row, int column, int layer, char xyz[3]
 
 	propperPos.set(x, y, z);
 	return propperPos;
+}
+
+void WEManager::setCeguiLayout(std::string layoutName) {
+	renderSystem->setLayout(layoutName);
 }

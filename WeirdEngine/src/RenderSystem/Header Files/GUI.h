@@ -17,6 +17,7 @@ public:
 
 	// Cambia el estado de renderizado de todos los elementos de CEGUI
 	void setVisible(bool rend);
+	bool getVisible();
 
 	// Carga de layouts, schemes y fuentes
 	void loadLayout(const std::string& layoutName);

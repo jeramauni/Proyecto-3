@@ -6,7 +6,7 @@ namespace msg {
 	enum ObjectId {
 		None,  	// special value indicating no object (or more precisely component)
 		Broadcast,   // special value indicating all objects
-		WEManager, 
+		WEManager,
 		Player,
 		ColisionObject
 		// ...
@@ -20,7 +20,8 @@ namespace msg {
 		MOVE,
 		JUMP,
 		CLOSE_WIN,
-		COLISION
+		COLISION,
+		SWITCH_COMP
 		//...
 	};
 

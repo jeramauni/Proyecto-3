@@ -46,7 +46,6 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\ButtonComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Component.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Container.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\C_Factory.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\EntityC.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\FactoriesGestor.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\FactoryRegister.cpp" />
@@ -62,10 +61,6 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\weirdTimer.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

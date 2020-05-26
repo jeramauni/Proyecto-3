@@ -16,6 +16,7 @@ private:
 
 	void GenerateMainScene();
 	void GenerateMenuScene();
+	void GeneratePauseScene();
 
 	//Eventos
 	static void EventEnd();

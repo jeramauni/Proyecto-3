@@ -6,8 +6,6 @@
 
 int main() {
 	Game::instance.Init();
-	//Game _g = Game();
-	//_g.Init();
 
 	//Bucle del juego
 	while (Game::instance.update()) {}

@@ -49,6 +49,8 @@ public:
 	//---------Escena--------
 	// Crea la escena leyendo del archivo
 	void generateScene(std::string sceneName, std::string entidades);
+	// Cambiar el estado de los componentes que lo requieran
+	void switchComponentsState();
 	// Añadir widgets a la escena activa
 	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
 	void addEventToButton(std::string name, CEGUI::SubscriberSlot f);
@@ -56,6 +58,7 @@ public:
 	void loadLayout(std::string layoutName);
 	//Activar/desactivar el renderizado de cegui
 	void setGUIVisible(bool b);
+	bool getGUIvis();
 
 	//Luz
 	void setLight(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
@@ -74,6 +77,10 @@ public:
 	//----------Mensajes------
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
+
+	//Metodos para la pila
+	void pushScene(Scene* newScene);
+	void popScene();
 
 	// Cerrado del juego
 	static void close();
@@ -107,8 +114,4 @@ private:
 
 	//cegui en la escena
 	void setCeguiLayout(std::string layoutName);
-
-	//Metodos para la pila
-	void pushScene(Scene* newScene);
-	void popScene();
 };

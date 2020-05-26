@@ -42,4 +42,9 @@ namespace msg {
 		std::string _type;
 		bool _doIt;
 	};
+
+	struct SwitchComp : public msg::Message {
+		SwitchComp(msg::ObjectId sender, msg::ObjectId dest) :
+			Message(msg::SWITCH_COMP, sender, dest) {}
+	};
 };

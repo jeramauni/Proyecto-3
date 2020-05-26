@@ -24,6 +24,8 @@ public:
 	// Quitar un componente
 	void DelComponent(Component* c);
 	void DelComponent(InputComponent* c);
+	// Des/activar un componente
+	void activeComponent(std::string s);
 	// Comprobar si tiene un componente
 	bool hasComponent(std::string s);
 	// Obtener un componente

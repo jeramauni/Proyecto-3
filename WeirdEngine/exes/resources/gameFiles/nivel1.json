@@ -1,7 +1,7 @@
 {
   "Entities": [
 	{
-	  "id": "scene",
+	  "id": "sceneComponents",
 	  "components": [
         {
           "id": "PlaySceneInput"

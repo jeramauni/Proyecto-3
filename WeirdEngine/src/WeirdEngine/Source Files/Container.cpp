@@ -43,19 +43,29 @@ void Container::DelComponent(InputComponent* c) {
 	removeC(_InputComponents, c);
 }
 
+void Container::activeComponent(std::string s) {
+	for (auto pos : _components) {
+		if (pos.data->getName(s)) {
+			if (pos.active)
+				removeC(_components, pos.data);
+			else
+				AddC(_components, pos.data);
+			//pos.active.set
+			//pos.data->getName()
+			//pos.active = !pos.active;
+			//pos.active = false;
+			
+		}
+	}
+}
+
 // Comprobar si tiene un componente
 bool Container::hasComponent(std::string s) {
 	for (auto pos : _components) {
-		if (pos.data->getName(s)) {
+		if (pos.data->getName(s) && pos.active) {
 			return true;
 		}
 	}
-	for (auto pos : _InputComponents) {
-		if (pos.data->getName(s)) {
-			return true;
-		}
-	}
-
 	return false;
 }
 
@@ -94,7 +104,7 @@ void Container::receive(const void* senderObj, const msg::Message& msg) {
 void Container::broadcastToLocalComponents(
 	const void* senderObj, const msg::Message& msg) {
 	for (auto c : _components) {
-		if (c.data != senderObj && c.active) {
+		if (c.data != senderObj) {
 			c.data->receive(this, msg);
 		}
 	}

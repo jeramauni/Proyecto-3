@@ -1,7 +1,7 @@
 #include <WEManager.h>
 
 #include <iostream>
-#include <CEGUI/CEGUI.h> //FEISIMO
+#include <CEGUI/CEGUI.h>
 
 #include "Game.h"
 #include "Utilities\Vector3.h"
@@ -28,11 +28,23 @@ void Game::Init() {
 void Game::GenerateMainScene() {
 	_weM->setGUIVisible(false);
 	// Generamos la escena
-	_weM->generateScene("map", "entities");
+	_weM->generateScene("nivel1", "nivel1");
 }
 
 void Game::GenerateMenuScene() {
-	_weM->generateScene("menu", "entities");
+	_weM->generateScene("menu", "menu");
+	_weM->setGUIVisible(true);
+	_weM->loadLayout("EmptyWindow");
+
+	// A�adir a los botones los eventos correspondientes
+	_weM->createButton("TaharezLook/Button", "PlayButton", "PLAY", { 0.4f, 0.3f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+	_weM->addEventToButton("PlayButton", &Game::EventStart);
+	_weM->createButton("TaharezLook/Button", "ExitButton", "EXIT", { 0.4f, 0.5f, 0.1f, 0.2f }, { 0.0, 0.0 ,0.0 ,0.0 });
+	_weM->addEventToButton("ExitButton", &Game::EventEnd);
+}
+
+void Game::GeneratePauseScene() {
+	_weM->generateScene("pause", "pause");
 	_weM->setGUIVisible(true);
 	_weM->loadLayout("EmptyWindow");
 

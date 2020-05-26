@@ -153,6 +153,7 @@ public:
 	//--------------------CEGUI----------------------
 	void setLayout(std::string layoutName);
 	void setGUIVisible(bool b);
+	bool getGUIvis();
 	void createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels);
 	void addEventToButton(const std::string& name, CEGUI::SubscriberSlot f);
 

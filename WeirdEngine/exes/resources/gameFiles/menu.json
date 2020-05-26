@@ -1,0 +1,35 @@
+{
+  "Entities": [
+	{
+	  "id": "sceneComponents",
+    "components": [
+      ]
+	},
+    {
+      "id": "ninja",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "ninja"
+        },
+        {
+          "id": "Physics",
+          "gravity": "true",
+          "collSize": "5/5/5"
+        },
+        {
+          "id": "PlayerMove"
+        },
+        {
+          "id": "PlayerInput"
+        }
+      ]
+    }
+  ]
+}

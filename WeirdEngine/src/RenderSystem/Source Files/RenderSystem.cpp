@@ -62,8 +62,7 @@ RenderSystem::~RenderSystem() {
 
 //-------------------------------------------------
 //Carga de materiales
-void RenderSystem::materialGeneration(std::string nameOfResourceGroup)
-{
+void RenderSystem::materialGeneration(std::string nameOfResourceGroup) {
 	Ogre::MaterialManager& materialManager = Ogre::MaterialManager::getSingleton();
 
 	Ogre::ResourceGroupManager& mRgMgr = Ogre::ResourceGroupManager::getSingleton();
@@ -139,12 +138,9 @@ std::string RenderSystem::getCurrentScene()
 
 
 
-
-
 //------------------ENTIDADES-----------------
 //Añadir una entidad a la escena que este renderizandose
-Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_name)
-{
+Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_name) {
 	Ogre::Entity* mEntity = mScnMgr->createEntity(name, mesh_name + ".mesh");
 	Ogre::SceneNode* mNode = addEmpty(name);
 	
@@ -155,8 +151,7 @@ Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_
 	return mNode;
 }
 
-Ogre::SceneNode* RenderSystem::getSceneNode(std::string name)
-{
+Ogre::SceneNode* RenderSystem::getSceneNode(std::string name) {
 	return getEntityByName(name)->getParentSceneNode();
 }
 
@@ -176,14 +171,12 @@ void RenderSystem::setEntityPos(std::string name, Ogre::Vector3 &p) {
 }
 
 //Dar material a una entidad de la escena
-void RenderSystem::setMaterial(std::string entity, std::string matName)
-{
+void RenderSystem::setMaterial(std::string entity, std::string matName) {
 	getEntityByName(entity)->setMaterialName(matName);
 }
 
 //Dar un material a una entidad
-void RenderSystem::setMaterial(Ogre::Entity* ent, std::string matName)
-{
+void RenderSystem::setMaterial(Ogre::Entity* ent, std::string matName) {
 	ent->setMaterialName(matName);
 }
 
@@ -205,6 +198,10 @@ void RenderSystem::setLayout(std::string layoutName) {
 // Activa o desactiva si se ven los elementos de cegui
 void RenderSystem::setGUIVisible(bool b) {
 	guiManager->setVisible(b);
+}
+
+bool RenderSystem::getGUIvis() {
+	return guiManager->getVisible();
 }
 
 void RenderSystem::createButton(std::string type, std::string widgetName, std::string text, Vector4 Perc, Vector4 Pixels) {
@@ -240,15 +237,12 @@ Ogre::Camera* RenderSystem::getCamera() {
 }
 
 //Obtener el nodo de la camara activa
-Ogre::SceneNode* RenderSystem::getCameraNode()
-{
-	//return camera->getParentNode();
+Ogre::SceneNode* RenderSystem::getCameraNode() {
 	return camera->getParentSceneNode();
 }
 
 //Obtener el viewport de la camara activa
-Ogre::Viewport* RenderSystem::getViewport()
-{
+Ogre::Viewport* RenderSystem::getViewport() {
 	return camera->getViewport();
 }
 

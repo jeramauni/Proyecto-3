@@ -14,7 +14,7 @@ public:
 	Scene(std::string id, WEManager* wem);
 
 	//Actualiza las entidades para que llamen a sus componentes
-	void update(float t);
+	virtual void update(float t);
 	//Añade una entidad a la escena
 	void addEntity(Container* e);
 

@@ -91,22 +91,6 @@ void WindowRenderer::setupWindow() {
 	unsigned int winWidth = 800;
 	unsigned int winHeight = 600;
 
-	/*
-	Ogre::ConfigOptionMap renderOpts = mRoot->getRenderSystem()->getConfigOptions();
-	// Parametros adicionales para la configuracion
-	Ogre::NameValuePairList miscParams;
-	// Full Screen Antialiasing
-	miscParams["FSAA"] = renderOpts["FSAA"].currentValue;
-	// Vertical Synchronisation
-	miscParams["vsync"] = renderOpts["VSync"].currentValue;
-	// Gamma level
-	miscParams["gamma"] = renderOpts["sRGB Gamma Conversion"].currentValue;
-
-	if (!SDL_WasInit(SDL_INIT_VIDEO)) SDL_InitSubSystem(SDL_INIT_VIDEO);
-	Uint32 flags = SDL_WINDOW_RESIZABLE;
-	if (renderOpts["Full Screen"].currentValue == "Yes")flags = SDL_WINDOW_FULLSCREEN;
-	*/
-
 	//Creamos la ventana de Ogre
 	mWindow = mRoot->initialise(true, winTitle);
 	mWindow->resize(winWidth, winHeight);
@@ -153,8 +137,7 @@ void WindowRenderer::removeVp() {
 	mWindow->removeAllViewports();
 }
 
-void WindowRenderer::renderFrame(float t)
-{
+void WindowRenderer::renderFrame(float t) {
 	mRoot->renderOneFrame();
 }
 

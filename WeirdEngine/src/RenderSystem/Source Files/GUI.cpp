@@ -33,16 +33,6 @@ void GUI::InitResources() {
 	loadScheme("HUDDemo");
 	setFont("DejaVuSans-10");
 
-	// Esto se debera indicar en los parametros de la escena, ademas de si se renderiza o no cegui
-	//loadLayout("TabPage");
-	//loadLayout("EmptyWindow");
-	//loadLayout("HUDDemoGameOver");
-	//loadLayout("HUDDemoIngame");
-
-	//ADD EVENT TO BUTTON
-	//addEventToButton(m_root->getChild("Button1/Button"), &pruebaEvent);
-	//m_root->getChild("Play/Button")->subscribeEvent(CEGUI::PushButton::EventClicked, CEGUI::Event::Subscriber(&GUI::pruebaEvent, this));
-
 	setMouseCursor("TaharezLook/MouseArrow");
 }
 
@@ -52,6 +42,10 @@ void GUI::destroy() {
 
 void GUI::setVisible(bool rend) {
 	ogre_renderer->setRenderingEnabled(rend);
+}
+
+bool GUI::getVisible() {
+	return ogre_renderer->isRenderingEnabled();
 }
 
 void GUI::loadLayout(const std::string& layoutName) {
@@ -119,10 +113,10 @@ CEGUI::MouseButton GUI::convertButton(OIS::MouseButtonID buttonID) {
 
 void GUI::onOISMouseEvent(const OIS::MouseEvent& evnt) {
 	m_context->injectMouseMove(evnt.state.X.rel, evnt.state.Y.rel);
-	if (evnt.state.Z.rel) {
+	/*if (evnt.state.Z.rel) {
 		m_context->injectMouseWheelChange(evnt.state.Z.rel / 120.0f);
 		loadLayout("EmptyWindow");
-	}
+	}*/
 }
 
 void GUI::onOISMousePressed(const OIS::MouseEvent& evnt, OIS::MouseButtonID id) {
