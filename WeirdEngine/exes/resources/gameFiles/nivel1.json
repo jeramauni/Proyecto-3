@@ -80,6 +80,9 @@
           "id": "Physics",
           "gravity": "false",
           "collSize": "100/50/100"
+        },
+        {
+          "id": "FloorEffect"
         }
       ]
     },

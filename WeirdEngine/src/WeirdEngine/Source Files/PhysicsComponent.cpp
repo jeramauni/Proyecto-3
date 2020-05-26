@@ -55,6 +55,16 @@ Vector3 PhysicsComponent::GetScale()
 	return collSize;
 }
 
+Vector3 PhysicsComponent::linearVelocity()
+{
+	return Vector3(_py->linearVelocity(id).getX(), _py->linearVelocity(id).getY(), _py->linearVelocity(id).getZ());
+}
+
+Vector3 PhysicsComponent::position()
+{
+	return Vector3(_py->position(id).getX(), _py->position(id).getY(), _py->position(id).getZ());
+}
+
 bool PhysicsComponent::HaveGravity()
 {
 	return gravity;
