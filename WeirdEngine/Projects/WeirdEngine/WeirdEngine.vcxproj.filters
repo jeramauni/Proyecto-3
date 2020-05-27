@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\ButtonComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Component.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Container.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\EntityC.cpp" />
@@ -19,9 +18,11 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Scene.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\TimeManager.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\weirdTimer.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\AttachCameraToEntComponent.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\AddCameraToSceneComponent.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\RotateInputComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\ButtonComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Component.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\ComponentFactory.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Container.h" />
@@ -43,5 +44,8 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Scene.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\TimeManager.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\weirdTimer.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\AttachCameraToEntComponent.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\AddCameraToSceneComponent.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\RotateInputComponent.h" />
   </ItemGroup>
 </Project>

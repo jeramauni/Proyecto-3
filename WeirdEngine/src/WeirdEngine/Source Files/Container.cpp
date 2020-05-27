@@ -50,11 +50,6 @@ void Container::activeComponent(std::string s) {
 				removeC(_components, pos.data);
 			else
 				AddC(_components, pos.data);
-			//pos.active.set
-			//pos.data->getName()
-			//pos.active = !pos.active;
-			//pos.active = false;
-			
 		}
 	}
 }

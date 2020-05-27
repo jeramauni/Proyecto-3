@@ -2,6 +2,10 @@
 
 class WEManager;
 
+enum Escenas {
+	None, MainMenu, Nivel, Pause
+};
+
 class Game {
 public:
 	Game();
@@ -21,4 +25,7 @@ private:
 	//Eventos
 	static void EventEnd();
 	static void EventStart();
+
+	int generateScene;
+	bool changeScene;
 };

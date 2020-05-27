@@ -16,7 +16,7 @@ namespace msg {
 		GAME_START,
 		GAME_OVER,
 		ROUND_START,
-		ROUND_OVER,
+		SCENE_OVER,
 		MOVE,
 		JUMP,
 		CLOSE_WIN,

@@ -12,6 +12,10 @@ namespace CEGUI {
 	class SubscriberSlot;
 }
 
+namespace Ogre {
+	class Camera;
+}
+
 class Scene;
 class Container;
 class EntityC;
@@ -25,10 +29,9 @@ class PhysicsEngine;
 class DataManager;
 class AudioManager;
 
-using json = nlohmann::json;
 class Vector3;
 class Vector4;
-
+using json = nlohmann::json;
 
 class WEManager {
 	friend class EntityC;
@@ -36,9 +39,6 @@ public:
 	//Constructoras
 	WEManager();
 	~WEManager();
-
-	//static WEManager* _instance;
-	//static WEManager* getInstance();
 
 	// Inicializa
 	void Init();
@@ -48,7 +48,7 @@ public:
 
 	//---------Escena--------
 	// Crea la escena leyendo del archivo
-	void generateScene(std::string sceneName, std::string entidades);
+	void generateScene(std::string sceneName, std::string entidades, Vector4 VpColor);
 	// Cambiar el estado de los componentes que lo requieran
 	void switchComponentsState();
 	// Añadir widgets a la escena activa
@@ -64,15 +64,19 @@ public:
 	void setLight(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
 
 	//Metodos para la camara
-	void addCameraToScene(std::string cameraName);
-	void addVpToCam(std::string cameraName, Vector4 colors); //Vector4->rgba
-	void moveCam(std::string camName, Vector3 pos);
-	void camLookAt(std::string camName, Vector3 pos);
-	void rotateCam(std::string camName, Vector4 quat);
+	void addCameraToScene(Vector4 colors);
+	void addCameraToEntity(std::string entityName, Vector4 colors);
+	void addVpToCam(Vector4 colors); //Vector4->rgba
+	void moveCam(Vector3 pos);
+	void camLookAt(Vector3 pos);
+	void rotateCam(Vector4 quat);
+	Ogre::Camera* getCam();
 
 	//Input
 	void addKeyListener(InputKeyListener* iL, std::string name);
 	void addMouseListener(InputMouseListener* iL, std::string name);
+	void removeKeyListener(std::string name);
+	void removeMouseListener(std::string name);
 
 	//----------Mensajes------
 	void send(const void* senderObj, const msg::Message& msg);
@@ -104,7 +108,6 @@ private:
 
 	//Pila de escenas
 	std::stack<Scene*> escenas;
-
 
 	//Creacion de escena
 	Container* CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_);

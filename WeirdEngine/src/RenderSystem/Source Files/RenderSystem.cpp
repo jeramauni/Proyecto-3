@@ -85,7 +85,7 @@ void RenderSystem::createScene(std::string sceneName) {
 	Ogre::SceneManager* sMng = WindowRenderer::getSingleton()->getRoot()->createSceneManager();
 	mScnMgr = sMng;
 
-	addCamera("MainCam");
+	currentScene = sceneName;
 
 	scenes.erase(sceneName);
 	scenes.insert({ sceneName, sMng });
@@ -95,7 +95,7 @@ void RenderSystem::createScene(std::string sceneName) {
 void RenderSystem::setRenderingScene(std::string sceneName) {
 	mScnMgr = scenes.find(sceneName)->second;
 
-	camera = mScnMgr->getCamera("MainCam");
+	camera = mScnMgr->getCamera(sceneName + "cam");
 
 	currentScene = sceneName;
 }
@@ -247,28 +247,29 @@ Ogre::Viewport* RenderSystem::getViewport() {
 }
 
 //Mover la camara principal de la escena
-void RenderSystem::moveCam(std::string cameraName, Ogre::Real x, Ogre::Real y, Ogre::Real z) {
-	mScnMgr->getCamera(cameraName)->getParentSceneNode()->setPosition(x, y, z);
+void RenderSystem::moveCam(Ogre::Real x, Ogre::Real y, Ogre::Real z) {
+	mScnMgr->getCamera(currentScene + "cam")->getParentSceneNode()->setPosition(x, y, z);
 }
 
 //Hacer que la camara principal mire a un lugar en especifico
-void RenderSystem::camLookAt(std::string cameraName, Ogre::Vector3 v) {
-	mScnMgr->getCamera(cameraName)->getParentSceneNode()->lookAt(v, Ogre::Node::TS_WORLD);
+void RenderSystem::camLookAt(Ogre::Vector3 v) {
+	mScnMgr->getCamera(currentScene + "cam")->getParentSceneNode()->lookAt(v, Ogre::Node::TS_WORLD);
 }
 
-void RenderSystem::rotateCam(std::string cameraName, Ogre::Quaternion q) {
-	mScnMgr->getCamera(cameraName)->rotate(q);
+void RenderSystem::rotateCam(Ogre::Quaternion q) {
+	mScnMgr->getCamera(currentScene + "cam")->rotate(q);
 }
 
 
 //--------Especificos--------
 //Añadir una camara a una escena
-void RenderSystem::addCamera(std::string cameraName) {
+void RenderSystem::addCamera() {
+	std::string cName = currentScene + "cam";
 	Ogre::Camera* mCamera = nullptr;
-	mCamera = mScnMgr->createCamera(cameraName);
+	mCamera = mScnMgr->createCamera(cName);
 
 	Ogre::SceneNode* mCamNode = nullptr;
-	mCamNode = mScnMgr->getRootSceneNode()->createChildSceneNode("n" + cameraName);
+	mCamNode = mScnMgr->getRootSceneNode()->createChildSceneNode("n" + cName);
 	mCamNode->attachObject(mCamera);
 
 	mCamNode->setPosition(0, 0, 0);
@@ -279,8 +280,28 @@ void RenderSystem::addCamera(std::string cameraName) {
 	mCamera->setFarClipDistance(4000.0f);
 }
 
+void RenderSystem::addCameraToEnt(std::string entName) {
+	std::string cName = currentScene + "cam";
+	Ogre::Camera* mCamera = nullptr;
+	mCamera = mScnMgr->createCamera(cName);
+
+	Ogre::SceneNode* mCamNode = nullptr;
+	mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);
+	mCamNode->attachObject(mCamera);
+
+	Ogre::Vector3 pos = mCamNode->getPosition();
+
+	//getEntityByName(entName)->size
+
+	mCamNode->setPosition(pos.x, pos.y + 200, pos.z - 15);
+
+	//If (far/near)>2000 then you will likely get 'z fighting' issues.
+	mCamera->setNearClipDistance(3.0f);
+	mCamera->setFarClipDistance(4000.0f);
+}
+
 //Añadir un vp a una camara con un color y un ZOrder
-void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
+void RenderSystem::addVpToCam(Ogre::ColourValue c) {
 	// Limpiamos los vp existentes
 	WindowRenderer::getSingleton()->getWin()->removeAllViewports();
 
@@ -290,7 +311,7 @@ void RenderSystem::addVpToCam(std::string cameraName, Ogre::ColourValue c) {
 	float viewportTop = (1.0f - viewportHeight) * 0.5f;
 	unsigned short mainViewportZOrder = 100;
 
-	Ogre::Camera* camera = mScnMgr->getCamera(cameraName);
+	Ogre::Camera* camera = mScnMgr->getCamera(currentScene + "cam");
 
 	Ogre::Viewport* vp = WindowRenderer::getSingleton()->getWin()->addViewport(camera,
 		mainViewportZOrder, viewportLeft, viewportTop, viewportWidth, viewportHeight);

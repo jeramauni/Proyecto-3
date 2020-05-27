@@ -47,4 +47,9 @@ namespace msg {
 		SwitchComp(msg::ObjectId sender, msg::ObjectId dest) :
 			Message(msg::SWITCH_COMP, sender, dest) {}
 	};
+
+	struct SceneOver : public msg::Message {
+		SceneOver(msg::ObjectId sender, msg::ObjectId dest) :
+			Message(msg::SCENE_OVER, sender, dest) {}
+	};
 };

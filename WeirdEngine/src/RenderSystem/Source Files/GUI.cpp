@@ -113,10 +113,6 @@ CEGUI::MouseButton GUI::convertButton(OIS::MouseButtonID buttonID) {
 
 void GUI::onOISMouseEvent(const OIS::MouseEvent& evnt) {
 	m_context->injectMouseMove(evnt.state.X.rel, evnt.state.Y.rel);
-	/*if (evnt.state.Z.rel) {
-		m_context->injectMouseWheelChange(evnt.state.Z.rel / 120.0f);
-		loadLayout("EmptyWindow");
-	}*/
 }
 
 void GUI::onOISMousePressed(const OIS::MouseEvent& evnt, OIS::MouseButtonID id) {
@@ -133,12 +129,10 @@ void GUI::onOISKeyEvent(const OIS::KeyEvent& evnt) {
 
 }
 
-const CEGUI::OgreRenderer* GUI::getRenderer()
-{
+const CEGUI::OgreRenderer* GUI::getRenderer() {
 	return ogre_renderer;
 }
 
-const CEGUI::GUIContext* GUI::getContext()
-{
+const CEGUI::GUIContext* GUI::getContext() {
 	return m_context;
 }
