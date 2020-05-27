@@ -3,7 +3,10 @@
 	{
 	  "id": "sceneComponents",
     "components": [
-      ]
+      {
+          "id": "AddCameraToScene"
+      }
+    ]
 	},
     {
       "id": "ninja",
