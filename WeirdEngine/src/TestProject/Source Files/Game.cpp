@@ -11,6 +11,8 @@ Game Game::instance;
 
 Game::Game() {
 	_weM = new WEManager();
+	changeScene = false;
+	generateScene = Escenas::None;
 }
 
 Game::~Game() {
@@ -26,13 +28,15 @@ void Game::Init() {
 }
 
 void Game::GenerateMainScene() {
+	changeScene = false;
 	_weM->setGUIVisible(false);
 	// Generamos la escena
-	_weM->generateScene("nivel1", "nivel1");
+	_weM->generateScene("nivel1", "nivel1", Vector4{ 0.2, 0.0, 0.2, 0.8 });
 }
 
 void Game::GenerateMenuScene() {
-	_weM->generateScene("menu", "menu");
+	changeScene = false;
+	_weM->generateScene("menu", "menu", Vector4{ 0.2, 0.0, 0.2, 0.8 });
 	_weM->setGUIVisible(true);
 	_weM->loadLayout("EmptyWindow");
 
@@ -44,7 +48,8 @@ void Game::GenerateMenuScene() {
 }
 
 void Game::GeneratePauseScene() {
-	_weM->generateScene("pause", "pause");
+	changeScene = false;
+	//_weM->generateScene("pause", "pause", Vector4{ 0.2, 0.0, 0.2, 0.8 });
 	_weM->setGUIVisible(true);
 	_weM->loadLayout("EmptyWindow");
 
@@ -60,10 +65,29 @@ void Game::EventEnd() {
 }
 
 void Game::EventStart() {
-	instance.GenerateMainScene();
+	instance.changeScene = true;
+	instance.generateScene = Escenas::Nivel;
 }
 
 
 bool Game::update() {
-	return _weM->update();
+	bool state = _weM->update();
+	if (changeScene) {
+		switch (generateScene) {
+		case Escenas::MainMenu:
+			GenerateMenuScene();
+			break;
+		case Escenas::Nivel:
+			GenerateMainScene();
+			break;
+		case Escenas::Pause:
+			GeneratePauseScene();
+			break;
+		default:
+			break;
+		}
+		
+	}
+
+	return state;
 }

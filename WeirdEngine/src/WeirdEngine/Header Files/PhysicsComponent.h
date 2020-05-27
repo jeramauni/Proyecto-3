@@ -4,13 +4,8 @@
 #include "Utilities\Vector3.h"
 #include <string>
 
-
 class Container;
 class PhysicsEngine;
-
-namespace msg {
-	struct Message;
-}
 
 class PhysicsComponent : public Component {
 public:

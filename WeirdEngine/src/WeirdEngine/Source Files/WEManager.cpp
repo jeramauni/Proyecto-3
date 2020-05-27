@@ -3,6 +3,7 @@
 #include <iostream>
 //Entity
 #include <Container.h>
+#include "Component.h"
 
 //Factories
 #include <ComponentFactory.h>
@@ -27,12 +28,20 @@
 #include "Utilities\Vector3.h"
 #include "Utilities\Vector4.h"
 
+//#include <Ogre.h>
+
 extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 //------------------Quitar estoo-------------------------
 //Componentes
 #include "RenderComponent.h"
+#include "AttachCameraToEntComponent.h"
+#include "AddCameraToSceneComponent.h"
+#include "RotateInputComponent.h"
 CREATE_REGISTER(Render);
+CREATE_REGISTER(AttachCameraToEnt); 
+CREATE_REGISTER(AddCameraToScene);
+CREATE_REGISTER(RotateInput);
 //------------------Quitar estoo-------------------------
 
 bool WEManager::end = false;
@@ -126,7 +135,7 @@ void WEManager::close() {
 }
 
 //---------------------------------Escena----------------------------------------------------
-void WEManager::generateScene(std::string sceneName, std::string entidades) {
+void WEManager::generateScene(std::string sceneName, std::string entidades, Vector4 VpColor) {
 	// Creamos la escena
 	Scene* mScene = new Scene(sceneName, this);
 	renderSystem->createScene(mScene->getID());
@@ -134,12 +143,14 @@ void WEManager::generateScene(std::string sceneName, std::string entidades) {
 	//----------COSAS DE CAMARA--------------
 	// Sin vp no se ve nada, tenga color o no (MainCam es la camara creada por defecto en
 	// las escenas, se pueden añadir mas)
-	addVpToCam("MainCam", Vector4{0.2, 0.0, 0.2, 0.8});
+	/*
+	addVpToCam("MainCam", VpColor);
 
 	//Colocamos la camara
 	moveCam("MainCam", { 250, 400, -700 });
 	camLookAt("MainCam", { 250, 0, 0 });
 	rotateCam("MainCam", { 0, 0, 180, 1 });
+	*/
 
 	//--------------------------- LIGHT -----------------------------
 	// Creacion de la luz en la escena, la luz se le aplica a las entidades
@@ -191,30 +202,41 @@ void WEManager::pushScene(Scene* newScene) {
 }
 
 void WEManager::popScene() {
+	send(this, msg::SceneOver(msg::None, msg::Broadcast));
 	renderSystem->clearScene();
 	escenas.pop();
 	renderSystem->setRenderingScene(escenas.top()->getID());
 }
 
 //---------------------------CONTROL DE CAMARA-----------------------------------------
-void WEManager::addCameraToScene(std::string cameraName) {
-	renderSystem->addCamera(cameraName);
+void WEManager::addCameraToScene(Vector4 colors) {
+	renderSystem->addCamera();
+	renderSystem->addVpToCam(Ogre::ColourValue(colors.x, colors.y, colors.z, colors.w));
 }
 
-void WEManager::addVpToCam(std::string cameraName, Vector4 colors) {
-	renderSystem->addVpToCam(cameraName, Ogre::ColourValue(colors.x, colors.y, colors.z, colors.w));
+void WEManager::addCameraToEntity(std::string entityName, Vector4 colors) {
+	renderSystem->addCameraToEnt(entityName);
+	renderSystem->addVpToCam(Ogre::ColourValue(colors.x, colors.y, colors.z, colors.w));
 }
 
-void WEManager::moveCam(std::string camName, Vector3 p) {
-	renderSystem->moveCam(camName, p.x, p.y, p.z);
+void WEManager::addVpToCam(Vector4 colors) {
+	renderSystem->addVpToCam(Ogre::ColourValue(colors.x, colors.y, colors.z, colors.w));
 }
 
-void WEManager::camLookAt(std::string camName, Vector3 p) {
-	renderSystem->camLookAt(camName, Ogre::Vector3(p.x, p.y, p.z));
+void WEManager::moveCam(Vector3 p) {
+	renderSystem->moveCam(p.x, p.y, p.z);
 }
 
-void WEManager::rotateCam(std::string camName, Vector4 quat) {
-	renderSystem->rotateCam(camName, Ogre::Quaternion(quat.w, quat.x, quat.y, quat.z));
+void WEManager::camLookAt(Vector3 p) {
+	renderSystem->camLookAt(Ogre::Vector3(p.x, p.y, p.z));
+}
+
+void WEManager::rotateCam(Vector4 quat) {
+	renderSystem->rotateCam(Ogre::Quaternion(quat.w, quat.x, quat.y, quat.z));
+}
+
+Ogre::Camera* WEManager::getCam() {
+	return renderSystem->getCamera();
 }
 
 
@@ -225,6 +247,14 @@ void WEManager::addKeyListener(InputKeyListener* iL, std::string name) {
 
 void WEManager::addMouseListener(InputMouseListener* iL, std::string name) {
 	mInputManager->addMouseListener(iL, name);
+}
+
+void WEManager::removeKeyListener(std::string name) {
+	mInputManager->removeKeyListener(name);
+}
+
+void WEManager::removeMouseListener(std::string name) {
+	mInputManager->removeMouseListener(name);
 }
 
 //Luz

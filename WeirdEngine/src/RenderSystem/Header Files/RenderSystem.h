@@ -126,16 +126,17 @@ public:
 
 	//----------------CAMARA----------------
 	// Sets up a camera in the actual rendering scene
-	void addCamera(std::string cameraName);
+	void addCamera();
+	void addCameraToEnt(std::string entName);
 	// Adds a viewport to a camera with the color especified
-	void addVpToCam(std::string cameraName, Ogre::ColourValue c);
+	void addVpToCam(Ogre::ColourValue c);
 
 	// Moves the main cam of the rendering scene to the specified position
-	void moveCam(std::string cameraName, Ogre::Real x, Ogre::Real y, Ogre::Real z);
+	void moveCam(Ogre::Real x, Ogre::Real y, Ogre::Real z);
 	// Makes the camera look in a specific direction
-	void camLookAt(std::string cameraName, Ogre::Vector3 v);
+	void camLookAt(Ogre::Vector3 v);
 	// Rotates the camera
-	void rotateCam(std::string cameraName, Ogre::Quaternion q);
+	void rotateCam(Ogre::Quaternion q);
 
 	// Returns the camera to modify camera attributes 
 	Ogre::Camera* getCamera();
