@@ -112,10 +112,10 @@
           "id": "PlayerInput"
         },
         {
-          "id": "AttachCameraToEnt"
+          "id": "RotateInput"
         },
         {
-          "id": "RotateInput"
+          "id": "AttachCameraToEnt"
         }
       ]
     },

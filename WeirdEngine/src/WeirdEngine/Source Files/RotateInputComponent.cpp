@@ -14,34 +14,25 @@ RotateInputListener::RotateInputListener(Container* owner) {
 	_ow = owner;
 }
 
-RotateInputListener::~RotateInputListener()
-{
-}
+RotateInputListener::~RotateInputListener() {}
 
 bool RotateInputListener::mouseMoved(const OIS::MouseEvent& me) {
 	if (_ow->hasComponent("RotateInput")) {
 		float actPosx = me.state.X.rel;
 		float actPosy = me.state.Y.rel;
-		//[w, x, y, z] = [cos(a/2), sin(a/2) * nx, sin(a/2)* ny, sin(a/2) * nz]
-		//Where a is the angle of rotation and {nx,ny,nz} is the axis of rotation
 
 		Ogre::Real tpitch = _ow->getWEManager()->getCam()->getParentNode()->getOrientation().getPitch().valueRadians();
-		//_ow->getWEManager()->getCamera()->getOrientation().getPitch().valueRadians();
-		Ogre::Real tpitchchange = -me.state.Y.rel * 0.10f;
+		Ogre::Real tpitchchange = -me.state.Y.rel * 0.01f;
 		Ogre::Real tyawchange = -me.state.X.rel * 0.10f;
 
 		Ogre::Real tnewpitch = tpitch + tpitchchange;
-
-		if ((tnewpitch <= Ogre::Math::PI / 2) && (tnewpitch >= -Ogre::Math::PI / 2))
-		{
-			//this->_obj_camera->pitch(Ogre::Degree(tpitchchange));
-
-			//_ow->getWEManager()->getCamera()->getParentNode()->pitch(Ogre::Degree(tpitchchange));
-			_ow->getNode()->pitch(Ogre::Degree(tpitchchange));
-			//_ow->getWEManager()->getCam()->getParentNode()->pitch(Ogre::Degree(tpitchchange));
+		
+		if ((tpitchchange <= Ogre::Math::PI / 2) && (tpitchchange >= -Ogre::Math::PI / 2)) {
+			
+			tpitchchange = tpitchchange * 2;
+			_ow->getWEManager()->getCam()->getParentNode()->pitch(Ogre::Degree(tpitchchange));
 		}
 		_ow->getNode()->yaw(Ogre::Degree(tyawchange));
-		//_ow->getWEManager()->getCam()->getParentNode()->yaw(Ogre::Degree(tyawchange));
 	}
 	return true;
 }
@@ -60,11 +51,9 @@ RotateInputComponent::RotateInputComponent(Container* e): InputComponent(e) {
 	_name = "RotateInput";
 	_parent = e;
 	_parent->getWEManager()->addMouseListener(_listener, _name);
-	//_parent->getWEManager()->
 }
 
 void RotateInputComponent::Init(std::unordered_map<std::string, std::string>& param) {
-
 }
 
 void RotateInputComponent::receive(Container* c, const msg::Message& msg) {
@@ -80,12 +69,10 @@ void RotateInputComponent::receive(Container* c, const msg::Message& msg) {
 	}
 }
 
-InputKeyListener* RotateInputComponent::getKeyListener()
-{
+InputKeyListener* RotateInputComponent::getKeyListener() {
 	return nullptr;
 }
 
-RotateInputListener* RotateInputComponent::getMouseListener()
-{
+RotateInputListener* RotateInputComponent::getMouseListener() {
 	return _listener;
 }

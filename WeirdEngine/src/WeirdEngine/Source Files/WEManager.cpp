@@ -145,11 +145,6 @@ void WEManager::generateScene(std::string sceneName, std::string entidades, Vect
 	// las escenas, se pueden añadir mas)
 	/*
 	addVpToCam("MainCam", VpColor);
-
-	//Colocamos la camara
-	moveCam("MainCam", { 250, 400, -700 });
-	camLookAt("MainCam", { 250, 0, 0 });
-	rotateCam("MainCam", { 0, 0, 180, 1 });
 	*/
 
 	//--------------------------- LIGHT -----------------------------
