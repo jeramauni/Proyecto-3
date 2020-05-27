@@ -13,8 +13,7 @@ namespace FMOD {
 
 enum FMOD_RESULT;
 
-class AudioManager
-{
+class AudioManager {
 public:
 	static bool initSingleton();
 	static AudioManager* getSingleton();
@@ -24,13 +23,12 @@ public:
 
 	void createSound(const std::string& audioId, const std::string& filename);
 
-	void play(std::string audioId, float volume = 1.0f, float pitch = 1.0f, bool loop = true);
+	FMOD::Channel* play(std::string audioId, float volume = 1.0f, float pitch = 1.0f, bool loop = true);
 	void pause(FMOD::Channel* ch);
 	void stop(FMOD::Channel* ch);
 	void releaseChannel(std::string audioId);
 
 private:
-
 	static AudioManager* instance_;
 
 	AudioManager();

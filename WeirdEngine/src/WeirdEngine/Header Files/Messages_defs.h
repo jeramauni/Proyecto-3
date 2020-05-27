@@ -3,6 +3,8 @@
 #include <vector>
 #include "Utilities\Vector3.h"
 
+#include "Messages_decl.h"
+
 class EntityC;
 
 namespace msg {
@@ -51,5 +53,10 @@ namespace msg {
 	struct SceneOver : public msg::Message {
 		SceneOver(msg::ObjectId sender, msg::ObjectId dest) :
 			Message(msg::SCENE_OVER, sender, dest) {}
+	};
+
+	struct SceneStart : public msg::Message {
+		SceneStart(msg::ObjectId sender, msg::ObjectId dest) :
+			Message(msg::SCENE_START, sender, dest) {}
 	};
 };

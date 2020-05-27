@@ -1,12 +1,12 @@
 #include "AttachCameraToEntComponent.h"
-#include "ComponentFactory.h"
 
 #include "messages_defs.h"
 #include "Utilities\Vector4.h"
 
 #include <Ogre.h>
+#include "ComponentFactory.h"
 
-//CREATE_REGISTER(AttachCameraToEnt);
+CREATE_REGISTER(AttachCameraToEnt);
 
 AttachCameraToEntComponent::AttachCameraToEntComponent(Container* e) {
 	_name = "AttachCameraToEnt";

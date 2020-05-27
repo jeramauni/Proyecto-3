@@ -15,7 +15,7 @@ namespace msg {
 	enum MessageType {
 		GAME_START,
 		GAME_OVER,
-		ROUND_START,
+		SCENE_START,
 		SCENE_OVER,
 		MOVE,
 		JUMP,

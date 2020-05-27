@@ -1,12 +1,12 @@
 #include "AddCameraToSceneComponent.h"
-#include "ComponentFactory.h"
 
 #include "messages_defs.h"
 #include "Utilities\Vector4.h"
 
 #include <Ogre.h>
+#include "ComponentFactory.h"
 
-//CREATE_REGISTER(AddCameraToScene);
+CREATE_REGISTER(AddCameraToScene);
 
 AddCameraToSceneComponent::AddCameraToSceneComponent(Container* e) {
 	_name = "AddCameraToScene";

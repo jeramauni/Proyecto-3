@@ -2,6 +2,7 @@
 
 #include <string>
 #include <unordered_map>
+#include "Messages_defs.h"
 
 namespace msg {
 	struct Message;

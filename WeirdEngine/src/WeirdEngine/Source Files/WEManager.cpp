@@ -34,14 +34,14 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 //------------------Quitar estoo-------------------------
 //Componentes
-#include "RenderComponent.h"
-#include "AttachCameraToEntComponent.h"
-#include "AddCameraToSceneComponent.h"
-#include "RotateInputComponent.h"
-CREATE_REGISTER(Render);
-CREATE_REGISTER(AttachCameraToEnt); 
-CREATE_REGISTER(AddCameraToScene);
-CREATE_REGISTER(RotateInput);
+//#include "RenderComponent.h"
+//#include "AttachCameraToEntComponent.h"
+//#include "AddCameraToSceneComponent.h"
+//#include "RotateInputComponent.h"
+//CREATE_REGISTER(Render);
+//CREATE_REGISTER(AttachCameraToEnt); 
+//CREATE_REGISTER(AddCameraToScene);
+//CREATE_REGISTER(RotateInput);
 //------------------Quitar estoo-------------------------
 
 bool WEManager::end = false;
@@ -92,8 +92,7 @@ void WEManager::Init() {
 		audioManager = AudioManager::getSingleton();
 	}
 
-	audioManager->createSound("audio1", "menumusic.wav");
-	audioManager->play("audio1");
+	//audioManager->
 
 	//----------------------------------INPUT----------------------------------
 	// Setup input
@@ -192,8 +191,10 @@ bool WEManager::getGUIvis() {
 
 // Pila de escenas
 void WEManager::pushScene(Scene* newScene) {
+	if(escenas.size() != 0) send(this, msg::SceneOver(msg::None, msg::Broadcast));
 	renderSystem->setRenderingScene(newScene->getID());
 	escenas.push(newScene);
+	send(this, msg::SceneStart(msg::None, msg::Broadcast));
 }
 
 void WEManager::popScene() {
@@ -201,6 +202,7 @@ void WEManager::popScene() {
 	renderSystem->clearScene();
 	escenas.pop();
 	renderSystem->setRenderingScene(escenas.top()->getID());
+	send(this, msg::SceneStart(msg::None, msg::Broadcast));
 }
 
 //---------------------------CONTROL DE CAMARA-----------------------------------------
@@ -251,6 +253,27 @@ void WEManager::removeKeyListener(std::string name) {
 void WEManager::removeMouseListener(std::string name) {
 	mInputManager->removeMouseListener(name);
 }
+
+//----------------------Sonido-------------------
+AudioManager* WEManager::getAudioManager() {
+	return audioManager;
+}
+
+/*
+void WEManager::playSound(std::string name) {
+	audioManager->play("audio1");
+}
+
+void WEManager::createSound(std::string name) {
+	audioManager->createSound("audio1", "menumusic.wav");
+}
+
+void WEManager::stopSound(std::string name) {
+	//audioManager->stop();
+	//audioManager->pause();
+	//audioManager->
+}
+*/
 
 //Luz
 void WEManager::setLight(float r, float g, float b, float a) {

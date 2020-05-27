@@ -1,13 +1,13 @@
 #include "RenderComponent.h"
-#include "ComponentFactory.h"
 
 #include "Container.h"
 #include "Utilities\Vector3.h"
 #include "TransformComponent.h"
 
 #include <RenderSystem.h>
+#include "ComponentFactory.h"
 
-//CREATE_REGISTER(Render);
+CREATE_REGISTER(Render);
 
 RenderComponent::RenderComponent(Container* e) {
 	_name = "Render";

@@ -1,22 +1,42 @@
-//Evitar dejar espacios o saltos de línea al final del archivo
-//Los comentarios deben ir en su propia línea, nunca junto a código útil
+//Evitar dejar espacios o saltos de lï¿½nea al final del archivo
+//Los comentarios deben ir en su propia lï¿½nea, nunca junto a cï¿½digo ï¿½til
 //El espacio es el separador
-//Número de entidades en la Leyenda
-3
+//Nï¿½mero de entidades en la Leyenda
+7
 //Leyenda
-0 ninja
-1 cuboRaro
-2 plano
+0 none
+1 Suelo1
+2 SueloBordes1
+3 Slow1
+4 Slow2
+5 SlowBordes1
+6 ninja
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
-125.0
-//Tamaño del mapa (Columnas x Filas)
-5 2
-//La primera capa siempre está en la altura 0
-1 1 1 1 2
-1 1 1 1 1
+50.0
+//Tamaï¿½o del mapa (Columnas x Filas)
+10 10
+//La primera capa siempre estï¿½ en la altura 0
+2 2 2 2 2 2 2 2 2 2
+2 1 1 1 1 1 1 1 1 2
+2 1 1 1 1 1 1 1 1 2
+2 1 1 5 5 5 1 1 1 2
+2 1 1 5 3 5 1 1 1 2
+2 1 1 5 4 5 1 1 1 2
+2 1 1 5 4 5 1 1 1 2
+2 1 1 5 5 5 1 1 1 2
+2 1 1 1 1 1 1 1 1 2
+2 2 2 1 2 2 1 2 2 2
 //Segunda capa
-200.0
-0
-1 1 1 1 1
+50.0
+2 0 0 0 0 0 0 0 0 2
+2 0 6 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 0 0 2

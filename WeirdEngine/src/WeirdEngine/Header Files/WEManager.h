@@ -78,6 +78,14 @@ public:
 	void removeKeyListener(std::string name);
 	void removeMouseListener(std::string name);
 
+	// Sonido
+	AudioManager* getAudioManager();
+	/*
+	void playSound(std::string name);
+	void createSound(std::string name);
+	void stopSound(std::string name);
+	*/
+
 	//----------Mensajes------
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);

@@ -1,13 +1,13 @@
 {
   "Entities": [
-	{
-	  "id": "sceneComponents",
-	  "components": [
+    {
+      "id": "scene",
+      "components": [
         {
           "id": "PlaySceneInput"
         }
       ]
-	},
+    },
 
     {
       "id": "testEntity",
@@ -55,6 +55,87 @@
           "id": "Physics",
           "gravity": "false",
           "collSize": "100/50/100"
+        }
+      ]
+    },
+
+    {
+      "id": "none",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        }
+      ]
+    },
+
+    {
+      "id": "Suelo1",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "Suelo1"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "50/50/50"
+        },
+        {
+          "id": "FloorEffect"
+        }
+      ]
+    },
+
+    {
+      "id": "SueloBordes1",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "SueloBordes1"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "50/50/50"
+        },
+        {
+          "id": "FloorEffect"
+        }
+      ]
+    },
+
+    {
+      "id": "Slow1",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "Slow1"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "50/50/50"
         },
         {
           "id": "AnclaEffect"
@@ -63,30 +144,52 @@
     },
 
     {
-
-      "id": "cuboRaro",
+      "id": "Slow2",
       "components": [
         {
           "id": "Transform",
           "positionT": "0/0/0",
-          "scaleT": "5/5/5",
+          "scaleT": "1/1/1",
           "rotationT": "0/0/0"
         },
         {
           "id": "Render",
-          "Mesh": "ParedAzul2"
+          "Mesh": "Slow2"
         },
         {
           "id": "Physics",
           "gravity": "false",
-          "collSize": "100/50/100"
+          "collSize": "50/50/50"
         },
         {
-          "id": "FloorEffect"
+          "id": "AnclaEffect"
         }
       ]
     },
 
+    {
+      "id": "SlowBordes1",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "SlowBordes1"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "50/50/50"
+        },
+        {
+          "id": "AnclaEffect"
+        }
+      ]
+    },
     {
       "id": "ninja",
       "components": [
@@ -116,15 +219,6 @@
         },
         {
           "id": "AttachCameraToEnt"
-        }
-      ]
-    },
-
-    {
-      "id": "ToDo",
-      "components": [
-        {
-          "id": "MoveInput"
         }
       ]
     }

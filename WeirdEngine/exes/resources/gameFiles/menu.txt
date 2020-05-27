@@ -4,7 +4,7 @@
 //Número de entidades en la Leyenda
 1
 //Leyenda
-0 ninja
+0 none
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)

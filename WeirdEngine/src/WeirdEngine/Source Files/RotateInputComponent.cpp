@@ -4,11 +4,10 @@
 #include "Utilities\vector4.h"
 #include "Container.h"
 #include "OgreCamera.h"
-#include "Messages_defs.h"
 
 #include "ComponentFactory.h"
 
-//CREATE_REGISTER(RotateInput);
+CREATE_REGISTER(RotateInput);
 
 RotateInputListener::RotateInputListener(Container* owner) {
 	_ow = owner;
