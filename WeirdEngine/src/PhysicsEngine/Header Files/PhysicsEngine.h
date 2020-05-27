@@ -37,8 +37,11 @@ public:
 	void changeVelocity(int id, btVector3 vDirection);
 	void checkColliding(int id);
 	void setPosition(int id, btVector3 newPosition);
-	bool isColliding(int id);
 	bool physicsLoop();
+
+	bool isColliding(int id);
+	btVector3 linearVelocity(int id);
+	btVector3 position(int id);
 
 private:
 	btDefaultCollisionConfiguration* collisionConfiguration;

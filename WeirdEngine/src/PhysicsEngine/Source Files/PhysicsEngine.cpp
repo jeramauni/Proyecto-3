@@ -76,7 +76,7 @@ void PhysicsEngine::addForce(int id, btVector3 fDirection)
 {
 	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
 	btRigidBody* body = btRigidBody::upcast(obj);
-	if (std::abs(body->getLinearVelocity().y()) <= 1.0f)	body->applyCentralImpulse(fDirection);
+	body->applyCentralImpulse(fDirection);
 }
 
 void PhysicsEngine::changeVelocity(int id, btVector3 vDirection)
@@ -179,6 +179,22 @@ bool PhysicsEngine::isColliding(int id)
 	}
 
 	return btOb0.getHit();
+}
+
+btVector3 PhysicsEngine::linearVelocity(int id)
+{
+	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
+	btRigidBody* body = btRigidBody::upcast(obj);
+	return body->getLinearVelocity();
+}
+
+btVector3 PhysicsEngine::position(int id)
+{
+	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
+	btRigidBody* body = btRigidBody::upcast(obj);
+	btTransform trans;
+	body->getMotionState()->getWorldTransform(trans);
+	return trans.getOrigin();
 }
 
 

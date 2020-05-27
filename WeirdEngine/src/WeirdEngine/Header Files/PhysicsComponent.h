@@ -22,6 +22,8 @@ public:
 
 	int GetID();
 	Vector3 GetScale();
+	Vector3 linearVelocity();
+	Vector3 position();
 	bool HaveGravity();
 	bool isColliding();
 
