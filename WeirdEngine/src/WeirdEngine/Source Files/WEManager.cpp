@@ -353,7 +353,6 @@ void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::stri
 			nEnt++;
 		}
 		cct = 0;
-		std::cout << '\n';
 	}
 }
 
@@ -424,11 +423,6 @@ Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_ent
 				std::cout << "WARNING!! -------> " /*+ std::string(prefabs[i].at("components")[j].at("id")) +*/ " no esta declarado en las factorias\n";
 			}
 		}
-
-		if (true) {
-			std::cout << "Entity " << entity_name << " successfully created";
-		}
-
 		return e;
 	}
 }
