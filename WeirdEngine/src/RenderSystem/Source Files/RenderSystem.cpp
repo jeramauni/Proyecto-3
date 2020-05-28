@@ -129,7 +129,7 @@ void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance) {
 }
 
 void RenderSystem::setSkyPlane(std::string matName, Ogre::Real scale, Ogre::Real tiling, Ogre::Real xseg, Ogre::Real yseg) {
-	mScnMgr->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -20), matName, scale, tiling, true, 1.0, xseg, yseg);
+	mScnMgr->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -50), matName, scale, tiling, true, 1.0, xseg, yseg);
 }
 
 std::string RenderSystem::getCurrentScene()
@@ -279,8 +279,8 @@ void RenderSystem::addCamera() {
 	mCamNode->lookAt(Ogre::Vector3(0, 0, 0), Ogre::Node::TS_WORLD);
 
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
-	mCamera->setNearClipDistance(3.0f);
-	mCamera->setFarClipDistance(4000.0f);
+	mCamera->setNearClipDistance(21.0f);
+	mCamera->setFarClipDistance(40000.0f);
 }
 
 void RenderSystem::addCameraToEnt(std::string entName) {

@@ -65,6 +65,7 @@ public:
 
 	// RenderSystem
 	RenderSystem* getRenderSystem();
+	void setSkyPlane(std::string name);
 
 	//Metodos para la camara
 	void addCameraToScene(Vector4 colors);

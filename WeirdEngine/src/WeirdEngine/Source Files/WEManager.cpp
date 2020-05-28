@@ -278,6 +278,11 @@ RenderSystem* WEManager::getRenderSystem() {
 	return renderSystem;
 }
 
+void WEManager::setSkyPlane(std::string name)
+{
+	renderSystem->setSkyBox(name, 600.0F);
+}
+
 //---------------------------------------Mensajes--------------------------------------
 // Para enviar los mensajes
 void WEManager::send(const void* senderObj, const msg::Message& msg) {
