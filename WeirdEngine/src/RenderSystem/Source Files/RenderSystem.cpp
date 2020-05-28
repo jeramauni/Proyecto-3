@@ -316,11 +316,10 @@ void RenderSystem::addCameraToEnt(std::string entName) {
 
 //Añadir un vp a una camara con un color y un ZOrder
 void RenderSystem::addVpToCam(Ogre::ColourValue c) {
-	// Limpiamos los vp existentes
 	WindowRenderer::getSingleton()->getWin()->removeAllViewports();
 
-	float viewportWidth = 0.88f;
-	float viewportHeight = 0.88f;
+	float viewportWidth = 1.0f;
+	float viewportHeight = 1.0f;
 	float viewportLeft = (1.0f - viewportWidth) * 0.5f;
 	float viewportTop = (1.0f - viewportHeight) * 0.5f;
 	unsigned short mainViewportZOrder = 100;
@@ -333,7 +332,7 @@ void RenderSystem::addVpToCam(Ogre::ColourValue c) {
 	vp->setAutoUpdated(true);
 
 	//Para CEGUI
-	vp->setOverlaysEnabled(false); 
+	vp->setOverlaysEnabled(false);
 	vp->setClearEveryFrame(true);
 
 	// Color for the viewPort

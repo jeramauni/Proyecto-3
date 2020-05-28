@@ -86,14 +86,29 @@ void WindowRenderer::createRoot()
 }
 
 void WindowRenderer::setupWindow() {
-	// Aqui se configura la ventana del juego
 	std::string winTitle = "WeirdEngineWin";
 	unsigned int winWidth = 1000;
 	unsigned int winHeight = 800;
+	unsigned int screenWidth = 0;
+	unsigned int screenHeight = 0;
 
 	//Creamos la ventana de Ogre
 	mWindow = mRoot->initialise(true, winTitle);
+	//mWindow->setFullscreen(true, 1920, 1080);
+
+	RECT desktop;
+	// Get a handle to the desktop window
+	const HWND hDesktop = GetDesktopWindow();
+	// Get the size of screen to the variable desktop
+	GetWindowRect(hDesktop, &desktop);
+	// The top left corner will have coordinates (0,0)
+	// and the bottom right corner will have coordinates
+	// (horizontal, vertical)
+	screenWidth = desktop.right;
+	screenHeight = desktop.bottom;
+
 	mWindow->resize(winWidth, winHeight);
+	mWindow->reposition(screenWidth / 2 - winWidth / 2, screenHeight / 2 - winHeight / 2);
 	mWindow->windowMovedOrResized();
 }
 

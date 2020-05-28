@@ -19,7 +19,7 @@ void PhysicsEngine::reset()
 {
 	for (std::list<bulletObject>::const_iterator it = bulletOBs.begin(); it != bulletOBs.end(); ++it)
 	{
-		dynamicsWorld->removeRigidBody((*it).body);
+	//	dynamicsWorld->removeRigidBody((*it).body);
 
 		// reset ball
 		(*it).body->clearForces();
@@ -28,12 +28,12 @@ void PhysicsEngine::reset()
 		(*it).body->setAngularVelocity(zeroVector);
 		(*it).body->setWorldTransform((*it).startingTransform);
 
-		dynamicsWorld->addRigidBody((*it).body);
+	//	dynamicsWorld->addRigidBody((*it).body);
 	}
-	secondsPassed = 0;
-	startTime = 0;
-	frames = 0;
-	FPS = 60.0f;
+	//secondsPassed = 0;
+	//startTime = 0;
+	//frames = 0;
+	//FPS = 60.0f;
 }
 
 
