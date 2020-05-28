@@ -2,15 +2,16 @@
 //Los comentarios deben ir en su propia l�nea, nunca junto a c�digo �til
 //El espacio es el separador
 //N�mero de entidades en la Leyenda
-7
+8
 //Leyenda
 0 none
 1 Suelo1
 2 SueloBordes1
-3 Slow1
-4 Slow2
-5 SlowBordes1
-6 ninja
+3 Lava
+4 Slow1
+5 Slow2
+6 SlowBordes1
+7 ninja
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
@@ -21,17 +22,17 @@ x z y
 2 2 2 2 2 2 2 2 2 2
 2 1 1 1 1 1 1 1 1 2
 2 1 1 1 1 1 1 1 1 2
-2 1 1 5 5 5 1 1 1 2
-2 1 1 5 3 5 1 1 1 2
-2 1 1 5 4 5 1 1 1 2
-2 1 1 5 4 5 1 1 1 2
-2 1 1 5 5 5 1 1 1 2
-2 1 1 1 1 1 1 1 1 2
+2 1 1 6 6 6 1 1 1 2
+2 1 1 6 4 6 1 1 1 2
+2 1 1 6 5 6 1 1 1 2
+2 1 1 6 5 6 1 1 1 2
+2 1 1 6 6 6 1 1 1 2
+2 1 1 1 1 1 1 3 3 2
 2 2 2 1 2 2 1 2 2 2
 //Segunda capa
 50.0
 2 0 0 0 0 0 0 0 0 2
-2 0 6 0 0 0 0 0 0 2
+2 0 7 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2
