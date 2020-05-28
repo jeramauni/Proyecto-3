@@ -114,6 +114,9 @@ public:
 	// Adds a skybox to the current scene
 	void setSkyBox(std::string matName, Ogre::Real distance = 5000);
 
+	// Adds a skyplane to the current scene
+	void setSkyPlane(std::string matName, Ogre::Real scale = 1, Ogre::Real tiling = 1, Ogre::Real xseg = 100, Ogre::Real yseg = 100);
+
 	// Sets the displayed scene to the scene given by parameter
 	void setRenderingScene(std::string sceneName);
 
