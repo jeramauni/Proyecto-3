@@ -76,6 +76,49 @@ material Suelo1 {
 
 -----------------------------------------
 
+material Lava {
+    receive_shadows on
+    technique {
+        pass {
+            lighting on
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0       
+			
+			texture_unit {
+						tex_coord_set 0
+						texture Lava.jpg
+						colour_op modulate
+				}
+
+        }
+    }
+}
+
+-----------------------------------------
+
+material Shuriken {
+    receive_shadows on
+    technique {
+        pass {
+            lighting on
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0       
+			
+			texture_unit {
+						tex_coord_set 0
+						texture metal.jpg
+						colour_op modulate
+				}
+
+        }
+    }
+}
+-----------------------------------------
+
 material SueloBordes1 {
     receive_shadows on
     technique {

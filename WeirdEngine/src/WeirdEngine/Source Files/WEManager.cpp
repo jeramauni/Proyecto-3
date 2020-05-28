@@ -327,10 +327,15 @@ void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::stri
 	r = std::stoi(map[aux][1]); aux++;
 
 	int nEnt = 0;
-
+	int previous = -1;
+	int percentage = 0;
 	//Layers
 	for (auto row = map.begin() + aux++; row != map.end(); row++)
 	{
+		if (previous != percentage)
+		{
+			std::cout << "Layer " << layer << "-" << percentage << "% completed \n";
+		}
 		ct++;
 		for (auto column = row->begin(); column != row->end(); column++)
 		{
@@ -339,7 +344,6 @@ void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::stri
 				layer++;
 				slyr += std::stof(*column);
 				ct = 0;
-
 			}
 			else		//If not we get the next id..
 			{
@@ -355,9 +359,11 @@ void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::stri
 			cct++;
 			nEnt++;
 		}
+		previous = percentage;
+		percentage = ct * 100.0 / r;
 		cct = 0;
-		std::cout << '\n';
 	}
+	std::cout << "entities generation finished! \n";
 }
 
 void WEManager::addComponentsToScene(Scene* scene, json prefabs) {
@@ -427,11 +433,6 @@ Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_ent
 				std::cout << "WARNING!! -------> " /*+ std::string(prefabs[i].at("components")[j].at("id")) +*/ " no esta declarado en las factorias\n";
 			}
 		}
-
-		if (true) {
-			std::cout << "Entity " << entity_name << " successfully created";
-		}
-
 		return e;
 	}
 }

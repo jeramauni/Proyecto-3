@@ -288,7 +288,8 @@ void RenderSystem::addCameraToEnt(std::string entName) {
 	Ogre::Camera* mCamera = nullptr;
 	mCamera = mScnMgr->createCamera(cName);
 
-	Ogre::SceneNode* mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);;
+	Ogre::SceneNode* mCamNode = nullptr;
+	//Ogre::SceneNode* mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);
 
 	// HUESOS COUT
 	/*auto skeleton = getEntityByName(entName)->getSkeleton();
@@ -298,13 +299,14 @@ void RenderSystem::addCameraToEnt(std::string entName) {
 	}*/
 
 	try {
-		getEntityByName(entName)->getSkeleton()->getBone("Head");
-		mCamNode->setPosition(getEntityByName(entName)->getSkeleton()->getBone("Head")->getPosition());
+		//mCamNode->setPosition(getEntityByName(entName)->getSkeleton()->getBone("Joint1")->getPosition());
 		getEntityByName(entName)->getSkeleton()->getBone("Head")->addChild(mCamNode);
 		mCamNode->attachObject(mCamera);
 	}
 	catch (const std::exception & e) {
+		mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);
 		mCamNode->attachObject(mCamera);
+		mCamNode->setPosition(mCamNode->getPosition().x, mCamNode->getPosition().y + 150, mCamNode->getPosition().z -20);
 	}
 
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
