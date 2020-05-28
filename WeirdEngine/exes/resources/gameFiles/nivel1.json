@@ -81,6 +81,30 @@
     },
 
     {
+      "id": "Lava",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "Lava"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "50/50/50"
+        },
+        {
+          "id": "LavaEffect"
+        }
+      ]
+    },
+
+    {
       "id": "Suelo1",
       "components": [
         {

@@ -21,9 +21,7 @@ AttachCameraToEntComponent::AttachCameraToEntComponent(Container* e) {
 
 AttachCameraToEntComponent::~AttachCameraToEntComponent() {}
 
-void AttachCameraToEntComponent::Init(std::unordered_map<std::string, std::string>& param) {
-
-}
+void AttachCameraToEntComponent::Init(std::unordered_map<std::string, std::string>& param) {}
 
 void AttachCameraToEntComponent::update(Container* c, float time) {}
 
