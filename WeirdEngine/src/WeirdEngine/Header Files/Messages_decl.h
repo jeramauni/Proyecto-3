@@ -13,15 +13,14 @@ namespace msg {
 	};
 
 	enum MessageType {
-		GAME_START,
-		GAME_OVER,
 		SCENE_START,
 		SCENE_OVER,
 		MOVE,
 		JUMP,
 		CLOSE_WIN,
 		COLISION,
-		SWITCH_COMP
+		SWITCH_COMP,
+		PLAY_SOUND
 		//...
 	};
 

@@ -24,7 +24,7 @@ void Game::Init() {
 	_weM->Init();
 
 	//Escena de menus
-	GenerateMenuScene();
+	GenerateMainScene();
 }
 
 void Game::GenerateMainScene() {

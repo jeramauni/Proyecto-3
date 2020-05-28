@@ -6,7 +6,7 @@
 #include <Ogre.h>
 #include "ComponentFactory.h"
 
-CREATE_REGISTER(AddCameraToScene);
+//CREATE_REGISTER(AddCameraToScene);
 
 AddCameraToSceneComponent::AddCameraToSceneComponent(Container* e) {
 	_name = "AddCameraToScene";

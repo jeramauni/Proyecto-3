@@ -29,7 +29,7 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\FactoriesGestor.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\FactoryRegister.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\InputComponent.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\LoopSoundComponent.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\SoundComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Messages_decl.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Messages_defs.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Observer.h" />
@@ -54,7 +54,7 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\FactoriesGestor.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\FactoryRegister.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\InputComponent.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\LoopSoundComponent.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\SoundComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\Observer.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\PhysicsComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\RenderComponent.cpp" />

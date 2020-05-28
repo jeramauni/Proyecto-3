@@ -6,7 +6,7 @@
 #include <Ogre.h>
 #include "ComponentFactory.h"
 
-CREATE_REGISTER(AttachCameraToEnt);
+//CREATE_REGISTER(AttachCameraToEnt);
 
 AttachCameraToEntComponent::AttachCameraToEntComponent(Container* e) {
 	_name = "AttachCameraToEnt";

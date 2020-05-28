@@ -88,8 +88,8 @@ void WindowRenderer::createRoot()
 void WindowRenderer::setupWindow() {
 	// Aqui se configura la ventana del juego
 	std::string winTitle = "WeirdEngineWin";
-	unsigned int winWidth = 800;
-	unsigned int winHeight = 600;
+	unsigned int winWidth = 1000;
+	unsigned int winHeight = 800;
 
 	//Creamos la ventana de Ogre
 	mWindow = mRoot->initialise(true, winTitle);

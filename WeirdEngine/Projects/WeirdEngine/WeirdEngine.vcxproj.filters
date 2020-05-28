@@ -21,7 +21,7 @@
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\AttachCameraToEntComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\AddCameraToSceneComponent.cpp" />
     <ClCompile Include="..\..\src\WeirdEngine\Source Files\RotateInputComponent.cpp" />
-    <ClCompile Include="..\..\src\WeirdEngine\Source Files\LoopSoundComponent.cpp" />
+    <ClCompile Include="..\..\src\WeirdEngine\Source Files\SoundComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\Component.h" />
@@ -48,6 +48,6 @@
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\AttachCameraToEntComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\AddCameraToSceneComponent.h" />
     <ClInclude Include="..\..\src\WeirdEngine\Header Files\RotateInputComponent.h" />
-    <ClInclude Include="..\..\src\WeirdEngine\Header Files\LoopSoundComponent.h" />
+    <ClInclude Include="..\..\src\WeirdEngine\Header Files\SoundComponent.h" />
   </ItemGroup>
 </Project>

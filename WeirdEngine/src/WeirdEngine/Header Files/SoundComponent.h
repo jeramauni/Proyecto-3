@@ -1,16 +1,19 @@
 #pragma once
 #include "Component.h"
-#include <OgreVector.h>
 
 #include "Utilities\Vector3.h"
 
 class Container;
 class AudioManager;
 
-class LoopSoundComponent : public Component {
+namespace FMOD {
+	class Channel;
+}
+
+class SoundComponent : public Component {
 public:
-	LoopSoundComponent(Container* e) ;
-	~LoopSoundComponent() {};
+	SoundComponent(Container* e) ;
+	~SoundComponent() {};
 	void Init(std::unordered_map<std::string, std::string>& param);
 
 	// Implementar la que sea necesaria
@@ -21,4 +24,12 @@ public:
 
 private:
 	AudioManager* audioManager;
+
+	std::string audioName;
+	std::string fileName;
+	float volume;
+	bool loop;
+	bool playStart;
+	bool playEvent;
+	FMOD::Channel* ch;
 };

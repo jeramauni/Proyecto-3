@@ -7,7 +7,7 @@
 
 #include "ComponentFactory.h"
 
-CREATE_REGISTER(RotateInput);
+//CREATE_REGISTER(RotateInput);
 
 RotateInputListener::RotateInputListener(Container* owner) {
 	_ow = owner;

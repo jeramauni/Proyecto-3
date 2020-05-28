@@ -34,14 +34,16 @@ extern FactoriesGestor* factoriesGestor = FactoriesGestor::getInstance();
 
 //------------------Quitar estoo-------------------------
 //Componentes
-//#include "RenderComponent.h"
-//#include "AttachCameraToEntComponent.h"
-//#include "AddCameraToSceneComponent.h"
-//#include "RotateInputComponent.h"
-//CREATE_REGISTER(Render);
-//CREATE_REGISTER(AttachCameraToEnt); 
-//CREATE_REGISTER(AddCameraToScene);
-//CREATE_REGISTER(RotateInput);
+#include "RenderComponent.h"
+#include "AttachCameraToEntComponent.h"
+#include "AddCameraToSceneComponent.h"
+#include "RotateInputComponent.h"
+#include "SoundComponent.h"
+CREATE_REGISTER(Render);
+CREATE_REGISTER(AttachCameraToEnt); 
+CREATE_REGISTER(AddCameraToScene);
+CREATE_REGISTER(RotateInput);
+CREATE_REGISTER(Sound);
 //------------------Quitar estoo-------------------------
 
 bool WEManager::end = false;
@@ -138,13 +140,6 @@ void WEManager::generateScene(std::string sceneName, std::string entidades, Vect
 	// Creamos la escena
 	Scene* mScene = new Scene(sceneName, this);
 	renderSystem->createScene(mScene->getID());
-
-	//----------COSAS DE CAMARA--------------
-	// Sin vp no se ve nada, tenga color o no (MainCam es la camara creada por defecto en
-	// las escenas, se pueden añadir mas)
-	/*
-	addVpToCam("MainCam", VpColor);
-	*/
 
 	//--------------------------- LIGHT -----------------------------
 	// Creacion de la luz en la escena, la luz se le aplica a las entidades
@@ -263,7 +258,7 @@ AudioManager* WEManager::getAudioManager() {
 void WEManager::playSound(std::string name) {
 	audioManager->play("audio1");
 }
-
+/*
 void WEManager::createSound(std::string name) {
 	audioManager->createSound("audio1", "menumusic.wav");
 }

@@ -7,7 +7,7 @@
 #include <RenderSystem.h>
 #include "ComponentFactory.h"
 
-CREATE_REGISTER(Render);
+//CREATE_REGISTER(Render);
 
 RenderComponent::RenderComponent(Container* e) {
 	_name = "Render";

@@ -5,6 +5,15 @@
       "components": [
         {
           "id": "PlaySceneInput"
+        },
+        {
+          "id": "Sound",
+          "name": "nivel1Music",
+          "filename": "retro2.wav",
+          "volume": "0/7/0",
+          "loop": "0",
+          "playStart": "1",
+          "playEvent": "0"
         }
       ]
     },
@@ -219,6 +228,15 @@
         },
         {
           "id": "AttachCameraToEnt"
+        },
+        {
+          "id": "Sound",
+          "name": "jumpSound",
+          "filename": "jump.wav",
+          "volume": "1/0/0",
+          "loop": "0",
+          "playStart": "0",
+          "playEvent": "1"
         }
       ]
     }

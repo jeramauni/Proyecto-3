@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "Utilities\Vector3.h"
 
 #include "Messages_decl.h"
@@ -58,5 +59,11 @@ namespace msg {
 	struct SceneStart : public msg::Message {
 		SceneStart(msg::ObjectId sender, msg::ObjectId dest) :
 			Message(msg::SCENE_START, sender, dest) {}
+	};
+
+	struct PlaySound : public msg::Message {
+		PlaySound(msg::ObjectId sender, msg::ObjectId dest, std::string name) :
+			Message(msg::PLAY_SOUND, sender, dest), _name(name) {}
+		std::string _name;
 	};
 };
