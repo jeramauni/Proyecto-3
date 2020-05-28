@@ -14,8 +14,7 @@ class PhysicsEngine
 public:
 	struct bulletObject {
 	public:
-		std::string name;
-		std::string coll_name;
+		btTransform startingTransform;
 		int id;
 		bool hit;
 		btRigidBody* body;
@@ -32,6 +31,7 @@ public:
 		};
 	};
 	void initObjects();
+	void reset();
 	int basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity, std::string name);
 	void addForce(int id, btVector3 fDirection);
 	void changeVelocity(int id, btVector3 vDirection);

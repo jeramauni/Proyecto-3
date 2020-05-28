@@ -29,7 +29,7 @@ public:
 
 	void checkColliding();
 	void move(Vector3 dir);
-	void jump(Vector3 dir);
+	void push(Vector3 dir);
 	void moveComponent(Vector3 pos);
 
 private:
