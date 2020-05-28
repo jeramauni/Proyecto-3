@@ -285,15 +285,24 @@ void RenderSystem::addCameraToEnt(std::string entName) {
 	Ogre::Camera* mCamera = nullptr;
 	mCamera = mScnMgr->createCamera(cName);
 
-	Ogre::SceneNode* mCamNode = nullptr;
-	mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);
-	mCamNode->attachObject(mCamera);
+	Ogre::SceneNode* mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);;
 
-	Ogre::Vector3 pos = mCamNode->getPosition();
+	// HUESOS COUT
+	/*auto skeleton = getEntityByName(entName)->getSkeleton();
+	auto bones = skeleton->getBones();
+	for (auto i = 0; i < bones.size(); i++) {
+		std::cout << bones[i]->getName() << "\n";
+	}*/
 
-	//getEntityByName(entName)->size
-
-	mCamNode->setPosition(pos.x, pos.y + 200, pos.z - 15);
+	try {
+		getEntityByName(entName)->getSkeleton()->getBone("Head");
+		mCamNode->setPosition(getEntityByName(entName)->getSkeleton()->getBone("Head")->getPosition());
+		getEntityByName(entName)->getSkeleton()->getBone("Head")->addChild(mCamNode);
+		mCamNode->attachObject(mCamera);
+	}
+	catch (const std::exception & e) {
+		mCamNode->attachObject(mCamera);
+	}
 
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
 	mCamera->setNearClipDistance(3.0f);
