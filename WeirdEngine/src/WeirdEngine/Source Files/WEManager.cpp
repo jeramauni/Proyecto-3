@@ -1,9 +1,12 @@
 #include "WEManager.h"
 
 #include <iostream>
+#include <string>
 //Entity
 #include <Container.h>
 #include "Component.h"
+
+#include <string>
 
 //Factories
 #include <ComponentFactory.h>
@@ -57,6 +60,7 @@ WEManager::WEManager() {
 	mInputManager = nullptr;
 	audioManager = nullptr;
 	
+	rst = false;
 	end = false;
 }
 
@@ -94,8 +98,6 @@ void WEManager::Init() {
 		audioManager = AudioManager::getSingleton();
 	}
 
-	//audioManager->
-
 	//----------------------------------INPUT----------------------------------
 	// Setup input
 	mInputManager = InputManager::getSingletonPtr();
@@ -120,8 +122,10 @@ bool WEManager::update() {
 
 	//------Renderizado------
 	renderSystem->draw(0);
-	
 
+	// Reset
+	if (rst) reset();
+	
 	//Cerrar la aplicacion
 	if (end) {
 		windowRenderer->windowClosed();
@@ -136,7 +140,7 @@ void WEManager::close() {
 }
 
 //---------------------------------Escena----------------------------------------------------
-void WEManager::generateScene(std::string sceneName, std::string entidades, Vector4 VpColor) {
+void WEManager::generateScene(std::string sceneName, Vector4 VpColor) {
 	// Creamos la escena
 	Scene* mScene = new Scene(sceneName, this);
 	renderSystem->createScene(mScene->getID());
@@ -147,7 +151,7 @@ void WEManager::generateScene(std::string sceneName, std::string entidades, Vect
 
 	// Leemos las entidades y las guardamos para generarlas
 	std::vector<std::vector<std::string>> map = dM->ReadMap(sceneName + ".txt");
-	json prefabs = dM->ReadJson(entidades + ".json");
+	json prefabs = dM->ReadJson(sceneName + ".json");
 	prefabs = prefabs.at(prefabs.begin().key());
 
 	// Añadimos los componentes a la escena
@@ -200,6 +204,17 @@ void WEManager::popScene() {
 	send(this, msg::SceneStart(msg::None, msg::Broadcast));
 }
 
+void WEManager::restart() {
+	rst = true;
+}
+
+void WEManager::reset() {
+	rst = false;
+	std::string name = escenas.top()->getID();
+	popScene();
+	generateScene(name, Vector4{ 0.2, 0.0, 0.2, 0.8 });
+}
+
 //---------------------------CONTROL DE CAMARA-----------------------------------------
 void WEManager::addCameraToScene(Vector4 colors) {
 	renderSystem->addCamera();
@@ -231,7 +246,6 @@ Ogre::Camera* WEManager::getCam() {
 	return renderSystem->getCamera();
 }
 
-
 //----------------------Input-------------------
 void WEManager::addKeyListener(InputKeyListener* iL, std::string name) {
 	mInputManager->addKeyListener(iL, name);
@@ -254,25 +268,13 @@ AudioManager* WEManager::getAudioManager() {
 	return audioManager;
 }
 
-/*
-void WEManager::playSound(std::string name) {
-	audioManager->play("audio1");
-}
-/*
-void WEManager::createSound(std::string name) {
-	audioManager->createSound("audio1", "menumusic.wav");
-}
-
-void WEManager::stopSound(std::string name) {
-	//audioManager->stop();
-	//audioManager->pause();
-	//audioManager->
-}
-*/
-
 //Luz
 void WEManager::setLight(float r, float g, float b, float a) {
 	renderSystem->setAmbientLight(Ogre::ColourValue(r, g, b, a));
+}
+
+RenderSystem* WEManager::getRenderSystem() {
+	return renderSystem;
 }
 
 //---------------------------------------Mensajes--------------------------------------

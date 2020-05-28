@@ -31,12 +31,12 @@ void Game::GenerateMainScene() {
 	changeScene = false;
 	_weM->setGUIVisible(false);
 	// Generamos la escena
-	_weM->generateScene("nivel1", "nivel1", Vector4{ 0.2, 0.0, 0.2, 0.8 });
+	_weM->generateScene("nivel1", Vector4{ 0.2, 0.0, 0.2, 0.8 });
 }
 
 void Game::GenerateMenuScene() {
 	changeScene = false;
-	_weM->generateScene("menu", "menu", Vector4{ 0.2, 0.0, 0.2, 0.8 });
+	_weM->generateScene("menu", Vector4{ 0.2, 0.0, 0.2, 0.8 });
 	_weM->setGUIVisible(true);
 	_weM->loadLayout("EmptyWindow");
 

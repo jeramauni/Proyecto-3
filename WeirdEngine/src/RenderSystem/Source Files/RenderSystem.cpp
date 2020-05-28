@@ -4,6 +4,8 @@
 #include <Utilities/Vector3.h>
 #include <Utilities/Vector4.h>
 
+#include <iostream>
+
 //Cegui
 #include "GUI.h"
 #include <OIS.h>
@@ -105,8 +107,7 @@ void RenderSystem::clearScene() {
 	mScnMgr->destroyAllEntities();
 }
 
-Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular)
-{
+Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular) {
 	Ogre::Light* light = mScnMgr->createLight(name);
 	light->setType(Ogre::Light::LightTypes(type));
 	light->setDiffuseColour(diffuse);
@@ -119,14 +120,16 @@ Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Og
 }
 
 // Luz ambiente a una escena
-void RenderSystem::setAmbientLight(Ogre::ColourValue color)
-{
+void RenderSystem::setAmbientLight(Ogre::ColourValue color) {
 	mScnMgr->setAmbientLight(color);
 }
 
-void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance)
-{
+void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance) {
 	mScnMgr->setSkyBox(true, matName, distance);
+}
+
+void RenderSystem::setSkyPlane(std::string matName, Ogre::Real scale, Ogre::Real tiling, Ogre::Real xseg, Ogre::Real yseg) {
+	mScnMgr->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -20), matName, scale, tiling, true, 1.0, xseg, yseg);
 }
 
 std::string RenderSystem::getCurrentScene()
@@ -285,15 +288,24 @@ void RenderSystem::addCameraToEnt(std::string entName) {
 	Ogre::Camera* mCamera = nullptr;
 	mCamera = mScnMgr->createCamera(cName);
 
-	Ogre::SceneNode* mCamNode = nullptr;
-	mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);
-	mCamNode->attachObject(mCamera);
+	Ogre::SceneNode* mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);;
 
-	Ogre::Vector3 pos = mCamNode->getPosition();
+	// HUESOS COUT
+	/*auto skeleton = getEntityByName(entName)->getSkeleton();
+	auto bones = skeleton->getBones();
+	for (auto i = 0; i < bones.size(); i++) {
+		std::cout << bones[i]->getName() << "\n";
+	}*/
 
-	//getEntityByName(entName)->size
-
-	mCamNode->setPosition(pos.x, pos.y + 200, pos.z - 15);
+	try {
+		getEntityByName(entName)->getSkeleton()->getBone("Head");
+		mCamNode->setPosition(getEntityByName(entName)->getSkeleton()->getBone("Head")->getPosition());
+		getEntityByName(entName)->getSkeleton()->getBone("Head")->addChild(mCamNode);
+		mCamNode->attachObject(mCamera);
+	}
+	catch (const std::exception & e) {
+		mCamNode->attachObject(mCamera);
+	}
 
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
 	mCamera->setNearClipDistance(3.0f);

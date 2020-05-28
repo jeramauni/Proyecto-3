@@ -5,6 +5,7 @@
 #include <string>
 
 class Container;
+class RenderSystem;
 
 class AttachCameraToEntComponent : public Component {
 public:
@@ -21,5 +22,5 @@ public:
 
 
 private:
-
+	RenderSystem* rSystem;
 };
