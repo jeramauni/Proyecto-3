@@ -61,6 +61,12 @@ namespace msg {
 			Message(msg::SCENE_START, sender, dest) {}
 	};
 
+	struct Hability : public msg::Message {
+		Hability(msg::ObjectId sender, msg::ObjectId dest, std::string type) :
+			Message(msg::HABILITY, sender, dest), _type(type) {}
+		std::string _type;
+	};
+
 	struct PlaySound : public msg::Message {
 		PlaySound(msg::ObjectId sender, msg::ObjectId dest, std::string name) :
 			Message(msg::PLAY_SOUND, sender, dest), _name(name) {}
