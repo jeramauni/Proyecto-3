@@ -15,6 +15,27 @@ void PhysicsEngine::initObjects()
 	dynamicsWorld = new btDiscreteDynamicsWorld(dispatcher, overlappingPairCache, solver, collisionConfiguration);
 }
 
+void PhysicsEngine::reset()
+{
+	for (std::list<bulletObject>::const_iterator it = bulletOBs.begin(); it != bulletOBs.end(); ++it)
+	{
+		dynamicsWorld->removeRigidBody((*it).body);
+
+		// reset ball
+		(*it).body->clearForces();
+		btVector3 zeroVector(0, 0, 0);
+		(*it).body->setLinearVelocity(zeroVector);
+		(*it).body->setAngularVelocity(zeroVector);
+		(*it).body->setWorldTransform((*it).startingTransform);
+
+		dynamicsWorld->addRigidBody((*it).body);
+	}
+	secondsPassed = 0;
+	startTime = 0;
+	frames = 0;
+	FPS = 60.0f;
+}
+
 
 int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool gravity, std::string name)
 {
@@ -43,7 +64,7 @@ int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool 
 	btVector3 localInertia(0, 0, 0);
 	startTransform.setOrigin(btVector3(newNode->getPosition().x, newNode->getPosition().y, newNode->getPosition().z));
 	newRigidShape->calculateLocalInertia(mass, localInertia);
-
+	newBO.startingTransform = startTransform;
 	//actually contruvc the body and add it to the dynamics world
 	btDefaultMotionState* myMotionState;
 	//btRigidBody* body;
@@ -76,7 +97,8 @@ void PhysicsEngine::addForce(int id, btVector3 fDirection)
 {
 	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
 	btRigidBody* body = btRigidBody::upcast(obj);
-	body->applyCentralImpulse(fDirection);
+	std::cout << "X: " << fDirection.getX() << "Y: " << fDirection.getY() << "Z: " << fDirection.getZ() << "\n";
+	body->applyCentralForce(fDirection);
 }
 
 void PhysicsEngine::changeVelocity(int id, btVector3 vDirection)

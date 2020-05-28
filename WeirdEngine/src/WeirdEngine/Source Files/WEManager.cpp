@@ -211,8 +211,9 @@ void WEManager::restart() {
 void WEManager::reset() {
 	rst = false;
 	std::string name = escenas.top()->getID();
-	popScene();
-	generateScene(name, Vector4{ 0.2, 0.0, 0.2, 0.8 });
+	//popScene();
+	py->reset();
+	//generateScene(name, Vector4{ 0.2, 0.0, 0.2, 0.8 });
 }
 
 //---------------------------CONTROL DE CAMARA-----------------------------------------

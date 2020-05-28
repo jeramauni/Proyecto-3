@@ -85,7 +85,7 @@ void PhysicsComponent::move(Vector3 dir)
 	_py->changeVelocity(id, btVector3(dir.x, dir.y, dir.z));
 }
 
-void PhysicsComponent::jump(Vector3 dir)
+void PhysicsComponent::push(Vector3 dir)
 {
 	_py->addForce(id, btVector3(dir.x, dir.y, dir.z));
 }
