@@ -131,6 +131,11 @@ void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance)
 	mScnMgr->setSkyBox(true, matName, distance);
 }
 
+void RenderSystem::setSkyPlane(std::string matName, Ogre::Real scale, Ogre::Real tiling, Ogre::Real xseg, Ogre::Real yseg)
+{
+	mScnMgr->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -20), matName, scale, tiling, true, 1.0, xseg, yseg);
+}
+
 std::string RenderSystem::getCurrentScene()
 {
 	return currentScene;
