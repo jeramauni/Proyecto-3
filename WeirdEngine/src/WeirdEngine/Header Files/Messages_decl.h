@@ -20,6 +20,7 @@ namespace msg {
 		CLOSE_WIN,
 		COLISION,
 		SWITCH_COMP,
+		HABILITY,
 		PLAY_SOUND
 		//...
 	};

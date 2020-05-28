@@ -258,6 +258,9 @@
           "id": "AttachCameraToEnt"
         },
         {
+          "id": "PlayerDash"
+        },
+        {
           "id": "Sound",
           "name": "jumpSound",
           "filename": "jump.wav",

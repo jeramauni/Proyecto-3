@@ -19,21 +19,13 @@ void PhysicsEngine::reset()
 {
 	for (std::list<bulletObject>::const_iterator it = bulletOBs.begin(); it != bulletOBs.end(); ++it)
 	{
-	//	dynamicsWorld->removeRigidBody((*it).body);
-
 		// reset ball
 		(*it).body->clearForces();
 		btVector3 zeroVector(0, 0, 0);
 		(*it).body->setLinearVelocity(zeroVector);
 		(*it).body->setAngularVelocity(zeroVector);
 		(*it).body->setWorldTransform((*it).startingTransform);
-
-	//	dynamicsWorld->addRigidBody((*it).body);
 	}
-	//secondsPassed = 0;
-	//startTime = 0;
-	//frames = 0;
-	//FPS = 60.0f;
 }
 
 
@@ -98,7 +90,8 @@ void PhysicsEngine::addForce(int id, btVector3 fDirection)
 	btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[id];
 	btRigidBody* body = btRigidBody::upcast(obj);
 	std::cout << "X: " << fDirection.getX() << "Y: " << fDirection.getY() << "Z: " << fDirection.getZ() << "\n";
-	body->applyCentralForce(fDirection);
+	if(fDirection.getY() > 0) body->applyCentralImpulse(fDirection);
+	else body->applyCentralForce(fDirection);
 }
 
 void PhysicsEngine::changeVelocity(int id, btVector3 vDirection)
@@ -254,8 +247,6 @@ bool PhysicsEngine::physicsLoop()
 					btQuaternion orientation = trans.getRotation();
 					Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
 					sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
-					//std::cout << sceneNode->getPosition() << "\n";
-					//sceneNode->setOrientation(Ogre::Quaternion(orientation.getW(), orientation.getX(), orientation.getY(), orientation.getZ()));
 				}
 			}
 		}
