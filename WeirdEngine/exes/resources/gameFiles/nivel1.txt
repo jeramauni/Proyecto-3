@@ -2,7 +2,7 @@
 //Los comentarios deben ir en su propia l�nea, nunca junto a c�digo �til
 //El espacio es el separador
 //N�mero de entidades en la Leyenda
-8
+9
 //Leyenda
 0 none
 1 Suelo1
@@ -12,6 +12,7 @@
 5 Slow2
 6 SlowBordes1
 7 ninja
+8 Shuriken
 //Correspondencia ejes de coordenadas (Columnas x Filas / Entre capas) (x-y-z)
 x z y
 //Distancia entre baldosas (Float)
@@ -37,7 +38,7 @@ x z y
 2 0 0 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2
-2 0 0 0 0 0 0 0 0 2
+2 0 0 0 0 0 0 8 0 2
 2 0 0 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2
 2 0 0 0 0 0 0 0 0 2

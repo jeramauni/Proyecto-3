@@ -103,6 +103,29 @@
         }
       ]
     },
+    {
+      "id": "Shuriken",
+      "components": [
+        {
+          "id": "Transform",
+          "positionT": "0/0/0",
+          "scaleT": "1/1/1",
+          "rotationT": "0/0/0"
+        },
+        {
+          "id": "Render",
+          "Mesh": "Shuriken"
+        },
+        {
+          "id": "Physics",
+          "gravity": "false",
+          "collSize": "50/20/50"
+        },
+        {
+          "id": "ShurikenSpin"
+        }
+      ]
+    },
 
     {
       "id": "Suelo1",
