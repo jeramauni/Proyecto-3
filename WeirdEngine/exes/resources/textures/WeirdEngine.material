@@ -73,7 +73,69 @@ material Suelo1 {
         }
     }
 }
+-----------------------------------------
 
+material Cube1 {
+    receive_shadows on
+    technique {
+        pass {
+            lighting on
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0       
+			
+			texture_unit {
+						tex_coord_set 0
+						texture Slow1.jpg
+						colour_op modulate
+				}
+
+        }
+    }
+}
+-----------------------------------------
+
+material Pasillo1 {
+    receive_shadows on
+    technique {
+        pass {
+            lighting on
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0       
+			
+			texture_unit {
+						tex_coord_set 0
+						texture SueloBordes1.jpg
+						colour_op modulate
+				}
+
+        }
+    }
+}
+-----------------------------------------
+
+material Pasillo2 {
+    receive_shadows on
+    technique {
+        pass {
+            lighting on
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0       
+			
+			texture_unit {
+						tex_coord_set 0
+						texture Suelo2.jpg
+						colour_op modulate
+				}
+
+        }
+    }
+}
 -----------------------------------------
 
 material Lava {
@@ -95,7 +157,32 @@ material Lava {
         }
     }
 }
+-----------------------------------------
 
+material mix
+ {
+    technique
+    {
+       pass
+       {
+          texture_unit
+          {
+            texture Material_grass.png
+          }
+          texture_unit
+          {
+             texture Material_alpha_blend.png
+             colour_op alpha_blend
+          }
+          texture_unit
+          {
+             texture Material_dirt.jpg
+             colour_op_ex blend_current_alpha src_texture src_current
+          }
+       }
+    }
+ }
+ 
 -----------------------------------------
 
 material Shuriken {
