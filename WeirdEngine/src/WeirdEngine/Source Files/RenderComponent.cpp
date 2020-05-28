@@ -21,7 +21,8 @@ RenderComponent::~RenderComponent() {
 
 void RenderComponent::Init(std::unordered_map<std::string, std::string>& param) {
 	_NameOfTheMesh = param.at("Mesh");
-	_parent->getRSystem()->addOgreEntity(_parent->GetEntityName(), _NameOfTheMesh);
+	_Material = param.at("Material");
+	_parent->getRSystem()->addOgreEntity(_parent->GetEntityName(), _NameOfTheMesh, _Material);
 	_parent->setPos(*static_cast<TransformComponent*>(_parent->getComponent("Transform"))->GetPosition());
 }
 

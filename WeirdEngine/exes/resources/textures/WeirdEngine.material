@@ -1,4 +1,4 @@
-material ninja
+material chrome
 {
 	technique {
 			pass {
@@ -54,7 +54,7 @@ material ParedAzul2
 
 -----------------------------------------
 
-material Suelo1 {
+material Azul {
     receive_shadows on
     technique {
         pass {
@@ -66,7 +66,7 @@ material Suelo1 {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture Suelo1.jpg
+						texture Azul.jpg
 						colour_op modulate
 				}
 
@@ -150,7 +150,7 @@ material Lava {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture Lava.jpg
+						texture Rojo.jpg
 						colour_op modulate
 				}
 
@@ -185,7 +185,7 @@ material mix
  
 -----------------------------------------
 
-material Shuriken {
+material metalico {
     receive_shadows on
     technique {
         pass {
@@ -206,7 +206,7 @@ material Shuriken {
 }
 -----------------------------------------
 
-material SueloBordes1 {
+material AzulBordes {
     receive_shadows on
     technique {
         pass {
@@ -218,7 +218,7 @@ material SueloBordes1 {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture SueloBordes1.jpg
+						texture AzulBordes.jpg
 						colour_op modulate
 				}
 
@@ -228,7 +228,7 @@ material SueloBordes1 {
 
 -----------------------------------------
 
-material Slow1 {
+material Verde1 {
     receive_shadows on
     technique {
         pass {
@@ -240,7 +240,7 @@ material Slow1 {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture Slow1.jpg
+						texture Verde1.jpg
 						colour_op modulate
 				}
 
@@ -250,7 +250,7 @@ material Slow1 {
 
 -----------------------------------------
 
-material Slow2 {
+material Verde2 {
     receive_shadows on
     technique {
         pass {
@@ -262,7 +262,7 @@ material Slow2 {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture Slow2.jpg
+						texture Verde2.jpg
 						colour_op modulate
 				}
 
@@ -272,7 +272,7 @@ material Slow2 {
 
 -----------------------------------------
 
-material SlowBordes1 {
+material Verde3 {
     receive_shadows on
     technique {
         pass {
@@ -284,7 +284,29 @@ material SlowBordes1 {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture SlowBordes1.jpg
+						texture Verde3.jpg
+						colour_op modulate
+				}
+
+        }
+    }
+}
+
+-----------------------------------------
+
+material SkyPlane1 {
+    receive_shadows on
+    technique {
+        pass {
+            lighting on
+            ambient 0.800000011920929 0.800000011920929 0.800000011920929 1.0
+            diffuse 0.6400000190734865 0.6400000190734865 0.6400000190734865 1.0
+            specular 0.5 0.5 0.5 1.0 12.5
+            emissive 0.0 0.0 0.0 1.0       
+			
+			texture_unit {
+						tex_coord_set 0
+						texture neonsky2.jpg
 						colour_op modulate
 				}
 

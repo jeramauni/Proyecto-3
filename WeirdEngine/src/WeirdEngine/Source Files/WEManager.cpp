@@ -209,11 +209,9 @@ void WEManager::restart() {
 }
 
 void WEManager::reset() {
+	switchComponentsState();
 	rst = false;
-	std::string name = escenas.top()->getID();
-	//popScene();
 	py->reset();
-	//generateScene(name, Vector4{ 0.2, 0.0, 0.2, 0.8 });
 }
 
 //---------------------------CONTROL DE CAMARA-----------------------------------------
@@ -276,6 +274,11 @@ void WEManager::setLight(float r, float g, float b, float a) {
 
 RenderSystem* WEManager::getRenderSystem() {
 	return renderSystem;
+}
+
+void WEManager::setSkyPlane(std::string name)
+{
+	renderSystem->setSkyBox(name, 600.0F);
 }
 
 //---------------------------------------Mensajes--------------------------------------
