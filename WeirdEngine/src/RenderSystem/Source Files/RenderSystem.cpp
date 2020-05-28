@@ -143,11 +143,11 @@ std::string RenderSystem::getCurrentScene()
 
 //------------------ENTIDADES-----------------
 //Añadir una entidad a la escena que este renderizandose
-Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_name) {
+Ogre::SceneNode* RenderSystem::addOgreEntity(std::string name, std::string mesh_name, std::string material) {
 	Ogre::Entity* mEntity = mScnMgr->createEntity(name, mesh_name + ".mesh");
 	Ogre::SceneNode* mNode = addEmpty(name);
 	
-	mEntity->setMaterialName(mesh_name);
+	mEntity->setMaterialName(material);
 
 	mNode->attachObject(mEntity);
 

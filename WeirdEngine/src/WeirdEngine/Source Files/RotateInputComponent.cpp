@@ -26,9 +26,8 @@ bool RotateInputListener::mouseMoved(const OIS::MouseEvent& me) {
 
 		Ogre::Real tnewpitch = tpitch + tpitchchange;
 		
-		if ((tnewpitch <= 0.4f) && (tnewpitch >= -0.6f)) {
-			
-			tpitchchange = tpitchchange * 2;
+		if ((tnewpitch <= 0.6f) && (tnewpitch >= -0.8f)) {
+			tpitchchange = tpitchchange * 4;
 			_ow->getWEManager()->getCam()->getParentNode()->pitch(Ogre::Degree(tpitchchange));
 		}
 		_ow->getNode()->yaw(Ogre::Degree(tyawchange));

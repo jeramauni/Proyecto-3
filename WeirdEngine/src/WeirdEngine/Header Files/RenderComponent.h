@@ -28,4 +28,5 @@ private:
 	Ogre::SceneNode* _node;
 
 	std::string _NameOfTheMesh;
+	std::string _Material;
 };

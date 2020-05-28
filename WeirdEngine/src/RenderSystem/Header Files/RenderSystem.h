@@ -59,7 +59,7 @@ public:
 
 	//-------------Entidades-----------------
 	// Adds an Ogre entity to the scene and returns the SceneNode containing it4
-	Ogre::SceneNode* addOgreEntity(std::string name, std::string mesh_name);
+	Ogre::SceneNode* addOgreEntity(std::string name, std::string mesh_name, std::string material);
 	
 	// Adds an empty node to the scene
 	Ogre::SceneNode* addEmpty(std::string name);

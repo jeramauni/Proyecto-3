@@ -19,34 +19,6 @@
     },
 
     {
-      "id": "testEntity",
-      "components": [
-        {
-          "id": "Test",
-          "float": "2.35",
-          "aint": "1/2/3",
-          "string": "test",
-          "bool": "false"
-        },
-        {
-          "id": "Transform",
-          "positionT": "0/0/0",
-          "scaleT": "1/1/1",
-          "rotationT": "0/0/0"
-        },
-        {
-          "id": "Render",
-          "Mesh": "ogrehead"
-        },
-        {
-          "id": "Physics",
-          "gravity": "true",
-          "collSize": "1/1/1"
-        }
-      ]
-    },
-
-    {
 
       "id": "plano",
       "components": [
@@ -58,7 +30,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "cube"
+          "Mesh": "cube",
+          "Material": "cube"
         },
         {
           "id": "Physics",
@@ -91,7 +64,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Lava"
+          "Mesh": "Lava",
+          "Material": "Rojo"
         },
         {
           "id": "Physics",
@@ -114,7 +88,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Shuriken"
+          "Mesh": "Shuriken",
+          "Material": "metalico"
         },
         {
           "id": "Physics",
@@ -138,7 +113,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Suelo1"
+          "Mesh": "Suelo1",
+          "Material": "Azul"
         },
         {
           "id": "Physics",
@@ -162,7 +138,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "SueloBordes1"
+          "Mesh": "SueloBordes1",
+          "Material": "AzulBordes"
         },
         {
           "id": "Physics",
@@ -186,7 +163,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Slow1"
+          "Mesh": "Slow1",
+          "Material": "Verde1"
         },
         {
           "id": "Physics",
@@ -210,7 +188,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Slow2"
+          "Mesh": "Slow2",
+          "Material": "Verde2"
         },
         {
           "id": "Physics",
@@ -234,7 +213,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "SlowBordes1"
+          "Mesh": "SlowBordes1",
+          "Material": "Verde3"
         },
         {
           "id": "Physics",
@@ -257,7 +237,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "ninja"
+          "Mesh": "ninja",
+          "Material": "chrome"
         },
         {
           "id": "Physics",
