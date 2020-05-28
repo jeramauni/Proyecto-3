@@ -48,7 +48,7 @@ public:
 
 	//---------Escena--------
 	// Crea la escena leyendo del archivo
-	void generateScene(std::string sceneName, std::string entidades, Vector4 VpColor);
+	void generateScene(std::string sceneName, Vector4 VpColor);
 	// Cambiar el estado de los componentes que lo requieran
 	void switchComponentsState();
 	// Añadir widgets a la escena activa
@@ -62,6 +62,9 @@ public:
 
 	//Luz
 	void setLight(float r = 1.0f, float g = 1.0f, float b = 1.0f, float a = 1.0f);
+
+	//RenderSystem
+	RenderSystem* getRenderSystem();
 
 	//Metodos para la camara
 	void addCameraToScene(Vector4 colors);
@@ -90,9 +93,12 @@ public:
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
 
-	//Metodos para la pila
+	// Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
+
+	// Reset de la escena
+	void restart();
 
 	// Cerrado del juego
 	static void close();
@@ -122,6 +128,10 @@ private:
 	Vector3 setProperPosition(int row, int column, int layer, char xyz[3], float size_tiles, float size_layer);
 	void generateEntities(Scene* scene, std::vector<std::vector<std::string>> map, json prefabs);
 	void addComponentsToScene(Scene* scene, json prefabs);
+
+	// Reset de la escena
+	void reset();
+	bool rst;
 
 	//cegui en la escena
 	void setCeguiLayout(std::string layoutName);

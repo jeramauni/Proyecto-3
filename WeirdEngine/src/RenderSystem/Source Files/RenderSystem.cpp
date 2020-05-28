@@ -4,6 +4,8 @@
 #include <Utilities/Vector3.h>
 #include <Utilities/Vector4.h>
 
+#include <iostream>
+
 //Cegui
 #include "GUI.h"
 #include <OIS.h>
@@ -286,14 +288,25 @@ void RenderSystem::addCameraToEnt(std::string entName) {
 	mCamera = mScnMgr->createCamera(cName);
 
 	Ogre::SceneNode* mCamNode = nullptr;
+
+	// HUESOS COUT
+	/*auto skeleton = getEntityByName(entName)->getSkeleton();
+	auto bones = skeleton->getBones();
+	for (auto i = 0; i < bones.size(); i++) {
+		std::cout << bones[i]->getName() << "\n";
+	}*/
+
 	mCamNode = getEntityByName(entName)->getParentSceneNode()->createChildSceneNode("n" + cName);
-	mCamNode->attachObject(mCamera);
-
-	Ogre::Vector3 pos = mCamNode->getPosition();
-
-	//getEntityByName(entName)->size
-
-	mCamNode->setPosition(pos.x, pos.y + 200, pos.z - 15);
+	try {
+		getEntityByName(entName)->getSkeleton()->getBone("Head");
+		mCamNode->setPosition(getEntityByName(entName)->getSkeleton()->getBone("Head")->getPosition());
+		getEntityByName(entName)->getSkeleton()->getBone("Head")->addChild(mCamNode);
+		mCamNode->attachObject(mCamera);
+	}
+	catch (const std::exception& e)
+	{
+		mCamNode->attachObject(mCamera);
+	}
 
 	//If (far/near)>2000 then you will likely get 'z fighting' issues.
 	mCamera->setNearClipDistance(3.0f);

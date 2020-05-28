@@ -1,9 +1,11 @@
 #include "AttachCameraToEntComponent.h"
 
+#include <RenderSystem.h>
+
 #include "messages_defs.h"
 #include "Utilities\Vector4.h"
 
-#include <Ogre.h>
+//#include <Ogre.h>
 #include "ComponentFactory.h"
 
 //CREATE_REGISTER(AttachCameraToEnt);
@@ -11,9 +13,12 @@
 AttachCameraToEntComponent::AttachCameraToEntComponent(Container* e) {
 	_name = "AttachCameraToEnt";
 	_parent = e;
-	Ogre::Camera* mCam = e->getWEManager()->getCam();
+	rSystem = e->getWEManager()->getRenderSystem();
 
-	e->getWEManager()->addCameraToEntity(e->GetEntityName(), Vector4{ 0.2, 0.0, 0.2, 0.8 });
+	rSystem->addCameraToEnt(e->GetEntityName());
+	Vector4 c = { 0.2, 0.0, 0.2, 0.8 };
+	Ogre::ColourValue color = Ogre::ColourValue(c.x, c.y, c.z, c.w);
+	rSystem->addVpToCam(color);
 }
 
 AttachCameraToEntComponent::~AttachCameraToEntComponent() {
