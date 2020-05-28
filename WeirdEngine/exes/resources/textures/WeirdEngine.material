@@ -74,6 +74,68 @@ material Azul {
     }
 }
 
+------------------------------------------------------
+
+material mezclaAzulRojo
+ {
+    technique
+    {
+       pass
+       {
+          texture_unit
+          {
+            texture Rojo.jpg
+          }
+          texture_unit
+          {
+             texture Material_alpha_blend.png             
+             colour_op alpha_blend
+          }
+          texture_unit
+          {
+             texture Azul.jpg
+             colour_op_ex blend_current_alpha src_texture src_current
+          }
+       }
+    }
+ }
+
+-----------------------------------------
+
+material rock
+    {
+        technique
+        {
+            pass
+            {
+                ambient 1.0 1.0 1.0
+                diffuse 1.0 1.0 1.0
+                specular 1.0 1.0 1.0 9800.0
+                emissive 0.0 0.0 0.0 1
+                texture_unit
+                {
+                    // the detail texture
+                    texture rock.jpg
+                    // UV set for the detail map (if you have multi-UV)
+                    tex_coord_set 0
+                    colour_op modulate
+                }
+            }
+            pass
+            {
+                scene_blend modulate
+                texture_unit
+                {
+                    // the lightmap texture
+                    lightmap.jpg
+                    // UV set for the lightmap (if you have multi-UV)
+                    tex_coord_set 0
+                    colour_op modulate
+                }
+            }
+        }
+    }
+
 -----------------------------------------
 
 material Rojo {
