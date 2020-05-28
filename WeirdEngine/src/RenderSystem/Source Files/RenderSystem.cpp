@@ -4,6 +4,8 @@
 #include <Utilities/Vector3.h>
 #include <Utilities/Vector4.h>
 
+#include <iostream>
+
 //Cegui
 #include "GUI.h"
 #include <OIS.h>
@@ -105,8 +107,7 @@ void RenderSystem::clearScene() {
 	mScnMgr->destroyAllEntities();
 }
 
-Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular)
-{
+Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Ogre::ColourValue diffuse, Ogre::ColourValue specular) {
 	Ogre::Light* light = mScnMgr->createLight(name);
 	light->setType(Ogre::Light::LightTypes(type));
 	light->setDiffuseColour(diffuse);
@@ -119,14 +120,16 @@ Ogre::SceneNode* RenderSystem::createLight(std::string name, LightTypes type, Og
 }
 
 // Luz ambiente a una escena
-void RenderSystem::setAmbientLight(Ogre::ColourValue color)
-{
+void RenderSystem::setAmbientLight(Ogre::ColourValue color) {
 	mScnMgr->setAmbientLight(color);
 }
 
-void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance)
-{
+void RenderSystem::setSkyBox(std::string matName, Ogre::Real distance) {
 	mScnMgr->setSkyBox(true, matName, distance);
+}
+
+void RenderSystem::setSkyPlane(std::string matName, Ogre::Real scale, Ogre::Real tiling, Ogre::Real xseg, Ogre::Real yseg) {
+	mScnMgr->setSkyPlane(true, Ogre::Plane(Ogre::Vector3::UNIT_Z, -20), matName, scale, tiling, true, 1.0, xseg, yseg);
 }
 
 std::string RenderSystem::getCurrentScene()

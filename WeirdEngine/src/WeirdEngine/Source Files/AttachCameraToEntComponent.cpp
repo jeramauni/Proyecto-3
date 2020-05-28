@@ -12,7 +12,6 @@
 AttachCameraToEntComponent::AttachCameraToEntComponent(Container* e) {
 	_name = "AttachCameraToEnt";
 	_parent = e;
-	
 	rSystem = e->getWEManager()->getRenderSystem();
 
 	rSystem->addCameraToEnt(e->GetEntityName());

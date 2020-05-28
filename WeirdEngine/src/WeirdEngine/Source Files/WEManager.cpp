@@ -1,6 +1,7 @@
 #include "WEManager.h"
 
 #include <iostream>
+#include <string>
 //Entity
 #include <Container.h>
 #include "Component.h"
@@ -59,6 +60,7 @@ WEManager::WEManager() {
 	mInputManager = nullptr;
 	audioManager = nullptr;
 	
+	rst = false;
 	end = false;
 }
 
@@ -121,6 +123,7 @@ bool WEManager::update() {
 	//------Renderizado------
 	renderSystem->draw(0);
 
+	// Reset
 	if (rst) reset();
 	
 	//Cerrar la aplicacion
@@ -203,6 +206,13 @@ void WEManager::popScene() {
 
 void WEManager::restart() {
 	rst = true;
+}
+
+void WEManager::reset() {
+	rst = false;
+	std::string name = escenas.top()->getID();
+	popScene();
+	generateScene(name, Vector4{ 0.2, 0.0, 0.2, 0.8 });
 }
 
 //---------------------------CONTROL DE CAMARA-----------------------------------------
@@ -369,13 +379,6 @@ void WEManager::addComponentsToScene(Scene* scene, json prefabs) {
 			std::cout << "WARNING!! -------> " /*+ std::string(prefabs[0].at("components")[j].at("id")) +*/ " no esta declarado en las factorias\n";
 		}
 	}
-}
-
-void WEManager::reset() {
-	rst = false;
-	std::string name = escenas.top()->getID();
-	popScene();
-	generateScene(name, Vector4{ 0.2, 0.0, 0.2, 0.8 });
 }
 
 Container* WEManager::CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_) {

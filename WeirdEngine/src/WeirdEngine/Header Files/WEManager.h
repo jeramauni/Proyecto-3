@@ -93,10 +93,11 @@ public:
 	void send(const void* senderObj, const msg::Message& msg);
 	void receive(const void* senderObj, const msg::Message& msg);
 
-	//Metodos para la pila
+	// Metodos para la pila
 	void pushScene(Scene* newScene);
 	void popScene();
 
+	// Reset de la escena
 	void restart();
 
 	// Cerrado del juego
