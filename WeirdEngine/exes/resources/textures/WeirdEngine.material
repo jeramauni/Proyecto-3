@@ -143,7 +143,7 @@ material mix
  
 -----------------------------------------
 
-material metalico {
+material golden {
     receive_shadows on
     technique {
         pass {
@@ -155,7 +155,7 @@ material metalico {
 			
 			texture_unit {
 						tex_coord_set 0
-						texture metal.jpg
+						texture Golden.jpg
 						colour_op modulate
 				}
 
