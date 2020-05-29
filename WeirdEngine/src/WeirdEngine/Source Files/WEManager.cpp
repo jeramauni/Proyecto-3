@@ -278,7 +278,7 @@ RenderSystem* WEManager::getRenderSystem() {
 
 void WEManager::setSkyPlane(std::string name)
 {
-	renderSystem->setSkyBox(name, 2000.0F);
+	renderSystem->setSkyBox(name, 2500.0F);
 }
 
 //---------------------------------------Mensajes--------------------------------------

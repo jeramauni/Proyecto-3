@@ -30,6 +30,7 @@ void RenderComponent::Init(std::unordered_map<std::string, std::string>& param) 
 
 	_parent->getNode()->pitch(Ogre::Radian(tComp->GetRotation()->x * 3.14 / 180));
 	_parent->getNode()->yaw(Ogre::Radian(tComp->GetRotation()->y * 3.14 / 180));
+	_parent->getNode()->roll(Ogre::Radian(tComp->GetRotation()->z * 3.14 / 180));
 }
 
 std::string RenderComponent::getMeshName() {

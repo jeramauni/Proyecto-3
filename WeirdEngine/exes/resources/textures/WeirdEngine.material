@@ -272,6 +272,32 @@ material Verde3 {
 
 -----------------------------------------
 
+material Lineas {
+     technique
+    {
+       pass
+       {
+          texture_unit
+          {
+            texture verdeBrillante.jpg
+          }
+          texture_unit
+          {
+             texture lineas.png             
+             colour_op alpha_blend
+          }
+          texture_unit
+          {
+             texture negro.jpg
+             colour_op_ex blend_current_alpha src_texture src_current
+          }
+       }
+    }
+}
+
+
+-----------------------------------------
+
 material SkyPlane1 {
     receive_shadows on
     technique {
