@@ -23,7 +23,13 @@ void RenderComponent::Init(std::unordered_map<std::string, std::string>& param) 
 	_NameOfTheMesh = param.at("Mesh");
 	_Material = param.at("Material");
 	_parent->getRSystem()->addOgreEntity(_parent->GetEntityName(), _NameOfTheMesh, _Material);
-	_parent->setPos(*static_cast<TransformComponent*>(_parent->getComponent("Transform"))->GetPosition());
+
+	// Le cambiamos al nodo la posicion segun el transform
+	TransformComponent* tComp = static_cast<TransformComponent*>(_parent->getComponent("Transform"));
+	_parent->setPos(*tComp->GetPosition());
+
+	_parent->getNode()->pitch(Ogre::Radian(tComp->GetRotation()->x * 3.14 / 180));
+	_parent->getNode()->yaw(Ogre::Radian(tComp->GetRotation()->y * 3.14 / 180));
 }
 
 std::string RenderComponent::getMeshName() {

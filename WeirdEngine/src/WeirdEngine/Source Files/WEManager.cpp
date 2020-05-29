@@ -278,7 +278,7 @@ RenderSystem* WEManager::getRenderSystem() {
 
 void WEManager::setSkyPlane(std::string name)
 {
-	renderSystem->setSkyBox(name, 600.0F);
+	renderSystem->setSkyBox(name, 2000.0F);
 }
 
 //---------------------------------------Mensajes--------------------------------------
@@ -351,7 +351,7 @@ void WEManager::generateEntities(Scene* scene, std::vector<std::vector<std::stri
 			else		//If not we get the next id..
 			{
 				id = std::stoi(*column);
-				if (id != -1)
+				if (id != 0)
 				{
 					//...set the next position..
 					currentpos_ = setProperPosition(ct - 1, cct, layer, xyz, s, slyr);

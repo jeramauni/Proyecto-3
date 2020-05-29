@@ -16,30 +16,7 @@
           "playEvent": "0"
         }
       ]
-    },
-
-    {
-
-      "id": "plano",
-      "components": [
-        {
-          "id": "Transform",
-          "positionT": "0/0/0",
-          "scaleT": "1/1/1",
-          "rotationT": "0/0/0"
-        },
-        {
-          "id": "Render",
-          "Mesh": "cube",
-          "Material": "cube"
-        },
-        {
-          "id": "Physics",
-          "gravity": "false",
-          "collSize": "100/50/100"
-        }
-      ]
-    },
+    },   
 
     {
       "id": "none",
@@ -104,56 +81,6 @@
     },
 
     {
-      "id": "cube",
-      "components": [
-        {
-          "id": "Transform",
-          "positionT": "0/0/0",
-          "scaleT": "1/1/1",
-          "rotationT": "0/0/0"
-        },
-        {
-          "id": "Render",
-          "Mesh": "cube",
-          "Material": "mezclaAzulRojo"
-        },
-        {
-          "id": "Physics",
-          "gravity": "false",
-          "collSize": "100/100/100"
-        },
-        {
-          "id": "FloorEffect"
-        }
-      ]
-    },
-
-    {
-      "id": "cube2",
-      "components": [
-        {
-          "id": "Transform",
-          "positionT": "0/0/0",
-          "scaleT": "1/1/1",
-          "rotationT": "0/0/0"
-        },
-        {
-          "id": "Render",
-          "Mesh": "cube",
-          "Material": "rock"
-        },
-        {
-          "id": "Physics",
-          "gravity": "false",
-          "collSize": "100/100/100"
-        },
-        {
-          "id": "FloorEffect"
-        }
-      ]
-    },
-
-    {
       "id": "Suelo1",
       "components": [
         {
@@ -189,7 +116,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Cube1"
+          "Mesh": "Cube1",
+          "Material": "Cube1"
         },
         {
           "id": "Physics",
@@ -213,7 +141,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Pasillo1"
+          "Mesh": "Pasillo1",
+          "Material": "Azul"
         },
         {
           "id": "Physics",
@@ -237,7 +166,8 @@
         },
         {
           "id": "Render",
-          "Mesh": "Pasillo2"
+          "Mesh": "Pasillo2",
+          "Material": "Rosita"
         },
         {
           "id": "Physics",
@@ -366,7 +296,7 @@
         {
           "id": "Physics",
           "gravity": "true",
-          "collSize": "10/5/10"
+          "collSize": "50/10/50"
         },
         {
           "id": "PlayerMove"
