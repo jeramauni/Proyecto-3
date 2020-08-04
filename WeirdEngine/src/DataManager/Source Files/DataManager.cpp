@@ -14,7 +14,7 @@ json DataManager::ReadJson(const std::string& file_name) {
 	std::ifstream input;
 	//AUX
 	std::string s;
-	s = "resources/gameFiles/" + file_name;
+	s = relativeResourcesPath+"gameFiles/" + file_name;
 	input.open(s);
 
 	input >> j;
@@ -29,7 +29,7 @@ std::vector<std::vector<std::string>> DataManager::ReadMap(const std::string& fi
 	//AUX
 	std::string s;
 
-	s = "resources/gameFiles/" + file_name;
+	s = relativeResourcesPath+ "gameFiles/" + file_name;
 	input.open(s);
 	s.clear();
 

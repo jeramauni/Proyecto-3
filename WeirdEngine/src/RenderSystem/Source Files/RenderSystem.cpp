@@ -71,7 +71,7 @@ void RenderSystem::materialGeneration(std::string nameOfResourceGroup) {
 	mRgMgr.createResourceGroup(nameOfResourceGroup);
 
 	// Textures directory path
-	std::string textureDirectory = "resources/textures";
+	std::string textureDirectory = relativeResourcesPath+ "textures";
 	mRgMgr.addResourceLocation(textureDirectory, "FileSystem", nameOfResourceGroup);
 
 	// Initialise all resources

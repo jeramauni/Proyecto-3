@@ -50,6 +50,7 @@ private:
 
 	//Cegui (UI)
 	GUI* guiManager;
+	std::string relativeResourcesPath = "../../../resources/";
 
 public:
 	static bool initSingleton();
