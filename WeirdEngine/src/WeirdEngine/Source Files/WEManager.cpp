@@ -82,7 +82,7 @@ void WEManager::Init() {
 	dM = new DataManager();
 
 	//Inicializar physics
-	py = new PhysicsEngine();
+	py = new PhysicsEngine(timeDeltaTimeVar);
 	py->initObjects();
 
 
@@ -123,6 +123,11 @@ bool WEManager::update() {
 	//------Renderizado------
 	renderSystem->draw(0);
 
+	//Calculo FrameRate
+	float actualTime = SDL_GetTicks();
+	timeDeltaTimeVar = actualTime - startTime;
+	startTime = actualTime;
+
 	// Reset
 	if (rst) reset();
 	
@@ -137,6 +142,16 @@ bool WEManager::update() {
 
 void WEManager::close() { 
 	end = true;
+}
+
+float WEManager::timeDeltaTime()
+{
+	return timeDeltaTimeVar;
+}
+
+float WEManager::actualFrameRate()
+{
+	return 1000 / timeDeltaTimeVar;
 }
 
 //---------------------------------Escena----------------------------------------------------

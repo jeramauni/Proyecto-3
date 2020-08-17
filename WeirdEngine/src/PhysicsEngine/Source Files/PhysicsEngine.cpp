@@ -213,28 +213,10 @@ btVector3 PhysicsEngine::position(int id)
 }
 
 
-bool PhysicsEngine::physicsLoop()
+bool PhysicsEngine::physicsLoop(float frameRate)
 {
 	if (this != NULL) {
-		frames++;
-
-		if(knowActualFPS)
-		{
-			startTime = clock(); //Start timer
-			knowActualFPS = false;
-		}
-		else
-		{
-			secondsPassed = (clock() - startTime);
-			if (secondsPassed/1000 >= 1.0f)
-			{
-				secondsPassed = 0;
-				knowActualFPS = true;
-				FPS = frames;
-				frames = 0;
-			}
-		}
-		dynamicsWorld->stepSimulation(1.0f/(FPS / 10.0f) , 0);
+		dynamicsWorld->stepSimulation(frameRate);
 		for (int i = 0; i < collisionShapes.size(); i++) {
 			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
 			btRigidBody* body = btRigidBody::upcast(obj);
@@ -250,7 +232,6 @@ bool PhysicsEngine::physicsLoop()
 				}
 			}
 		}
-
 	}
 	return true;
 }

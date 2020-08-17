@@ -37,7 +37,7 @@ public:
 	void changeVelocity(int id, btVector3 vDirection);
 	void checkColliding(int id);
 	void setPosition(int id, btVector3 newPosition);
-	bool physicsLoop();
+	bool physicsLoop(float frameRate);
 
 	bool isColliding(int id);
 	btVector3 linearVelocity(int id);

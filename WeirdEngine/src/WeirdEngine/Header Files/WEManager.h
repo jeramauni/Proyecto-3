@@ -106,6 +106,10 @@ public:
 	// Fin de la app
 	static bool end;
 
+	//TimeDeltaTime
+	float timeDeltaTime();
+	float actualFrameRate();
+
 private:
 	//-----------SISTEMAS------------
 	//Physics
@@ -123,6 +127,10 @@ private:
 
 	//Pila de escenas
 	std::stack<Scene*> escenas;
+
+	//TimeDeltaTime
+	float timeDeltaTimeVar = 0.16;
+	float startTime = 0;
 
 	//Creacion de escena
 	Container* CreateEntity(std::string& id, json prefabs, uint32_t n_entities, Vector3 position_);
