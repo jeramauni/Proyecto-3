@@ -201,44 +201,23 @@ btVector3 PhysicsEngine::position(int id)
 }
 
 
-bool PhysicsEngine::physicsLoop()
+bool PhysicsEngine::physicsLoop(float frameRate)
 {
-	if (this != NULL) {
-		frames++;
+	dynamicsWorld->stepSimulation(frameRate);
+	for (int i = 0; i < collisionShapes.size(); i++) {
+		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
+		btRigidBody* body = btRigidBody::upcast(obj);
 
-		if(knowActualFPS)
-		{
-			startTime = clock(); //Start timer
-			knowActualFPS = false;
-		}
-		else
-		{
-			secondsPassed = (clock() - startTime);
-			if (secondsPassed/1000 >= 1.0f)
-			{
-				secondsPassed = 0;
-				knowActualFPS = true;
-				FPS = frames;
-				frames = 0;
+		if (body && body->getMotionState()) {
+			btTransform trans;
+			body->getMotionState()->getWorldTransform(trans);
+			void* userPointer = body->getUserPointer();
+			if (userPointer) {
+				btQuaternion orientation = trans.getRotation();
+				Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
+				sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
 			}
 		}
-		dynamicsWorld->stepSimulation(1.0f/(FPS / 10.0f) , 0);
-		for (int i = 0; i < collisionShapes.size(); i++) {
-			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
-			btRigidBody* body = btRigidBody::upcast(obj);
-
-			if (body && body->getMotionState()) {
-				btTransform trans;
-				body->getMotionState()->getWorldTransform(trans);
-				void* userPointer = body->getUserPointer();
-				if (userPointer) {
-					btQuaternion orientation = trans.getRotation();
-					Ogre::SceneNode* sceneNode = static_cast<Ogre::SceneNode*>(userPointer);
-					sceneNode->setPosition(Ogre::Vector3(trans.getOrigin().getX(), trans.getOrigin().getY(), trans.getOrigin().getZ()));
-				}
-			}
-		}
-
 	}
 	return true;
 }
