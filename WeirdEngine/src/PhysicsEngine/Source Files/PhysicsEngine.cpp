@@ -59,26 +59,14 @@ int PhysicsEngine::basicMesh(Ogre::SceneNode* newNode, btVector3 collSize, bool 
 	newBO.startingTransform = startTransform;
 	//actually contruvc the body and add it to the dynamics world
 	btDefaultMotionState* myMotionState;
-	//btRigidBody* body;
-	if (gravity) {
-		myMotionState = new btDefaultMotionState(startTransform);
-		btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, newRigidShape, localInertia);
-		newBO.body = new btRigidBody(rbInfo);
-		newBO.body->setRestitution(1);
-		newBO.body->setUserPointer(newNode);
+	myMotionState = new btDefaultMotionState(startTransform);
 
-		dynamicsWorld->addRigidBody(newBO.body);
-	}
-	else {
-		btCollisionShape* groundShape = new btBoxShape(collSize);
-		btDefaultMotionState* groundMotionState = new btDefaultMotionState(startTransform);
-		btVector3 localGroundInertia(0, 0, 0);
-		groundShape->calculateLocalInertia(mass, localGroundInertia);
-		btRigidBody::btRigidBodyConstructionInfo groundRBInfo(mass, groundMotionState, groundShape, localGroundInertia);
-		newBO.body = new btRigidBody(groundRBInfo);
-		//add the body to the dynamics world
-		dynamicsWorld->addRigidBody(newBO.body);
-	}
+	btRigidBody::btRigidBodyConstructionInfo rbInfo(mass, myMotionState, newRigidShape, localInertia);
+	newBO.body = new btRigidBody(rbInfo);
+	newBO.body->setUserPointer(newNode);
+
+	dynamicsWorld->addRigidBody(newBO.body);
+
 	newBO.body->setCollisionFlags(newBO.body->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
 	newBO.id = dynamicsWorld->getNumCollisionObjects() - 1;
 	bulletOBs.push_back(newBO);
@@ -116,7 +104,7 @@ void PhysicsEngine::checkColliding(int id)
 			btOb0 = &(*it);
 			float size_x = btOb0->size.getX() / 2/* * 25*/;
 			//std::cout << "Tama->o X: " << size_x << std::endl;
-			float size_y = btOb0->size.getY() /* * 25*/;
+			float size_y = btOb0->size.getY() * 25;
 			//std::cout << "Tama->o Y: " << size_y << std::endl;
 			float size_z = btOb0->size.getZ() / 2/* * 25*/;
 			//std::cout << "Tama�o Z: " << size_z << std::endl;
@@ -145,7 +133,7 @@ void PhysicsEngine::checkColliding(int id)
 				//std::cout << "[" << (*coll).id << "]" << "Size X (/2): " << (*coll).size.getX() / 2 << std::endl;
 				if (distX <= (size_x + 1))
 				{
-					float distY = std::abs(trans.getOrigin().getY() - trans_coll.getOrigin().getY()) - collOb0->size.getY()/* * 25*/;
+					float distY = std::abs((trans.getOrigin().getY() + (((size_y/1.0f) - (btOb0->size.getY())) - 2)) - trans_coll.getOrigin().getY()) - collOb0->size.getY()/* * 25*/;
 					/*std::cout << "[" << (*coll).id << "]" << "Dist Y: " << distY << std::endl;*/
 					//std::cout << "[" << (*coll).id << "]" << "Pos Y: " << trans_coll.getOrigin().getY() << std::endl;
 					//std::cout << "[" << (*coll).id << "]" << "Size Y (/2): " << (*coll).size.getY() / 2 << std::endl;
@@ -213,10 +201,28 @@ btVector3 PhysicsEngine::position(int id)
 }
 
 
-bool PhysicsEngine::physicsLoop(float frameRate)
+bool PhysicsEngine::physicsLoop()
 {
 	if (this != NULL) {
-		dynamicsWorld->stepSimulation(frameRate);
+		frames++;
+
+		if(knowActualFPS)
+		{
+			startTime = clock(); //Start timer
+			knowActualFPS = false;
+		}
+		else
+		{
+			secondsPassed = (clock() - startTime);
+			if (secondsPassed/1000 >= 1.0f)
+			{
+				secondsPassed = 0;
+				knowActualFPS = true;
+				FPS = frames;
+				frames = 0;
+			}
+		}
+		dynamicsWorld->stepSimulation(1.0f/(FPS / 10.0f) , 0);
 		for (int i = 0; i < collisionShapes.size(); i++) {
 			btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
 			btRigidBody* body = btRigidBody::upcast(obj);
@@ -232,6 +238,7 @@ bool PhysicsEngine::physicsLoop(float frameRate)
 				}
 			}
 		}
+
 	}
 	return true;
 }
