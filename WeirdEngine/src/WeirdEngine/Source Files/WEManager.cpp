@@ -82,7 +82,7 @@ void WEManager::Init() {
 	dM = new DataManager();
 
 	//Inicializar physics
-	py = new PhysicsEngine(timeDeltaTimeVar);
+	py = new PhysicsEngine();
 	py->initObjects();
 
 
@@ -118,7 +118,7 @@ bool WEManager::update() {
 	escenas.top()->update(0);
 
 	// Fisicas
-	py->physicsLoop();
+	py->physicsLoop(timeDeltaTimeVar);
 
 	//------Renderizado------
 	renderSystem->draw(0);

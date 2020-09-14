@@ -1,11 +1,6 @@
 #include "PhysicsEngine.h"
 #include <iostream>
 
-clock_t deltaTime = 1;
-unsigned int frames = 60;
-double  frameRate = 30;
-double  averageFrameTimeMilliseconds = 0.016;
-
 void PhysicsEngine::initObjects()
 {
 	collisionConfiguration = new btDefaultCollisionConfiguration();
@@ -203,7 +198,8 @@ btVector3 PhysicsEngine::position(int id)
 
 bool PhysicsEngine::physicsLoop(float frameRate)
 {
-	dynamicsWorld->stepSimulation(frameRate);
+	dynamicsWorld->stepSimulation(frameRate * 0.005, 0);
+
 	for (int i = 0; i < collisionShapes.size(); i++) {
 		btCollisionObject* obj = dynamicsWorld->getCollisionObjectArray()[i];
 		btRigidBody* body = btRigidBody::upcast(obj);

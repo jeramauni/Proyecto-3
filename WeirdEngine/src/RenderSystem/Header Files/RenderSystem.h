@@ -50,7 +50,11 @@ private:
 
 	//Cegui (UI)
 	GUI* guiManager;
+#if defined _DEBUG
 	std::string relativeResourcesPath = "../../../resources/";
+#else
+	std::string relativeResourcesPath = "resources/";
+#endif
 
 public:
 	static bool initSingleton();
